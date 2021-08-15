@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BlazorApp.Shared
+namespace JLioOnline.Shared
 {
     public class WeatherForecast
     {
