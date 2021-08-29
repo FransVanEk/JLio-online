@@ -1,0 +1,98 @@
+﻿@using JLio.Commands
+@using JLio.Commands.Builders
+@using JLio.Core.Contracts
+@using JLio.Core.Models
+@using Newtonsoft.Json.Linq
+@using Newtonsoft.Json
+
+@inject Radzen.DialogService dialogService
+@inject IItemsFetcher fetcher
+@inject Radzen.NotificationService NotificationService
+
+<div class="row">
+    <div class="col-xl-6">
+        from : <JsonPathSelector DataContext="@DataContext" @bind-Value="@fromPath"></JsonPathSelector>
+    </div>
+    <div class="col-xl-6">
+        <RadzenButton ButtonType="ButtonType.Button" Text="Try it out" Click=@ExecuteCommand />
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-6">
+        to: <JsonPathSelector DataContext="@DataContext" @bind-Value="@toPath"></JsonPathSelector>
+    </div>
+    <div class="col-xl-6">
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-12">
+        <RadzenTabs RenderMode="TabRenderMode.Client" Style="height: 330px">
+            <Tabs>
+                <RadzenTabsItem Text="Result">
+                    <RadzenTextArea @bind-value="@result" Placeholder="Results" Rows="12" ReadOnly="true" Style="width: 90%" />
+                </RadzenTabsItem>
+                <RadzenTabsItem Text="Data">
+                    <RadzenTextArea @bind-value="@dataContextString" Placeholder="data context" Rows="12" ReadOnly="true" Style="width: 90%" />
+                </RadzenTabsItem>
+                <RadzenTabsItem Text="Selected items">
+                    <RadzenTextArea @bind-value="@selectedItemsString" Placeholder="selectedItems" Rows="12" ReadOnly="true" Style="width: 90%" />
+                </RadzenTabsItem>
+            </Tabs>
+        </RadzenTabs>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-12">
+        <RadzenButton ButtonType="ButtonType.Button" Text="Add command" Click=@CloseAdd />
+        <RadzenButton ButtonType="ButtonType.Button" Text="Cancel" Click=@Cancel />
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public JToken DataContext { get; set; }
+
+    protected override void OnInitialized()
+    {
+        dataContextString = JsonConvert.SerializeObject(DataContext, Formatting.Indented);
+    }
+
+    private void ExecuteCommand()
+    {
+        if (string.IsNullOrWhiteSpace(fromPath))
+        {
+            NotificationService.Notify(NotificationSeverity.Info, "First select a from path", "", 3000);
+            return;
+        }
+        if (string.IsNullOrWhiteSpace(toPath))
+        {
+            NotificationService.Notify(NotificationSeverity.Info, "First select a to path", "", 3000);
+            return;
+        }
+
+        var script = new JLioScript().Move(fromPath).To(toPath);
+        selectedItemsString = JsonConvert.SerializeObject(fetcher.SelectTokens(fromPath, DataContext), Formatting.Indented);
+        var executionResult = script.Execute(DataContext.DeepClone());
+        result = executionResult.Data.ToString(Formatting.Indented);
+
+    }
+
+    private string fromPath = "$";
+    private string toPath = "$";
+
+    private string result;
+    private string dataContextString;
+    private string selectedItemsString
+    ;
+
+    private void Cancel()
+    {
+        dialogService.Close(null);
+    }
+
+    private void CloseAdd()
+    {
+        dialogService.Close(new Move(fromPath, toPath));
+    }
+}

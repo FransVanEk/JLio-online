@@ -1,0 +1,110 @@
+﻿@using JLio.Client
+@using JLio.Commands
+@using JLio.Commands.Builders
+@using JLio.Core
+@using JLio.Core.Models
+@using JLio.Core.Contracts
+@using Newtonsoft.Json.Linq
+@using Newtonsoft.Json
+@using JLio.Core.Extensions
+
+@inject Radzen.DialogService dialogService
+@inject IItemsFetcher fetcher
+@inject Radzen.NotificationService NotificationService
+
+<div class="row">
+    <div class="col-xl-6">
+        <JsonPathSelector DataContext="@DataContext" @bind-Value="@path"></JsonPathSelector>
+    </div>
+    <div class="col-xl-6">
+        <RadzenButton ButtonType="ButtonType.Button" Text="Try it out" Click=@ExecuteCommand />
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-6">
+        <RadzenTextArea @bind-value="@value" Placeholder="Value as json" Rows="12" Style="width: 90%;height: 431px" />
+    </div>
+    <div class="col-xl-6">
+        <RadzenTabs RenderMode="TabRenderMode.Client">
+            <Tabs>
+                <RadzenTabsItem Text="Result">
+                    <RadzenTextArea @bind-value="@result" Placeholder="Results" Rows="12" ReadOnly="true" Style="width: 90%" />
+                </RadzenTabsItem>
+                <RadzenTabsItem Text="Data">
+                    <RadzenTextArea @bind-value="@dataContextString" Placeholder="data context" Rows="12" ReadOnly="true" Style="width: 90%" />
+                </RadzenTabsItem>
+                <RadzenTabsItem Text="Selected items">
+                    <RadzenTextArea @bind-value="@selectedItemsString" Placeholder="selectedItems" Rows="12" ReadOnly="true" Style="width: 90%" />
+                </RadzenTabsItem>
+            </Tabs>
+        </RadzenTabs>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xl-12">
+        <RadzenButton ButtonType="ButtonType.Button" Text="Add command" Click=@CloseAdd />
+        <RadzenButton ButtonType="ButtonType.Button" Text="Cancel" Click=@Cancel />
+    </div>
+</div>
+
+    @code {
+
+    [Parameter]
+    public JToken DataContext { get; set; }
+
+    protected override void OnInitialized()
+    {
+        dataContextString = JsonConvert.SerializeObject(DataContext, Formatting.Indented);
+    }
+
+    private void ExecuteCommand()
+    {
+        if (string.IsNullOrWhiteSpace(path))
+        {
+            NotificationService.Notify(NotificationSeverity.Info, "First select a path", "", 3000);
+            return;
+        }
+
+        var tokenValue = ParseValue(value);
+        var script = new JLioScript().Add(tokenValue).OnPath(path);
+        selectedItemsString = JsonConvert.SerializeObject(fetcher.SelectTokens(GetParentPath(path), DataContext), Formatting.Indented);
+
+        var executionResult = script.Execute(DataContext.DeepClone());
+        result = executionResult.Data.ToString(Formatting.Indented);
+    }
+
+    private string path = "$";
+    private string value;
+    private string result;
+    private string dataContextString;
+    private string selectedItemsString;
+
+    private string GetParentPath(string path)
+    {
+        return JsonPathMethods.SplitPath(path).ParentElements.ToPathString();
+    }
+
+    private void Cancel()
+    {
+        dialogService.Close(null);
+    }
+
+    private void CloseAdd()
+    {
+        dialogService.Close(new Add(path,  new JLioFunctionSupportedValue(new FixedValue(JToken.Parse(value))) ));
+    }
+
+    private JToken ParseValue(string value)
+    {
+        try
+        {
+            return JToken.Parse(value);
+        }
+        catch (Exception)
+        {
+            NotificationService.Notify(NotificationSeverity.Info, "the value data is malformed", "update the value data so it is in a valid Json notation. Now an empty object is used.", 5000);
+            return new JObject();
+        }
+    }
+
+    }

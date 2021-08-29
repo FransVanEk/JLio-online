@@ -1,8 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>JLioOnline.Shared</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JLio.Client" Version="0.0.4-preview1" />
+  </ItemGroup>
 
 </Project>

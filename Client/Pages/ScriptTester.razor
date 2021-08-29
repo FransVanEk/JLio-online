@@ -1,0 +1,314 @@
+@page "/scriptTester"
+@page "/scriptTester/{sampleName}"
+
+
+
+@using JLio.Client
+@using JLio.Core.Contracts
+@using JLio.Core.Models
+@using Newtonsoft.Json
+@using Newtonsoft.Json.Linq
+@using System.IO
+@using System.Net
+@using System.Runtime.CompilerServices
+@using System.Text
+
+@inject HttpClient Http
+@inject Radzen.DialogService dialogService
+@inject Radzen.NotificationService NotificationService
+
+<h1>JL<sub><i>io</i></sub> in action</h1>
+
+<RadzenDialog></RadzenDialog>
+<RadzenNotification></RadzenNotification>
+
+<RadzenTemplateForm Data="@scriptData" Submit="@((ScriptData args) => { Submit(args); })">
+    <div class="row justify-content-center">
+        <div class="col-md-12 d-flex align-items-end justify-content-center" style="margin-top: 16px;">
+            @*         <RadzenDropDown AllowClear="true" TValue="string" Style="width:400px"
+                FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" FilterOperator="StringFilterOperator.Contains" AllowFiltering="true"
+                Data=@samples TextProperty="Name" ValueProperty="Name" Change=@(OnSampleSelected) />
+            *@
+        </div>
+        <RadzenTabs style="width: 90% " RenderMode="TabRenderMode.Client">
+            <Tabs>
+                <RadzenTabsItem Text="tester">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 d-flex align-items-end justify-content-center" style="margin-top: 16px;">
+                            <RadzenButton ButtonType="ButtonType.Submit" Icon="autorenew" Text="Execute script" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <RadzenFieldset Text="input">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <RadzenDropDown AllowClear="false" TValue="string" Style="width: 100%" @bind-value="@selectedCommand"
+                                                                AllowFiltering="false"
+                                                                Data=@Commands />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <RadzenDropDown AllowClear="false" TValue="string" Style="width: 100%" @bind-value="@selectedDataSource"
+                                                                AllowFiltering="false"
+                                                                Data=@DataSources />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <RadzenButton ButtonType="ButtonType.Button" Icon="note_add" Text="Wizard" Click=@(args => StartWizard()) />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 align-items-center d-flex">
+                                        <RadzenLabel Text="script" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <RadzenTextArea @bind-value="scriptData.Script" Placeholder="put your script here" Rows="12" Style="width: 90%" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 align-items-center d-flex">
+                                        <RadzenLabel Text="data" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <RadzenTextArea @bind-value="scriptData.Data" Placeholder="json data" Rows="12" Style="width: 90%" />
+                                    </div>
+                                </div>
+                            </RadzenFieldset>
+                        </div>
+                        <div class="col-md-6">
+                            <RadzenFieldset Text="output">
+                                <div class="row">
+                                    <div class="col-md-12 align-items-center d-flex">
+                                        <RadzenLabel Text="result" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <RadzenTextArea @bind-value="scriptData.Result" ReadOnly="true" Rows="12" Style="width: 90%" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 align-items-center d-flex">
+                                        <RadzenLabel Text="log" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <RadzenTextArea @bind-value="scriptData.LogText" ReadOnly="true" Rows="12" Style="width: 90%" />
+                                    </div>
+                                </div>
+                            </RadzenFieldset>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-12 d-flex align-items-end justify-content-center" style="margin-top: 16px;">
+                            <RadzenButton ButtonType="ButtonType.Submit" Icon="autorenew" Text="Execute script" />
+                        </div>
+                    </div>
+                </RadzenTabsItem>
+                <RadzenTabsItem Text="Documentation">
+                    @( new MarkupString(scriptData.Documentation) )
+                </RadzenTabsItem>
+            </Tabs>
+        </RadzenTabs>
+
+    </div>
+</RadzenTemplateForm>
+
+@code {
+
+
+    public class ScriptData
+    {
+        public string LogText { get; set; } = "";
+        public string Result { get; set; } = "";
+        public string Data { get; set; } = "{ \r\n \"demo\" : 1 \r\n }";
+        public string Script { get; set; } = "[\r\n      {\r\n        \"path\": \"$.myObject.newProperty\",\r\n        \"value\": { \"new object\": \"Added by value\" },\r\n        \"command\": \"add\"\r\n      }\r\n    ]";
+        public string Documentation { get; set; } = "";
+
+    }
+
+    [Parameter]
+    public string SampleName { get; set; }
+
+    //ExecutionSamples samples { get; set; } = new ExecutionSamples();
+    readonly List<string> Commands = new List<string>() { "Add", "Copy", "Move", "Remove", "Set" };
+    readonly List<string> DataSources = new List<string>() { "Initial Data", "Result Data" };
+    ScriptData scriptData;
+    private string selectedCommand;
+    private string selectedDataSource;
+
+    void Submit(ScriptData arg)
+    {
+        ExecuteScript(arg);
+    }
+
+    private void ExecuteScript(ScriptData data)
+    {
+        var scriptLines = ParseScript(data.Script);
+        var executeOptions = JLioExecutionOptions.CreateDefault();
+        var executionResult = scriptLines.Execute(ParseData(), executeOptions);
+
+        this.scriptData.LogText = executeOptions.Logger.LogText;
+        this.scriptData.Result = executionResult.Data.ToString(Formatting.Indented);
+
+        NotificationService.Notify(NotificationSeverity.Info, $"Script executed in {executeOptions.Logger.LogEntries.ExecutionTimeMilliseconds}ms", "", 1500);
+    }
+
+    private JLioScript ParseScript(string scriptText)
+    {
+        JLioScript script;
+        try
+        {
+            Console.WriteLine(scriptText);   
+            script = JLioConvert.Parse(scriptText);
+        }
+        catch (Exception)
+        {
+            NotificationService.Notify(NotificationSeverity.Info, "script is malformed",
+                "update json script so it is valid. Execution terminated", 5000);
+            return new JLioScript();
+        }
+
+        return script;
+    }
+
+    async Task StartWizard()
+    {
+        if (string.IsNullOrEmpty(selectedCommand))
+        {
+            NotificationService.Notify(NotificationSeverity.Info, "No command is selected", "Select a command in the dropdown box", 5000);
+            return;
+        }
+
+        var dataContext = ParseData();
+        if (selectedDataSource == "Result Data")
+        {
+            ExecuteScript(scriptData);
+            dataContext = JToken.Parse(scriptData.Result);
+        }
+
+        switch (selectedCommand)
+        {
+            case "Add":
+                var addCommand = await dialogService.OpenAsync<AddWizard>($"Add command wizard",
+                    new Dictionary<string, object>() { { "DataContext", dataContext } },
+                    new DialogOptions() { Width = "900px", Height = "630px" });
+                if (addCommand is IJLioCommand a)
+                {
+                    AddToScript(a);
+                }
+                break;
+
+            case "Set":
+                var setCommand = await dialogService.OpenAsync<SetWizard>($"Set command wizard",
+                    new Dictionary<string, object>() { { "DataContext", dataContext } },
+                    new DialogOptions() { Width = "900px", Height = "630px" });
+                if (setCommand is IJLioCommand s)
+                {
+                    AddToScript(s);
+                }
+                break;
+
+            case "Remove":
+                var removeCommand = await dialogService.OpenAsync<RemoveWizard>($"Remove command wizard",
+                    new Dictionary<string, object>() { { "DataContext", dataContext } },
+                    new DialogOptions() { Width = "900px", Height = "630px" });
+                if (removeCommand is IJLioCommand r)
+                {
+                    AddToScript(r);
+                }
+                break;
+            case "Copy":
+                var copyCommand = await dialogService.OpenAsync<CopyWizard>($"Copy command wizard",
+                    new Dictionary<string, object>() { { "DataContext", dataContext } },
+                    new DialogOptions() { Width = "900px", Height = "630px" });
+                if (copyCommand is IJLioCommand c)
+                {
+                    AddToScript(c);
+                }
+                break;
+            case "Move":
+                var moveCommand = await dialogService.OpenAsync<MoveWizard>($"Move command wizard",
+                    new Dictionary<string, object>() { { "DataContext", dataContext } },
+                    new DialogOptions() { Width = "900px", Height = "630px" });
+                if (moveCommand is IJLioCommand m)
+                {
+                    AddToScript(m);
+                }
+                break;
+
+            default:
+                NotificationService.Notify(NotificationSeverity.Info, "wizard not implemented yet", "", 5000);
+                break;
+        }
+    }
+
+    private JToken ParseData()
+    {
+        try
+        {
+            Console.WriteLine(scriptData.Data);
+            return JToken.Parse(scriptData.Data);
+        }
+        catch (Exception ex)
+        {
+            NotificationService.Notify(NotificationSeverity.Info, $"data is malformed", "update json data object so it is valid. Now an empty object is used. -  {scriptData.Data} - {ex.Message}", 5000);
+            return new JObject();
+        }
+
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        scriptData = new ScriptData();
+        //   var samplesText = await Http.GetStringAsync(("sample-data/TestSamples.json?time=" + DateTime.Now));
+        //  samples = JsonConvert.DeserializeObject<ExecutionSamples>(samplesText
+        //   , JsonCommandConverter);
+
+        selectedCommand = Commands.First();
+        selectedDataSource = DataSources.First();
+    }
+
+
+    //void OnSampleSelected(object selectedSampleName)
+    //{
+    //    var name = selectedSampleName.ToString();
+    //    var selectedSample = samples.FirstOrDefault(s => s.Name == name);
+    //    if (selectedSample != null)
+    //    {
+    //        scriptData.Script = selectedSample.Script.ToScriptJson();
+    //        scriptData.Data = selectedSample.InputData.ToString(Formatting.Indented);
+    //        scriptData.Documentation = GetDocumentationFor(selectedSample);
+    //        ExecuteScript(scriptData);
+    //    }
+    //}
+
+    //private string GetDocumentationFor(ExecutionSample selectedSample)
+    //{
+    //    var result = new StringBuilder();
+    //    result.AppendLine($"<h2>{selectedSample.Name}</h2>");
+    //    result.AppendLine();
+    //    result.AppendLine($"{selectedSample.Description}");
+    //    result.AppendLine();
+    //    result.AppendLine("<h3>script</h3>");
+    //    result.AppendLine($"{selectedSample.Script.ToScriptJson()}");
+    //    result.Replace("\n", "<br />");
+    //    result.Replace("\r\n", "<br />");
+    //    return result.ToString();
+    //}
+
+    private void AddToScript(IJLioCommand jsonCommand)
+    {
+        var script = ParseScript(scriptData.Script);
+        script.AddLine(jsonCommand);
+        scriptData.Script = JLioConvert.Serialize(script);
+    }
+}

@@ -37,6 +37,7 @@ namespace JLioOnline.Api
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
             ILogger log)
         {
+
             var randomNumber = new Random();
             var temp = 0;
 

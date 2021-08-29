@@ -1,9 +1,16 @@
-﻿using System;
+﻿using JLio.Core.Models;
+using JLio.Client;
+using System;
+using Newtonsoft.Json.Linq;
 
 namespace JLioOnline.Shared
 {
     public class WeatherForecast
     {
+        public WeatherForecast()
+        {
+           
+        }
         public DateTime Date { get; set; }
 
         public int TemperatureC { get; set; }

@@ -1,0 +1,37 @@
+﻿@using JLio.Core.Contracts
+@using Newtonsoft.Json.Linq
+@using Radzen.Blazor.Rendering
+@using JLio.Core.Extensions
+
+@inject Radzen.DialogService dialogService
+<div class="row">
+    <div class="col-xl-12">
+        <RadzenAutoComplete Data="@intellisenseOptions" @bind-value=@Value LoadData="@OnLoadData" Placeholder="Path" Style="margin-bottom: 20px" />
+    </div>
+</div>
+
+
+@code {
+
+    [Inject]
+    public IItemsFetcher ItemsFetcher { get; set; }
+
+    [Parameter] public JToken DataContext { get; set; }
+    [Parameter] public string Value { get; set; }
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+
+    async void OnLoadData(LoadDataArgs args)
+    {
+        Value = args.Filter;
+        JsonPathMethods.GetIntellisense(args.Filter, DataContext, ItemsFetcher);
+
+        intellisenseOptions = JsonPathMethods.GetIntellisense(args.Filter, DataContext, ItemsFetcher);
+        
+        await InvokeAsync(StateHasChanged);
+        await ValueChanged.InvokeAsync(Value);
+    }
+
+   
+
+    private List<string> intellisenseOptions = new List<string>();
+}
