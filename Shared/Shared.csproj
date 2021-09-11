@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="JLio.Client" Version="0.0.4-preview1" />
+    <PackageReference Include="JLio.Client" Version="0.1.0" />
   </ItemGroup>
 
 </Project>

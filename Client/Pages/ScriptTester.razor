@@ -258,9 +258,9 @@
             Console.WriteLine(scriptData.Data);
             return JToken.Parse(scriptData.Data);
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            NotificationService.Notify(NotificationSeverity.Info, $"data is malformed", "update json data object so it is valid. Now an empty object is used. -  {scriptData.Data} - {ex.Message}", 5000);
+            NotificationService.Notify(NotificationSeverity.Info, $"data is malformed", "update json data object so it is valid. Now an empty object is used.", 5000);
             return new JObject();
         }
 
