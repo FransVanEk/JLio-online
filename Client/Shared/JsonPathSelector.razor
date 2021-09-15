@@ -6,7 +6,7 @@
 @inject Radzen.DialogService dialogService
 <div class="row">
     <div class="col-xl-12">
-        <RadzenAutoComplete Data="@intellisenseOptions" @bind-value=@Value LoadData="@OnLoadData" Placeholder="Path" Style="margin-bottom: 20px" />
+        <RadzenAutoComplete Data="@intellisenseOptions" @bind-value=@Value LoadData="@OnLoadData" Change=@(args => OnChange(args)) Placeholder="Path" Style="margin-bottom: 20px" />
     </div>
 </div>
 
@@ -26,12 +26,15 @@
         JsonPathMethods.GetIntellisense(args.Filter, DataContext, ItemsFetcher);
 
         intellisenseOptions = JsonPathMethods.GetIntellisense(args.Filter, DataContext, ItemsFetcher);
-        
+        intellisenseOptions.Insert(0, Value);
         await InvokeAsync(StateHasChanged);
         await ValueChanged.InvokeAsync(Value);
     }
 
-   
+      async void OnChange(object value)
+    {
+        OnLoadData(new LoadDataArgs() { Filter = value.ToString() });
+    }
 
     private List<string> intellisenseOptions = new List<string>();
 }
