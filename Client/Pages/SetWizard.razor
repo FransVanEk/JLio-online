@@ -66,8 +66,9 @@
         var tokenValue = ParseValue(value);
         var script = new JLioScript().Set(tokenValue).OnPath(path);
         selectedItemsString = JsonConvert.SerializeObject(fetcher.SelectTokens(GetParentPath(path), DataContext), Formatting.Indented);
+        var executeOptions = JLioExecutionOptions.CreateDefault();
+        var executionResult = script.Execute(DataContext.DeepClone(), executeOptions);
 
-        var executionResult = script.Execute(DataContext.DeepClone());
         result = executionResult.Data.ToString(Formatting.Indented);
 
     }
@@ -92,7 +93,7 @@
 
     private void CloseAdd()
     {
-        dialogService.Close(new Set(path,  new JLioFunctionSupportedValue(new FixedValue(JToken.Parse(value)))));
+        dialogService.Close(new Set(path, new JLioFunctionSupportedValue(new FixedValue(JToken.Parse(value)))));
     }
 
     private JToken ParseValue(string value)

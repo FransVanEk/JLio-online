@@ -68,8 +68,8 @@
         var tokenValue = ParseValue(value);
         var script = new JLioScript().Add(tokenValue).OnPath(path);
         selectedItemsString = JsonConvert.SerializeObject(fetcher.SelectTokens(GetParentPath(path), DataContext), Formatting.Indented);
-
-        var executionResult = script.Execute(DataContext.DeepClone());
+        var executeOptions = JLioExecutionOptions.CreateDefault();
+        var executionResult = script.Execute(DataContext.DeepClone(), executeOptions);
         result = executionResult.Data.ToString(Formatting.Indented);
     }
 

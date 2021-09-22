@@ -74,7 +74,8 @@
 
         var script = new JLioScript().Copy(fromPath).To(toPath);
         selectedItemsString = JsonConvert.SerializeObject(fetcher.SelectTokens(fromPath, DataContext), Formatting.Indented);
-        var executionResult = script.Execute(DataContext.DeepClone());
+        var executeOptions = JLioExecutionOptions.CreateDefault();
+        var executionResult = script.Execute(DataContext.DeepClone(), executeOptions);
         result = executionResult.Data.ToString(Formatting.Indented);
     }
 
