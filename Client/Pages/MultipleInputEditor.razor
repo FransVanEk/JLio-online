@@ -1,0 +1,267 @@
+﻿@page "/multipleInputEditor"
+@page "/multipleInputEditor/{sampleName}"
+@using JLio.Core.Contracts
+
+@inject HttpClient Http
+@inject Radzen.DialogService dialogService
+@inject Radzen.NotificationService NotificationService
+
+<div class="row">
+    <div class="col-md-4">
+        <RadzenButton ButtonType="ButtonType.Button" Icon="note_add" Click=@(args => AddInput()) ButtonStyle="ButtonStyle.Info" style="width:100%;margin-bottom:3px;" /><br />
+        @foreach (var inputElement in model.InputObjects.OrderBy(i => i.Name))
+        {
+            <RadzenButton ButtonType="ButtonType.Button" Text="@inputElement.Name" Click=@(args => SetInput(inputElement)) style="width:100%;margin-bottom:3px;" />
+            <br />
+        }
+    </div>
+    <div class="col-md-8">
+        @if (model.HasCurrentInput)
+        {
+
+            <RadzenTextBox @bind-Value="model.CurrentInput.Name" style="width:90%;margin-bottom:3px;" />
+            <RadzenButton ButtonType="ButtonType.Button" Icon="delete" Click=@(args => DeleteCurrentInput()) style="width:90%;margin-bottom:3px;" />
+            <br />
+            <RadzenTextArea @bind-value="model.CurrentInput.JsonString" Placeholder="put your json notation here" Rows="12" Style="width: 90%" />
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @if (model.Mode == MultilineEditorViewModel.eMode.advanced)
+        {
+            <RadzenButton ButtonType="ButtonType.Button" Text="go to raw Script text" Click=@(args => SetMode(MultilineEditorViewModel.eMode.script)) style="width:100%;margin-bottom:3px;" />
+        }
+        else
+        {
+            <RadzenButton ButtonType="ButtonType.Button" Text="go to advaced mode" Click=@(args => SetMode(MultilineEditorViewModel.eMode.advanced)) style="width:100%;margin-bottom:3px;" />
+        }
+
+    </div>
+    <div class="col-md-8">
+        @if (model.Mode == MultilineEditorViewModel.eMode.advanced)
+        {
+            <h1>Advanced</h1>
+        }
+        else
+        {
+            <RadzenTextArea @bind-value="model.ScriptText" Placeholder="put your json notation here" Rows="12" Style="width: 90%" />
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">&nbsp;</div>
+    <div class="col-md-8" style="align-content:center">
+        <RadzenButton ButtonType="ButtonType.Button" Icon="note_add" ButtonStyle="ButtonStyle.Warning" Text="Execute" Click=@(args => Execute()) style="width:100%;margin-bottom:3px;" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @foreach (var outputElement in model.OutputObjects.OrderBy(i => i.Name))
+        {
+            <RadzenButton ButtonType="ButtonType.Button" Text="@outputElement.Name" Click=@(args => SetOutput(outputElement)) style="width:100%;margin-bottom:3px;" />
+            <br />
+        }
+    </div>
+    <div class="col-md-8">
+        @if (model.HasCurrentOutput)
+        {
+            <RadzenTextBox @bind-Value="model.CurrentOutput.Name" style="width:90%;margin-bottom:3px;" />
+            <RadzenTextArea @bind-value="model.CurrentOutput.JsonString" Rows="12" Style="width: 90%" ReadOnly=true />
+        }
+    </div>
+</div>
+@foreach (var debugResult in model.DubugResults)
+{
+    <div class="row">
+        <div class="col-md-4">
+            @if (debugResult.Succes)
+            {
+                <RadzenIcon Icon="check_circle" />
+            }
+            else
+            {
+                <RadzenIcon Icon="sms_failed" />
+            }
+            @debugResult.command.CommandName<br />
+            @debugResult.CommandText
+        </div>
+        <div class="col-md-4">
+            pre-execution
+        </div>
+        <div class="col-md-4">
+            post-execution
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            @debugResult.command?.ToString()
+        </div>
+        <div class="col-md-4">
+            <RadzenTextArea @bind-value="debugResult.StartObject" Rows="12" Style="width: 90%" ReadOnly=true />
+        </div>
+        <div class="col-md-4">
+            <RadzenTextArea @bind-value="debugResult.EndObject" Rows="12" Style="width: 90%" ReadOnly=true />
+        </div>
+    </div>
+}
+
+
+
+
+
+
+
+@code {
+    [Parameter]
+    public string SampleName { get; set; }
+
+    public MultilineEditorViewModel model { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        model = new MultilineEditorViewModel
+            {
+                InputObjects = new List<JsonObjectViewModel>
+                {
+                    new JsonObjectViewModel { Name = "demo", JsonString = "{ }" },
+                    new JsonObjectViewModel { Name = "demo2", JsonString = "{ \"dada\" : 6 }" }
+                },
+                OutputObjects = new List<JsonObjectViewModel>
+                {
+                    new JsonObjectViewModel { Name = "result 1", JsonString = "{ }" },
+                    new JsonObjectViewModel { Name = "result 2", JsonString = "{ \"dada\" : 9 }" }
+                },
+                Mode = MultilineEditorViewModel.eMode.script,
+                ScriptText = "{}"
+            };
+
+        ResetInputSelection();
+        ResetOutputSelection();
+    }
+
+    void SetMode(MultilineEditorViewModel.eMode mode)
+    {
+
+        model.Mode = mode;
+    }
+
+    void SetInput(JsonObjectViewModel item)
+    {
+        model.CurrentInput = item;
+    }
+
+    void SetOutput(JsonObjectViewModel item)
+    {
+        model.CurrentOutput = item;
+    }
+
+    void DeleteCurrentInput()
+    {
+        if (model.HasCurrentInput)
+        {
+            model.InputObjects.Remove(model.CurrentInput);
+            ResetInputSelection();
+        }
+    }
+
+    void ResetInputSelection()
+    {
+        model.CurrentInput = model.InputObjects.OrderBy(i => i.Name).FirstOrDefault();
+    }
+    void ResetOutputSelection()
+    {
+        model.CurrentOutput = model.OutputObjects.OrderBy(i => i.Name).FirstOrDefault();
+    }
+
+    void AddInput()
+    {
+        var newItem = new JsonObjectViewModel { Name = "newObject", JsonString = "{}" };
+        model.InputObjects.Add(newItem);
+        model.CurrentInput = newItem;
+    }
+
+    void Execute()
+    {
+        var executeContext = ExecutionContext.CreateDefault();
+        var scriptLines = ParseScript(executeContext);
+        var executionResult = new JLioExecutionResult(false, ParseInput(executeContext));
+        model.DubugResults = new List<CommandExecutionViewModel>();
+        scriptLines.ForEach(l =>
+        {
+            var debugResult = new CommandExecutionViewModel()
+                {
+                    StartObject = executionResult.Data.DeepClone().ToString(Newtonsoft.Json.Formatting.Indented),
+                    command = l
+                };
+            executionResult = scriptLines.Execute(executionResult.Data, executeContext);
+
+            debugResult.EndObject = executionResult.Data.DeepClone().ToString(Newtonsoft.Json.Formatting.Indented);
+            debugResult.Succes = executionResult.Success;
+            model.DubugResults.Add(debugResult);
+        });
+        SetExecutionResult(executionResult);
+    }
+
+    private void SetExecutionResult(JLioExecutionResult executionResult)
+    {
+        var result = ((JObject)executionResult.Data).ConvertToDictionary();
+
+        model.OutputObjects = new List<JsonObjectViewModel>();
+
+        result.Keys.ToList().ForEach(k => model.OutputObjects.Add(new JsonObjectViewModel
+            {
+                Name = k,
+                JsonString = result[k].ToString(Newtonsoft.Json.Formatting.Indented)
+            }
+        ));
+        ResetOutputSelection();
+    }
+
+
+    private JLioScript ParseScript(IExecutionContext context)
+    {
+        JLioScript script;
+        try
+        {
+            script = JLioConvert.Parse(model.ScriptText);
+        }
+        catch (Exception)
+        {
+            context.LogError("script is malformed",
+                "update json script so it is valid. Execution terminated");
+            return new JLioScript();
+        }
+
+        return script;
+    }
+
+    JToken ParseInput(IExecutionContext context)
+    {
+
+
+        var currentObjectName = string.Empty;
+
+        try
+        {
+            var collection = new Dictionary<string, JToken>();
+            model.InputObjects.ForEach(i =>
+            {
+                currentObjectName = i.Name;
+                collection.Add(i.Name, JToken.Parse(i.JsonString));
+            });
+
+            return collection.ConvertToDataObject();
+
+        }
+        catch (Exception)
+        {
+            context.LogError($"input object {currentObjectName} is malformed or is provided twice",
+                "update json object so it is valid. Execution terminated");
+
+        }
+
+        return new JObject();
+    }
+}
