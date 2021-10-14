@@ -1,6 +1,7 @@
 ﻿@page "/multipleInputEditor"
 @page "/multipleInputEditor/{sampleName}"
 @using JLio.Core.Contracts
+@using JLio.Core.Extensions
 
 @inject HttpClient Http
 @inject Radzen.DialogService dialogService
@@ -85,7 +86,7 @@
                 <RadzenIcon Icon="sms_failed" />
             }
             @debugResult.command.CommandName<br />
-            @debugResult.CommandText
+           
         </div>
         <div class="col-md-4">
             pre-execution
@@ -96,7 +97,7 @@
     </div>
     <div class="row">
         <div class="col-md-4">
-            @debugResult.command?.ToString()
+             <RadzenTextArea Value=@debugResult.CommandText Rows="12" Style="width: 90%" ReadOnly=true />
         </div>
         <div class="col-md-4">
             <RadzenTextArea @bind-value="debugResult.StartObject" Rows="12" Style="width: 90%" ReadOnly=true />
@@ -195,7 +196,7 @@
                     StartObject = executionResult.Data.DeepClone().ToString(Newtonsoft.Json.Formatting.Indented),
                     command = l
                 };
-            executionResult = scriptLines.Execute(executionResult.Data, executeContext);
+            executionResult = l.Execute(executionResult.Data, executeContext);
 
             debugResult.EndObject = executionResult.Data.DeepClone().ToString(Newtonsoft.Json.Formatting.Indented);
             debugResult.Succes = executionResult.Success;

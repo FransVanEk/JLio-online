@@ -46,7 +46,7 @@ namespace JLioOnline.Client.Shared.Models
 
         private string GetCommandText()
         {
-            return JsonConvert.SerializeObject(command);
+            return JsonConvert.SerializeObject(command, Formatting.Indented);
         }
         bool expended { get; set; } = false;
     }
