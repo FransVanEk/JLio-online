@@ -3,6 +3,7 @@
 
 
 
+
 @using JLio.Client
 @using JLio.Core.Contracts
 @using JLio.Core.Models
@@ -152,7 +153,7 @@
     private void ExecuteScript(ScriptData data)
     {
         var scriptLines = ParseScript(data.Script);
-        var executeOptions = JLioExecutionOptions.CreateDefault();
+        var executeOptions = ExecutionContext.CreateDefault();
         var executionResult = scriptLines.Execute(ParseData(), executeOptions);
 
         this.scriptData.LogText = executeOptions.Logger.LogText;
@@ -200,7 +201,7 @@
                 var addCommand = await dialogService.OpenAsync<AddWizard>($"Add command wizard",
                     new Dictionary<string, object>() { { "DataContext", dataContext } },
                     new DialogOptions() { Width = "900px", Height = "630px" });
-                if (addCommand is IJLioCommand a)
+                if (addCommand is ICommand a)
                 {
                     AddToScript(a);
                 }
@@ -210,7 +211,7 @@
                 var setCommand = await dialogService.OpenAsync<SetWizard>($"Set command wizard",
                     new Dictionary<string, object>() { { "DataContext", dataContext } },
                     new DialogOptions() { Width = "900px", Height = "630px" });
-                if (setCommand is IJLioCommand s)
+                if (setCommand is ICommand s)
                 {
                     AddToScript(s);
                 }
@@ -220,7 +221,7 @@
                 var removeCommand = await dialogService.OpenAsync<RemoveWizard>($"Remove command wizard",
                     new Dictionary<string, object>() { { "DataContext", dataContext } },
                     new DialogOptions() { Width = "900px", Height = "630px" });
-                if (removeCommand is IJLioCommand r)
+                if (removeCommand is ICommand r)
                 {
                     AddToScript(r);
                 }
@@ -229,7 +230,7 @@
                 var copyCommand = await dialogService.OpenAsync<CopyWizard>($"Copy command wizard",
                     new Dictionary<string, object>() { { "DataContext", dataContext } },
                     new DialogOptions() { Width = "900px", Height = "630px" });
-                if (copyCommand is IJLioCommand c)
+                if (copyCommand is ICommand c)
                 {
                     AddToScript(c);
                 }
@@ -238,7 +239,7 @@
                 var moveCommand = await dialogService.OpenAsync<MoveWizard>($"Move command wizard",
                     new Dictionary<string, object>() { { "DataContext", dataContext } },
                     new DialogOptions() { Width = "900px", Height = "630px" });
-                if (moveCommand is IJLioCommand m)
+                if (moveCommand is ICommand m)
                 {
                     AddToScript(m);
                 }
@@ -304,10 +305,11 @@
     //    return result.ToString();
     //}
 
-    private void AddToScript(IJLioCommand jsonCommand)
+    private void AddToScript(ICommand jsonCommand)
     {
         var script = ParseScript(scriptData.Script);
         script.AddLine(jsonCommand);
         scriptData.Script = JLioConvert.Serialize(script);
+       
     }
 }
