@@ -76,36 +76,69 @@
 @foreach (var debugResult in model.DubugResults)
 {
     <div class="row">
-        <div class="col-md-4">
-            @if (debugResult.Succes)
-            {
-                <RadzenIcon Icon="check_circle" />
+         <div class="col-md-1">
+               @if (debugResult.Expanded)
+               {
+                <RadzenButton ButtonType="ButtonType.Button" Icon="expand_less" Click=@(args => ToggleExpand(debugResult)) ButtonStyle="ButtonStyle.Info" style="width:100%;margin-bottom:3px;" />
             }
             else
             {
-                <RadzenIcon Icon="sms_failed" />
+                <RadzenButton ButtonType="ButtonType.Button" Icon="expand_more" Click=@(args => ToggleExpand(debugResult)) ButtonStyle="ButtonStyle.Info" style="width:100%;margin-bottom:3px;" />
             }
-            @debugResult.command.CommandName<br />
-           
         </div>
-        <div class="col-md-4">
-            pre-execution
+        <div class="col-md-1"> 
+            @if (debugResult.Succes)
+            {
+                <RadzenIcon Icon="check_circle"  style="color:green" />
+            }
+            else
+            {
+                <RadzenIcon Icon="sms_failed" style="color:red" />
+            }
         </div>
-        <div class="col-md-4">
-            post-execution
+        <div class="col-md-1">
+            @if (debugResult.HasChanges)
+            {
+                <RadzenIcon Icon="sync_problem" style="color:red" />
+                
+            }
+            else
+            {
+                <RadzenIcon Icon="change_circle"  style="color:green" />
+            }
         </div>
+       
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-8"> <RadzenButton ButtonType="ButtonType.Button" Text=@debugResult.Command.CommandName Click=@(args => ToggleExpand(debugResult)) ButtonStyle="ButtonStyle.Info" style="width:100%;margin-bottom:3px;" />
+        </div>
+
     </div>
-    <div class="row">
-        <div class="col-md-4">
-             <RadzenTextArea Value=@debugResult.CommandText Rows="12" Style="width: 90%" ReadOnly=true />
+    @if (debugResult.Expanded)
+    {
+        <div class="row">
+            <div class="col-md-4">
+                Detailed command
+            </div>
+            <div class="col-md-4">
+                Pre-Execution
+            </div>
+            <div class="col-md-4">
+                Post-Execution
+            </div>
         </div>
-        <div class="col-md-4">
-            <RadzenTextArea @bind-value="debugResult.StartObject" Rows="12" Style="width: 90%" ReadOnly=true />
+        <div class="row">
+            <div class="col-md-4">
+                <RadzenTextArea Value=@debugResult.CommandText Rows="12" Style="width: 90%" ReadOnly=true />
+            </div>
+            <div class="col-md-4">
+                <RadzenTextArea  Value=@debugResult.StartObjectText Rows="12" Style="width: 90%" ReadOnly=true />
+            </div>
+            <div class="col-md-4">
+                <RadzenTextArea  Value=@debugResult.EndObjectText Rows="12" Style="width: 90%" ReadOnly=true />
+            </div>
         </div>
-        <div class="col-md-4">
-            <RadzenTextArea @bind-value="debugResult.EndObject" Rows="12" Style="width: 90%" ReadOnly=true />
-        </div>
-    </div>
+    }
 }
 
 
@@ -148,6 +181,11 @@
         model.Mode = mode;
     }
 
+    void ToggleExpand(CommandExecutionViewModel item)
+    {
+        item.Expanded = !item.Expanded;
+    }
+
     void SetInput(JsonObjectViewModel item)
     {
         model.CurrentInput = item;
@@ -187,22 +225,17 @@
     {
         var executeContext = ExecutionContext.CreateDefault();
         var scriptLines = ParseScript(executeContext);
-        var executionResult = new JLioExecutionResult(false, ParseInput(executeContext));
+        var startObject = ParseInput(executeContext);
+
         model.DubugResults = new List<CommandExecutionViewModel>();
         scriptLines.ForEach(l =>
         {
-            var debugResult = new CommandExecutionViewModel()
-                {
-                    StartObject = executionResult.Data.DeepClone().ToString(Newtonsoft.Json.Formatting.Indented),
-                    command = l
-                };
-            executionResult = l.Execute(executionResult.Data, executeContext);
-
-            debugResult.EndObject = executionResult.Data.DeepClone().ToString(Newtonsoft.Json.Formatting.Indented);
-            debugResult.Succes = executionResult.Success;
-            model.DubugResults.Add(debugResult);
+            var executionResult = l.Execute(startObject.DeepClone(), executeContext);
+            model.DubugResults.Add(new CommandExecutionViewModel(l,executionResult.Success, startObject,executionResult.Data));
+            startObject = executionResult.Data;
         });
-        SetExecutionResult(executionResult);
+     
+        SetExecutionResult(new JLioExecutionResult(model.DubugResults.All(i => i.Succes == true), startObject));
     }
 
     private void SetExecutionResult(JLioExecutionResult executionResult)

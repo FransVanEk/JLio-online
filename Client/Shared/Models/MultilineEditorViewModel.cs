@@ -37,17 +37,31 @@ namespace JLioOnline.Client.Shared.Models
 
     public class CommandExecutionViewModel
     {
-        public ICommand command { get; set; } 
-        public bool Succes { get; set; }
-        public string StartObject { get; set; }
-        public string EndObject { get; set; }
 
-        public string CommandText => GetCommandText();
+        public CommandExecutionViewModel(ICommand command, bool success, JToken startData, JToken endData)
+        {
+            Command = command;
+            Succes = success;
+            StartObjectText = startData.ToString(Formatting.Indented);
+            EndObjectText = endData.ToString(Formatting.Indented);
+            CommandText =  GetCommandText(command);
+            StartObject = startData.DeepClone();
+            EndObject = endData.DeepClone();
+            HasChanges = JToken.DeepEquals(startData, endData);
+        }
 
-        private string GetCommandText()
+        public ICommand Command { get;  } 
+        public bool Succes { get; }
+        public string StartObjectText { get; }
+        public string EndObjectText { get; }
+        public JToken StartObject { get; }
+        public JToken EndObject { get;  }
+        public bool HasChanges { get; }
+        public string CommandText { get;  }
+        private string GetCommandText(ICommand command)
         {
             return JsonConvert.SerializeObject(command, Formatting.Indented);
         }
-        bool expended { get; set; } = false;
+        public bool Expanded { get; set; } = false;
     }
 }
