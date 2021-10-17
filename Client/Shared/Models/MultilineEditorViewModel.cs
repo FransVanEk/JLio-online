@@ -11,6 +11,10 @@ namespace JLioOnline.Client.Shared.Models
 {
     public class MultilineEditorViewModel
     {
+        public string  SelectedCommand { get; set; } = "Add";
+        public int displayMode { get; set; } = 1;
+
+        public readonly List<string> Commands = new List<string>() { "Add", "Copy", "Move", "Remove", "Set" };
         public List<JsonObjectViewModel> InputObjects { get; set; } = new List<JsonObjectViewModel>();
         public List<CommandExecutionViewModel> DubugResults { get; set; } = new List<CommandExecutionViewModel>();
         public List<JsonObjectViewModel> OutputObjects { get; set; } = new List<JsonObjectViewModel>();
@@ -18,7 +22,7 @@ namespace JLioOnline.Client.Shared.Models
         public JsonObjectViewModel CurrentOutput { get; set; }
         public bool HasCurrentInput => CurrentInput != null;
         public bool HasCurrentOutput => CurrentOutput != null;
-        public string ScriptText {get;set;}
+        public string ScriptText { get; set; } = "";
         public eMode Mode { get; set; }
 
         public enum eMode
