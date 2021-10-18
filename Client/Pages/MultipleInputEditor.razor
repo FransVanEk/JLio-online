@@ -10,163 +10,213 @@
 <RadzenDialog></RadzenDialog>
 <RadzenNotification></RadzenNotification>
 
+
 <div class="row">
     <div class="col-md-12">
-        <RadzenSelectBar @bind-Value=@model.displayMode TValue="int">
-            <Items>
-                <RadzenSelectBarItem Text="Editor" Value="1" />
-                <RadzenSelectBarItem Text="Debug" Value="2" />
-            </Items>
-        </RadzenSelectBar>
+        <RadzenFieldset Text="Input data">
+            <div class="row">
+                <div class="col-md-3">
+                    <RadzenButton ButtonType="ButtonType.Button" Icon="add_circle_outline" Click=@(args => AddInput()) Text="Add input object" ButtonStyle="ButtonStyle.Secondary" style="width:100%;margin-bottom:3px;" /><br />
+                    @foreach (var inputElement in model.InputObjects.OrderBy(i => i.Name))
+                    {
+                        <RadzenButton ButtonType="ButtonType.Button" Text="@inputElement.Name" Click=@(args => SetInput(inputElement)) style="width:100%;margin-bottom:3px;" />
+                        <br />
+                    }
+                </div>
+                <div class="col-md-9">
+                    @if (model.HasCurrentInput)
+                    {
+
+                        <div class="row">
+                            <div class="col-md-10">
+                                <RadzenTextBox @bind-Value="model.CurrentInput.Name" style="width:100%;margin-bottom:3px;" />
+                            </div>
+                            <div class="col-md-2">
+                                <RadzenButton ButtonType="ButtonType.Button" Icon="delete" Text=@($"Delete input object:{model.CurrentInput.Name}") Click=@(args => DeleteCurrentInput()) style="width:100%;margin-bottom:3px;" />
+                            </div>
+                        </div>
+                        <RadzenTextArea @bind-value="model.CurrentInput.JsonString" Placeholder="put your json notation here" Rows="12" Style="width: 100%" />
+                    }
+                </div>
+            </div>
+        </RadzenFieldset>
     </div>
 </div>
-@if (model.displayMode == 1)
-{
-    <div class="row">
-        <div class="col-md-4">
-            <RadzenButton ButtonType="ButtonType.Button" Icon="add_circle_outline" Click=@(args => AddInput()) Text="Add input object" ButtonStyle="ButtonStyle.Info" style="width:100%;margin-bottom:3px;" /><br />
-            @foreach (var inputElement in model.InputObjects.OrderBy(i => i.Name))
-            {
-                <RadzenButton ButtonType="ButtonType.Button" Text="@inputElement.Name" Click=@(args => SetInput(inputElement)) style="width:100%;margin-bottom:3px;" />
-                <br />
-            }
-        </div>
-        <div class="col-md-8">
-            @if (model.HasCurrentInput)
-            {
 
-                <RadzenTextBox @bind-Value="model.CurrentInput.Name" style="width:90%;margin-bottom:3px;" />
-                <RadzenButton ButtonType="ButtonType.Button" Icon="delete" Text=@($"Delete input object:{model.CurrentInput.Name}") Click=@(args => DeleteCurrentInput()) style="width:90%;margin-bottom:3px;" />
-                <br />
-                <RadzenTextArea @bind-value="model.CurrentInput.JsonString" Placeholder="put your json notation here" Rows="12" Style="width: 90%" />
-            }
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-         @*   @if (model.Mode == MultilineEditorViewModel.eMode.advanced)
-            {
-                <RadzenButton ButtonType="ButtonType.Button" Text="go to raw Script text" Click=@(args => SetMode(MultilineEditorViewModel.eMode.script)) style="width:100%;margin-bottom:3px;" />
-            }
-            else
-            {
-                <RadzenButton ButtonType="ButtonType.Button" Text="go to advaced mode" Click=@(args => SetMode(MultilineEditorViewModel.eMode.advanced)) style="width:100%;margin-bottom:3px;" />
-            }*@
 
+<div class="row">
+    <div class="col-md-12">
+        <RadzenFieldset Text="Script">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <RadzenDropDown AllowClear="false" TValue="string" Style="width: 100%" @bind-value="@model.SelectedCommand"
-                                AllowFiltering="false"
-                                Data=@model.Commands />
+                                    AllowFiltering="false"
+                                    Data=@model.Commands /><br />
+
+
+                    <RadzenButton ButtonType="ButtonType.Button" ButtonStyle="ButtonStyle.Secondary" Icon="add_circle_outline" Text="Wizard to add command" Click=StartWizard style="width:100%;margin-bottom:3px;" />
+
                 </div>
-                <div class="col-md-4">
-                    <RadzenButton ButtonType="ButtonType.Button" Icon="add_circle_outline" Text="Wizard" Click=StartWizard />
-                </div>
-            </div>
-
-
-        </div>
-        <div class="col-md-8">
-            @if (model.Mode == MultilineEditorViewModel.eMode.advanced)
-            {
-                <h1>Advanced</h1>
-            }
-            else
-            {
-                <RadzenTextArea @bind-value="model.ScriptText" Placeholder="put your json notation here" Rows="12" Style="width: 90%" />
-            }
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">&nbsp;</div>
-        <div class="col-md-8" style="align-content:center">
-            <RadzenButton ButtonType="ButtonType.Button" Icon="note_add" ButtonStyle="ButtonStyle.Warning" Text="Execute" Click=@(args => Execute()) style="width:100%;margin-bottom:3px;" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            @foreach (var outputElement in model.OutputObjects.OrderBy(i => i.Name))
-            {
-                <RadzenButton ButtonType="ButtonType.Button" Text="@outputElement.Name" Click=@(args => SetOutput(outputElement)) style="width:100%;margin-bottom:3px;" />
-                <br />
-            }
-        </div>
-        <div class="col-md-8">
-            @if (model.HasCurrentOutput)
-            {
-                <RadzenTextBox @bind-Value="model.CurrentOutput.Name" style="width:90%;margin-bottom:3px;" />
-                <RadzenTextArea @bind-value="model.CurrentOutput.JsonString" Rows="12" Style="width: 90%" ReadOnly=true />
-            }
-        </div>
-    </div>
-}
-else
-{
-
-    @foreach (var debugResult in model.DubugResults)
-    {
-        <div class="row">
-         @*   <div class="col-md-1">
-                @if (debugResult.Expanded)
-                {
-                    <RadzenButton ButtonType="ButtonType.Button" Icon="expand_less" Click=@(args => ToggleExpand(debugResult)) ButtonStyle="ButtonStyle.Warning" style="width:100%;margin-bottom:3px;" />
-                }
-                else
-                {
-                    <RadzenButton ButtonType="ButtonType.Button" Icon="expand_more" Click=@(args => ToggleExpand(debugResult)) ButtonStyle="ButtonStyle.Warning" style="width:100%;margin-bottom:3px;" />
-                }
-            </div>*@
-            <div class="col-md-4">
-                @if (debugResult.Succes)
-                {
-                    <RadzenIcon Icon="check_circle" style="color:green" />
-                }
-                else
-                {
-                    <RadzenIcon Icon="sms_failed" style="color:red" />
-                }
-                @if (debugResult.HasChanges)
-                {
-                    <RadzenIcon Icon="sync_problem" style="color:orange" />
-                }
-                else
-                {
-                    <RadzenIcon Icon="published_with_changes" style="color:green" />
-                }
-            </div>
-            <div class="col-md-8">
-                <RadzenButton ButtonType="ButtonType.Button" Text=@debugResult.Command.CommandName Click=@(args => ToggleExpand(debugResult)) ButtonStyle="ButtonStyle.Warning" style="width:100%;margin-bottom:3px;" />
-            </div>
-
-        </div>
-        @if (debugResult.Expanded)
-        {
-            <div class="row">
-                <div class="col-md-4">
-                    Detailed command
-                </div>
-                <div class="col-md-4">
-                    Pre-Execution
-                </div>
-                <div class="col-md-4">
-                    Post-Execution
+                <div class="col-md-9">
+                    @if (model.Mode == MultilineEditorViewModel.eMode.advanced)
+                    {
+                        <h1>Advanced</h1>
+                    }
+                    else
+                    {
+                        <RadzenTextArea @bind-value="model.ScriptText" Placeholder="put your json notation here" Rows="12" Style="width: 100%" />
+                    }
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <RadzenTextArea Value=@debugResult.CommandText Rows="12" Style="width: 90%" ReadOnly=true />
+                <div class="col-md-3">
                 </div>
-                <div class="col-md-4">
-                    <RadzenTextArea Value=@debugResult.StartObjectText Rows="12" Style="width: 90%" ReadOnly=true />
-                </div>
-                <div class="col-md-4">
-                    <RadzenTextArea Value=@debugResult.EndObjectText Rows="12" Style="width: 90%" ReadOnly=true />
+                <div class="col-md-9">
+                    <RadzenButton ButtonType="ButtonType.Button" Icon="note_add" ButtonStyle="ButtonStyle.Secondary" Text="Execute" Click=@(args => Execute()) style="width:100%;margin-bottom:3px;" />
                 </div>
             </div>
-        }
-    }
-}
+        </RadzenFieldset>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" style="min-height:300px">
+        <RadzenFieldset Text="Output">
+
+            <RadzenTabs SelectedIndex="0">
+                <Tabs>
+                    <RadzenTabsItem Text="Objects">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @foreach (var outputElement in model.OutputObjects.OrderBy(i => i.Name))
+                                {
+                                    <RadzenButton ButtonType="ButtonType.Button" Text="@outputElement.Name" Click=@(args => SetOutput(outputElement)) style="width:100%;margin-bottom:3px;" />
+                                    <br />
+                                }
+                            </div>
+                            <div class="col-md-9">
+                                @if (model.HasCurrentOutput)
+                                {
+                                    <RadzenTextBox @bind-Value="model.CurrentOutput.Name" style="width:100%;margin-bottom:3px;" />
+                                    <RadzenTextArea @bind-value="model.CurrentOutput.JsonString" Rows="12" Style="width: 100%" ReadOnly=true />
+                                }
+                            </div>
+                        </div>
+                    </RadzenTabsItem>
+                    <RadzenTabsItem Text="Debug">
+                        @foreach (var debugResult in model.DubugResults)
+                        {
+                            <div class="row">
+                                <div class="col-md-4">
+                                    @if (debugResult.Succes)
+                                    {
+                                        <RadzenIcon Icon="check_circle" style="color:green" />
+                                    }
+                                    else
+                                    {
+                                        <RadzenIcon Icon="sms_failed" style="color:red" />
+                                    }
+                                    @if (debugResult.HasChanges)
+                                    {
+                                        <RadzenIcon Icon="sync_problem" style="color:orange" />
+                                    }
+                                    else
+                                    {
+                                        <RadzenIcon Icon="published_with_changes" style="color:green" />
+                                    }
+                                </div>
+                                <div class="col-md-8">
+                                    <RadzenButton ButtonType="ButtonType.Button" Text=@debugResult.Command.CommandName Click=@(args => ToggleExpand(debugResult)) ButtonStyle="ButtonStyle.Warning" style="width:100%;margin-bottom:3px;" />
+                                </div>
+
+                            </div>
+                            @if (debugResult.Expanded)
+                            {
+                                <div class="row">
+                                    <div class="col-md-4 ">
+                                        Detailed command
+                                    </div>
+                                    <div class="col-md-4">
+                                        Pre-Execution
+                                    </div>
+                                    <div class="col-md-4">
+                                        Post-Execution
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <RadzenTextArea Value=@debugResult.CommandText Rows="12" Style="width: 100%" ReadOnly=true />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <RadzenTextArea Value=@debugResult.StartObjectText Rows="12" Style="width: 100%" ReadOnly=true />
+                                    </div>
+                                    <div class="col-md-4">
+                                        <RadzenTextArea Value=@debugResult.EndObjectText Rows="12" Style="width: 100%" ReadOnly=true />
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                    </RadzenTabsItem>
+
+                    <RadzenTabsItem Text="Debug2">
+                        <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" FilterMode="FilterMode.Simple" PageSize="25" AllowPaging="true" AllowSorting="false" Data="@model.DubugResults" TItem="CommandExecutionViewModel" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or">
+                            <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Success" Sortable="false" Frozen="true" Filterable="false" Width="50px">
+                                <Template Context="data">
+                                    @if (data.Succes)
+                                    {
+                                        <RadzenIcon Icon="check_circle" style="color:green" />
+                                    }
+                                    else
+                                    {
+                                        <RadzenIcon Icon="sms_failed" style="color:red" />
+                                    }
+                                </Template>
+                            </RadzenDataGridColumn>
+                            <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Changes" Sortable="false" Frozen="true" Filterable="false" Width="50px">
+                                <Template Context="data">
+                                    @if (data.HasChanges)
+                                    {
+                                        <RadzenIcon Icon="check_circle" style="color:green" />
+                                    }
+                                    else
+                                    {
+                                        <RadzenIcon Icon="sms_failed" style="color:red" />
+                                    }
+                                </Template>
+                            </RadzenDataGridColumn>
+                            <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Changes" Sortable="false" Frozen="true" Filterable="false" Width="50px">
+                                <Template Context="data">
+                                    <RadzenLabel Text=@data.Command.CommandName></RadzenLabel>
+                                </Template>
+                            </RadzenDataGridColumn>
+                             <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="command details" Sortable="false" Frozen="true" Filterable="false" Width="50px">
+                                <Template Context="data">
+                                    <RadzenTextArea Value=@data.CommandText Rows="12" Style="width: 100%" ReadOnly=true />
+                                </Template>
+                            </RadzenDataGridColumn>
+                             <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="start data" Sortable="false" Frozen="true" Filterable="false" Width="50px">
+                                <Template Context="data">
+                                    <RadzenTextArea Value=@data.StartObjectText Rows="12" Style="width: 100%" ReadOnly=true />
+                                </Template>
+                            </RadzenDataGridColumn>
+                             <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="data result" Sortable="false" Frozen="true" Filterable="false" Width="50px">
+                                <Template Context="data">
+                                     <RadzenTextArea Value=@data.EndObjectText Rows="12" Style="width: 100%" ReadOnly=true />
+                                </Template>
+                            </RadzenDataGridColumn>
+                        </RadzenDataGrid>
+
+                    </RadzenTabsItem>
+
+
+
+
+                </Tabs>
+            </RadzenTabs>
+
+        </RadzenFieldset>
+    </div>
+</div>
 
 
 
@@ -191,7 +241,7 @@ else
                 },
 
                 Mode = MultilineEditorViewModel.eMode.script,
-                ScriptText =  "[\r\n  {\r\n    \"path\": \"$.myObject.newProperty\",\r\n    \"value\": {\r\n      \"new object\": \"Added by value\"\r\n    },\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.myObject.newProperty2\",\r\n    \"value\": \"=newGuid()\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+                ScriptText = "[\r\n  {\r\n    \"path\": \"$.myObject.newProperty\",\r\n    \"value\": {\r\n      \"new object\": \"Added by value\"\r\n    },\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.myObject.newProperty2\",\r\n    \"value\": \"=newGuid()\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
             };
 
         ResetInputSelection();
@@ -325,23 +375,23 @@ else
 
     async Task StartWizard()
     {
-     
+
         if (string.IsNullOrEmpty(model.SelectedCommand))
         {
             NotificationService.Notify(NotificationSeverity.Info, "No command is selected", "Select a command in the dropdown box", 5000);
             return;
         }
-         var dataContext = Execute();
+        var dataContext = Execute();
 
-     
+
         switch (model.SelectedCommand)
         {
             case "Add":
-             Console.WriteLine($"{dialogService==null} dialogservce available post execution");
-                 var addCommand = await dialogService.OpenAsync<AddWizard>($"Add command wizard",
-                    new Dictionary<string, object>() { { "DataContext", dataContext } },
-                    new DialogOptions() { Width = "900px", Height = "630px" });
-                    
+                Console.WriteLine($"{dialogService == null} dialogservce available post execution");
+                var addCommand = await dialogService.OpenAsync<AddWizard>($"Add command wizard",
+                   new Dictionary<string, object>() { { "DataContext", dataContext } },
+                   new DialogOptions() { Width = "900px", Height = "630px" });
+
                 if (addCommand is ICommand a)
                 {
                     AddToScript(a);
@@ -396,7 +446,7 @@ else
     {
         var script = ParseScript(ExecutionContext.CreateDefault());
         script.AddLine(jsonCommand);
-        model.ScriptText  = JLioConvert.Serialize(script);
+        model.ScriptText = JLioConvert.Serialize(script);
     }
 
 }
