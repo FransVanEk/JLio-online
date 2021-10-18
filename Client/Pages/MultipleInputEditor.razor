@@ -102,8 +102,8 @@
                             </div>
                         </div>
                     </RadzenTabsItem>
-                    <RadzenTabsItem Text="Debug">
-                        @foreach (var debugResult in model.DubugResults)
+@*                    <RadzenTabsItem Text="Debug">
+                        @foreach (var debugResult in model.DebugResults)
                         {
                             <div class="row">
                                 <div class="col-md-4">
@@ -156,54 +156,65 @@
                             }
                         }
 
-                    </RadzenTabsItem>
+                    </RadzenTabsItem>*@
 
                     <RadzenTabsItem Text="Debug2">
-                        <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" FilterMode="FilterMode.Simple" PageSize="25" AllowPaging="true" AllowSorting="false" Data="@model.DubugResults" TItem="CommandExecutionViewModel" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or">
-                            <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Success" Sortable="false" Frozen="true" Filterable="false" Width="50px">
-                                <Template Context="data">
-                                    @if (data.Succes)
-                                    {
-                                        <RadzenIcon Icon="check_circle" style="color:green" />
-                                    }
-                                    else
-                                    {
-                                        <RadzenIcon Icon="sms_failed" style="color:red" />
-                                    }
-                                </Template>
-                            </RadzenDataGridColumn>
-                            <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Changes" Sortable="false" Frozen="true" Filterable="false" Width="50px">
-                                <Template Context="data">
-                                    @if (data.HasChanges)
-                                    {
-                                        <RadzenIcon Icon="check_circle" style="color:green" />
-                                    }
-                                    else
-                                    {
-                                        <RadzenIcon Icon="sms_failed" style="color:red" />
-                                    }
-                                </Template>
-                            </RadzenDataGridColumn>
-                            <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Changes" Sortable="false" Frozen="true" Filterable="false" Width="50px">
-                                <Template Context="data">
-                                    <RadzenLabel Text=@data.Command.CommandName></RadzenLabel>
-                                </Template>
-                            </RadzenDataGridColumn>
-                             <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="command details" Sortable="false" Frozen="true" Filterable="false" Width="50px">
-                                <Template Context="data">
-                                    <RadzenTextArea Value=@data.CommandText Rows="12" Style="width: 100%" ReadOnly=true />
-                                </Template>
-                            </RadzenDataGridColumn>
-                             <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="start data" Sortable="false" Frozen="true" Filterable="false" Width="50px">
-                                <Template Context="data">
-                                    <RadzenTextArea Value=@data.StartObjectText Rows="12" Style="width: 100%" ReadOnly=true />
-                                </Template>
-                            </RadzenDataGridColumn>
-                             <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="data result" Sortable="false" Frozen="true" Filterable="false" Width="50px">
-                                <Template Context="data">
-                                     <RadzenTextArea Value=@data.EndObjectText Rows="12" Style="width: 100%" ReadOnly=true />
-                                </Template>
-                            </RadzenDataGridColumn>
+                        <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" FilterMode="FilterMode.Simple" PageSize="25" AllowPaging="true" AllowSorting="false" Data="@model.DebugResults" TItem="CommandExecutionViewModel" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or">
+                            <Columns>
+                                <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Success" Sortable="false" Frozen="true" Filterable="false" Width="50px">
+                                    <Template Context="data">
+                                        @if (data.Succes)
+                                        {
+                                            <RadzenIcon Icon="check_circle" style="color:green" />
+                                        }
+                                        else
+                                        {
+                                            <RadzenIcon Icon="sms_failed" style="color:red" />
+                                        }
+                                    </Template>
+                                </RadzenDataGridColumn>
+                                <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Changes" Sortable="false" Frozen="true" Filterable="false" Width="50px">
+                                    <Template Context="data">
+                                        @if (data.HasChanges)
+                                        {
+                                            <RadzenIcon Icon="check_circle" style="color:green" />
+                                        }
+                                        else
+                                        {
+                                            <RadzenIcon Icon="sms_failed" style="color:red" />
+                                        }
+                                    </Template>
+                                </RadzenDataGridColumn>
+                                <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Command" Sortable="false" Frozen="true" Filterable="false">
+                                    <Template Context="data">
+                                        <RadzenButton ButtonType="ButtonType.Button" Text=@data.Command.CommandName Click=@(args => ToggleExpand(data)) ButtonStyle="ButtonStyle.Warning" style="width:100%;margin-bottom:3px;" />
+                                    </Template>
+                                </RadzenDataGridColumn>
+                                <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="command details" Sortable="false" Frozen="true" Filterable="false">
+                                    <Template Context="data">
+                                        @if (data.Expanded)
+                                        {
+                                            <RadzenTextArea Value=@data.CommandText Rows="12" Style="width: 100%" ReadOnly=true />
+                                        }
+                                    </Template>
+                                </RadzenDataGridColumn>
+                                <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="start data" Sortable="false" Frozen="true" Filterable="false">
+                                    <Template Context="data">
+                                        @if (data.Expanded)
+                                        {
+                                            <RadzenTextArea Value=@data.StartObjectText Rows="12" Style="width: 100%" ReadOnly=true />
+                                        }
+                                    </Template>
+                                </RadzenDataGridColumn>
+                                <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="data result" Sortable="false" Frozen="true" Filterable="false">
+                                    <Template Context="data">
+                                        @if (data.Expanded)
+                                        {
+                                            <RadzenTextArea Value=@data.EndObjectText Rows="12" Style="width: 100%" ReadOnly=true />
+                                        }
+                                    </Template>
+                                </RadzenDataGridColumn>
+                            </Columns>
                         </RadzenDataGrid>
 
                     </RadzenTabsItem>
@@ -300,15 +311,15 @@
         var scriptLines = ParseScript(executeContext);
         var startObject = ParseInput(executeContext);
 
-        model.DubugResults = new List<CommandExecutionViewModel>();
+        model.DebugResults = new List<CommandExecutionViewModel>();
         scriptLines.ForEach(l =>
         {
             var executionResult = l.Execute(startObject.DeepClone(), executeContext);
-            model.DubugResults.Add(new CommandExecutionViewModel(l, executionResult.Success, startObject, executionResult.Data));
+            model.DebugResults.Add(new CommandExecutionViewModel(l, executionResult.Success, startObject, executionResult.Data));
             startObject = executionResult.Data;
         });
 
-        SetExecutionResult(new JLioExecutionResult(model.DubugResults.All(i => i.Succes == true), startObject));
+        SetExecutionResult(new JLioExecutionResult(model.DebugResults.All(i => i.Succes == true), startObject));
         return startObject;
     }
 

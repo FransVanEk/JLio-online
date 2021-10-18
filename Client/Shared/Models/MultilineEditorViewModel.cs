@@ -16,7 +16,7 @@ namespace JLioOnline.Client.Shared.Models
 
         public readonly List<string> Commands = new List<string>() { "Add", "Copy", "Move", "Remove", "Set" };
         public List<JsonObjectViewModel> InputObjects { get; set; } = new List<JsonObjectViewModel>();
-        public List<CommandExecutionViewModel> DubugResults { get; set; } = new List<CommandExecutionViewModel>();
+        public List<CommandExecutionViewModel> DebugResults { get; set; } = new List<CommandExecutionViewModel>();
         public List<JsonObjectViewModel> OutputObjects { get; set; } = new List<JsonObjectViewModel>();
         public JsonObjectViewModel CurrentInput { get; set; }
         public JsonObjectViewModel CurrentOutput { get; set; }
@@ -51,7 +51,7 @@ namespace JLioOnline.Client.Shared.Models
             CommandText =  GetCommandText(command);
             StartObject = startData.DeepClone();
             EndObject = endData.DeepClone();
-            HasChanges = JToken.DeepEquals(startData, endData);
+            HasChanges = !JToken.DeepEquals(startData, endData);
         }
 
         public ICommand Command { get;  } 
