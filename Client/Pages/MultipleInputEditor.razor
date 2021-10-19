@@ -54,7 +54,7 @@
                                     Data=@model.Commands /><br />
 
 
-                    <RadzenButton ButtonType="ButtonType.Button" ButtonStyle="ButtonStyle.Secondary" Icon="add_circle_outline" Text="Wizard to add command" Click=StartWizard style="width:100%;margin-bottom:3px;" />
+                    <RadzenButton ButtonType="ButtonType.Button" ButtonStyle="ButtonStyle.Secondary" Icon="add_circle_outline" Text="New command wizard" Click=StartWizard style="width:100%;margin-bottom:3px;" />
 
                 </div>
                 <div class="col-md-9">
@@ -158,7 +158,7 @@
 
                     </RadzenTabsItem>*@
 
-                    <RadzenTabsItem Text="Debug2">
+                    <RadzenTabsItem Text="Debug">
                         <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" FilterMode="FilterMode.Simple" PageSize="25" AllowPaging="true" AllowSorting="false" Data="@model.DebugResults" TItem="CommandExecutionViewModel" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or">
                             <Columns>
                                 <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Success" Sortable="false" Frozen="true" Filterable="false" Width="50px">
@@ -177,11 +177,11 @@
                                     <Template Context="data">
                                         @if (data.HasChanges)
                                         {
-                                            <RadzenIcon Icon="check_circle" style="color:green" />
+                                            <RadzenIcon Icon="published_with_changes" style="color:green" />
                                         }
                                         else
                                         {
-                                            <RadzenIcon Icon="sms_failed" style="color:red" />
+                                            <RadzenIcon Icon="sync_problem" style="color:orange" />
                                         }
                                     </Template>
                                 </RadzenDataGridColumn>
