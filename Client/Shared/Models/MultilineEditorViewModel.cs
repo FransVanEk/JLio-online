@@ -11,6 +11,7 @@ namespace JLioOnline.Client.Shared.Models
 {
     public class MultilineEditorViewModel
     {
+        public string Name { get; set; } = string.Empty;
         public string  SelectedCommand { get; set; } = "Add";
         public int displayMode { get; set; } = 1;
 
