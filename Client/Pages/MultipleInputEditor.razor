@@ -1,17 +1,42 @@
 ﻿@page "/multipleInputEditor"
 @page "/multipleInputEditor/{sampleName}"
-@using JLio.Core.Contracts
-@using JLio.Core.Extensions
+
 
 @inject HttpClient Http
 @inject Radzen.DialogService dialogService
 @inject Radzen.NotificationService NotificationService
 @inject IJSRuntime js
+@inject PersistenceStore documents
+
 
 <RadzenDialog></RadzenDialog>
 <RadzenNotification></RadzenNotification>
-
-
+<RadzenFieldset Text="Options">
+    <div class="row">
+        <div class="col-md-4">
+            <RadzenTextBox @bind-Value="model.Name" style="width:100%;margin-bottom:3px;" />
+        </div>
+        <div class="col-md-2">
+            <RadzenButton ButtonType="ButtonType.Button" Icon="save" Click=@(args => SaveJlioDocument()) style="width:100%;margin-bottom:3px;" />
+        </div>
+        <div class="col-md-4">
+            @if (JLioDocuments != null && JLioDocuments.Any())
+            {
+                <RadzenDropDown AllowClear="false" TValue="string" Style="width: 100%" @bind-value="@selectedJLioDocument"
+                                AllowFiltering="false"
+                                TextProperty="Name"
+                                ValueProperty="Id"
+                                Data=@(JLioDocuments.Select(c => new { Id = c.Id, Name = c.Id}).Distinct()) />
+            }
+        </div>
+        <div class="col-md-2">
+            @if (JLioDocuments != null && JLioDocuments.Any())
+            {
+                <RadzenButton ButtonType="ButtonType.Button" Text="Load" Click=@(args => LoadJlioDocument()) style="width:100%;margin-bottom:3px;" />
+            }
+        </div>
+    </div>
+</RadzenFieldset>
 <div class="row">
     <div class="col-md-12">
         <RadzenFieldset Text="Input data">
@@ -77,7 +102,7 @@
                     <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download($"{model.Name}-script.json",model.ScriptText)) style="width:100%;margin-bottom:3px;" />
                 </div>
                 <div class="col-md-9">
-                    <RadzenButton ButtonType="ButtonType.Button" Icon="note_add" ButtonStyle="ButtonStyle.Secondary" Text="Execute" Click=@(args => Execute()) style="width:100%;margin-bottom:3px;" />
+                    <RadzenButton ButtonType="ButtonType.Button" Icon="play_arrow" ButtonStyle="ButtonStyle.Secondary" Text="Execute" Click=@(args => Execute()) style="width:100%;margin-bottom:3px;" />
                 </div>
             </div>
         </RadzenFieldset>
@@ -118,62 +143,6 @@
                             </div>
                         </div>
                     </RadzenTabsItem>
-                    @*                    <RadzenTabsItem Text="Debug">
-                            @foreach (var debugResult in model.DebugResults)
-                            {
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        @if (debugResult.Succes)
-                                        {
-                                            <RadzenIcon Icon="check_circle" style="color:green" />
-                                        }
-                                        else
-                                        {
-                                            <RadzenIcon Icon="sms_failed" style="color:red" />
-                                        }
-                                        @if (debugResult.HasChanges)
-                                        {
-                                            <RadzenIcon Icon="sync_problem" style="color:orange" />
-                                        }
-                                        else
-                                        {
-                                            <RadzenIcon Icon="published_with_changes" style="color:green" />
-                                        }
-                                    </div>
-                                    <div class="col-md-8">
-                                        <RadzenButton ButtonType="ButtonType.Button" Text=@debugResult.Command.CommandName Click=@(args => ToggleExpand(debugResult)) ButtonStyle="ButtonStyle.Warning" style="width:100%;margin-bottom:3px;" />
-                                    </div>
-
-                                </div>
-                                @if (debugResult.Expanded)
-                                {
-                                    <div class="row">
-                                        <div class="col-md-4 ">
-                                            Detailed command
-                                        </div>
-                                        <div class="col-md-4">
-                                            Pre-Execution
-                                        </div>
-                                        <div class="col-md-4">
-                                            Post-Execution
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <RadzenTextArea Value=@debugResult.CommandText Rows="12" Style="width: 100%" ReadOnly=true />
-                                        </div>
-                                        <div class="col-md-4">
-                                            <RadzenTextArea Value=@debugResult.StartObjectText Rows="12" Style="width: 100%" ReadOnly=true />
-                                        </div>
-                                        <div class="col-md-4">
-                                            <RadzenTextArea Value=@debugResult.EndObjectText Rows="12" Style="width: 100%" ReadOnly=true />
-                                        </div>
-                                    </div>
-                                }
-                            }
-
-                        </RadzenTabsItem>*@
-
                     <RadzenTabsItem Text="Debug">
                         <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" FilterMode="FilterMode.Simple" PageSize="25" AllowPaging="true" AllowSorting="false" Data="@model.DebugResults" TItem="CommandExecutionViewModel" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or">
                             <Columns>
@@ -234,13 +203,8 @@
                         </RadzenDataGrid>
 
                     </RadzenTabsItem>
-
-
-
-
                 </Tabs>
             </RadzenTabs>
-
         </RadzenFieldset>
     </div>
 </div>
@@ -251,10 +215,12 @@
 
 
 @code {
-    [Parameter]
-    public string SampleName { get; set; }
+        [Parameter]
+        public string SampleName { get; set; }
 
+        List<JLioDocumentModel> JLioDocuments { get; set; } = new List<JLioDocumentModel>();
 
+        string selectedJLioDocument = null;
 
     public MultilineEditorViewModel model { get; set; }
 
@@ -263,7 +229,7 @@
         model = new MultilineEditorViewModel
         {
             InputObjects = new List<JsonObjectViewModel>
-    {
+{
                     new JsonObjectViewModel { Name = "sample", JsonString = "{ }" },
                 },
 
@@ -271,13 +237,20 @@
             ScriptText = "[\r\n  {\r\n    \"path\": \"$.myObject.newProperty\",\r\n    \"value\": {\r\n      \"new object\": \"Added by value\"\r\n    },\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.myObject.newProperty2\",\r\n    \"value\": \"=newGuid()\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
         };
 
+        await GetJLioDocuments();
+
         ResetInputSelection();
         ResetOutputSelection();
     }
 
+    async Task GetJLioDocuments()
+    {
+        JLioDocuments = await documents.GetModels();
+    }
+
+
     void SetMode(MultilineEditorViewModel.eMode mode)
     {
-
         model.Mode = mode;
     }
 
@@ -473,6 +446,34 @@
     {
         var bytes = System.Text.Encoding.UTF8.GetBytes(text);
         await SaveAsFile.SaveAs(js, name, bytes);
+    }
+
+    async Task SaveJlioDocument()
+    {
+        var document = new JLioDocumentModel
+        {
+            Name = model.Name,
+            JsonData = JsonConvert.SerializeObject(model),
+        };
+
+        if (await documents.Exists(model.Name))
+        {
+            await documents.Update(document);
+        }
+        else
+        {
+            await documents.Add(document);
+        }
+        await GetJLioDocuments();
+    }
+
+    void LoadJlioDocument()
+    {
+        var selectedItem = JLioDocuments.FirstOrDefault(i => i.Id == selectedJLioDocument);
+        if (selectedItem != null)
+        {
+            model = JsonConvert.DeserializeObject<MultilineEditorViewModel>(selectedItem.JsonData);
+        }
     }
 
     private void AddToScript(ICommand jsonCommand)

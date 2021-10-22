@@ -17,7 +17,7 @@ namespace JLioOnline.Client.Providers
             this.dbManager = dbManager;
         }
 
-        public string StoreName { get; set; } = "JlioDocuments";
+        public string StoreName { get; set; } = "JLioModels";
 
         public async Task<JLioDocumentModel> GetById(string Id)
         {

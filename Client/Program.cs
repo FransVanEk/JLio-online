@@ -40,7 +40,7 @@ namespace JLioOnline.Client
         {
             builder.Services.AddIndexedDB(dbStore =>
             {
-                dbStore.DbName = "JlioOnline";
+                dbStore.DbName = "JLioOnline";
                 dbStore.Version = 1;
 
                 dbStore.Stores.Add(new StoreSchema
