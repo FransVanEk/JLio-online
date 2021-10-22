@@ -194,6 +194,14 @@
                                         }
                                     </Template>
                                 </RadzenDataGridColumn>
+                                <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="data result" Sortable="false" Frozen="true" Filterable="false">
+                                    <Template Context="data">
+                                        @if (data.Expanded)
+                                        {
+                                            <RadzenTextArea Value=@data.LogText Rows="12" Style="width: 100%" ReadOnly=true />
+                                        }
+                                    </Template>
+                                </RadzenDataGridColumn>
                             </Columns>
                         </RadzenDataGrid>
 
@@ -306,7 +314,8 @@
         scriptLines.ForEach(l =>
         {
             var executionResult = l.Execute(startObject.DeepClone(), executeContext);
-            model.DebugResults.Add(new CommandExecutionViewModel(l, executionResult.Success, startObject, executionResult.Data));
+            model.DebugResults.Add(new CommandExecutionViewModel(l, executionResult.Success, startObject, executionResult.Data, executeContext.Logger.LogText));
+            executeContext = ExecutionContext.CreateDefault();
             startObject = executionResult.Data;
         });
 
@@ -486,6 +495,7 @@
         if (selectedItem != null)
         {
             model = JsonConvert.DeserializeObject<MultilineEditorViewModel>(selectedItem.JsonData);
+            model.Commands = new List<string>() { "Add", "Copy", "Move", "Remove", "Set" };
         }
     }
 

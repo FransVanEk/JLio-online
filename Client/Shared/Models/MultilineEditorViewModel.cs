@@ -53,7 +53,7 @@ namespace JLioOnline.Client.Shared.Models
     public class CommandExecutionViewModel
     {
 
-        public CommandExecutionViewModel(ICommand command, bool success, JToken startData, JToken endData)
+        public CommandExecutionViewModel(ICommand command, bool success, JToken startData, JToken endData, string logText)
         {
             Command = command;
             Succes = success;
@@ -63,6 +63,7 @@ namespace JLioOnline.Client.Shared.Models
             StartObject = startData.DeepClone();
             EndObject = endData.DeepClone();
             HasChanges = !JToken.DeepEquals(startData, endData);
+            LogText = logText;
         }
 
         public ICommand Command { get;  } 
@@ -72,6 +73,7 @@ namespace JLioOnline.Client.Shared.Models
         public JToken StartObject { get; }
         public JToken EndObject { get;  }
         public bool HasChanges { get; }
+        public string LogText { get; }
         public string CommandText { get;  }
         private string GetCommandText(ICommand command)
         {
