@@ -5,6 +5,7 @@
 @inject HttpClient Http
 @inject Radzen.DialogService dialogService
 @inject Radzen.NotificationService NotificationService
+@inject NavigationManager NavigationManager
 @inject IJSRuntime js
 @inject PersistenceStore documents
 
@@ -26,7 +27,7 @@
                                 AllowFiltering="false"
                                 TextProperty="Name"
                                 ValueProperty="Id"
-                                Data=@(JLioDocuments.Select(c => new { Id = c.Id, Name = c.Id}).Distinct()) />
+                                Data=@(JLioDocuments.Where(i=> i.Name != latest).Select(c => new { Id = c.Id, Name = c.Id}).Distinct()) />
             }
         </div>
         <div class="col-md-2">
@@ -37,6 +38,9 @@
         </div>
     </div>
 </RadzenFieldset>
+
+
+
 <div class="row">
     <div class="col-md-12">
         <RadzenFieldset Text="Input data">
@@ -71,8 +75,6 @@
         </RadzenFieldset>
     </div>
 </div>
-
-
 <div class="row">
     <div class="col-md-12">
         <RadzenFieldset Text="Script">
@@ -87,14 +89,7 @@
 
                 </div>
                 <div class="col-md-9">
-                    @if (model.Mode == MultilineEditorViewModel.eMode.advanced)
-                    {
-                        <h1>Advanced</h1>
-                    }
-                    else
-                    {
-                        <RadzenTextArea @bind-value="model.ScriptText" Placeholder="put your json notation here" Rows="12" Style="width: 100%" />
-                    }
+                    <RadzenTextArea @bind-value="model.ScriptText" Placeholder="put your json notation here" Rows="12" Style="width: 100%" />
                 </div>
             </div>
             <div class="row">
@@ -215,12 +210,14 @@
 
 
 @code {
-        [Parameter]
-        public string SampleName { get; set; }
+    [Parameter]
+    public string SampleName { get; set; }
 
-        List<JLioDocumentModel> JLioDocuments { get; set; } = new List<JLioDocumentModel>();
+    List<JLioDocumentModel> JLioDocuments { get; set; } = new List<JLioDocumentModel>();
 
-        string selectedJLioDocument = null;
+    string selectedJLioDocument = null;
+
+    const string latest = "_latest_";
 
     public MultilineEditorViewModel model { get; set; }
 
@@ -229,29 +226,34 @@
         model = new MultilineEditorViewModel
         {
             InputObjects = new List<JsonObjectViewModel>
-{
+                {
                     new JsonObjectViewModel { Name = "sample", JsonString = "{ }" },
                 },
-
-            Mode = MultilineEditorViewModel.eMode.script,
+            Commands = new List<string>() { "Add", "Copy", "Move", "Remove", "Set" },
             ScriptText = "[\r\n  {\r\n    \"path\": \"$.myObject.newProperty\",\r\n    \"value\": {\r\n      \"new object\": \"Added by value\"\r\n    },\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.myObject.newProperty2\",\r\n    \"value\": \"=newGuid()\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
         };
 
+
         await GetJLioDocuments();
+
+        LoadJlioDocument(latest);
 
         ResetInputSelection();
         ResetOutputSelection();
+
+        NavigationManager.LocationChanged += LocationChanged;
+
+        base.OnInitialized();
+    }
+
+    void LocationChanged(object sender, LocationChangedEventArgs e)
+    {
+        SaveJlioDocument(latest).Wait();
     }
 
     async Task GetJLioDocuments()
     {
         JLioDocuments = await documents.GetModels();
-    }
-
-
-    void SetMode(MultilineEditorViewModel.eMode mode)
-    {
-        model.Mode = mode;
     }
 
     void ToggleExpand(CommandExecutionViewModel item)
@@ -450,13 +452,18 @@
 
     async Task SaveJlioDocument()
     {
+        await SaveJlioDocument(model.Name);
+    }
+
+    async Task SaveJlioDocument(string name)
+    {
         var document = new JLioDocumentModel
         {
-            Name = model.Name,
+            Name = name,
             JsonData = JsonConvert.SerializeObject(model),
         };
 
-        if (await documents.Exists(model.Name))
+        if (await documents.Exists(document.Id))
         {
             await documents.Update(document);
         }
@@ -469,7 +476,13 @@
 
     void LoadJlioDocument()
     {
-        var selectedItem = JLioDocuments.FirstOrDefault(i => i.Id == selectedJLioDocument);
+        LoadJlioDocument(selectedJLioDocument);
+    }
+
+
+    void LoadJlioDocument(string selectedJLioDocumentId)
+    {
+        var selectedItem = JLioDocuments.FirstOrDefault(i => i.Id == selectedJLioDocumentId);
         if (selectedItem != null)
         {
             model = JsonConvert.DeserializeObject<MultilineEditorViewModel>(selectedItem.JsonData);
