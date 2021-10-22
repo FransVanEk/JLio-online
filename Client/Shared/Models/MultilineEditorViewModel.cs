@@ -11,26 +11,37 @@ namespace JLioOnline.Client.Shared.Models
 {
     public class MultilineEditorViewModel
     {
-        public string  SelectedCommand { get; set; } = "Add";
-        public int displayMode { get; set; } = 1;
+        [JsonProperty("name")]
+        public string Name { get; set; } = string.Empty;
 
-        public readonly List<string> Commands = new List<string>() { "Add", "Copy", "Move", "Remove", "Set" };
+        [JsonIgnore]
+        public string  SelectedCommand { get; set; } = "Add";
+
+        [JsonIgnore]
+        public  List<string> Commands { get; set; }  = new List<string>();
+
+        [JsonProperty("inputObjects")]
         public List<JsonObjectViewModel> InputObjects { get; set; } = new List<JsonObjectViewModel>();
+
+        [JsonIgnore]
         public List<CommandExecutionViewModel> DebugResults { get; set; } = new List<CommandExecutionViewModel>();
         public List<JsonObjectViewModel> OutputObjects { get; set; } = new List<JsonObjectViewModel>();
-        public JsonObjectViewModel CurrentInput { get; set; }
-        public JsonObjectViewModel CurrentOutput { get; set; }
-        public bool HasCurrentInput => CurrentInput != null;
-        public bool HasCurrentOutput => CurrentOutput != null;
-        public string ScriptText { get; set; } = "";
-        public eMode Mode { get; set; }
 
-        public enum eMode
-        {
-            script,
-            advanced,
-            debug
-        }
+        [JsonIgnore]
+        public JsonObjectViewModel CurrentInput { get; set; }
+
+        [JsonIgnore]
+        public JsonObjectViewModel CurrentOutput { get; set; }
+
+        [JsonIgnore]
+        public bool HasCurrentInput => CurrentInput != null;
+
+        [JsonIgnore]
+        public bool HasCurrentOutput => CurrentOutput != null;
+
+        [JsonProperty("scriptText")]
+        public string ScriptText { get; set; } = "";
+       
     }
 
     public class JsonObjectViewModel
