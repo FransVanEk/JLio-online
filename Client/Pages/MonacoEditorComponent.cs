@@ -9,11 +9,32 @@ namespace JLioOnline.Client.Pages
     public class MonacoEditorComponent : ComponentBase
     {
         public MonacoEditor monacoEditor { get; set; }
+        public MonacoEditor monacoEditor2 { get; set; }
+
         
         [Parameter]
         public MultilineEditorViewModel Model { get; set; }
 
         public StandaloneEditorConstructionOptions MonacoEditorConstructionOptions(MonacoEditor editor)
+        {
+            return new StandaloneEditorConstructionOptions
+            {
+                Value = "{}",
+                Language = "json",
+                GlyphMargin = true,
+                Scrollbar = new EditorScrollbarOptions
+                {
+                    Horizontal = "auto",
+                    Vertical = "auto"
+                },
+                AutomaticLayout = true,
+                AcceptSuggestionOnCommitCharacter = true,
+                LineNumbers = "on",
+                ScrollBeyondLastLine = false,
+            };
+        }
+        
+        public StandaloneEditorConstructionOptions MonacoEditorConstructionOptions1(MonacoEditor monacoEditor2222)
         {
             return new StandaloneEditorConstructionOptions
             {
@@ -62,14 +83,7 @@ namespace JLioOnline.Client.Pages
         {
             Console.WriteLine("OnContextMenu : " + System.Text.Json.JsonSerializer.Serialize(eventArg));
         }
-
-
-        protected async Task OnContentChanged(ModelContentChangedEvent eventArg)
-        {
-            var value = await monacoEditor.GetValue();
-            Model.ScriptText = value;
-            Console.WriteLine(value);
-        }
+        
 
         protected async Task ChangeTheme(ChangeEventArgs e)
         {

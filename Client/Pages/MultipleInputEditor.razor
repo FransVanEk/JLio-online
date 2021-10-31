@@ -45,7 +45,7 @@
 <div class="row">
     <div class="col-md-12">
         <RadzenFieldset Text="Input data">
-            <div class="row">
+            <div class="row" style="min-height: 350px;">
                 <div class="col-md-3">
                     <RadzenButton ButtonType="ButtonType.Button" Icon="add_circle_outline" Click=@(args => AddInput()) Text="Add input object" ButtonStyle="ButtonStyle.Secondary" style="width:100%;margin-bottom:3px;" /><br />
                     @foreach (var inputElement in model.InputObjects.OrderBy(i => i.Name))
@@ -57,7 +57,6 @@
                 <div class="col-md-9">
                     @if (model.HasCurrentInput)
                     {
-
                         <div class="row">
                             <div class="col-md-8">
                                 <RadzenTextBox @bind-Value="model.CurrentInput.Name" style="width:100%;margin-bottom:3px;" />
@@ -68,8 +67,25 @@
                             <div class="col-md-2">
                                 <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download($"{model.CurrentInput.Name}-input.json",model.CurrentInput.JsonString)) style="width:100%;margin-bottom:3px;" />
                             </div>
+                        
                         </div>
-                       <RadzenTextArea @bind-value="model.CurrentInput.JsonString"  Placeholder="put your json notation here" Rows="12" Style="width: 100%" />
+                        
+                        <div class="row">
+                        <div class="col-md-12" style="height: auto; max-height: 300px;">
+                            <div>
+                                <div style="margin:10px 0;">
+                                    Theme:
+                                    <select @onchange="ChangeTheme">
+                                        <option value="vs">Visual Studio</option>
+                                        <option value="vs-dark">Visual Studio Dark</option>
+                                        <option value="hc-black">High Contrast Black</option>
+                                    </select>
+                                </div>
+                            </div>
+                                           
+                            <MonacoEditor  @ref="monacoEditor2" CssClass="monaco-editor-container" Id="script-editor2"   ConstructionOptions="MonacoEditorConstructionOptions1" />
+                        </div>
+                     </div>
                     }
                 </div>
             </div>
@@ -286,6 +302,8 @@
     void SetInput(JsonObjectViewModel item)
     {
         model.CurrentInput = item;
+        Console.WriteLine(model.CurrentInput.JsonString);
+        monacoEditor2.SetValue(model.CurrentInput.JsonString);
     }
 
     void SetOutput(JsonObjectViewModel item)
