@@ -1,6 +1,7 @@
 ﻿@page "/multipleInputEditor"
 @page "/multipleInputEditor/{sampleName}"
 
+@inherits MonacoEditorComponent
 
 @inject HttpClient Http
 @inject Radzen.DialogService dialogService
@@ -68,7 +69,7 @@
                                 <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download($"{model.CurrentInput.Name}-input.json",model.CurrentInput.JsonString)) style="width:100%;margin-bottom:3px;" />
                             </div>
                         </div>
-                        <RadzenTextArea @bind-value="model.CurrentInput.JsonString" Placeholder="put your json notation here" Rows="12" Style="width: 100%" />
+                       <RadzenTextArea @bind-value="model.CurrentInput.JsonString"  Placeholder="put your json notation here" Rows="12" Style="width: 100%" />
                     }
                 </div>
             </div>
@@ -88,11 +89,22 @@
                     <RadzenButton ButtonType="ButtonType.Button" ButtonStyle="ButtonStyle.Secondary" Icon="add_circle_outline" Text="New command wizard" Click=StartWizard style="width:100%;margin-bottom:3px;" />
 
                 </div>
-                <div class="col-md-9">
-                    <RadzenTextArea @bind-value="model.ScriptText" Placeholder="put your json notation here" Rows="12" Style="width: 100%" />
+                <div class="col-md-9" style="height: auto; max-height: 300px;">
+                    <div>
+                        <div style="margin:10px 0;">
+                            Theme:
+                            <select @onchange="ChangeTheme">
+                                <option value="vs">Visual Studio</option>
+                                <option value="vs-dark">Visual Studio Dark</option>
+                                <option value="hc-black">High Contrast Black</option>
+                            </select>
+                        </div>
+                    </div>
+                                           
+                    <MonacoEditor  @ref="monacoEditor" CssClass="monaco-editor-container" Id="script-editor" OnDidChangeModelContent="@(async e =>  model.ScriptText = await monacoEditor.GetValue())" ConstructionOptions="MonacoEditorConstructionOptions" OnDidInit="EditorOnDidInit" OnContextMenu="OnContextMenu" />
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="padding-top: 50px">
                 <div class="col-md-3">
                     <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download($"{model.Name}-script.json",model.ScriptText)) style="width:100%;margin-bottom:3px;" />
                 </div>
@@ -228,7 +240,7 @@
     const string latest = "_latest_";
 
     public MultilineEditorViewModel model { get; set; }
-
+    
     protected override async Task OnInitializedAsync()
     {
         model = new MultilineEditorViewModel
@@ -249,16 +261,18 @@
         ResetInputSelection();
         ResetOutputSelection();
 
+        await monacoEditor.SetValue(model.ScriptText);
+
         NavigationManager.LocationChanged += LocationChanged;
 
         base.OnInitialized();
     }
-
+    
     void LocationChanged(object sender, LocationChangedEventArgs e)
     {
         SaveJlioDocument(latest).Wait();
     }
-
+    
     async Task GetJLioDocuments()
     {
         JLioDocuments = await documents.GetModels();
@@ -453,6 +467,8 @@
         }
     }
 
+    
+    
     async Task Download(string name, string text)
     {
         var bytes = System.Text.Encoding.UTF8.GetBytes(text);
@@ -496,6 +512,7 @@
         {
             model = JsonConvert.DeserializeObject<MultilineEditorViewModel>(selectedItem.JsonData);
             model.Commands = new List<string>() { "Add", "Copy", "Move", "Remove", "Set" };
+            monacoEditor.SetValue(model.ScriptText);
         }
     }
 
@@ -504,6 +521,11 @@
         var script = ParseScript(ExecutionContext.CreateDefault());
         script.AddLine(jsonCommand);
         model.ScriptText = JLioConvert.Serialize(script);
+        monacoEditor.SetValue(model.ScriptText);
+        Console.WriteLine(model.ScriptText);
     }
-
 }
+
+
+
+

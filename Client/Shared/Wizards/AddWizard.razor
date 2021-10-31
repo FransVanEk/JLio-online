@@ -49,62 +49,63 @@
 
     @code {
 
-    [Parameter]
-    public JToken DataContext { get; set; }
+        [Parameter]
+        public JToken DataContext { get; set; }
 
-    protected override void OnInitialized()
-    {
-        dataContextString = JsonConvert.SerializeObject(DataContext, Formatting.Indented);
-    }
-
-    private void ExecuteCommand()
-    {
-        if (string.IsNullOrWhiteSpace(path))
+        protected override void OnInitialized()
         {
-            NotificationService.Notify(NotificationSeverity.Info, "First select a path", "", 3000);
-            return;
+            dataContextString = JsonConvert.SerializeObject(DataContext, Formatting.Indented);
         }
 
-        var tokenValue = ParseValue(value);
-        var script = new JLioScript().Add(tokenValue).OnPath(path);
-        selectedItemsString = JsonConvert.SerializeObject(fetcher.SelectTokens(GetParentPath(path), DataContext), Formatting.Indented);
-        var executeOptions = ExecutionContext.CreateDefault();
-        var executionResult = script.Execute(DataContext.DeepClone(), executeOptions);
-        result = executionResult.Data.ToString(Formatting.Indented);
-    }
-
-    private string path = "$";
-    private string value;
-    private string result;
-    private string dataContextString;
-    private string selectedItemsString;
-
-    private string GetParentPath(string path)
-    {
-        return JsonPathMethods.SplitPath(path).ParentElements.ToPathString();
-    }
-
-    private void Cancel()
-    {
-        dialogService.Close(null);
-    }
-
-    private void CloseAdd()
-    {
-        dialogService.Close(new Add(path,  new FunctionSupportedValue(new FixedValue(JToken.Parse(value))) ));
-    }
-
-    private JToken ParseValue(string value)
-    {
-        try
+        private void ExecuteCommand()
         {
-            return JToken.Parse(value);
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                NotificationService.Notify(NotificationSeverity.Info, "First select a path", "", 3000);
+                return;
+            }
+
+            Console.WriteLine(value);
+            var tokenValue = ParseValue(value);
+            var script = new JLioScript().Add(tokenValue).OnPath(path);
+            selectedItemsString = JsonConvert.SerializeObject(fetcher.SelectTokens(GetParentPath(path), DataContext), Formatting.Indented);
+            var executeOptions = ExecutionContext.CreateDefault();
+            var executionResult = script.Execute(DataContext.DeepClone(), executeOptions);
+            result = executionResult.Data.ToString(Formatting.Indented);
         }
-        catch (Exception)
+
+        private string path = "$";
+        private string value;
+        private string result;
+        private string dataContextString;
+        private string selectedItemsString;
+
+        private string GetParentPath(string path)
         {
-            NotificationService.Notify(NotificationSeverity.Info, "the value data is malformed", "update the value data so it is in a valid Json notation. Now an empty object is used.", 5000);
-            return new JObject();
+            return JsonPathMethods.SplitPath(path).ParentElements.ToPathString();
         }
-    }
+
+        private void Cancel()
+        {
+            dialogService.Close(null);
+        }
+
+        private void CloseAdd()
+        {
+            dialogService.Close(new Add(path, new FunctionSupportedValue(new FixedValue(JToken.Parse(value)))));
+        }
+
+        private JToken ParseValue(string value)
+        {
+            try
+            {
+                return JToken.Parse(value);
+            }
+            catch (Exception)
+            {
+                NotificationService.Notify(NotificationSeverity.Info, "the value data is malformed", "update the value data so it is in a valid Json notation. Now an empty object is used.", 5000);
+                return new JObject();
+            }
+        }
 
     }
