@@ -1,19 +1,22 @@
 using System;
+using System.Text.Json;
 using System.Threading.Tasks;
 using BlazorMonaco;
 using JLioOnline.Client.Shared.Models;
 using Microsoft.AspNetCore.Components;
+using Range = BlazorMonaco.Range;
 
 namespace JLioOnline.Client.Pages
 {
     public class MonacoEditorComponent : ComponentBase
     {
-        public MonacoEditor monacoEditor { get; set; }
-        public MonacoEditor monacoEditor2 { get; set; }
+        private string[] decorationIds;
 
-        
         [Parameter]
         public MultilineEditorViewModel Model { get; set; }
+
+        public MonacoEditor monacoEditor { get; set; }
+        public MonacoEditor monacoEditor2 { get; set; }
 
         public StandaloneEditorConstructionOptions MonacoEditorConstructionOptions(MonacoEditor editor)
         {
@@ -30,11 +33,11 @@ namespace JLioOnline.Client.Pages
                 AutomaticLayout = true,
                 AcceptSuggestionOnCommitCharacter = true,
                 LineNumbers = "on",
-                ScrollBeyondLastLine = false,
+                ScrollBeyondLastLine = false
             };
         }
-        
-        public StandaloneEditorConstructionOptions MonacoEditorConstructionOptions1(MonacoEditor monacoEditor2222)
+
+        public StandaloneEditorConstructionOptions MonacoEditorConstructionOptions1(MonacoEditor monacoEditor)
         {
             return new StandaloneEditorConstructionOptions
             {
@@ -49,22 +52,20 @@ namespace JLioOnline.Client.Pages
                 AutomaticLayout = true,
                 AcceptSuggestionOnCommitCharacter = true,
                 LineNumbers = "on",
-                ScrollBeyondLastLine = false,
+                ScrollBeyondLastLine = false
             };
         }
 
         public async Task EditorOnDidInit(MonacoEditorBase editor)
         {
-            await editor.AddCommand((int)KeyMode.CtrlCmd | (int)KeyCode.KEY_H, (mEditor, keyCode) =>
-            {
-                Console.WriteLine("Ctrl+H : Initial editor command is triggered.");
-            });
+            await editor.AddCommand((int) KeyMode.CtrlCmd | (int) KeyCode.KEY_H,
+                (mEditor, keyCode) => { Console.WriteLine("Ctrl+H : Initial editor command is triggered."); });
 
             var newDecorations = new[]
             {
                 new ModelDeltaDecoration
                 {
-                    Range = new BlazorMonaco.Range(3,1,3,1),
+                    Range = new Range(3, 1, 3, 1),
                     Options = new ModelDecorationOptions
                     {
                         IsWholeLine = true,
@@ -77,13 +78,10 @@ namespace JLioOnline.Client.Pages
             decorationIds = await monacoEditor.DeltaDecorations(null, newDecorations);
         }
 
-        private string[] decorationIds;
-
         protected void OnContextMenu(EditorMouseEvent eventArg)
         {
-            Console.WriteLine("OnContextMenu : " + System.Text.Json.JsonSerializer.Serialize(eventArg));
+            Console.WriteLine("OnContextMenu : " + JsonSerializer.Serialize(eventArg));
         }
-        
 
         protected async Task ChangeTheme(ChangeEventArgs e)
         {

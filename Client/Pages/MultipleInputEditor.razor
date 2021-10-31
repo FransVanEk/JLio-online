@@ -55,8 +55,8 @@
                     }
                 </div>
                 <div class="col-md-9">
-                    @if (model.HasCurrentInput)
-                    {
+                    @if (model.HasCurrentInput )
+                      {
                         <div class="row">
                             <div class="col-md-8">
                                 <RadzenTextBox @bind-Value="model.CurrentInput.Name" style="width:100%;margin-bottom:3px;" />
@@ -69,7 +69,7 @@
                             </div>
                         
                         </div>
-                        
+                      }
                         <div class="row">
                         <div class="col-md-12" style="height: auto; max-height: 300px;">
                             <div>
@@ -83,10 +83,10 @@
                                 </div>
                             </div>
                                            
-                            <MonacoEditor  @ref="monacoEditor2" CssClass="monaco-editor-container" Id="script-editor2"   ConstructionOptions="MonacoEditorConstructionOptions1" />
+                            <MonacoEditor  @ref="monacoEditor2" CssClass="monaco-editor-container" Id="script-editor2" OnDidChangeModelContent="@UpdateInput"  ConstructionOptions="MonacoEditorConstructionOptions1" />
                         </div>
                      </div>
-                    }
+                   
                 </div>
             </div>
         </RadzenFieldset>
@@ -256,7 +256,7 @@
     const string latest = "_latest_";
 
     public MultilineEditorViewModel model { get; set; }
-    
+
     protected override async Task OnInitializedAsync()
     {
         model = new MultilineEditorViewModel
@@ -283,12 +283,21 @@
 
         base.OnInitialized();
     }
-    
+
+
+    async Task UpdateInput()
+    {
+        if( model.CurrentInput != null)
+        {
+            model.CurrentInput.JsonString = await monacoEditor2.GetValue();
+        }
+    }
+
     void LocationChanged(object sender, LocationChangedEventArgs e)
     {
         SaveJlioDocument(latest).Wait();
     }
-    
+
     async Task GetJLioDocuments()
     {
         JLioDocuments = await documents.GetModels();
@@ -485,8 +494,8 @@
         }
     }
 
-    
-    
+
+
     async Task Download(string name, string text)
     {
         var bytes = System.Text.Encoding.UTF8.GetBytes(text);
