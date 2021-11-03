@@ -1,9 +1,10 @@
 ﻿<div class="row">
-    <div class="col-md-12" style="height: auto; max-height: 300px;">
-        <div>
-            <RadzenButton ButtonType="ButtonType.Button" Icon="add_circle_outline" Click=@(args => Update()) Text="Reload" ButtonStyle="ButtonStyle.Secondary" style="width:100%;margin-bottom:3px;" />
-        </div>
-        <MonacoDiffEditor @ref="diffEditor" Id="@Id" ConstructionOptions="DiffEditorConstructionOptions" OnDidInit="DiffEditorInit" />
+    <div class="col-md-12 editor-frame">
+            <div>
+                <RadzenButton ButtonType="ButtonType.Button" Icon="add_circle_outline" Click=@(args => Update()) Text="Reload" ButtonStyle="ButtonStyle.Secondary" style="width: 100%; margin-bottom: 3px;"/>
+            </div>
+            <MonacoDiffEditor @ref="diffEditor" Id="@Id" ConstructionOptions="DiffEditorConstructionOptions" OnDidInit="DiffEditorInit" />
+      
     </div>
 </div>
 

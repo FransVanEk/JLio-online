@@ -1,9 +1,7 @@
-﻿using BlazorMonaco;
-using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Threading.Tasks;
+using BlazorMonaco;
+using Microsoft.AspNetCore.Components;
 
 namespace JLioOnline.Client.Shared.Components
 {
@@ -15,23 +13,24 @@ namespace JLioOnline.Client.Shared.Components
         public string Id { get; set; } = Guid.NewGuid().ToString();
 
         [Parameter]
-        public string OriginalJson { get; set; }
-
-        [Parameter]
-        public EventCallback<string> OriginalJsonChanged { get; set; }
-
-        [Parameter]
         public string ModifiedJson { get; set; }
 
         [Parameter]
         public EventCallback<string> ModifiedJsonChanged { get; set; }
+
+        [Parameter]
+        public string OriginalJson { get; set; }
+
+        [Parameter]
+        public EventCallback<string> OriginalJsonChanged { get; set; }
 
         private DiffEditorConstructionOptions DiffEditorConstructionOptions(MonacoDiffEditor editor)
         {
             return new DiffEditorConstructionOptions
             {
                 OriginalEditable = false,
-                InDiffEditor = false
+                InDiffEditor = false,
+                EnableSplitViewResizing = true
             };
         }
 
@@ -51,6 +50,5 @@ namespace JLioOnline.Client.Shared.Components
                 Modified = modified_model
             });
         }
-
     }
 }
