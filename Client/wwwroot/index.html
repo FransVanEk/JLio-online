@@ -10,7 +10,11 @@
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
     <link href="css/githubmd.css" rel="stylesheet" />
+
+<!--    <link href="js/vs/editor/editor.main.css" rel="stylesheet" />-->
+
     <link href="_content/BlazorMonaco/lib/monaco-editor/min/vs/editor/editor.main.css" rel="stylesheet" />
+    
 </head>
 
 <body>
@@ -31,13 +35,19 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="_content/TG.Blazor.IndexedDB/indexedDb.Blazor.js"></script>
+    <script src="_content/Radzen.Blazor/Radzen.Blazor.js"></script>
+
+<!--    <script src="js/vs/loader.js"></script>-->
+<!--    <script>require.config({ paths: { 'vs': 'js/vs' } });</script>-->
+<!--    <script src="js/vs/editor/editor.main.js"></script>-->
+<!--    <script src="_content/BlazorMonaco/jsInterop.js"></script>-->
+
     <script src="_content/BlazorMonaco/lib/monaco-editor/min/vs/loader.js"></script>
     <script>require.config({ paths: { 'vs': '_content/BlazorMonaco/lib/monaco-editor/min/vs' } });</script>
     <script src="_content/BlazorMonaco/lib/monaco-editor/min/vs/editor/editor.main.js"></script>
     <script src="_content/BlazorMonaco/jsInterop.js"></script>
-    <script src="_framework/blazor.webassembly.js"></script>
-    <script src="_content/TG.Blazor.IndexedDB/indexedDb.Blazor.js"></script>
-    <script src="_content/Radzen.Blazor/Radzen.Blazor.js"></script>
 </body>
 
 </html>

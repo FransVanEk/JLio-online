@@ -1,7 +1,6 @@
 ﻿@page "/multipleInputEditor"
 @page "/multipleInputEditor/{sampleName}"
 
-
 @inject HttpClient Http
 @inject Radzen.DialogService dialogService
 @inject Radzen.NotificationService NotificationService
@@ -44,7 +43,7 @@
 <div class="row">
     <div class="col-md-12">
         <RadzenFieldset Text="Input data">
-            <div class="row">
+            <div class="row" style="min-height: 350px;">
                 <div class="col-md-3">
                     <RadzenButton ButtonType="ButtonType.Button" Icon="add_circle_outline" Click=@(args => AddInput()) Text="Add input object" ButtonStyle="ButtonStyle.Secondary" style="width:100%;margin-bottom:3px;" /><br />
                     @foreach (var inputElement in model.InputObjects.OrderBy(i => i.Name))
@@ -56,7 +55,6 @@
                 <div class="col-md-9">
                     @if (model.HasCurrentInput)
                     {
-
                         <div class="row">
                             <div class="col-md-8">
                                 <RadzenTextBox @bind-Value="model.CurrentInput.Name" style="width:100%;margin-bottom:3px;" />
@@ -67,9 +65,18 @@
                             <div class="col-md-2">
                                 <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download($"{model.CurrentInput.Name}-input.json",model.CurrentInput.JsonString)) style="width:100%;margin-bottom:3px;" />
                             </div>
+
                         </div>
-                        <RadzenTextArea @bind-value="model.CurrentInput.JsonString" Placeholder="put your json notation here" Rows="12" Style="width: 100%" />
                     }
+                    <div class="row">
+                        <div class="col-md-12" style="height: auto; max-height: 300px;">
+                            @if (model.HasCurrentInput)
+                            {
+                                <JsonEditor @bind-Text="@model.CurrentInput.JsonString" />
+                            }
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </RadzenFieldset>
@@ -88,11 +95,11 @@
                     <RadzenButton ButtonType="ButtonType.Button" ButtonStyle="ButtonStyle.Secondary" Icon="add_circle_outline" Text="New command wizard" Click=StartWizard style="width:100%;margin-bottom:3px;" />
 
                 </div>
-                <div class="col-md-9">
-                    <RadzenTextArea @bind-value="model.ScriptText" Placeholder="put your json notation here" Rows="12" Style="width: 100%" />
+                <div class="col-md-9" style="height: auto; max-height: 300px;">
+                    <JsonEditor @bind-Text="@model.ScriptText" />
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="padding-top: 50px">
                 <div class="col-md-3">
                     <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download($"{model.Name}-script.json",model.ScriptText)) style="width:100%;margin-bottom:3px;" />
                 </div>
@@ -153,48 +160,37 @@
                                         }
                                     </Template>
                                 </RadzenDataGridColumn>
-                                <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Changes" Sortable="false" Frozen="true" Filterable="false" Width="50px">
-                                    <Template Context="data">
-                                        @if (data.HasChanges)
-                                        {
-                                            <RadzenIcon Icon="published_with_changes" style="color:green" />
-                                        }
-                                        else
-                                        {
-                                            <RadzenIcon Icon="sync_problem" style="color:orange" />
-                                        }
-                                    </Template>
-                                </RadzenDataGridColumn>
+                               
                                 <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Command" Sortable="false" Frozen="true" Filterable="false">
                                     <Template Context="data">
                                         <RadzenButton ButtonType="ButtonType.Button" Text=@data.Command.CommandName Click=@(args => ToggleExpand(data)) ButtonStyle="ButtonStyle.Warning" style="width:100%;margin-bottom:3px;" />
+                                        @if (data.Expanded)
+                                        {
+                                            <br />
+                                            <RadzenTextArea Value=@data.CommandText Rows="12" Style="width: 100%;height:auto" ReadOnly=true />
+                                        } 
                                     </Template>
                                 </RadzenDataGridColumn>
-                                <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="command details" Sortable="false" Frozen="true" Filterable="false">
+                                <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Diff" Sortable="false" Frozen="false" Filterable="false" Width="480px">
                                     <Template Context="data">
                                         @if (data.Expanded)
                                         {
-                                            <RadzenTextArea Value=@data.CommandText Rows="12" Style="width: 100%" ReadOnly=true />
+                                        <JsonDiff @bind-OriginalJson=@data.StartObjectText @bind-ModifiedJson=@data.EndObjectText></JsonDiff>
                                         }
-                                    </Template>
-                                </RadzenDataGridColumn>
-                                <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="start data" Sortable="false" Frozen="true" Filterable="false">
-                                    <Template Context="data">
-                                        @if (data.Expanded)
+                                        else
                                         {
-                                            <RadzenTextArea Value=@data.StartObjectText Rows="12" Style="width: 100%" ReadOnly=true />
+                                            @if (data.HasChanges)
+                                            {
+                                                <RadzenIcon Icon="published_with_changes" style="color:green" />
+                                            }
+                                            else
+                                            {
+                                                <RadzenIcon Icon="sync_problem" style="color:orange" />
+                                            }
                                         }
                                     </Template>
                                 </RadzenDataGridColumn>
-                                <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="data result" Sortable="false" Frozen="true" Filterable="false">
-                                    <Template Context="data">
-                                        @if (data.Expanded)
-                                        {
-                                            <RadzenTextArea Value=@data.EndObjectText Rows="12" Style="width: 100%" ReadOnly=true />
-                                        }
-                                    </Template>
-                                </RadzenDataGridColumn>
-                                <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Log" Sortable="false" Frozen="true" Filterable="false">
+                                <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Log" Sortable="false" Frozen="false" Filterable="false">
                                     <Template Context="data">
                                         @if (data.Expanded)
                                         {
@@ -204,7 +200,6 @@
                                 </RadzenDataGridColumn>
                             </Columns>
                         </RadzenDataGrid>
-
                     </RadzenTabsItem>
                 </Tabs>
             </RadzenTabs>
@@ -227,14 +222,14 @@
 
     const string latest = "_latest_";
 
-    public MultilineEditorViewModel model { get; set; }
+    private MultilineEditorViewModel model { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         model = new MultilineEditorViewModel
         {
             InputObjects = new List<JsonObjectViewModel>
-                {
+            {
                     new JsonObjectViewModel { Name = "sample", JsonString = "{ }" },
                 },
             Commands = new List<string>() { "Add", "Copy", "Move", "Remove", "Set" },
@@ -248,12 +243,13 @@
 
         ResetInputSelection();
         ResetOutputSelection();
-
+        
         NavigationManager.LocationChanged += LocationChanged;
 
         base.OnInitialized();
     }
 
+    
     void LocationChanged(object sender, LocationChangedEventArgs e)
     {
         SaveJlioDocument(latest).Wait();
@@ -272,6 +268,7 @@
     void SetInput(JsonObjectViewModel item)
     {
         model.CurrentInput = item;
+        Console.WriteLine(model.CurrentInput.JsonString);
     }
 
     void SetOutput(JsonObjectViewModel item)
@@ -453,6 +450,8 @@
         }
     }
 
+
+
     async Task Download(string name, string text)
     {
         var bytes = System.Text.Encoding.UTF8.GetBytes(text);
@@ -496,6 +495,7 @@
         {
             model = JsonConvert.DeserializeObject<MultilineEditorViewModel>(selectedItem.JsonData);
             model.Commands = new List<string>() { "Add", "Copy", "Move", "Remove", "Set" };
+           
         }
     }
 
@@ -505,5 +505,8 @@
         script.AddLine(jsonCommand);
         model.ScriptText = JLioConvert.Serialize(script);
     }
-
 }
+
+
+
+

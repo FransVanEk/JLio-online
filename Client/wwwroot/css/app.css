@@ -186,6 +186,21 @@ app {
     height: 100%
 }
 
+.monaco-diff-editor 
+{
+    height: 500px
+}
+
+.editor-frame {
+    width: auto;
+    height: 400px;
+    margin-bottom: 10px;
+    border: 1px solid #eee;
+    position: relative;
+    display: block;
+}
+
+
 .accordion-header {
     font-size: 30px;
     height: 50px;
