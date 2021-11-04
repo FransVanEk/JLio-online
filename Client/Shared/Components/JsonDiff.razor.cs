@@ -24,6 +24,9 @@ namespace JLioOnline.Client.Shared.Components
         [Parameter]
         public EventCallback<string> OriginalJsonChanged { get; set; }
 
+        [Parameter]
+        public bool ShowReload { get; set; } = false;
+
         private DiffEditorConstructionOptions DiffEditorConstructionOptions(MonacoDiffEditor editor)
         {
             return new DiffEditorConstructionOptions
