@@ -96,7 +96,7 @@
 
                 </div>
                 <div class="col-md-9" style="height: auto; max-height: 300px;">
-                    <JsonEditor @bind-Text="@model.ScriptText" />
+                    <JsonEditor @bind-Text="@model.ScriptText" @ref="scriptEditor"   />
                 </div>
             </div>
             <div class="row" style="padding-top: 50px">
@@ -148,22 +148,19 @@
                     <RadzenTabsItem Text="Debug">
                         <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" FilterMode="FilterMode.Simple" PageSize="25" AllowPaging="true" AllowSorting="false" Data="@model.DebugResults" TItem="CommandExecutionViewModel" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or">
                             <Columns>
-                                <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Success" Sortable="false" Frozen="true" Filterable="false" Width="50px">
+                                  <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Command" Sortable="false" Frozen="true" Filterable="false"  Width="200px">
                                     <Template Context="data">
-                                        @if (data.Succes)
-                                        {
-                                            <RadzenIcon Icon="check_circle" style="color:green" />
-                                        }
-                                        else
-                                        {
-                                            <RadzenIcon Icon="sms_failed" style="color:red" />
-                                        }
-                                    </Template>
-                                </RadzenDataGridColumn>
-                               
-                                <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Command" Sortable="false" Frozen="true" Filterable="false">
-                                    <Template Context="data">
-                                        <RadzenButton ButtonType="ButtonType.Button" Text=@data.Command.CommandName Click=@(args => ToggleExpand(data)) ButtonStyle="ButtonStyle.Warning" style="width:100%;margin-bottom:3px;" />
+                                        <RadzenButton ButtonType="ButtonType.Button" Click=@(args => ToggleExpand(data)) ButtonStyle="ButtonStyle.Warning" style="width:100%;margin-bottom:3px;">
+                                            @if (data.Succes)
+                                            {
+                                                <RadzenIcon Icon="check_circle" style="color:green" />
+                                            }
+                                            else
+                                            {
+                                                <RadzenIcon Icon="sms_failed" style="color:red" />
+                                            }
+                                            - @data.Command.CommandName
+                                        </RadzenButton>
                                         @if (data.Expanded)
                                         {
                                             <br />
@@ -218,6 +215,8 @@
 
     List<JLioDocumentModel> JLioDocuments { get; set; } = new List<JLioDocumentModel>();
 
+    JsonEditor scriptEditor;
+
     string selectedJLioDocument = null;
 
     const string latest = "_latest_";
@@ -243,13 +242,13 @@
 
         ResetInputSelection();
         ResetOutputSelection();
-        
+
         NavigationManager.LocationChanged += LocationChanged;
 
         base.OnInitialized();
     }
 
-    
+
     void LocationChanged(object sender, LocationChangedEventArgs e)
     {
         SaveJlioDocument(latest).Wait();
@@ -495,8 +494,9 @@
         {
             model = JsonConvert.DeserializeObject<MultilineEditorViewModel>(selectedItem.JsonData);
             model.Commands = new List<string>() { "Add", "Copy", "Move", "Remove", "Set" };
-           
+            scriptEditor.Update(model.ScriptText);
         }
+
     }
 
     private void AddToScript(ICommand jsonCommand)
@@ -504,6 +504,7 @@
         var script = ParseScript(ExecutionContext.CreateDefault());
         script.AddLine(jsonCommand);
         model.ScriptText = JLioConvert.Serialize(script);
+        scriptEditor.Update(model.ScriptText);
     }
 }
 

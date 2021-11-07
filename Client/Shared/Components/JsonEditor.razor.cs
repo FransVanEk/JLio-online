@@ -11,7 +11,8 @@ namespace JLioOnline.Client.Shared.Components
         public string Id { get; set; } = Guid.NewGuid().ToString();
 
         [Parameter]
-        public string Text { get; set; }
+        public string  Text { get; set; }
+
         [Parameter]
         public EventCallback<string> TextChanged { get; set; }
 
@@ -44,8 +45,14 @@ namespace JLioOnline.Client.Shared.Components
 
         async Task UpdateInput()
         {
-            Text = await monacoEditor.GetValue();
-            await TextChanged.InvokeAsync(Text);
+                Text = await monacoEditor.GetValue();
+                await TextChanged.InvokeAsync(Text);
+        }
+
+        public void Update(string text)
+        {
+            Text = text;
+            monacoEditor.SetValue(Text);
         }
 
     }
