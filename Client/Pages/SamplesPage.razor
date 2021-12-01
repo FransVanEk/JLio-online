@@ -1,0 +1,28 @@
+﻿@page "/samples"
+
+@inject SamplesStore samplesstore
+@inject IJSRuntime js
+
+<RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download()) style="width:100%;margin-bottom:3px;" />
+
+@if (samplesstore.Samples != null)
+{
+    @foreach (var sample in samplesstore.Samples)
+    {
+        @sample.Title
+        <br />
+    }
+}
+@code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        await samplesstore.GetSamples();
+    }
+
+    async Task Download()
+    {
+        var bytes = System.Text.Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(samplesstore.Samples, Formatting.Indented));
+        await SaveAsFile.SaveAs(js, "samples.json", bytes);
+    }
+}

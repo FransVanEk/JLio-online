@@ -1,13 +1,16 @@
 ﻿@page "/multipleInputEditor"
 @page "/multipleInputEditor/{sampleName}"
 
+@using Microsoft.AspNetCore.Components.WebAssembly.Hosting
+
 @inject HttpClient Http
 @inject Radzen.DialogService dialogService
 @inject Radzen.NotificationService NotificationService
 @inject NavigationManager NavigationManager
 @inject IJSRuntime js
 @inject PersistenceStore documents
-
+@inject IWebAssemblyHostEnvironment HostEnvironment
+@inject SamplesStore samplesstore
 
 <RadzenDialog></RadzenDialog>
 <RadzenNotification></RadzenNotification>
@@ -22,17 +25,17 @@
         <div class="col-md-4">
             @if (JLioDocuments != null && JLioDocuments.Any())
             {
-                <RadzenDropDown AllowClear="false" TValue="string" Style="width: 100%" @bind-value="@selectedJLioDocument"
-                                AllowFiltering="false"
-                                TextProperty="Name"
-                                ValueProperty="Id"
-                                Data=@(JLioDocuments.Where(i=> i.Name != latest).Select(c => new { Id = c.Id, Name = c.Id}).Distinct()) />
+            <RadzenDropDown AllowClear="false" TValue="string" Style="width: 100%" @bind-value="@selectedJLioDocument"
+                            AllowFiltering="false"
+                            TextProperty="Name"
+                            ValueProperty="Id"
+                            Data=@(JLioDocuments.Where(i=> i.Name != latest).Select(c => new { Id = c.Id, Name = c.Id}).Distinct()) />
             }
         </div>
         <div class="col-md-2">
             @if (JLioDocuments != null && JLioDocuments.Any())
             {
-                <RadzenButton ButtonType="ButtonType.Button" Text="Load" Click=@(args => LoadJlioDocument()) style="width:100%;margin-bottom:3px;" />
+            <RadzenButton ButtonType="ButtonType.Button" Text="Load" Click=@(args => LoadJlioDocument()) style="width:100%;margin-bottom:3px;" />
             }
         </div>
     </div>
@@ -48,31 +51,31 @@
                     <RadzenButton ButtonType="ButtonType.Button" Icon="add_circle_outline" Click=@(args => AddInput()) Text="Add input object" ButtonStyle="ButtonStyle.Secondary" style="width:100%;margin-bottom:3px;" /><br />
                     @foreach (var inputElement in model.InputObjects.OrderBy(i => i.Name))
                     {
-                        <RadzenButton ButtonType="ButtonType.Button" Text="@inputElement.Name" Click=@(args => SetInput(inputElement)) style="width:100%;margin-bottom:3px;" />
-                        <br />
+                    <RadzenButton ButtonType="ButtonType.Button" Text="@inputElement.Name" Click=@(args => SetInput(inputElement)) style="width:100%;margin-bottom:3px;" />
+                    <br />
                     }
                 </div>
                 <div class="col-md-9">
                     @if (model.HasCurrentInput)
                     {
-                        <div class="row">
-                            <div class="col-md-8">
-                                <RadzenTextBox @bind-Value="model.CurrentInput.Name" style="width:100%;margin-bottom:3px;" />
-                            </div>
-                            <div class="col-md-2">
-                                <RadzenButton ButtonType="ButtonType.Button" Icon="delete" Text=@($"Delete input object:{model.CurrentInput.Name}") Click=@(args => DeleteCurrentInput()) style="width:100%;margin-bottom:3px;" />
-                            </div>
-                            <div class="col-md-2">
-                                <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download($"{model.CurrentInput.Name}-input.json",model.CurrentInput.JsonString)) style="width:100%;margin-bottom:3px;" />
-                            </div>
-
+                    <div class="row">
+                        <div class="col-md-8">
+                            <RadzenTextBox @bind-Value="model.CurrentInput.Name" style="width:100%;margin-bottom:3px;" />
                         </div>
+                        <div class="col-md-2">
+                            <RadzenButton ButtonType="ButtonType.Button" Icon="delete" Text=@($"Delete input object:{model.CurrentInput.Name}") Click=@(args => DeleteCurrentInput()) style="width:100%;margin-bottom:3px;" />
+                        </div>
+                        <div class="col-md-2">
+                            <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download($"{model.CurrentInput.Name}-input.json",model.CurrentInput.JsonString)) style="width:100%;margin-bottom:3px;" />
+                        </div>
+
+                    </div>
                     }
                     <div class="row">
                         <div class="col-md-12" style="height: auto; max-height: 300px;">
                             @if (model.HasCurrentInput)
                             {
-                                <JsonEditor @bind-Text="@model.CurrentInput.JsonString" />
+                            <JsonEditor @bind-Text="@model.CurrentInput.JsonString" />
                             }
                         </div>
                     </div>
@@ -96,7 +99,7 @@
 
                 </div>
                 <div class="col-md-9" style="height: auto; max-height: 300px;">
-                    <JsonEditor @bind-Text="@model.ScriptText" @ref="scriptEditor"   />
+                    <JsonEditor @bind-Text="@model.ScriptText" @ref="scriptEditor" />
                 </div>
             </div>
             <div class="row" style="padding-top: 50px">
@@ -121,26 +124,26 @@
                             <div class="col-md-3">
                                 @foreach (var outputElement in model.OutputObjects.OrderBy(i => i.Name))
                                 {
-                                    <RadzenButton ButtonType="ButtonType.Button" Text="@outputElement.Name" Click=@(args => SetOutput(outputElement)) style="width:100%;margin-bottom:3px;" />
+                                <RadzenButton ButtonType="ButtonType.Button" Text="@outputElement.Name" Click=@(args => SetOutput(outputElement)) style="width:100%;margin-bottom:3px;" />
                                 }
                             </div>
 
                             <div class="col-md-9">
                                 @if (model.HasCurrentOutput)
                                 {
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <RadzenTextBox @bind-Value="model.CurrentOutput.Name" style="width:100%;margin-bottom:3px;" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download($"{model.CurrentOutput.Name}-output.json",model.CurrentOutput.JsonString)) style="width:100%;margin-bottom:3px;" />
-                                        </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <RadzenTextBox @bind-Value="model.CurrentOutput.Name" style="width:100%;margin-bottom:3px;" />
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <RadzenTextArea @bind-value="model.CurrentOutput.JsonString" Rows="12" Style="width: 100%" ReadOnly=true />
-                                        </div>
+                                    <div class="col-md-6">
+                                        <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download($"{model.CurrentOutput.Name}-output.json",model.CurrentOutput.JsonString)) style="width:100%;margin-bottom:3px;" />
                                     </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <RadzenTextArea @bind-value="model.CurrentOutput.JsonString" Rows="12" Style="width: 100%" ReadOnly=true />
+                                    </div>
+                                </div>
                                 }
                             </div>
                         </div>
@@ -148,24 +151,24 @@
                     <RadzenTabsItem Text="Debug">
                         <RadzenDataGrid AllowFiltering="true" AllowColumnResize="true" FilterMode="FilterMode.Simple" PageSize="25" AllowPaging="true" AllowSorting="false" Data="@model.DebugResults" TItem="CommandExecutionViewModel" ColumnWidth="300px" LogicalFilterOperator="LogicalFilterOperator.Or">
                             <Columns>
-                                  <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Command" Sortable="false" Frozen="true" Filterable="false"  Width="200px">
+                                <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Command" Sortable="false" Frozen="true" Filterable="false" Width="200px">
                                     <Template Context="data">
                                         <RadzenButton ButtonType="ButtonType.Button" Click=@(args => ToggleExpand(data)) ButtonStyle="ButtonStyle.Warning" style="width:100%;margin-bottom:3px;">
                                             @if (data.Succes)
                                             {
-                                                <RadzenIcon Icon="check_circle" style="color:green" />
+                                            <RadzenIcon Icon="check_circle" style="color:green" />
                                             }
                                             else
                                             {
-                                                <RadzenIcon Icon="sms_failed" style="color:red" />
+                                            <RadzenIcon Icon="sms_failed" style="color:red" />
                                             }
                                             - @data.Command.CommandName
                                         </RadzenButton>
                                         @if (data.Expanded)
                                         {
-                                            <br />
-                                            <RadzenTextArea Value=@data.CommandText Rows="12" Style="width: 100%;height:auto" ReadOnly=true />
-                                        } 
+                                        <br />
+                                        <RadzenTextArea Value=@data.CommandText Rows="12" Style="width: 100%;height:auto" ReadOnly=true />
+                                        }
                                     </Template>
                                 </RadzenDataGridColumn>
                                 <RadzenDataGridColumn TItem="CommandExecutionViewModel" Title="Diff" Sortable="false" Frozen="false" Filterable="false" Width="480px">
@@ -176,13 +179,13 @@
                                         }
                                         else
                                         {
-                                            @if (data.HasChanges)
+                                        @if (data.HasChanges)
                                             {
-                                                <RadzenIcon Icon="published_with_changes" style="color:green" />
+                                        <RadzenIcon Icon="published_with_changes" style="color:green" />
                                             }
                                             else
                                             {
-                                                <RadzenIcon Icon="sync_problem" style="color:orange" />
+                                        <RadzenIcon Icon="sync_problem" style="color:orange" />
                                             }
                                         }
                                     </Template>
@@ -191,23 +194,39 @@
                                     <Template Context="data">
                                         @if (data.Expanded)
                                         {
-                                            <RadzenTextArea Value=@data.LogText Rows="12" Style="width: 100%" ReadOnly=true />
+                                        <RadzenTextArea Value=@data.LogText Rows="12" Style="width: 100%" ReadOnly=true />
                                         }
                                     </Template>
                                 </RadzenDataGridColumn>
                             </Columns>
                         </RadzenDataGrid>
                     </RadzenTabsItem>
+                    @if(HostEnvironment.Environment == "Development")
+                        {
+                    <RadzenTabsItem Text="create sample">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <RadzenTextBox @bind-value="sample.Title" Rows="12" Style="width: 100%" ReadOnly=false />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <RadzenTextArea @bind-value="sample.Description" Rows="12" Style="width: 100%" ReadOnly=false />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9"></div>
+                            <div class="col-md-3">
+                                <RadzenButton ButtonType="ButtonType.Button"  ButtonStyle="ButtonStyle.Secondary" Text="Add" Click=@(args => AddSample()) style="width: 100%; margin-bottom: 3px;" />
+                            </div>
+                        </div>
+                    </RadzenTabsItem>
+                        }
                 </Tabs>
             </RadzenTabs>
         </RadzenFieldset>
     </div>
 </div>
-
-
-
-
-
 
 @code {
     [Parameter]
@@ -218,6 +237,7 @@
     JsonEditor scriptEditor;
 
     string selectedJLioDocument = null;
+    Sample sample = new Sample();
 
     const string latest = "_latest_";
 
@@ -228,7 +248,7 @@
         model = new MultilineEditorViewModel
         {
             InputObjects = new List<JsonObjectViewModel>
-            {
+        {
                     new JsonObjectViewModel { Name = "sample", JsonString = "{ }" },
                 },
             Commands = new List<string>() { "Add", "Copy", "Move", "Remove", "Set" },
@@ -267,8 +287,7 @@
     void SetInput(JsonObjectViewModel item)
     {
         model.CurrentInput = item;
-        Console.WriteLine(model.CurrentInput.JsonString);
-    }
+        }
 
     void SetOutput(JsonObjectViewModel item)
     {
@@ -282,6 +301,15 @@
             model.InputObjects.Remove(model.CurrentInput);
             ResetInputSelection();
         }
+    }
+
+    void AddSample()
+    {
+        Execute();
+        sample.Model = model;
+        sample.Tags= ParseScript(ExecutionContext.CreateDefault()).Select(l => l.CommandName).Distinct().ToList();
+        samplesstore.Samples.Add(sample);
+        
     }
 
     void ResetInputSelection()
@@ -394,7 +422,6 @@
         switch (model.SelectedCommand)
         {
             case "Add":
-                Console.WriteLine($"{dialogService == null} dialogservce available post execution");
                 var addCommand = await dialogService.OpenAsync<AddWizard>($"Add command wizard",
                    new Dictionary<string, object>() { { "DataContext", dataContext } },
                    new DialogOptions() { Width = "900px", Height = "630px" });
