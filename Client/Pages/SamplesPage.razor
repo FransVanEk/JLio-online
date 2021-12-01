@@ -1,28 +1,79 @@
 ﻿@page "/samples"
+@using Microsoft.AspNetCore.Components.WebAssembly.Hosting
 
 @inject SamplesStore samplesstore
+@inject IWebAssemblyHostEnvironment HostEnvironment
 @inject IJSRuntime js
 
-<RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download()) style="width:100%;margin-bottom:3px;" />
 
-@if (samplesstore.Samples != null)
+
+@if (HostEnvironment.Environment == "Development")
 {
-    @foreach (var sample in samplesstore.Samples)
-    {
-        @sample.Title
-        <br />
-    }
+    <div class="row">
+        <div class=" col-12">
+            <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download()) style="width: 100%; margin-bottom: 3px;" />
+        </div>
+    </div>
 }
+<div class="row">
+    <div class=" col-3">
+        Filter
+    </div>
+    <div class=" col-9">
+        <RadzenSelectBar @bind-Value=@selectedTags TValue="IEnumerable<string>" Multiple="true" Data="@tags" Change=@(args => OnFilterChange()) />
+    </div>
+</div>
+@if (selectedSample != null && filteredSamples.Any())
+{
+    <div class="row">
+        <div class=" col-3">
+            <RadzenListBox AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" @bind-Value=@selectedSampleTitle Data=@filteredSamples TextProperty="Title" ValueProperty="Title" Style="height: 350px" />
+        </div>
+        <div class=" col-9">
+            @selectedSample.Title
+        </div>
+    </div>
+
+    @((MarkupString)JsonConvert.SerializeObject(filteredSamples, Formatting.Indented))
+}
+
+
+
 @code {
+
+    IEnumerable<string> tags { get; set; }
+    IEnumerable<string> selectedTags { get; set; } = new List<string>();
+    IEnumerable<Sample> filteredSamples { get; set; } = new List<Sample>();
+
+    Sample selectedSample
+    {
+        get
+        {
+            return samplesstore?.Samples?.FirstOrDefault(s => s.Title == selectedSampleTitle);
+        }
+    }
+
+    string selectedSampleTitle { get; set; }
+
 
     protected override async Task OnInitializedAsync()
     {
         await samplesstore.GetSamples();
+        tags = samplesstore.Samples.SelectMany(s => s.Tags).Distinct().OrderBy(t => t).ToList();
     }
 
     async Task Download()
     {
         var bytes = System.Text.Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(samplesstore.Samples, Formatting.Indented));
         await SaveAsFile.SaveAs(js, "samples.json", bytes);
+    }
+
+    void OnFilterChange()
+    {
+        filteredSamples = samplesstore.Samples.Where(s => selectedTags.All(t => s.Tags.Contains(t))).ToList();
+        if (selectedSample == null)
+        {
+            selectedSampleTitle = filteredSamples.FirstOrDefault()?.Title;
+        }
     }
 }

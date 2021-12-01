@@ -1,10 +1,8 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using JLioOnline.Client.Shared.Models;
-using Newtonsoft.Json;
 
 namespace JLioOnline.Client.Providers
 {
@@ -23,9 +21,10 @@ namespace JLioOnline.Client.Providers
         {
             if (Samples == null || !Samples.Any())
             {
-               var result = await client.GetFromJsonAsync<Sample[]>("samples/samples.json");
+                var result = await client.GetFromJsonAsync<Sample[]>("samples/samples.json");
                 Samples = new Samples(result);
             }
+
             return Samples;
         }
     }
