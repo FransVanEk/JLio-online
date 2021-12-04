@@ -2,15 +2,16 @@
 @page "/multipleInputEditor/{sampleName}"
 
 @using Microsoft.AspNetCore.Components.WebAssembly.Hosting
+@using System.Web
 
 @inject HttpClient Http
-@inject Radzen.DialogService dialogService
-@inject Radzen.NotificationService NotificationService
+@inject DialogService dialogService
+@inject NotificationService NotificationService
 @inject NavigationManager NavigationManager
 @inject IJSRuntime js
 @inject PersistenceStore documents
 @inject IWebAssemblyHostEnvironment HostEnvironment
-@inject SamplesStore samplesstore
+@inject SamplesStore samplesStore
 
 <RadzenDialog></RadzenDialog>
 <RadzenNotification></RadzenNotification>
@@ -29,7 +30,7 @@
                             AllowFiltering="false"
                             TextProperty="Name"
                             ValueProperty="Id"
-                            Data=@(JLioDocuments.Where(i=> i.Name != latest).Select(c => new { Id = c.Id, Name = c.Id}).Distinct()) />
+                            Data=@(JLioDocuments.Where(i=> i.Name != latest).Select(c => new {c.Id, Name = c.Id}).Distinct()) />
             }
         </div>
         <div class="col-md-2">
@@ -206,18 +207,21 @@
                     <RadzenTabsItem Text="create sample">
                         <div class="row">
                             <div class="col-md-3">
-                                <RadzenTextBox @bind-value="sample.Title" Rows="12" Style="width: 100%" ReadOnly=false />
+                                <RadzenTextBox @bind-value="sampleTitle" Rows="12" Style="width: 100%" ReadOnly=false />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-3">
-                                <RadzenTextArea @bind-value="sample.Description" Rows="12" Style="width: 100%" ReadOnly=false />
+                                <RadzenTextArea @bind-value="sampleDescription" Rows="12" Style="width: 100%" ReadOnly=false />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-9"></div>
                             <div class="col-md-3">
-                                <RadzenButton ButtonType="ButtonType.Button"  ButtonStyle="ButtonStyle.Secondary" Text="Add" Click=@(args => AddSample()) style="width: 100%; margin-bottom: 3px;" />
+                                @if (!string.IsNullOrWhiteSpace(sampleTitle) && !string.IsNullOrWhiteSpace(sampleDescription))
+                                {
+                                    <RadzenButton ButtonType="ButtonType.Button" ButtonStyle="ButtonStyle.Secondary" Text="Add" Click=@(args => AddSample()) style="width: 100%; margin-bottom: 3px;"/>
+                                }
                             </div>
                         </div>
                     </RadzenTabsItem>
@@ -234,10 +238,14 @@
 
     List<JLioDocumentModel> JLioDocuments { get; set; } = new List<JLioDocumentModel>();
 
+
+
     JsonEditor scriptEditor;
+    string sampleTitle = "sample";
+    string sampleDescription = "This sample shows";
 
     string selectedJLioDocument = null;
-    Sample sample = new Sample();
+
 
     const string latest = "_latest_";
 
@@ -257,8 +265,14 @@
 
 
         await GetJLioDocuments();
-
-        LoadJlioDocument(latest);
+        if (string.IsNullOrWhiteSpace(SampleName))
+        {
+            LoadJlioDocument(latest);
+        }
+        else
+        {
+            LoadSample();
+        }
 
         ResetInputSelection();
         ResetOutputSelection();
@@ -287,7 +301,7 @@
     void SetInput(JsonObjectViewModel item)
     {
         model.CurrentInput = item;
-        }
+    }
 
     void SetOutput(JsonObjectViewModel item)
     {
@@ -303,13 +317,18 @@
         }
     }
 
-    void AddSample()
+    async Task AddSample()
     {
         Execute();
+        await samplesStore.GetSamples();
+        var sample = new Sample();
+        sample.Title = sampleTitle;
+        sample.Description = sampleDescription;
         sample.Model = model;
+        sample.Model.Name = $"Sample-{samplesStore.Samples.Count + 1}";
         sample.Tags= ParseScript(ExecutionContext.CreateDefault()).Select(l => l.CommandName).Distinct().ToList();
-        samplesstore.Samples.Add(sample);
-        
+        samplesStore.Samples.Add(sample);
+
     }
 
     void ResetInputSelection()
@@ -343,7 +362,7 @@
             startObject = executionResult.Data;
         });
 
-        SetExecutionResult(new JLioExecutionResult(model.DebugResults.All(i => i.Succes == true), startObject));
+        SetExecutionResult(new JLioExecutionResult(model.DebugResults.All(i => i.Succes), startObject));
         return startObject;
     }
 
@@ -356,7 +375,7 @@
         result.Keys.ToList().ForEach(k => model.OutputObjects.Add(new JsonObjectViewModel
         {
             Name = k,
-            JsonString = result[k].ToString(Newtonsoft.Json.Formatting.Indented)
+            JsonString = result[k].ToString(Formatting.Indented)
         }
         ));
         ResetOutputSelection();
@@ -520,11 +539,32 @@
         if (selectedItem != null)
         {
             model = JsonConvert.DeserializeObject<MultilineEditorViewModel>(selectedItem.JsonData);
+            if (model == null)
+            {
+                model = new MultilineEditorViewModel();
+            }
             model.Commands = new List<string>() { "Add", "Copy", "Move", "Remove", "Set" };
             scriptEditor.Update(model.ScriptText);
         }
 
     }
+
+
+    void LoadSample()
+    {
+        var sample = samplesStore.Samples.FirstOrDefault(s => s.Title == HttpUtility.UrlDecode(SampleName));
+        if (sample == null)
+        {
+            LoadJlioDocument("");
+        }
+        else
+        {
+            model = sample.Model;
+            scriptEditor.Update(model.ScriptText);
+        }
+    }
+
+
 
     private void AddToScript(ICommand jsonCommand)
     {

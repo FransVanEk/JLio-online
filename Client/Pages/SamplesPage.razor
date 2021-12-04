@@ -1,10 +1,11 @@
 ﻿@page "/samples"
 @using Microsoft.AspNetCore.Components.WebAssembly.Hosting
+@using System.Web
 
 @inject SamplesStore samplesstore
 @inject IWebAssemblyHostEnvironment HostEnvironment
 @inject IJSRuntime js
-
+@inject NavigationManager NavigationManager
 
 
 @if (HostEnvironment.Environment == "Development")
@@ -20,30 +21,73 @@
         Filter
     </div>
     <div class=" col-9">
-        <RadzenSelectBar @bind-Value=@selectedTags TValue="IEnumerable<string>" Multiple="true" Data="@tags" Change=@(args => OnFilterChange()) />
+
     </div>
 </div>
-@if (selectedSample != null && filteredSamples.Any())
-{
-    <div class="row">
-        <div class=" col-3">
-            <RadzenListBox AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" @bind-Value=@selectedSampleTitle Data=@filteredSamples TextProperty="Title" ValueProperty="Title" Style="height: 350px" />
+<div class="row">
+    <div class=" col-3">
+
+        <div class="row">
+            <div class=" col-12">
+                <b>Commands</b>
+                <RadzenSelectBar @bind-Value=@selectedTags TValue="IEnumerable<string>" Multiple="true" Data="@tags" Change=@(args => OnFilterChange()) />
+            </div>
         </div>
-        <div class=" col-9">
-            @selectedSample.Title
+        <div class="row">
+            <div class=" col-12">
+                <RadzenListBox AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" @bind-Value=@selectedSampleTitle Data=@filteredSamples TextProperty="Title" ValueProperty="Title" Style="height: 350px" />
+            </div>
         </div>
     </div>
+    @if (selectedSample != null && filteredSamples.Any())
+    {
+        <div class=" col-9">
+            <div class="row">
+                <div class="col-12">
+                    <h3>@selectedSample.Title</h3>
+                </div>
+                <div class="col-12" style="max-width: 600px;">
+                    @((MarkupString) @selectedSample.Description.Replace(Environment.NewLine, "<br />"))
+                </div>
+                <div class="col-12">
+                    <h4>Script</h4>
+                    <br />
+                    @*<JsonEditor @bind-Text="@selectedSample.Model.ScriptText" />*@
 
-    @((MarkupString)JsonConvert.SerializeObject(filteredSamples, Formatting.Indented))
-}
+                    @((MarkupString)@selectedSample.Model.ScriptText.Replace(Environment.NewLine, "<br />"))
+                </div>
+
+                <div class="col-12">
+                    @if (selectedSample != null)
+                    {
+                        <RadzenButton ButtonType="ButtonType.Button" Click=@(args => TryIt()) style="width: 100%; margin-bottom: 3px;" Text="Try it" />
+                    }
+                </div>
+                @*<div class="col-12">
+                        <h4>Changes</h4>
+                        <br />
+
+                        @foreach (var t in changes)
+                        {
+                            <h5>@t.Name</h5>
+                            <JsonDiff @bind-OriginalJson=@t.Before @bind-ModifiedJson=@t.After id="@Guid.NewGuid().ToString()"></JsonDiff>
+                            @t.Before
+                        }
+                    </div>*@
+            </div>
+        </div>
+    }
+</div>
+
 
 
 
 @code {
 
-    IEnumerable<string> tags { get; set; }
+    IEnumerable<string> tags { get; set; } = new List<string>();
     IEnumerable<string> selectedTags { get; set; } = new List<string>();
     IEnumerable<Sample> filteredSamples { get; set; } = new List<Sample>();
+    string selectedSampleTitle { get; set; } = string.Empty;
 
     Sample selectedSample
     {
@@ -53,13 +97,56 @@
         }
     }
 
-    string selectedSampleTitle { get; set; }
+    public void TryIt()
+    {
+        if (selectedSample != null)
+        {
+            NavigationManager.NavigateTo($"/multipleInputEditor/{HttpUtility.UrlEncode(selectedSample.Title)}");
+        }
+    }
+
+
+    Changes changes
+    {
+        get
+        {
+            return getChanges();
+        }
+    }
+
+    Changes getChanges()
+    {
+        if (selectedSample == null || selectedSample.Model == null)
+        {
+            return new Changes();
+        }
+
+        var names = selectedSample.Model.InputObjects.Select(s => s.Name).ToList();
+        names.AddRange(selectedSample.Model.OutputObjects.Select(s => s.Name).ToList());
+        var result = new Changes();
+        names.Distinct().ToList().ForEach(n =>
+        {
+            var before = selectedSample.Model.InputObjects.FirstOrDefault(i => i.Name == n);
+            var after = selectedSample.Model.OutputObjects.FirstOrDefault(i => i.Name == n);
+
+            result.Add(new Change()
+            {
+                After = after != null ? after.JsonString : "",
+                Before = before != null ? before.JsonString : "",
+                Name = n
+            });
+
+        });
+        Console.WriteLine(JsonConvert.SerializeObject(result));
+        return result;
+    }
 
 
     protected override async Task OnInitializedAsync()
     {
         await samplesstore.GetSamples();
-        tags = samplesstore.Samples.SelectMany(s => s.Tags).Distinct().OrderBy(t => t).ToList();
+        tags = samplesstore?.Samples?.Where(s => s.Tags != null).SelectMany(s => s.Tags).Distinct().OrderBy(t => t).ToList();
+        OnFilterChange();
     }
 
     async Task Download()
@@ -70,10 +157,29 @@
 
     void OnFilterChange()
     {
-        filteredSamples = samplesstore.Samples.Where(s => selectedTags.All(t => s.Tags.Contains(t))).ToList();
+        if (!tags.Any())
+        {
+            filteredSamples = samplesstore.Samples;
+        }
+        filteredSamples = samplesstore.Samples.Where(s => selectedTags.All(t => s.Tags != null && s.Tags.Contains(t))).ToList();
         if (selectedSample == null)
         {
             selectedSampleTitle = filteredSamples.FirstOrDefault()?.Title;
         }
+    }
+
+
+    class Changes : List<Change>
+    {
+
+    }
+
+    class Change
+    {
+        public string Name { get; set; }
+
+        public string Before { get; set; }
+
+        public string After { get; set; }
     }
 }
