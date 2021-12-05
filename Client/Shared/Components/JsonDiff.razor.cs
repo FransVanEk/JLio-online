@@ -42,6 +42,14 @@ namespace JLioOnline.Client.Shared.Components
             await DiffEditorInit(diffEditor);
         }
 
+        public async Task Update(string original, string modified)
+        {
+            ModifiedJson = modified;
+            OriginalJson = original;
+
+            await DiffEditorInit(diffEditor);
+        }
+
         private async Task DiffEditorInit(MonacoEditorBase editor)
         {
             var original_model = await MonacoEditorBase.CreateModel(OriginalJson, "json");

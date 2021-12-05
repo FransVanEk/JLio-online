@@ -35,11 +35,11 @@
         </div>
         <div class="row">
             <div class=" col-12">
-                <RadzenListBox AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" @bind-Value=@selectedSampleTitle Data=@filteredSamples TextProperty="Title" ValueProperty="Title" Style="height: 350px" />
+                <RadzenListBox AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" @bind-Value=@selectedSampleTitle Data=@filteredSamples Change=@(OnChange) TextProperty="Title" ValueProperty="Title" Style="height: 350px" />
             </div>
         </div>
     </div>
-    @if (selectedSample != null && filteredSamples.Any())
+    @if (selectedSample != null)
     {
         <div class=" col-9">
             <div class="row">
@@ -52,9 +52,7 @@
                 <div class="col-12">
                     <h4>Script</h4>
                     <br />
-                    @*<JsonEditor @bind-Text="@selectedSample.Model.ScriptText" />*@
-
-                    @((MarkupString)@selectedSample.Model.ScriptText.Replace(Environment.NewLine, "<br />"))
+                    <JsonEditor ReadOnly="true" @ref="scriptEditor" />
                 </div>
 
                 <div class="col-12">
@@ -63,17 +61,11 @@
                         <RadzenButton ButtonType="ButtonType.Button" Click=@(args => TryIt()) style="width: 100%; margin-bottom: 3px;" Text="Try it" />
                     }
                 </div>
-                @*<div class="col-12">
-                        <h4>Changes</h4>
-                        <br />
-
-                        @foreach (var t in changes)
-                        {
-                            <h5>@t.Name</h5>
-                            <JsonDiff @bind-OriginalJson=@t.Before @bind-ModifiedJson=@t.After id="@Guid.NewGuid().ToString()"></JsonDiff>
-                            @t.Before
-                        }
-                    </div>*@
+                <div class="col-12">
+                    <h4>Changes</h4>
+                    <br />
+                    <JsonDiff @bind-OriginalJson=@before @bind-ModifiedJson=@after @ref="jsonDiff"></JsonDiff>
+                </div>
             </div>
         </div>
     }
@@ -86,15 +78,92 @@
 
     IEnumerable<string> tags { get; set; } = new List<string>();
     IEnumerable<string> selectedTags { get; set; } = new List<string>();
-    IEnumerable<Sample> filteredSamples { get; set; } = new List<Sample>();
     string selectedSampleTitle { get; set; } = string.Empty;
+    JsonEditor scriptEditor;
+    JsonDiff jsonDiff;
+    string before;
+    string after;
+    IEnumerable<Sample> filteredSamples { get; set; } = new List<Sample>();
+    Sample selectedSample { get; set; }
 
-    Sample selectedSample
+    async Task Download()
     {
-        get
+        var bytes = System.Text.Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(samplesstore.Samples, Formatting.Indented));
+        await SaveAsFile.SaveAs(js, "samples.json", bytes);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await samplesstore.GetSamples();
+        tags = samplesstore?.Samples?.Where(s => s.Tags != null).SelectMany(s => s.Tags).Distinct().OrderBy(t => t).ToList();
+        filteredSamples = GetFilteredSamples();
+        selectedSampleTitle = filteredSamples.FirstOrDefault()?.Title;
+        await SetSelectedSample();
+    }
+
+    private IEnumerable<Sample> GetFilteredSamples()
+    {
+        return samplesstore.Samples.Where(s => selectedTags.All(t => s.Tags != null && s.Tags.Contains(t))).ToList();
+    }
+
+    async Task OnFilterChange()
+    {
+        filteredSamples = GetFilteredSamples();
+        var enumerable = filteredSamples as Sample[] ?? filteredSamples.ToArray();
+        if (enumerable.All(f => f.Title != selectedSampleTitle))
         {
-            return samplesstore?.Samples?.FirstOrDefault(s => s.Title == selectedSampleTitle);
+            selectedSampleTitle = enumerable.FirstOrDefault()?.Title;
+            await SetSelectedSample();
         }
+    }
+
+    private async Task SetSelectedSample()
+    {
+        selectedSample = samplesstore.Samples.FirstOrDefault(s => s.Title == selectedSampleTitle);
+        await UpdateView();
+    }
+
+    private async Task UpdateView()
+    {
+        if (selectedSample == null || selectedSample.Model == null) { return; }
+        scriptEditor?.Update(selectedSample.Model.ScriptText);
+        after = JsonConvert.SerializeObject(ParseList(selectedSample.Model.OutputObjects), Formatting.Indented);
+        before = JsonConvert.SerializeObject(ParseList(selectedSample.Model.InputObjects), Formatting.Indented);
+        if (jsonDiff != null)
+        {
+            await jsonDiff?.Update(before, after);
+        }
+    }
+
+
+    JToken ParseList(List<JsonObjectViewModel> items)
+    {
+        if (items == null)
+        {
+            return JValue.CreateNull();
+
+        }
+        try
+        {
+            var collection = new Dictionary<string, JToken>();
+            items.ForEach(i =>
+            {
+                collection.Add(i.Name, JToken.Parse(i.JsonString));
+            });
+
+            return collection.ConvertToDataObject();
+        }
+        catch (Exception)
+        {
+            // ignored
+        }
+        return new JObject();
+    }
+
+    async Task OnChange(object value)
+    {
+        selectedSampleTitle = value is IEnumerable<object> ? string.Join(", ", (IEnumerable<object>)value) : value.ToString();
+        await SetSelectedSample();
     }
 
     public void TryIt()
@@ -103,83 +172,5 @@
         {
             NavigationManager.NavigateTo($"/multipleInputEditor/{HttpUtility.UrlEncode(selectedSample.Title)}");
         }
-    }
-
-
-    Changes changes
-    {
-        get
-        {
-            return getChanges();
-        }
-    }
-
-    Changes getChanges()
-    {
-        if (selectedSample == null || selectedSample.Model == null)
-        {
-            return new Changes();
-        }
-
-        var names = selectedSample.Model.InputObjects.Select(s => s.Name).ToList();
-        names.AddRange(selectedSample.Model.OutputObjects.Select(s => s.Name).ToList());
-        var result = new Changes();
-        names.Distinct().ToList().ForEach(n =>
-        {
-            var before = selectedSample.Model.InputObjects.FirstOrDefault(i => i.Name == n);
-            var after = selectedSample.Model.OutputObjects.FirstOrDefault(i => i.Name == n);
-
-            result.Add(new Change()
-            {
-                After = after != null ? after.JsonString : "",
-                Before = before != null ? before.JsonString : "",
-                Name = n
-            });
-
-        });
-        Console.WriteLine(JsonConvert.SerializeObject(result));
-        return result;
-    }
-
-
-    protected override async Task OnInitializedAsync()
-    {
-        await samplesstore.GetSamples();
-        tags = samplesstore?.Samples?.Where(s => s.Tags != null).SelectMany(s => s.Tags).Distinct().OrderBy(t => t).ToList();
-        OnFilterChange();
-    }
-
-    async Task Download()
-    {
-        var bytes = System.Text.Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(samplesstore.Samples, Formatting.Indented));
-        await SaveAsFile.SaveAs(js, "samples.json", bytes);
-    }
-
-    void OnFilterChange()
-    {
-        if (!tags.Any())
-        {
-            filteredSamples = samplesstore.Samples;
-        }
-        filteredSamples = samplesstore.Samples.Where(s => selectedTags.All(t => s.Tags != null && s.Tags.Contains(t))).ToList();
-        if (selectedSample == null)
-        {
-            selectedSampleTitle = filteredSamples.FirstOrDefault()?.Title;
-        }
-    }
-
-
-    class Changes : List<Change>
-    {
-
-    }
-
-    class Change
-    {
-        public string Name { get; set; }
-
-        public string Before { get; set; }
-
-        public string After { get; set; }
     }
 }
