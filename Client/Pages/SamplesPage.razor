@@ -1,0 +1,176 @@
+﻿@page "/samples"
+@using Microsoft.AspNetCore.Components.WebAssembly.Hosting
+@using System.Web
+
+@inject SamplesStore samplesstore
+@inject IWebAssemblyHostEnvironment HostEnvironment
+@inject IJSRuntime js
+@inject NavigationManager NavigationManager
+
+
+@if (HostEnvironment.Environment == "Development")
+{
+    <div class="row">
+        <div class=" col-12">
+            <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download()) style="width: 100%; margin-bottom: 3px;" />
+        </div>
+    </div>
+}
+<div class="row">
+    <div class=" col-3">
+        Filter
+    </div>
+    <div class=" col-9">
+
+    </div>
+</div>
+<div class="row">
+    <div class=" col-3">
+
+        <div class="row">
+            <div class=" col-12">
+                <b>Commands</b>
+                <RadzenSelectBar @bind-Value=@selectedTags TValue="IEnumerable<string>" Multiple="true" Data="@tags" Change=@(args => OnFilterChange()) />
+            </div>
+        </div>
+        <div class="row">
+            <div class=" col-12">
+                <RadzenListBox AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" @bind-Value=@selectedSampleTitle Data=@filteredSamples Change=@(OnChange) TextProperty="Title" ValueProperty="Title" Style="height: 350px" />
+            </div>
+        </div>
+    </div>
+    @if (selectedSample != null)
+    {
+        <div class=" col-9">
+            <div class="row">
+                <div class="col-12">
+                    <h3>@selectedSample.Title</h3>
+                </div>
+                <div class="col-12" style="max-width: 600px;">
+                    @((MarkupString) @selectedSample.Description.Replace(Environment.NewLine, "<br />"))
+                </div>
+                <div class="col-12">
+                    <h4>Script</h4>
+                    <br />
+                    <JsonEditor ReadOnly="true" @ref="scriptEditor" />
+                </div>
+
+                <div class="col-12">
+                    @if (selectedSample != null)
+                    {
+                        <RadzenButton ButtonType="ButtonType.Button" Click=@(args => TryIt()) style="width: 100%; margin-bottom: 3px;" Text="Try it" />
+                    }
+                </div>
+                <div class="col-12">
+                    <h4>Changes</h4>
+                    <br />
+                    <JsonDiff @bind-OriginalJson=@before @bind-ModifiedJson=@after @ref="jsonDiff"></JsonDiff>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+
+@code {
+
+    IEnumerable<string> tags { get; set; } = new List<string>();
+    IEnumerable<string> selectedTags { get; set; } = new List<string>();
+    string selectedSampleTitle { get; set; } = string.Empty;
+    JsonEditor scriptEditor;
+    JsonDiff jsonDiff;
+    string before;
+    string after;
+    IEnumerable<Sample> filteredSamples { get; set; } = new List<Sample>();
+    Sample selectedSample { get; set; }
+
+    async Task Download()
+    {
+        var bytes = System.Text.Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(samplesstore.Samples, Formatting.Indented));
+        await SaveAsFile.SaveAs(js, "samples.json", bytes);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await samplesstore.GetSamples();
+        tags = samplesstore?.Samples?.Where(s => s.Tags != null).SelectMany(s => s.Tags).Distinct().OrderBy(t => t).ToList();
+        filteredSamples = GetFilteredSamples();
+        selectedSampleTitle = filteredSamples.FirstOrDefault()?.Title;
+        await SetSelectedSample();
+    }
+
+    private IEnumerable<Sample> GetFilteredSamples()
+    {
+        return samplesstore.Samples.Where(s => selectedTags.All(t => s.Tags != null && s.Tags.Contains(t))).ToList();
+    }
+
+    async Task OnFilterChange()
+    {
+        filteredSamples = GetFilteredSamples();
+        var enumerable = filteredSamples as Sample[] ?? filteredSamples.ToArray();
+        if (enumerable.All(f => f.Title != selectedSampleTitle))
+        {
+            selectedSampleTitle = enumerable.FirstOrDefault()?.Title;
+            await SetSelectedSample();
+        }
+    }
+
+    private async Task SetSelectedSample()
+    {
+        selectedSample = samplesstore.Samples.FirstOrDefault(s => s.Title == selectedSampleTitle);
+        await UpdateView();
+    }
+
+    private async Task UpdateView()
+    {
+        if (selectedSample == null || selectedSample.Model == null) { return; }
+        scriptEditor?.Update(selectedSample.Model.ScriptText);
+        after = JsonConvert.SerializeObject(ParseList(selectedSample.Model.OutputObjects), Formatting.Indented);
+        before = JsonConvert.SerializeObject(ParseList(selectedSample.Model.InputObjects), Formatting.Indented);
+        if (jsonDiff != null)
+        {
+            await jsonDiff?.Update(before, after);
+        }
+    }
+
+
+    JToken ParseList(List<JsonObjectViewModel> items)
+    {
+        if (items == null)
+        {
+            return JValue.CreateNull();
+
+        }
+        try
+        {
+            var collection = new Dictionary<string, JToken>();
+            items.ForEach(i =>
+            {
+                collection.Add(i.Name, JToken.Parse(i.JsonString));
+            });
+
+            return collection.ConvertToDataObject();
+        }
+        catch (Exception)
+        {
+            // ignored
+        }
+        return new JObject();
+    }
+
+    async Task OnChange(object value)
+    {
+        selectedSampleTitle = value is IEnumerable<object> ? string.Join(", ", (IEnumerable<object>)value) : value.ToString();
+        await SetSelectedSample();
+    }
+
+    public void TryIt()
+    {
+        if (selectedSample != null)
+        {
+            NavigationManager.NavigateTo($"/multipleInputEditor/{HttpUtility.UrlEncode(selectedSample.Title)}");
+        }
+    }
+}

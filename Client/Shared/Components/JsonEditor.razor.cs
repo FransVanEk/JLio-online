@@ -1,7 +1,7 @@
-﻿using BlazorMonaco;
-using Microsoft.AspNetCore.Components;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using BlazorMonaco;
+using Microsoft.AspNetCore.Components;
 
 namespace JLioOnline.Client.Shared.Components
 {
@@ -10,8 +10,13 @@ namespace JLioOnline.Client.Shared.Components
         [Parameter]
         public string Id { get; set; } = Guid.NewGuid().ToString();
 
+        public MonacoEditor monacoEditor { get; set; }
+
         [Parameter]
-        public string  Text { get; set; }
+        public bool ReadOnly { get; set; }
+
+        [Parameter]
+        public string Text { get; set; }
 
         [Parameter]
         public EventCallback<string> TextChanged { get; set; }
@@ -31,11 +36,10 @@ namespace JLioOnline.Client.Shared.Components
                 AutomaticLayout = true,
                 AcceptSuggestionOnCommitCharacter = true,
                 LineNumbers = "on",
-                ScrollBeyondLastLine = false
+                ScrollBeyondLastLine = false,
+                ReadOnly = ReadOnly
             };
         }
-
-        public MonacoEditor monacoEditor { get; set; }
 
         protected async Task ChangeTheme(ChangeEventArgs e)
         {
@@ -43,10 +47,10 @@ namespace JLioOnline.Client.Shared.Components
             await MonacoEditorBase.SetTheme(e.Value.ToString());
         }
 
-        async Task UpdateInput()
+        private async Task UpdateInput()
         {
-                Text = await monacoEditor.GetValue();
-                await TextChanged.InvokeAsync(Text);
+            Text = await monacoEditor.GetValue();
+            await TextChanged.InvokeAsync(Text);
         }
 
         public void Update(string text)
@@ -54,6 +58,5 @@ namespace JLioOnline.Client.Shared.Components
             Text = text;
             monacoEditor.SetValue(Text);
         }
-
     }
 }

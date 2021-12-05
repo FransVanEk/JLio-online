@@ -1,0 +1,29 @@
+[
+  {
+    "description": "demo",
+    "model": {
+      "inputObjects": [
+        {
+          "jsonString": "{\r\n  \"myString\": \"demo2\",\r\n}",
+          "name": "data"
+        }
+      ],
+      "name": "Sample 1",
+      "OutputObjects": [
+        {
+          "jsonString": "{\n  \"myString\": \"demo2\"\n}",
+          "name": "data"
+        },
+        {
+          "jsonString": "{\n  \"newItem\": \"newdata\"\n}",
+          "name": "myObject"
+        }
+      ],
+      "scriptText": "[\r\n  {\r\n    \"path\": \"$.myObject.newItem\",\r\n    \"value\": \"newdata\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+    },
+    "tags": [
+      "add"
+    ],
+    "title": "Add a new object setting the value on a property"
+  }
+]

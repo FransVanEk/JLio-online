@@ -42,7 +42,10 @@ namespace JLioOnline.Client.Shared.Models
 
     public class JsonObjectViewModel
     {
+        [JsonProperty("jsonString")]
         public string JsonString { get; set; }
+
+        [JsonProperty("name")]
         public string Name { get; set; }
     }
 

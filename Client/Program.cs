@@ -17,11 +17,12 @@ namespace JLioOnline.Client
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
-
-            var baseAddress = builder.Configuration["BaseAddress"] ?? builder.HostEnvironment.BaseAddress;
-            builder.Services.AddScoped(_ => new HttpClient { BaseAddress = new Uri(baseAddress) });
+            //var baseAddress = builder.Configuration["BaseAddress"] ?? builder.HostEnvironment.BaseAddress;
+            var baseAddress = builder.HostEnvironment.BaseAddress;
+            builder.Services.AddScoped(_ => new HttpClient {BaseAddress = new Uri(baseAddress)});
             builder.Services.AddScoped<IItemsFetcher>(_ => new JsonPathItemsFetcher());
             builder.Services.AddScoped<PersistenceStore>();
+            builder.Services.AddScoped<SamplesStore>();
 
             AddDatabase(builder);
             AddRadzen(builder);
@@ -46,7 +47,7 @@ namespace JLioOnline.Client
                 dbStore.Stores.Add(new StoreSchema
                 {
                     Name = "JLioModels",
-                    PrimaryKey = new IndexSpec { Name = "id", KeyPath = "id", Auto = false },
+                    PrimaryKey = new IndexSpec {Name = "id", KeyPath = "id", Auto = false}
                 });
             });
         }
