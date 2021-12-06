@@ -1,29 +1,107 @@
 [
   {
-    "description": "demo",
+    "description": "This sample shows how a new object can be created. There is not need to start with an object for JLio. With the add command the object can be created. \n\nThe value can be anything, as long as it is a valid json notation. Even a function can be used . See samples with functions.",
     "model": {
-      "inputObjects": [
-        {
-          "jsonString": "{\r\n  \"myString\": \"demo2\",\r\n}",
-          "name": "data"
-        }
-      ],
-      "name": "Sample 1",
+      "inputObjects": [],
+      "name": "Sample-2",
       "OutputObjects": [
         {
-          "jsonString": "{\n  \"myString\": \"demo2\"\n}",
-          "name": "data"
-        },
-        {
-          "jsonString": "{\n  \"newItem\": \"newdata\"\n}",
+          "jsonString": "{\n  \"newProperty\": {\n    \"new object\": \"Added by value\"\n  }\n}",
           "name": "myObject"
         }
       ],
-      "scriptText": "[\r\n  {\r\n    \"path\": \"$.myObject.newItem\",\r\n    \"value\": \"newdata\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+      "scriptText": "[\r\n  {\r\n    \"path\": \"$.myObject.newProperty\",\r\n    \"value\": {\r\n      \"new object\": \"Added by value\"\r\n    },\r\n    \"command\": \"add\"\r\n  }\r\n]"
     },
     "tags": [
       "add"
     ],
-    "title": "Add a new object setting the value on a property"
+    "title": "Create a new object with add"
+  },
+  {
+    "description": "This sample shows how a new property is added to an existing object. \nThe value can be anything, as long as it is a valid json notation. Even a function can be used . See samples with functions.",
+    "model": {
+      "inputObjects": [
+        {
+          "jsonString": "{\r\n    \"initial\": \"value\"\r\n}",
+          "name": "sample"
+        }
+      ],
+      "name": "Sample-3",
+      "OutputObjects": [
+        {
+          "jsonString": "{\n  \"initial\": \"value\",\n  \"newProperty\": {\n    \"new object\": \"Added by value\"\n  }\n}",
+          "name": "sample"
+        }
+      ],
+      "scriptText": "[\r\n  {\r\n    \"path\": \"$.sample.newProperty\",\r\n    \"value\": {\r\n      \"new object\": \"Added by value\"\r\n    },\r\n    \"command\": \"add\"\r\n  }\r\n]"
+    },
+    "tags": [
+      "add"
+    ],
+    "title": "Add a property to an existing object. (value: object)"
+  },
+  {
+    "description": "This sample shows how a new object can be created. There is not need to start with an object for JLio. With the add command the object can be created. In this case the value of tha add command didn't hold the entire object , but it uses the path notation to define the structure. \nIf an path element doesn't exist the path will be created. All path elements exect the last element will be objects, so they can contain the property for the child elements. The last property will be given the actual value in the add command\n\nThe value can be anything, as long as it is a valid json notation. Even a function can be used . See samples with functions.",
+    "model": {
+      "inputObjects": [],
+      "name": "Sample-3",
+      "OutputObjects": [
+        {
+          "jsonString": "{\n  \"newProperty\": 2\n}",
+          "name": "myObject"
+        }
+      ],
+      "scriptText": "[\r\n  {\r\n    \"path\": \"$.myObject.newProperty\",\r\n    \"value\": 2,\r\n    \"command\": \"add\"\r\n  }\r\n]"
+    },
+    "tags": [
+      "add"
+    ],
+    "title": "Create a new object using the Json-path notation"
+  },
+  {
+    "description": "This sample shows how a property is set to new value\nThe value can be anything, as long as it is a valid json notation. Even a function can be used . \nSee samples with functions.",
+    "model": {
+      "inputObjects": [
+        {
+          "jsonString": "{\r\n  \"myProperty\": 2\r\n}",
+          "name": "sample"
+        }
+      ],
+      "name": "Sample-4",
+      "OutputObjects": [
+        {
+          "jsonString": "{\n  \"myProperty\": \"new value\"\n}",
+          "name": "sample"
+        }
+      ],
+      "scriptText": "[\r\n  {\r\n    \"path\": \"$.sample.myProperty\",\r\n    \"value\": \"new value\",\r\n    \"command\": \"set\"\r\n  }\r\n]"
+    },
+    "tags": [
+      "set"
+    ],
+    "title": "Set property value on existing object"
+  },
+  {
+    "description": "This sample shows how multiple property is set to new value using the .. notation of Json-path.\nThe value can be anything, as long as it is a valid json notation. In this case a function is used.\n",
+    "model": {
+      "inputObjects": [
+        {
+          "jsonString": "{\r\n    \"myobject\": {\r\n        \"myProperty\": \"A\"\r\n    },\r\n     \"myobject2\": {\r\n        \"myProperty\": \"B\"\r\n    }\r\n}",
+          "name": "Sample"
+        }
+      ],
+      "name": "Sample-5",
+      "OutputObjects": [
+        {
+          "jsonString": "{\n  \"myobject\": {\n    \"myProperty\": \"086b0672-9a1a-45dc-bc19-2a46e00fc74c\"\n  },\n  \"myobject2\": {\n    \"myProperty\": \"1ff73f04-db53-4cf5-99f8-dfed38357413\"\n  }\n}",
+          "name": "Sample"
+        }
+      ],
+      "scriptText": "[\r\n  {\r\n    \"path\": \"$..myProperty\",\r\n    \"value\": \"=newGuid()\",\r\n    \"command\": \"set\"\r\n  }\r\n]"
+    },
+    "tags": [
+      "set"
+    ],
+    "title": "Set multiple properties with one set command (value:function)"
   }
 ]
