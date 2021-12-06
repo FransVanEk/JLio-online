@@ -58,7 +58,7 @@
                 <div class="col-12">
                     @if (selectedSample != null)
                     {
-                        <RadzenButton ButtonType="ButtonType.Button" Click=@(args => TryIt()) style="width: 100%; margin-bottom: 3px;" Text="Try it" />
+                        <RadzenButton ButtonType="ButtonType.Button" Click=@(args => TryIt()) Icon="spellcheck" style="width: 100%; margin-bottom: 3px;" Text="Try it out in the editor" />
                     }
                 </div>
                 <div class="col-12">
@@ -99,6 +99,7 @@
         filteredSamples = GetFilteredSamples();
         selectedSampleTitle = filteredSamples.FirstOrDefault()?.Title;
         await SetSelectedSample();
+        await UpdateView();
     }
 
     private IEnumerable<Sample> GetFilteredSamples()
