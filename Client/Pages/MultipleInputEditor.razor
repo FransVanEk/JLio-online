@@ -327,9 +327,16 @@
         sample.Description = sampleDescription;
         sample.Model = model;
         sample.Model.Name = $"Sample-{samplesStore.Samples.Count + 1}";
-        sample.Tags= ParseScript(ExecutionContext.CreateDefault()).Select(l => l.CommandName).Distinct().ToList();
+        sample.Tags= ExtractTags();
         samplesStore.Samples.Add(sample);
 
+    }
+
+    private List<string> ExtractTags()
+    {
+        var script = ParseScript(ExecutionContext.CreateDefault());
+        var tags = script.Select(l => l.CommandName).Distinct().ToList();
+        return tags;
     }
 
     void ResetInputSelection()
@@ -560,7 +567,9 @@
         }
         else
         {
-            model = sample.Model;
+            model = JsonConvert.DeserializeObject<MultilineEditorViewModel>(JsonConvert.SerializeObject(sample.Model)); //Remove reference
+            sampleTitle = sample.Title;
+            sampleDescription = sample.Description;
             scriptEditor.Update(model.ScriptText);
         }
     }
