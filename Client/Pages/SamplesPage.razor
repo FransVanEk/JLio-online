@@ -17,8 +17,8 @@
     </div>
 }
 <div class="row">
-    <div class=" col-3">
-        Filter
+    <div class=" col-3" style="margin-bottom: 20px;">
+        Filter:
     </div>
     <div class=" col-9">
 
@@ -28,8 +28,7 @@
     <div class=" col-3">
 
         <div class="row">
-            <div class=" col-12">
-                <b>Commands</b>
+            <div class=" col-12" style="margin-bottom: 20px;">
                 <RadzenSelectBar @bind-Value=@selectedTags TValue="IEnumerable<string>" Multiple="true" Data="@tags" Change=@(args => OnFilterChange()) />
             </div>
         </div>
@@ -44,7 +43,7 @@
         <div class=" col-9">
             <div class="row">
                 <div class="col-12">
-                    <h3>@selectedSample.Title</h3>
+                    <h3>@selectedSample.Model.Name - @selectedSample.Title</h3>
                 </div>
                 <div class="col-12" style="max-width: 600px;">
                     @((MarkupString) @selectedSample.Description.Replace(Environment.NewLine, "<br />"))
@@ -95,11 +94,16 @@
     protected override async Task OnInitializedAsync()
     {
         await samplesstore.GetSamples();
-        tags = samplesstore?.Samples?.Where(s => s.Tags != null).SelectMany(s => s.Tags).Distinct().OrderBy(t => t).ToList();
+        tags = GetTags();
         filteredSamples = GetFilteredSamples();
         selectedSampleTitle = filteredSamples.FirstOrDefault()?.Title;
         await SetSelectedSample();
         await UpdateView();
+    }
+
+    private List<string> GetTags()
+    {
+        return samplesstore?.Samples?.Where(s => s.Tags != null).SelectMany(s => s.Tags).Distinct().OrderBy(t => t).ToList();
     }
 
     private IEnumerable<Sample> GetFilteredSamples()

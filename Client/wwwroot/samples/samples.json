@@ -3,7 +3,7 @@
     "description": "This sample shows how a new object can be created. There is not need to start with an object for JLio. With the add command the object can be created. \n\nThe value can be anything, as long as it is a valid json notation. Even a function can be used . See samples with functions.",
     "model": {
       "inputObjects": [],
-      "name": "Sample-2",
+      "name": "Sample-1",
       "OutputObjects": [
         {
           "jsonString": "{\n  \"newProperty\": {\n    \"new object\": \"Added by value\"\n  }\n}",
@@ -26,7 +26,7 @@
           "name": "sample"
         }
       ],
-      "name": "Sample-3",
+      "name": "Sample-2",
       "OutputObjects": [
         {
           "jsonString": "{\n  \"initial\": \"value\",\n  \"newProperty\": {\n    \"new object\": \"Added by value\"\n  }\n}",
@@ -56,7 +56,7 @@
     "tags": [
       "add"
     ],
-    "title": "Create a new object using the Json-path notation"
+    "title": "Create a new object using the JSON-path notation"
   },
   {
     "description": "This sample shows how a property is set to new value\nThe value can be anything, as long as it is a valid json notation. Even a function can be used . \nSee samples with functions.",
@@ -82,7 +82,7 @@
     "title": "Set property value on existing object"
   },
   {
-    "description": "This sample shows how multiple property is set to new value using the .. notation of Json-path.\nThe value can be anything, as long as it is a valid json notation. In this case a function is used.\n",
+    "description": "This sample shows how multiple properties are set to new value using the .. notation of Json-path.\nThe value can be anything, as long as it is a valid json notation. In this case a function is used.\n",
     "model": {
       "inputObjects": [
         {
@@ -103,5 +103,74 @@
       "set"
     ],
     "title": "Set multiple properties with one set command (value:function)"
+  },
+  {
+    "description": "This sample shows how to add a property to all items in an existing array. \nAll array items get the new property with the JSON-path notation [*]. ",
+    "model": {
+      "inputObjects": [
+        {
+          "jsonString": "{\r\n    \"myArray\": [\r\n        {\r\n            \"myItem\": 1\r\n        },\r\n        {\r\n            \"myItem\": 2\r\n        },\r\n        {\r\n            \"myItem\": 3\r\n        }\r\n    ]\r\n}",
+          "name": "sample"
+        }
+      ],
+      "name": "Sample-6",
+      "OutputObjects": [
+        {
+          "jsonString": "{\n  \"myArray\": [\n    {\n      \"myItem\": 1,\n      \"newProperty\": \"new\"\n    },\n    {\n      \"myItem\": 2,\n      \"newProperty\": \"new\"\n    },\n    {\n      \"myItem\": 3,\n      \"newProperty\": \"new\"\n    }\n  ]\n}",
+          "name": "sample"
+        }
+      ],
+      "scriptText": "[\r\n  {\r\n    \"path\": \"$.sample.myArray[*].newProperty\",\r\n    \"value\": \"new\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+    },
+    "tags": [
+      "add"
+    ],
+    "title": "Add a property to items in an array"
+  },
+  {
+    "description": "This sample shows how to set a property to an item in an existing array. Not all array items get the new property due to the JSON-path notation [?(@.myItem==2)].",
+    "model": {
+      "inputObjects": [
+        {
+          "jsonString": "{\r\n    \"myArray\": [\r\n        {\r\n            \"myItem\": 1\r\n        },\r\n        {\r\n            \"myItem\": 2\r\n        },\r\n        {\r\n            \"myItem\": 3\r\n        }\r\n    ]\r\n}",
+          "name": "sample"
+        }
+      ],
+      "name": "Sample-7",
+      "OutputObjects": [
+        {
+          "jsonString": "{\n  \"myArray\": [\n    {\n      \"myItem\": 1\n    },\n    {\n      \"myItem\": \"two\"\n    },\n    {\n      \"myItem\": 3\n    }\n  ]\n}",
+          "name": "sample"
+        }
+      ],
+      "scriptText": "[\r\n  {\r\n    \"path\": \"$.sample.myArray[?(@.myItem==2)].myItem\",\r\n    \"value\": \"two\",\r\n    \"command\": \"set\"\r\n  }\r\n]"
+    },
+    "tags": [
+      "set"
+    ],
+    "title": "Set a property value to an item in an array using a filter"
+  },
+  {
+    "description": "This sample shows how to add a value to an existing array. The value can be a valid JSON notation. Even a function as a string is allowed. \nThe command execution will add the value to the end of the existing array.",
+    "model": {
+      "inputObjects": [
+        {
+          "jsonString": "{\r\n    \"myArray\": [\r\n        1,\r\n        2,\r\n        3\r\n    ]\r\n}",
+          "name": "sample"
+        }
+      ],
+      "name": "Sample-8",
+      "OutputObjects": [
+        {
+          "jsonString": "{\n  \"myArray\": [\n    1,\n    2,\n    3,\n    4\n  ]\n}",
+          "name": "sample"
+        }
+      ],
+      "scriptText": "[\r\n  {\r\n    \"path\": \"$.sample.myArray\",\r\n    \"value\": 4,\r\n    \"command\": \"add\"\r\n  }\r\n]"
+    },
+    "tags": [
+      "add"
+    ],
+    "title": "Add a value to an array"
   }
 ]
