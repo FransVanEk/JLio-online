@@ -325,11 +325,11 @@
         var sample = new Sample();
         sample.Title = sampleTitle;
         sample.Description = sampleDescription;
-        sample.Model = model;
-        sample.Model.Name = $"Sample-{samplesStore.Samples.Count + 1}";
+        sample.Model = JsonConvert.DeserializeObject<MultilineEditorViewModel>(JsonConvert.SerializeObject(model));
+        if (sample.Model != null) sample.Model.Name = $"Sample-{samplesStore.Samples.Count + 1}";
         sample.Tags= ExtractTags();
         samplesStore.Samples.Add(sample);
-
+        NavigationManager.NavigateTo($"/samples");
     }
 
     private List<string> ExtractTags()
