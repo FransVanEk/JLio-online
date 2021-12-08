@@ -119,6 +119,7 @@
         {
             selectedSampleTitle = enumerable.FirstOrDefault()?.Title;
             await SetSelectedSample();
+            await UpdateView();
         }
     }
 
