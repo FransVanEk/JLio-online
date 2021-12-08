@@ -207,21 +207,16 @@
                     <RadzenTabsItem Text="create sample">
                         <div class="row">
                             <div class="col-md-3">
-                                <RadzenTextBox @bind-value="sampleTitle" Rows="12" Style="width: 100%" ReadOnly=false />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <RadzenTextArea @bind-value="sampleDescription" Rows="12" Style="width: 100%" ReadOnly=false />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-9"></div>
-                            <div class="col-md-3">
-                                @if (!string.IsNullOrWhiteSpace(sampleTitle) && !string.IsNullOrWhiteSpace(sampleDescription))
+                                @if (!string.IsNullOrWhiteSpace(sample.Title) && !string.IsNullOrWhiteSpace(sample.Description) && samplesStore.Samples.All(s => s.Title!=sample.Title))
                                 {
-                                    <RadzenButton ButtonType="ButtonType.Button" ButtonStyle="ButtonStyle.Secondary" Text="Add" Click=@(args => AddSample()) style="width: 100%; margin-bottom: 3px;"/>
+                                    <RadzenButton ButtonType="ButtonType.Button" ButtonStyle="ButtonStyle.Secondary" Text="Add" Click=@(args => AddSample()) style="width: 100%; margin-bottom: 3px;"/><br />
                                 }
+                                <RadzenTextBox @bind-value="sample.Title" Rows="12" Style="width: 100%" ReadOnly=false/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <RadzenTextArea @bind-value="sample.Description" Rows="12" Style="width: 100%" ReadOnly=false />
                             </div>
                         </div>
                     </RadzenTabsItem>
@@ -236,13 +231,11 @@
     [Parameter]
     public string SampleName { get; set; }
 
+    private Sample sample = new Sample();
+
     List<JLioDocumentModel> JLioDocuments { get; set; } = new List<JLioDocumentModel>();
 
-
-
     JsonEditor scriptEditor;
-    string sampleTitle = "sample";
-    string sampleDescription = "This sample shows";
 
     string selectedJLioDocument = null;
 
@@ -265,6 +258,8 @@
 
 
         await GetJLioDocuments();
+        await samplesStore.GetSamples();
+
         if (string.IsNullOrWhiteSpace(SampleName))
         {
             LoadJlioDocument(latest);
@@ -321,14 +316,11 @@
     async Task AddSample()
     {
         Execute();
-        await samplesStore.GetSamples();
-        var sample = new Sample();
-        sample.Title = sampleTitle;
-        sample.Description = sampleDescription;
         sample.Model = JsonConvert.DeserializeObject<MultilineEditorViewModel>(JsonConvert.SerializeObject(model));
         if (sample.Model != null) sample.Model.Name = $"Sample-{samplesStore.Samples.Count + 1}";
         sample.Tags= ExtractTags();
         samplesStore.Samples.Add(sample);
+        sample = new Sample();
         NavigationManager.NavigateTo($"/samples");
     }
 
@@ -560,17 +552,18 @@
 
     void LoadSample()
     {
-        var sample = samplesStore.Samples.FirstOrDefault(s => s.Title == HttpUtility.UrlDecode(SampleName));
-        if (sample == null)
+        var loadedsample = samplesStore.Samples.FirstOrDefault(s => s.Title == HttpUtility.UrlDecode(SampleName));
+        if (loadedsample == null)
         {
             LoadJlioDocument("");
         }
         else
         {
-            model = JsonConvert.DeserializeObject<MultilineEditorViewModel>(JsonConvert.SerializeObject(sample.Model)); //Remove reference
-            sampleTitle = sample.Title;
-            sampleDescription = sample.Description;
-            scriptEditor.Update(model.ScriptText);
+            sample = new Sample();
+            sample.Title = loadedsample.Title;
+            sample.Description = loadedsample.Description;
+            model = JsonConvert.DeserializeObject<MultilineEditorViewModel>(JsonConvert.SerializeObject(loadedsample.Model)); //to Remove reference
+            scriptEditor.Update(model?.ScriptText);
         }
     }
 

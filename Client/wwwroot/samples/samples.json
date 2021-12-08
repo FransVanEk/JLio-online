@@ -387,5 +387,183 @@
       "copy"
     ],
     "title": "Copy items out an array into an existing array as separate items."
+  },
+  {
+    "description": "The copy command will take the sources  by the toPath property and place it into a array. This means that if the source is an array, this array will be added to the designation array as one item. If the arrays should be merged use the [*] notation.\nSee sample: Copy items out an array into an existing array as single item.",
+    "model": {
+      "inputObjects": [
+        {
+          "jsonString": "{\r\n    \"myobject\": {\r\n        \"mySource\":  [3,4,5,6,7]\r\n    },\r\n    \"myArray\": [\r\n        1,\r\n        2\r\n    ]\r\n}",
+          "name": "sample"
+        }
+      ],
+      "name": "Sample-18",
+      "OutputObjects": [
+        {
+          "jsonString": "{\n  \"myobject\": {\n    \"mySource\": [\n      3,\n      4,\n      5,\n      6,\n      7\n    ]\n  },\n  \"myArray\": [\n    1,\n    2,\n    3,\n    4,\n    5\n  ]\n}",
+          "name": "sample"
+        }
+      ],
+      "scriptText": "[\n  {\n    \"fromPath\": \"$.sample.myobject.mySource[?(@ <6 )]\",\n    \"toPath\": \"$.sample.myArray\",\n    \"command\": \"copy\"\n  }\n]"
+    },
+    "tags": [
+      "copy"
+    ],
+    "title": "Copy items out an array into an existing array as separate items with a filter."
+  },
+  {
+    "description": "The move command will take the sources  by the toPath property and place it into a array. This means that if the source is an array, this array will be added to the designation array as one item. If the arrays should be merged use the [*] notation.\nSee sample: Move items out an array into an existing array as single item.",
+    "model": {
+      "inputObjects": [
+        {
+          "jsonString": "{\r\n    \"myobject\": {\r\n        \"mySource\":  [3,4,5,6,7]\r\n    },\r\n    \"myArray\": [\r\n        1,\r\n        2\r\n    ]\r\n}",
+          "name": "sample"
+        }
+      ],
+      "name": "Sample-19",
+      "OutputObjects": [
+        {
+          "jsonString": "{\n  \"myobject\": {\n    \"mySource\": [\n      6,\n      7\n    ]\n  },\n  \"myArray\": [\n    1,\n    2,\n    3,\n    4,\n    5\n  ]\n}",
+          "name": "sample"
+        }
+      ],
+      "scriptText": "[\n  {\n    \"fromPath\": \"$.sample.myobject.mySource[?(@ <6 )]\",\n    \"toPath\": \"$.sample.myArray\",\n    \"command\": \"move\"\n  }\n]"
+    },
+    "tags": [
+      "move"
+    ],
+    "title": "Move items out an array into an existing array as separate items with a filter."
+  },
+  {
+    "description": "The copy command can create a new object using the JSON-Path notation on the \"toPath\" property. But if the target doesn't exist, the target will get the value of the source. When a single item is selected, the target will not be an array but the same single item. \nTo add a copied value into an non existing array, the array needs to be created before the copy. ",
+    "model": {
+      "inputObjects": [
+        {
+          "jsonString": "{\r\n    \"myobject\": {\r\n        \"mySource\":  3\r\n    }\r\n}",
+          "name": "sample"
+        }
+      ],
+      "name": "Sample-20",
+      "OutputObjects": [
+        {
+          "jsonString": "{\n  \"myobject\": {\n    \"mySource\": 3\n  },\n  \"myArray\": [\n    3\n  ]\n}",
+          "name": "sample"
+        }
+      ],
+      "scriptText": "[\n  {\n    \"path\": \"$.sample.myArray\",\n    \"value\": [],\n    \"command\": \"add\"\n  },\n  {\n    \"fromPath\": \"$.sample.myobject.mySource\",\n    \"toPath\": \"$.sample.myArray\",\n    \"command\": \"copy\"\n  }\n]"
+    },
+    "tags": [
+      "add",
+      "copy"
+    ],
+    "title": "Copy singe value as an array when array doesn't exist"
+  },
+  {
+    "description": "The move command can create a new object using the JSON-Path notation on the \"toPath\" property. But if the target doesn't exist, the target will get the value of the source. When a single item is selected, the target will not be an array but the same single item. \nTo add a moved value into an non existing array, the array needs to be created before the move. ",
+    "model": {
+      "inputObjects": [
+        {
+          "jsonString": "{\r\n    \"myobject\": {\r\n        \"mySource\":  3\r\n    }\r\n}",
+          "name": "sample"
+        }
+      ],
+      "name": "Sample-21",
+      "OutputObjects": [
+        {
+          "jsonString": "{\n  \"myobject\": {},\n  \"myArray\": [\n    3\n  ]\n}",
+          "name": "sample"
+        }
+      ],
+      "scriptText": "[\n  {\n    \"path\": \"$.sample.myArray\",\n    \"value\": [],\n    \"command\": \"add\"\n  },\n  {\n    \"fromPath\": \"$.sample.myobject.mySource\",\n    \"toPath\": \"$.sample.myArray\",\n    \"command\": \"move\"\n  }\n]"
+    },
+    "tags": [
+      "add",
+      "move"
+    ],
+    "title": "Move singe value as an array when array doesn't exist"
+  },
+  {
+    "description": "The move command can create a new object using the JSON-Path notation on the \"toPath\" property. But if the target doesn't exist, the target will get the value of the source. When a multiple items are selected, the target will \n add the value one after the other not creating an array. \nTo add a moved values into an non existing array, the array needs to be created before the move. ",
+    "model": {
+      "inputObjects": [
+        {
+          "jsonString": "{\r\n    \"myobject\": {\r\n        \"mySource\": 1\r\n    },\r\n    \"myobject2\": {\r\n        \"mySource\": 2\r\n    }\r\n}",
+          "name": "sample"
+        }
+      ],
+      "name": "Sample-22",
+      "OutputObjects": [
+        {
+          "jsonString": "{\n  \"myobject\": {},\n  \"myobject2\": {},\n  \"myArray\": [\n    1,\n    2\n  ]\n}",
+          "name": "sample"
+        }
+      ],
+      "scriptText": "[\n  {\n    \"path\" : \"$.sample.myArray\",\n    \"value\" : [],\n    \"command\" : \"add\"\n  },\n  {\n    \"fromPath\": \"$..mySource\",\n    \"toPath\": \"$.sample.myArray\",\n    \"command\": \"move\"\n  }\n]"
+    },
+    "tags": [
+      "add",
+      "move"
+    ],
+    "title": "Move multiple values as an array when array doesn't exist"
+  },
+  {
+    "description": "The copy command can create a new object using the JSON-Path notation on the \"toPath\" property. But if the target doesn't exist, the target will get the value of the source. When a multiple items are selected, the target will \n add the value one after the other not creating an array. \nTo add a copied values into an non existing array, the array needs to be created before the move. ",
+    "model": {
+      "inputObjects": [
+        {
+          "jsonString": "{\r\n    \"myobject\": {\r\n        \"mySource\": 1\r\n    },\r\n    \"myobject2\": {\r\n        \"mySource\": 2\r\n    }\r\n}",
+          "name": "sample"
+        }
+      ],
+      "name": "Sample-23",
+      "OutputObjects": [
+        {
+          "jsonString": "{\n  \"myobject\": {\n    \"mySource\": 1\n  },\n  \"myobject2\": {\n    \"mySource\": 2\n  },\n  \"myArray\": [\n    1,\n    2\n  ]\n}",
+          "name": "sample"
+        }
+      ],
+      "scriptText": "[\n  {\n    \"path\" : \"$.sample.myArray\",\n    \"value\" : [],\n    \"command\" : \"add\"\n  },\n  {\n    \"fromPath\": \"$..mySource\",\n    \"toPath\": \"$.sample.myArray\",\n    \"command\": \"copy\"\n  }\n]"
+    },
+    "tags": [
+      "add",
+      "copy"
+    ],
+    "title": "Copy multiple values as an array when array doesn't exist"
+  },
+  {
+    "description": "samples of the datetime function",
+    "model": {
+      "inputObjects": [],
+      "name": "Sample-24",
+      "OutputObjects": [
+        {
+          "jsonString": "{\n  \"date\": \"2021-12-08T19:25:25.323Z\",\n  \"dateUTC\": \"2021-12-08T18:25:25.325Z\",\n  \"dateStartOfDay\": \"2021-12-08T00:00:00Z\",\n  \"dateStartOfDayUTC\": \"2021-12-08T00:00:00Z\",\n  \"dateFormat\": \"08-12-21 19:25\",\n  \"dateUTCFormat\": \"08-12-21 18:25\",\n  \"dateStartOfDayFormat\": \"08-12-21 00:00\",\n  \"dateStartOfDayUTCFormat\": \"08-12-21 00:00\"\n}",
+          "name": "sample"
+        }
+      ],
+      "scriptText": "[\r\n  {\r\n    \"path\": \"$.sample.date\",\r\n    \"value\": \"=datetime()\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.sample.dateUTC\",\r\n    \"value\": \"=datetime(UTC)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.sample.dateStartOfDay\",\r\n    \"value\": \"=datetime(startOfDay)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.sample.dateStartOfDayUTC\",\r\n    \"value\": \"=datetime(startOfDayUTC)\",\r\n    \"command\": \"add\"\r\n  },\r\n    {\r\n    \"path\": \"$.sample.dateFormat\",\r\n    \"value\": \"=datetime('dd-MM-yy HH:mm')\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.sample.dateUTCFormat\",\r\n    \"value\": \"=datetime(UTC,'dd-MM-yy HH:mm')\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.sample.dateStartOfDayFormat\",\r\n    \"value\": \"=datetime(startOfDay,'dd-MM-yy HH:mm')\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.sample.dateStartOfDayUTCFormat\",\r\n    \"value\": \"=datetime(startOfDayUTC,'dd-MM-yy HH:mm')\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+    },
+    "tags": [
+      "add"
+    ],
+    "title": "Function DateTime"
+  },
+  {
+    "description": "sample to create a guid and add it to a new object",
+    "model": {
+      "inputObjects": [],
+      "name": "Sample-25",
+      "OutputObjects": [
+        {
+          "jsonString": "{\n  \"myGuid\": \"a1b16cc8-3cb8-4877-8592-1725efbd71e4\"\n}",
+          "name": "sample"
+        }
+      ],
+      "scriptText": "[\n  {\n    \"path\": \"$.sample.myGuid\",\n    \"value\": \"=newGuid()\",\n    \"command\": \"add\"\n  }\n]"
+    },
+    "tags": [
+      "add"
+    ],
+    "title": "function newGuid()"
   }
 ]
