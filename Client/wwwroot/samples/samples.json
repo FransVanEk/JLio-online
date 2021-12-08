@@ -56,7 +56,7 @@
     "tags": [
       "add"
     ],
-    "title": "Create a new object using the Json-path notation"
+    "title": "Create a new object using the JSON-path notation"
   },
   {
     "description": "This sample shows how a property is set to new value\nThe value can be anything, as long as it is a valid json notation. Even a function can be used . \nSee samples with functions.",
