@@ -76,7 +76,7 @@
                         <div class="col-md-12" style="height: auto; max-height: 300px;">
                             @if (model.HasCurrentInput)
                             {
-                            <JsonEditor @bind-Text="@model.CurrentInput.JsonString" />
+                            <JsonEditor @bind-Text="@model.CurrentInput.JsonString" @ref="inputEditor" />
                             }
                         </div>
                     </div>
@@ -236,6 +236,7 @@
     List<JLioDocumentModel> JLioDocuments { get; set; } = new List<JLioDocumentModel>();
 
     JsonEditor scriptEditor;
+    JsonEditor inputEditor;
 
     string selectedJLioDocument = null;
 
@@ -297,6 +298,7 @@
     void SetInput(JsonObjectViewModel item)
     {
         model.CurrentInput = item;
+        inputEditor.Update(model.CurrentInput.JsonString);
     }
 
     void SetOutput(JsonObjectViewModel item)
@@ -345,6 +347,7 @@
         var newItem = new JsonObjectViewModel { Name = "newObject", JsonString = "{}" };
         model.InputObjects.Add(newItem);
         model.CurrentInput = newItem;
+        SetInput(newItem);
     }
 
     JToken Execute()
