@@ -1,4 +1,4 @@
-﻿@page "/samples"
+@page "/samples"
 @using Microsoft.AspNetCore.Components.WebAssembly.Hosting
 @using System.Web
 
@@ -9,69 +9,75 @@
 
 @if (isInitialized)
 {
-    @if (HostEnvironment.Environment == "Development")
-    {
-        <div class="row">
-            <div class=" col-12">
-                <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download()) style="width: 100%; margin-bottom: 3px;" />
+@if (HostEnvironment.Environment == "Development")
+{
+    <div class="row">
+        <div class=" col-12">
+            <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download()) style="width: 100%; margin-bottom: 3px;"/>
+        </div>
+    </div>
+}
+    <div class="row">
+        <div class=" col-3" style="margin-bottom: 20px;">
+            Filter:
+        </div>
+        <div class=" col-9">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class=" col-3">
+
+            <div class="row">
+                <div class=" col-12" style="margin-bottom: 20px;">
+                    <RadzenSelectBar @bind-Value=@selectedTags TValue="IEnumerable<string>" Multiple="true" Data="@tags" Change=@(args => OnFilterChange())/>
+                </div>
             </div>
             <div class="row">
-            </div>
-            }
-            <div class=" col-3">
-
-                <div class="row">
-                    <div class=" col-12" style="margin-bottom: 20px;">
-                        <RadzenListBox @bind-Value=@selectedTag Data=@tags TValue="string" Change=@(args => OnFilterChange()) />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class=" col-12">
-                        <RadzenListBox AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" @bind-Value=@selectedSampleTitle Data=@filteredSamples Change=@(OnChange) TextProperty="Title" ValueProperty="Title" Style="height: 350px" />
-                    </div>
+                <div class=" col-12">
+                    <RadzenListBox AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" @bind-Value=@selectedSampleTitle Data=@filteredSamples Change=@(OnChange) TextProperty="Title" ValueProperty="Title" Style="height: 350px"/>
                 </div>
             </div>
-            @if (selectedSample != null)
-            {
-                <div class=" col-9">
-                    <div class="row">
-                        <div class="col-12">
-                            <h3>@selectedSample.Model.Name - @selectedSample.Title</h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12" style="max-width: 600px;">
-                            @((MarkupString) @selectedSample.Description.Replace(Environment.NewLine, "<br />"))
-                        </div>
-                        <div class="col-12">
-                            <h4>Script</h4>
-                            <br />
-                            <JsonEditor ReadOnly="true" @ref="scriptEditor" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            @if (selectedSample != null)
-                            {
-                                <RadzenButton ButtonType="ButtonType.Button" Click=@(args => TryIt()) Icon="spellcheck" style="width: 100%; margin-bottom: 3px;" Text="Try it out in the editor" />
-                            }
-                        </div>
-                        <div class="col-12">
-                            <h4>Changes</h4>
-                            <br />
-                            <JsonDiff @bind-OriginalJson=@before @bind-ModifiedJson=@after @ref="jsonDiff"></JsonDiff>
-                        </div>
-                    </div>
-                </div>
-            }
         </div>
-    }
+        @if (selectedSample != null)
+        {
+            <div class=" col-9">
+                <div class="row">
+                    <div class="col-12">
+                        <h3>@selectedSample.Model.Name - @selectedSample.Title</h3>
+                    </div>
+                    <div class="col-12" style="max-width: 600px;">
+                        @((MarkupString) @selectedSample.Description.Replace(Environment.NewLine, "<br />"))
+                    </div>
+                    <div class="col-12">
+                        <h4>Script</h4>
+                        <br/>
+                        <JsonEditor ReadOnly="true" @ref="scriptEditor"/>
+                    </div>
+
+                    <div class="col-12">
+                        @if (selectedSample != null)
+                        {
+                            <RadzenButton ButtonType="ButtonType.Button" Click=@(args => TryIt()) Icon="spellcheck" style="width: 100%; margin-bottom: 3px;" Text="Try it out in the editor"/>
+                        }
+                    </div>
+                    <div class="col-12">
+                        <h4>Changes</h4>
+                        <br/>
+                        <JsonDiff @bind-OriginalJson=@before @bind-ModifiedJson=@after @ref="jsonDiff"></JsonDiff>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 }
+
+
 
 @code {
 
     IEnumerable<string> tags { get; set; } = new List<string>();
-    string selectedTag { get; set; } = string.Empty;
+    IEnumerable<string> selectedTags { get; set; } = new List<string>();
     string selectedSampleTitle { get; set; } = string.Empty;
     JsonEditor scriptEditor;
     JsonDiff jsonDiff;
@@ -105,11 +111,7 @@
 
     private IEnumerable<Sample> GetFilteredSamples()
     {
-        if (string.IsNullOrWhiteSpace(selectedTag))
-        {
-            return samplesstore.Samples;
-        }
-        return samplesstore.Samples.Where(s => s.Tags.Contains(selectedTag)).ToList();
+        return samplesstore.Samples.Where(s => selectedTags.All(t => s.Tags != null && s.Tags.Contains(t))).ToList();
     }
 
     async Task OnFilterChange()
