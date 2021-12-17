@@ -3,6 +3,7 @@
 
 @using Microsoft.AspNetCore.Components.WebAssembly.Hosting
 @using System.Web
+@using System.Runtime.CompilerServices
 
 @inject HttpClient Http
 @inject DialogService dialogService
@@ -30,13 +31,17 @@
                             AllowFiltering="false"
                             TextProperty="Name"
                             ValueProperty="Id"
-                            Data=@(JLioDocuments.Where(i=> i.Name != latest).Select(c => new {c.Id, Name = c.Id}).Distinct()) />
+                            Data=@(JLioDocuments.Where(i=> i.Name != latest).Select(c => new {c.Id, Name = c.Id}).Distinct()) @ref="documentSelection" />
             }
         </div>
         <div class="col-md-2">
             @if (JLioDocuments != null && JLioDocuments.Any())
             {
-            <RadzenButton ButtonType="ButtonType.Button" Text="Load" Click=@(args => LoadJlioDocument()) style="width:100%;margin-bottom:3px;" />
+                <RadzenSplitButton Text="Load" Click=@(args => HandleJlioDocument(args))   style="width:100%;margin-bottom:3px;"  >
+                    <ChildContent>
+                        <RadzenSplitButtonItem Text="Delete" Value="delete" />
+                    </ChildContent>
+                </RadzenSplitButton>
             }
         </div>
     </div>
@@ -234,7 +239,7 @@
     private Sample sample = new Sample();
 
     List<JLioDocumentModel> JLioDocuments { get; set; } = new List<JLioDocumentModel>();
-
+    RadzenDropDown<string> documentSelection;
     JsonEditor scriptEditor;
     JsonEditor inputEditor;
 
@@ -288,6 +293,7 @@
     async Task GetJLioDocuments()
     {
         JLioDocuments = await documents.GetModels();
+
     }
 
     void ToggleExpand(CommandExecutionViewModel item)
@@ -464,6 +470,16 @@
                 }
                 break;
 
+            case "Put":
+                var putCommand = await dialogService.OpenAsync<PutWizard>($"Put command wizard",
+                    new Dictionary<string, object>() { { "DataContext", dataContext } },
+                    new DialogOptions() { Width = "900px", Height = "630px" });
+                if (putCommand is ICommand p)
+                {
+                    AddToScript(p);
+                }
+                break;
+
             case "Remove":
                 var removeCommand = await dialogService.OpenAsync<RemoveWizard>($"Remove command wizard",
                     new Dictionary<string, object>() { { "DataContext", dataContext } },
@@ -530,9 +546,19 @@
         await GetJLioDocuments();
     }
 
-    void LoadJlioDocument()
+    async void HandleJlioDocument(RadzenSplitButtonItem item)
     {
-        LoadJlioDocument(selectedJLioDocument);
+        if (item != null && item.Value == "delete")
+        {
+            if (await documents.Exists(selectedJLioDocument))
+            {
+                await documents.Delete(selectedJLioDocument);
+                selectedJLioDocument = string.Empty;
+                documentSelection.Reset();
+                await GetJLioDocuments();
+            }
+        }
+
     }
 
 
@@ -546,7 +572,7 @@
             {
                 model = new MultilineEditorViewModel();
             }
-            model.Commands = new List<string>() { "Add", "Copy", "Move", "Remove", "Set" };
+            model.Commands = new List<string>() { "Add", "Copy", "Move","Put", "Remove", "Set" };
             scriptEditor.Update(model.ScriptText);
         }
 
