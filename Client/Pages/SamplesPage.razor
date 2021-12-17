@@ -30,7 +30,7 @@
 
             <div class="row">
                 <div class=" col-12" style="margin-bottom: 20px;">
-                    <RadzenSelectBar @bind-Value=@selectedTags TValue="IEnumerable<string>" Multiple="true" Data="@tags" Change=@(args => OnFilterChange())/>
+                    <RadzenSelectBar @bind-Value=@selectedTag TValue="string" Multiple="false"  Data="@tags" Change=@(args => OnFilterChange())/>
                 </div>
             </div>
             <div class="row">
@@ -77,7 +77,7 @@
 @code {
 
     IEnumerable<string> tags { get; set; } = new List<string>();
-    IEnumerable<string> selectedTags { get; set; } = new List<string>();
+    string selectedTag { get; set; } = string.Empty;
     string selectedSampleTitle { get; set; } = string.Empty;
     JsonEditor scriptEditor;
     JsonDiff jsonDiff;
@@ -111,7 +111,11 @@
 
     private IEnumerable<Sample> GetFilteredSamples()
     {
-        return samplesstore.Samples.Where(s => selectedTags.All(t => s.Tags != null && s.Tags.Contains(t))).ToList();
+        if (string.IsNullOrWhiteSpace(selectedTag))
+        {
+            return samplesstore.Samples;
+        }
+        return samplesstore.Samples.Where(s => s.Tags.Contains(selectedTag)).ToList();
     }
 
     async Task OnFilterChange()
