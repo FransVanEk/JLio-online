@@ -22,7 +22,8 @@
 
                 <div class="row">
                     <div class=" col-12" style="margin-bottom: 20px;">
-                        <RadzenListBox @bind-Value=@selectedTag Data=@tags TValue="string" Change=@(args => OnFilterChange()) />
+                        <div>Select one or more tags to filter the samples. only samples will all selected tags will be shown.</div>
+                        <RadzenListBox @bind-Value=@selectedTag Data=@tags TValue="string" Change=@(args => OnFilterChange())/>
                     </div>
                 </div>
                 <div class="row">
