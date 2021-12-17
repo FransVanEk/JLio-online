@@ -470,6 +470,16 @@
                 }
                 break;
 
+            case "Put":
+                var putCommand = await dialogService.OpenAsync<PutWizard>($"Put command wizard",
+                    new Dictionary<string, object>() { { "DataContext", dataContext } },
+                    new DialogOptions() { Width = "900px", Height = "630px" });
+                if (putCommand is ICommand p)
+                {
+                    AddToScript(p);
+                }
+                break;
+
             case "Remove":
                 var removeCommand = await dialogService.OpenAsync<RemoveWizard>($"Remove command wizard",
                     new Dictionary<string, object>() { { "DataContext", dataContext } },
@@ -562,7 +572,7 @@
             {
                 model = new MultilineEditorViewModel();
             }
-            model.Commands = new List<string>() { "Add", "Copy", "Move", "Remove", "Set" };
+            model.Commands = new List<string>() { "Add", "Copy", "Move","Put", "Remove", "Set" };
             scriptEditor.Update(model.ScriptText);
         }
 

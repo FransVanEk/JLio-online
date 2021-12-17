@@ -93,7 +93,16 @@
 
     private void CloseAdd()
     {
-        dialogService.Close(new Set(path, new FunctionSupportedValue(new FixedValue(JToken.Parse(value)))));
+        JToken valuetoSet = new JObject();
+        try
+        {
+            valuetoSet =  JToken.Parse(value);
+        }
+        catch (Exception)
+        {
+        // ignored
+        }
+        dialogService.Close(new Set(path, new FunctionSupportedValue(new FixedValue(valuetoSet))));
     }
 
     private JToken ParseValue(string value)
