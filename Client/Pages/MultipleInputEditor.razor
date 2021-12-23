@@ -29,9 +29,7 @@
             {
             <RadzenDropDown AllowClear="false" TValue="string" Style="width: 100%" @bind-value="@selectedJLioDocument"
                             AllowFiltering="false"
-                            TextProperty="Name"
-                            ValueProperty="Id"
-                            Data=@(JLioDocuments.Where(i=> i.Name != latest).Select(c => new {c.Id, Name = c.Id}).Distinct()) @ref="documentSelection" />
+                            Data=@(DocumentNames) @ref="documentSelection" />
             }
         </div>
         <div class="col-md-2">
@@ -242,6 +240,7 @@
     RadzenDropDown<string> documentSelection;
     JsonEditor scriptEditor;
     JsonEditor inputEditor;
+    List<string> DocumentNames => JLioDocuments?.Where(i => i.Name != latest).Select(c => c.Id ).Distinct().ToList();
 
     string selectedJLioDocument = null;
 
@@ -285,9 +284,9 @@
     }
 
 
-    void LocationChanged(object sender, LocationChangedEventArgs e)
+    async void LocationChanged(object sender, LocationChangedEventArgs e)
     {
-        SaveJlioDocument(latest).Wait();
+        await SaveJlioDocument(latest);
     }
 
     async Task GetJLioDocuments()
@@ -553,12 +552,12 @@
             if (await documents.Exists(selectedJLioDocument))
             {
                 await documents.Delete(selectedJLioDocument);
-                selectedJLioDocument = string.Empty;
-                documentSelection.Reset();
                 await GetJLioDocuments();
+                selectedJLioDocument = DocumentNames.FirstOrDefault();
+                documentSelection.Reset();
             }
         }
-
+        LoadJlioDocument(selectedJLioDocument);
     }
 
 
@@ -605,6 +604,9 @@
         model.ScriptText = JLioConvert.Serialize(script);
         scriptEditor.Update(model.ScriptText);
     }
+
+
+
 }
 
 
