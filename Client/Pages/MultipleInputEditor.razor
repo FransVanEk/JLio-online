@@ -571,7 +571,7 @@
             {
                 model = new MultilineEditorViewModel();
             }
-            model.Commands = new List<string>() { "Add", "Copy", "Move","Put", "Remove", "Set" };
+            SetCommands();
             scriptEditor.Update(model.ScriptText);
         }
 
@@ -593,9 +593,16 @@
             model = JsonConvert.DeserializeObject<MultilineEditorViewModel>(JsonConvert.SerializeObject(loadedsample.Model)); //to Remove reference
             scriptEditor.Update(model?.ScriptText);
         }
+        SetCommands();
     }
 
-
+    private void SetCommands()
+    {
+        if (model != null)
+        {
+            model.Commands = new List<string>() {"Add", "Copy", "Move", "Put", "Remove", "Set"};
+        }
+    }
 
     private void AddToScript(ICommand jsonCommand)
     {
