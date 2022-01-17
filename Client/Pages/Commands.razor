@@ -1,0 +1,323 @@
+﻿@page "/commands"
+<h3>Commands</h3>
+
+<h2>&nbsp;</h2>
+<h2><a id="add"></a>Add</h2>
+<p>Adds an element to another element. If the destination doesn't exist the element will be added. If it exists the value will not be altered.</p>
+<p>&nbsp;</p>
+<p>Sample&nbsp;</p>
+<div>
+    <div>
+        <hr />
+        <table style="width: 100%; border-collapse: collapse; border-style: none; background-color: #bbbbbb;" border="1">
+            <tbody>
+                <tr>
+                    <td style="width: 100%;">
+                        <div><br />&nbsp;{</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;"path": "$.new",</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;"value":&nbsp;{},</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;"command":&nbsp;"add"</div>
+                        <div>&nbsp;&nbsp;}<br /><br /></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>&nbsp;</div>
+    <div><hr /></div>
+</div>
+<p>description</p>
+<table style="height: 72px; width: 100%; border-collapse: collapse; border-style: ridge; float: left;" border="1">
+    <tbody>
+        <tr style="height: 18px;">
+            <td style="width: 18.3239%; height: 18px;">command</td>
+            <td style="width: 81.6761%; height: 18px;">add</td>
+        </tr>
+        <tr style="height: 18px;">
+            <td style="width: 18.3239%; height: 18px;">path</td>
+            <td style="width: 81.6761%; height: 18px;">Jsonpath notation for the location where to add the element.</td>
+        </tr>
+        <tr style="height: 18px;">
+            <td style="width: 18.3239%; height: 18px;">value</td>
+            <td style="width: 81.6761%; height: 18px;">a valid JSON notation or a function wrapped as string.</td>
+        </tr>
+    </tbody>
+</table>
+<p><br /><br /><br /><br /><br /><br /></p>
+<h2><a id="put"></a>Put</h2>
+<p>Adds or sets an element into another element. If the destination doesn't exist the element will be added. If the destination element exists the target value will be replaced by the new value</p>
+<p>&nbsp;</p>
+<p>Sample&nbsp;</p>
+<div>
+    <div>
+        <hr />
+        <table style="width: 100%; border-collapse: collapse; border-style: none; background-color: #bbbbbb;" border="1">
+            <tbody>
+                <tr>
+                    <td style="width: 100%;">
+                        <div><br />&nbsp;{</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;"path": "$.new",</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;"value":&nbsp;{},</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;"command": "put"</div>
+                        <div>&nbsp;&nbsp;}<br /><br /></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>&nbsp;</div>
+    <div><hr /></div>
+</div>
+<p>description</p>
+<table style="height: 72px; width: 100%; border-collapse: collapse; border-style: ridge; float: left;" border="1">
+    <tbody>
+        <tr style="height: 18px;">
+            <td style="width: 18.3239%; height: 18px;">command</td>
+            <td style="width: 81.6761%; height: 18px;">put</td>
+        </tr>
+        <tr style="height: 18px;">
+            <td style="width: 18.3239%; height: 18px;">path</td>
+            <td style="width: 81.6761%; height: 18px;">Jsonpath notation for the location where to add the element.</td>
+        </tr>
+        <tr style="height: 18px;">
+            <td style="width: 18.3239%; height: 18px;">value</td>
+            <td style="width: 81.6761%; height: 18px;">a valid JSON notation or a function wrapped as string.</td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<p><br /><br /><br /><br /><br /><br /></p>
+<h2><a id="put"></a>Set</h2>
+<p>Sets the value of an existing element. If the destination doesn't exist the element will not be added. If the destination element exist, the target value will be replaced by the new value</p>
+<p>&nbsp;</p>
+<p>Sample&nbsp;</p>
+<div>
+    <div>
+        <hr />
+        <table style="width: 100%; border-collapse: collapse; border-style: none; background-color: #bbbbbb;" border="1">
+            <tbody>
+                <tr>
+                    <td style="width: 100%;">
+                        <div><br />&nbsp;{</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;"path": "$.new",</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;"value":&nbsp;{},</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;"command": "set"</div>
+                        <div>&nbsp;&nbsp;}<br /><br /></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>&nbsp;</div>
+    <div><hr /></div>
+</div>
+<p>description</p>
+<table style="height: 72px; width: 100%; border-collapse: collapse; border-style: ridge; float: left;" border="1">
+    <tbody>
+        <tr style="height: 18px;">
+            <td style="width: 18.3239%; height: 18px;">command</td>
+            <td style="width: 81.6761%; height: 18px;">set</td>
+        </tr>
+        <tr style="height: 18px;">
+            <td style="width: 18.3239%; height: 18px;">path</td>
+            <td style="width: 81.6761%; height: 18px;">Jsonpath notation for the location where to add the element.</td>
+        </tr>
+        <tr style="height: 18px;">
+            <td style="width: 18.3239%; height: 18px;">value</td>
+            <td style="width: 81.6761%; height: 18px;">a valid JSON notation or a function wrapped as string.</td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<p><br /><br /><br /><br /><br /><br /></p>
+<h2>&nbsp;</h2>
+<h2><a id="copy"></a>Copy</h2>
+<p>takes the elements from the path and copies the value into the destination. the original values will be kept in place. If the destination exists, the value will be replaced. Depending on the type the behavior can be different. see Details.</p>
+<p>&nbsp;</p>
+<p>Sample&nbsp;</p>
+<div>
+    <div>
+        <hr />
+        <table style="width: 100%; border-collapse: collapse; border-style: none; background-color: #bbbbbb;" border="1">
+            <tbody>
+                <tr>
+                    <td style="width: 100%;">
+                        <div>
+                            <br />
+                            <div>
+                                <div>&nbsp;&nbsp;{</div>
+                                <div>&nbsp;&nbsp;&nbsp;&nbsp;"fromPath":&nbsp;"$.source",</div>
+                                <div>&nbsp;&nbsp;&nbsp;&nbsp;"toPath":&nbsp;"$.destination",</div>
+                                <div>&nbsp;&nbsp;&nbsp;&nbsp;"command":&nbsp;"copy"</div>
+                                <div>&nbsp;&nbsp;}</div>
+                            </div>
+                        </div>
+                        <div>&nbsp;</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>&nbsp;</div>
+    <div><hr /></div>
+</div>
+<p>description</p>
+<table style="height: 72px; width: 100%; border-collapse: collapse; border-style: ridge; float: left;" border="1">
+    <tbody>
+        <tr style="height: 18px;">
+            <td style="width: 18.3239%; height: 18px;">command</td>
+            <td style="width: 81.6761%; height: 18px;">copy</td>
+        </tr>
+        <tr style="height: 18px;">
+            <td style="width: 18.3239%; height: 18px;">fromPath</td>
+            <td style="width: 81.6761%; height: 18px;">Jsonpath notation for the location where to add the element.</td>
+        </tr>
+        <tr style="height: 18px;">
+            <td style="width: 18.3239%; height: 18px;">toPath</td>
+            <td style="width: 81.6761%; height: 18px;">Jsonpath notation for the location where to add the element.</td>
+        </tr>
+    </tbody>
+</table>
+<h3><br /><br /><br /><br /><br />Details</h3>
+<table style="border-collapse: collapse; width: 100%;" border="1">
+    <tbody>
+        <tr>
+            <td style="width: 17.4672%;"><strong>from type</strong></td>
+            <td style="width: 16.5938%;"><strong>to type</strong></td>
+            <td style="width: 65.9389%;">&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="width: 17.4672%;">property</td>
+            <td style="width: 16.5938%;">property</td>
+            <td style="width: 65.9389%;">to property will get the value of the source</td>
+        </tr>
+        <tr>
+            <td style="width: 17.4672%;">property</td>
+            <td style="width: 16.5938%;">object</td>
+            <td style="width: 65.9389%;">the object will become the source value</td>
+        </tr>
+        <tr>
+            <td style="width: 17.4672%;">property</td>
+            <td style="width: 16.5938%;">array</td>
+            <td style="width: 65.9389%;">will add the value to the collection in the array</td>
+        </tr>
+        <tr>
+            <td style="width: 17.4672%;">array</td>
+            <td style="width: 16.5938%;">array</td>
+            <td style="width: 65.9389%;">value of the source array will become 1 item in the target collection</td>
+        </tr>
+        <tr>
+            <td style="width: 17.4672%;">array items</td>
+            <td style="width: 16.5938%;">array</td>
+            <td style="width: 65.9389%;">items will be added to the collection</td>
+        </tr>
+        <tr>
+            <td style="width: 17.4672%;">multiple select</td>
+            <td style="width: 16.5938%;">property</td>
+            <td style="width: 65.9389%;">the last item will become the value of the property</td>
+        </tr>
+        <tr>
+            <td style="width: 17.4672%;">multiple select</td>
+            <td style="width: 16.5938%;">multiple select</td>
+            <td style="width: 65.9389%;">the last item will become the value of all the target items. if both paths are the same for the multiple select the value will be handled within the selected item alone.</td>
+        </tr>
+    </tbody>
+</table>
+<p>in all cases if the target doesn't exist, the target will be created</p>
+<p>&nbsp;</p>
+<p><br /><br /><br /><br /><br /><br /></p>
+<h2>&nbsp;</h2>
+<h2><a id="move"></a>Move</h2>
+<p>takes the elements from the path and copies the value into the destination. the original values will be kept in place. If the destination exists, the value will be replaced. Depending on the type the behavior can be different. see Details.</p>
+<p>Behavior is the same as copy but the source items will be deleted.</p>
+<p>Sample&nbsp;</p>
+<div>
+    <div>
+        <hr />
+        <table style="width: 100%; border-collapse: collapse; border-style: none; background-color: #bbbbbb;" border="1">
+            <tbody>
+                <tr>
+                    <td style="width: 100%;">
+                        <div>
+                            <br />
+                            <div>
+                                <div>&nbsp;&nbsp;{</div>
+                                <div>&nbsp;&nbsp;&nbsp;&nbsp;"fromPath":&nbsp;"$.source",</div>
+                                <div>&nbsp;&nbsp;&nbsp;&nbsp;"toPath":&nbsp;"$.destination",</div>
+                                <div>&nbsp;&nbsp;&nbsp;&nbsp;"command": "move"</div>
+                                <div>&nbsp;&nbsp;}</div>
+                            </div>
+                        </div>
+                        <div>&nbsp;</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>&nbsp;</div>
+    <div><hr /></div>
+</div>
+<p>Description</p>
+<table style="height: 72px; width: 100%; border-collapse: collapse; border-style: ridge; float: left;" border="1">
+    <tbody>
+        <tr style="height: 18px;">
+            <td style="width: 18.3239%; height: 18px;">command</td>
+            <td style="width: 81.6761%; height: 18px;">move</td>
+        </tr>
+        <tr style="height: 18px;">
+            <td style="width: 18.3239%; height: 18px;">fromPath</td>
+            <td style="width: 81.6761%; height: 18px;">Jsonpath notation for the location where to add the element.</td>
+        </tr>
+        <tr style="height: 18px;">
+            <td style="width: 18.3239%; height: 18px;">toPath</td>
+            <td style="width: 81.6761%; height: 18px;">Jsonpath notation for the location where to add the element.</td>
+        </tr>
+    </tbody>
+</table>
+<h3><br /><br /><br /><br /><br />Details</h3>
+<table style="border-collapse: collapse; width: 100%;" border="1">
+    <tbody>
+        <tr>
+            <td style="width: 17.4672%;"><strong>from type</strong></td>
+            <td style="width: 16.5938%;"><strong>to type</strong></td>
+            <td style="width: 65.9389%;">&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="width: 17.4672%;">property</td>
+            <td style="width: 16.5938%;">property</td>
+            <td style="width: 65.9389%;">to property will get the value of the source</td>
+        </tr>
+        <tr>
+            <td style="width: 17.4672%;">property</td>
+            <td style="width: 16.5938%;">object</td>
+            <td style="width: 65.9389%;">the object will become the source value</td>
+        </tr>
+        <tr>
+            <td style="width: 17.4672%;">property</td>
+            <td style="width: 16.5938%;">array</td>
+            <td style="width: 65.9389%;">will add the value to the collection in the array</td>
+        </tr>
+        <tr>
+            <td style="width: 17.4672%;">array</td>
+            <td style="width: 16.5938%;">array</td>
+            <td style="width: 65.9389%;">value of the source array will become 1 item in the target collection</td>
+        </tr>
+        <tr>
+            <td style="width: 17.4672%;">array items</td>
+            <td style="width: 16.5938%;">array</td>
+            <td style="width: 65.9389%;">items will be added to the collection</td>
+        </tr>
+        <tr>
+            <td style="width: 17.4672%;">multiple select</td>
+            <td style="width: 16.5938%;">property</td>
+            <td style="width: 65.9389%;">last item will become the value of the property</td>
+        </tr>
+        <tr>
+            <td style="width: 17.4672%;">multiple select</td>
+            <td style="width: 16.5938%;">multiple select</td>
+            <td style="width: 65.9389%;">last item will become the value of all the target items. if both paths are the same for the multiple select the value will be handled within the selected item alone.</td>
+        </tr>
+    </tbody>
+</table>
+<p>in all cases if the target doesn't exist the target will be created</p>
+<p>&nbsp;</p>
