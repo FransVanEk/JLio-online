@@ -101,7 +101,7 @@
             {
         // ignored
             }
-            dialogService.Close(new Put(path, new FunctionSupportedValue(new FixedValue(valuetoSet))));
+            dialogService.Close(new Put(path, new FunctionSupportedValue(new FixedValue(valuetoSet,null))));
         }
 
         private JToken ParseValue(string value)

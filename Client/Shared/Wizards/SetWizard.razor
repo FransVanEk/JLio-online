@@ -46,7 +46,7 @@
     </div>
 </div>
 
-    @code {
+@code {
 
     [Parameter]
     public JToken DataContext { get; set; }
@@ -96,26 +96,26 @@
         JToken valuetoSet = new JObject();
         try
         {
-            valuetoSet =  JToken.Parse(value);
+            valuetoSet = JToken.Parse(value);
         }
-        catch (Exception)
-        {
+        catch (Exception){
         // ignored
         }
-        dialogService.Close(new Set(path, new FunctionSupportedValue(new FixedValue(valuetoSet))));
+        dialogService.Close(new Set(path, new FunctionSupportedValue(new FixedValue(valuetoSet, null))));
     }
 
-    private JToken ParseValue(string value)
-    {
-        try
+        private JToken ParseValue(string value)
         {
-            return JToken.Parse(value);
+            try
+            {
+                return JToken.Parse(value);
+            }
+            catch (Exception)
+            {
+                NotificationService.Notify(NotificationSeverity.Info, "the value data is malformed", "update the value data so it is in a valid Json notation. Now an empty object is used.", 5000);
+                return new JObject();
+            }
         }
-        catch (Exception)
-        {
-            NotificationService.Notify(NotificationSeverity.Info, "the value data is malformed", "update the value data so it is in a valid Json notation. Now an empty object is used.", 5000);
-            return new JObject();
-        }
-    }
 
-    }
+        }
+        
