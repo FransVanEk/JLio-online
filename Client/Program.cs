@@ -1,8 +1,10 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using JLio.Client;
 using JLio.Core.Contracts;
 using JLio.Core.Extensions;
+using JLio.Core.Models;
 using JLioOnline.Client.Providers;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
