@@ -1,7 +1,5 @@
 ﻿<div class="row">
-    <div class="col-md-12" style="height:250px; max-height: 300px;">
-        <MonacoEditor @ref="monacoEditor" CssClass="monaco-editor-container"  Id="@Id" OnDidChangeModelContent="@UpdateInput" ConstructionOptions="MonacoEditorConstructionOptions" />
+    <div class="col-md-12" style="height:250px; max-height: none; resize: vertical; overflow: auto; min-height: 150px;">
+        <MonacoEditor @ref="monacoEditor" CssClass="monaco-editor-container" Id="@Id" OnDidChangeModelContent="@UpdateInput" ConstructionOptions="MonacoEditorConstructionOptions" />
     </div>
 </div>
-
-
