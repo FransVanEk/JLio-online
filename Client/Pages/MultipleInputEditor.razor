@@ -16,7 +16,7 @@
 
 <RadzenDialog></RadzenDialog>
 <RadzenNotification></RadzenNotification>
-<RadzenFieldset Text="Options">
+<RadzenFieldset Text="Options" AllowCollapse="true" Collapsed="false">
     <div class="row">
         <div class="col-md-4">
             <RadzenTextBox @bind-Value="model.Name" style="width:100%;margin-bottom:3px;" />
@@ -27,15 +27,15 @@
         <div class="col-md-4">
             @if (JLioDocuments != null && JLioDocuments.Any())
             {
-            <RadzenDropDown AllowClear="false" TValue="string" Style="width: 100%" @bind-value="@selectedJLioDocument"
-                            AllowFiltering="false"
-                            Data=@(DocumentNames) @ref="documentSelection" />
+                <RadzenDropDown AllowClear="false" TValue="string" Style="width: 100%" @bind-value="@selectedJLioDocument"
+                                AllowFiltering="false"
+                                Data=@(DocumentNames) @ref="documentSelection" />
             }
         </div>
         <div class="col-md-2">
             @if (JLioDocuments != null && JLioDocuments.Any())
             {
-                <RadzenSplitButton Text="Load" Click=@(args => HandleJlioDocument(args))   style="width:100%;margin-bottom:3px;"  >
+                <RadzenSplitButton Text="Load" Click=@(args => HandleJlioDocument(args)) style="width:100%;margin-bottom:3px;">
                     <ChildContent>
                         <RadzenSplitButtonItem Text="Delete" Value="delete" />
                     </ChildContent>
@@ -45,41 +45,39 @@
     </div>
 </RadzenFieldset>
 
-
-
 <div class="row">
     <div class="col-md-12">
-        <RadzenFieldset Text="Input data">
+        <RadzenFieldset Text="Input data" AllowCollapse="true" Collapsed="false">
             <div class="row" style="min-height: 350px;">
                 <div class="col-md-3">
                     <RadzenButton ButtonType="ButtonType.Button" Icon="add_circle_outline" Click=@(args => AddInput()) Text="Add input object" ButtonStyle="ButtonStyle.Secondary" style="width:100%;margin-bottom:3px;" /><br />
                     @foreach (var inputElement in model.InputObjects.OrderBy(i => i.Name))
                     {
-                    <RadzenButton ButtonType="ButtonType.Button" Text="@inputElement.Name" Click=@(args => SetInput(inputElement)) style="width:100%;margin-bottom:3px;" />
-                    <br />
+                        <RadzenButton ButtonType="ButtonType.Button" Text="@inputElement.Name" Click=@(args => SetInput(inputElement)) style="width:100%;margin-bottom:3px;" />
+                        <br />
                     }
                 </div>
                 <div class="col-md-9">
                     @if (model.HasCurrentInput)
                     {
-                    <div class="row">
-                        <div class="col-md-8">
-                            <RadzenTextBox @bind-Value="model.CurrentInput.Name" style="width:100%;margin-bottom:3px;" />
-                        </div>
-                        <div class="col-md-2">
-                            <RadzenButton ButtonType="ButtonType.Button" Icon="delete" Text=@($"Delete input object:{model.CurrentInput.Name}") Click=@(args => DeleteCurrentInput()) style="width:100%;margin-bottom:3px;" />
-                        </div>
-                        <div class="col-md-2">
-                            <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download($"{model.CurrentInput.Name}-input.json",model.CurrentInput.JsonString)) style="width:100%;margin-bottom:3px;" />
-                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <RadzenTextBox @bind-Value="model.CurrentInput.Name" style="width:100%;margin-bottom:3px;" />
+                            </div>
+                            <div class="col-md-2">
+                                <RadzenButton ButtonType="ButtonType.Button" Icon="delete" Text=@($"Delete input object:{model.CurrentInput.Name}") Click=@(args => DeleteCurrentInput()) style="width:100%;margin-bottom:3px;" />
+                            </div>
+                            <div class="col-md-2">
+                                <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download($"{model.CurrentInput.Name}-input.json", model.CurrentInput.JsonString)) style="width:100%;margin-bottom:3px;" />
+                            </div>
 
-                    </div>
+                        </div>
                     }
                     <div class="row">
-                        <div class="col-md-12" style="height: auto; max-height: 300px;">
+                        <div class="col-md-12" style="height: auto; ">
                             @if (model.HasCurrentInput)
                             {
-                            <JsonEditor @bind-Text="@model.CurrentInput.JsonString" @ref="inputEditor" />
+                                <JsonEditor @bind-Text="@model.CurrentInput.JsonString" @ref="inputEditor" />
                             }
                         </div>
                     </div>
@@ -91,7 +89,7 @@
 </div>
 <div class="row">
     <div class="col-md-12">
-        <RadzenFieldset Text="Script">
+        <RadzenFieldset Text="Script" AllowCollapse="true" Collapsed="false">
             <div class="row">
                 <div class="col-md-3">
                     <RadzenDropDown AllowClear="false" TValue="string" Style="width: 100%" @bind-value="@model.SelectedCommand"
@@ -102,13 +100,13 @@
                     <RadzenButton ButtonType="ButtonType.Button" ButtonStyle="ButtonStyle.Secondary" Icon="add_circle_outline" Text="New command wizard" Click=StartWizard style="width:100%;margin-bottom:3px;" />
 
                 </div>
-                <div class="col-md-9" style="height: auto; max-height: 300px;">
+                <div class="col-md-9" style="height: auto;">
                     <JsonEditor @bind-Text="@model.ScriptText" @ref="scriptEditor" />
                 </div>
             </div>
             <div class="row" style="padding-top: 50px">
                 <div class="col-md-3">
-                    <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download($"{model.Name}-script.json",model.ScriptText)) style="width:100%;margin-bottom:3px;" />
+                    <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download($"{model.Name}-script.json", model.ScriptText)) style="width:100%;margin-bottom:3px;" />
                 </div>
                 <div class="col-md-9">
                     <RadzenButton ButtonType="ButtonType.Button" Icon="play_arrow" ButtonStyle="ButtonStyle.Secondary" Text="Execute" Click=@(args => Execute()) style="width:100%;margin-bottom:3px;" />
@@ -119,7 +117,7 @@
 </div>
 <div class="row">
     <div class="col-md-12" style="min-height:300px">
-        <RadzenFieldset Text="Output">
+        <RadzenFieldset Text="Output" AllowCollapse="true" Collapsed="true">
 
             <RadzenTabs SelectedIndex="0">
                 <Tabs>
@@ -128,26 +126,26 @@
                             <div class="col-md-3">
                                 @foreach (var outputElement in model.OutputObjects.OrderBy(i => i.Name))
                                 {
-                                <RadzenButton ButtonType="ButtonType.Button" Text="@outputElement.Name" Click=@(args => SetOutput(outputElement)) style="width:100%;margin-bottom:3px;" />
+                                    <RadzenButton ButtonType="ButtonType.Button" Text="@outputElement.Name" Click=@(args => SetOutput(outputElement)) style="width:100%;margin-bottom:3px;" />
                                 }
                             </div>
 
                             <div class="col-md-9">
                                 @if (model.HasCurrentOutput)
                                 {
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <RadzenTextBox @bind-Value="model.CurrentOutput.Name" style="width:100%;margin-bottom:3px;" />
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <RadzenTextBox @bind-Value="model.CurrentOutput.Name" style="width:100%;margin-bottom:3px;" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download($"{model.CurrentOutput.Name}-output.json", model.CurrentOutput.JsonString)) style="width:100%;margin-bottom:3px;" />
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <RadzenButton ButtonType="ButtonType.Button" Icon="file_download" Click=@(args => Download($"{model.CurrentOutput.Name}-output.json",model.CurrentOutput.JsonString)) style="width:100%;margin-bottom:3px;" />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <RadzenTextArea @bind-value="model.CurrentOutput.JsonString" Rows="12" Style="width: 100%" ReadOnly=true />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <RadzenTextArea @bind-value="model.CurrentOutput.JsonString" Rows="12" Style="width: 100%" ReadOnly=true />
-                                    </div>
-                                </div>
                                 }
                             </div>
                         </div>
@@ -160,18 +158,18 @@
                                         <RadzenButton ButtonType="ButtonType.Button" Click=@(args => ToggleExpand(data)) ButtonStyle="ButtonStyle.Warning" style="width:100%;margin-bottom:3px;">
                                             @if (data.Succes)
                                             {
-                                            <RadzenIcon Icon="check_circle" style="color:green" />
+                                                <RadzenIcon Icon="check_circle" style="color:green" />
                                             }
                                             else
                                             {
-                                            <RadzenIcon Icon="sms_failed" style="color:red" />
+                                                <RadzenIcon Icon="sms_failed" style="color:red" />
                                             }
                                             - @data.Command.CommandName
                                         </RadzenButton>
                                         @if (data.Expanded)
                                         {
-                                        <br />
-                                        <RadzenTextArea Value=@data.CommandText Rows="12" Style="width: 100%;height:auto" ReadOnly=true />
+                                            <br />
+                                            <RadzenTextArea Value=@data.CommandText Rows="12" Style="width: 100%;height:auto" ReadOnly=true />
                                         }
                                     </Template>
                                 </RadzenDataGridColumn>
@@ -179,17 +177,17 @@
                                     <Template Context="data">
                                         @if (data.Expanded)
                                         {
-                                        <JsonDiff @bind-OriginalJson=@data.StartObjectText @bind-ModifiedJson=@data.EndObjectText></JsonDiff>
+                                            <JsonDiff @bind-OriginalJson=@data.StartObjectText @bind-ModifiedJson=@data.EndObjectText></JsonDiff>
                                         }
                                         else
                                         {
-                                        @if (data.HasChanges)
+                                            @if (data.HasChanges)
                                             {
-                                        <RadzenIcon Icon="published_with_changes" style="color:green" />
+                                                <RadzenIcon Icon="published_with_changes" style="color:green" />
                                             }
                                             else
                                             {
-                                        <RadzenIcon Icon="sync_problem" style="color:orange" />
+                                                <RadzenIcon Icon="sync_problem" style="color:orange" />
                                             }
                                         }
                                     </Template>
@@ -198,32 +196,34 @@
                                     <Template Context="data">
                                         @if (data.Expanded)
                                         {
-                                        <RadzenTextArea Value=@data.LogText Rows="12" Style="width: 100%" ReadOnly=true />
+                                            <RadzenTextArea Value=@data.LogText Rows="12" Style="width: 100%" ReadOnly=true />
                                         }
                                     </Template>
                                 </RadzenDataGridColumn>
                             </Columns>
                         </RadzenDataGrid>
                     </RadzenTabsItem>
-                    @if(HostEnvironment.Environment == "Development")
-                        {
-                    <RadzenTabsItem Text="create sample">
-                        <div class="row">
-                            <div class="col-md-3">
-                                @if (!string.IsNullOrWhiteSpace(sample.Title) && !string.IsNullOrWhiteSpace(sample.Description) && samplesStore.Samples.All(s => s.Title!=sample.Title))
-                                {
-                                    <RadzenButton ButtonType="ButtonType.Button" ButtonStyle="ButtonStyle.Secondary" Text="Add" Click=@(args => AddSample()) style="width: 100%; margin-bottom: 3px;"/><br />
-                                }
-                                <RadzenTextBox @bind-value="sample.Title" Rows="12" Style="width: 100%" ReadOnly=false/>
+                    @if (HostEnvironment.Environment == "Development")
+                    {
+                        <RadzenTabsItem Text="create sample">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    @if (!string.IsNullOrWhiteSpace(sample.Title) && !string.IsNullOrWhiteSpace(sample.Description) && samplesStore.Samples.All(s => s.Title != sample.Title))
+                                    {
+                                        <RadzenButton ButtonType="ButtonType.Button" ButtonStyle="ButtonStyle.Secondary" Text="Add" Click=@(args => AddSample()) style="width: 100%; margin-bottom: 3px;" />
+                                
+                                        <br />
+                                    }
+                                    <RadzenTextBox @bind-value="sample.Title" Rows="12" Style="width: 100%" ReadOnly=false />
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <RadzenTextArea @bind-value="sample.Description" Rows="12" Style="width: 100%" ReadOnly=false />
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <RadzenTextArea @bind-value="sample.Description" Rows="12" Style="width: 100%" ReadOnly=false />
+                                </div>
                             </div>
-                        </div>
-                    </RadzenTabsItem>
-                        }
+                        </RadzenTabsItem>
+                    }
                 </Tabs>
             </RadzenTabs>
         </RadzenFieldset>
@@ -240,7 +240,7 @@
     RadzenDropDown<string> documentSelection;
     JsonEditor scriptEditor;
     JsonEditor inputEditor;
-    List<string> DocumentNames => JLioDocuments?.Where(i => i.Name != latest).Select(c => c.Id ).Distinct().ToList();
+    List<string> DocumentNames => JLioDocuments?.Where(i => i.Name != latest).Select(c => c.Id).Distinct().ToList();
 
     string selectedJLioDocument = null;
 
@@ -325,7 +325,7 @@
         Execute();
         sample.Model = JsonConvert.DeserializeObject<MultilineEditorViewModel>(JsonConvert.SerializeObject(model));
         if (sample.Model != null) sample.Model.Name = $"Sample-{samplesStore.Samples.Count + 1}";
-        sample.Tags= ExtractTags();
+        sample.Tags = ExtractTags();
         samplesStore.Samples.Add(sample);
         sample = new Sample();
         NavigationManager.NavigateTo($"/samples");
@@ -395,7 +395,7 @@
         JLioScript script;
         try
         {
-     
+
             script = JLioConvert.Parse(model.ScriptText);
         }
         catch (Exception)
@@ -601,7 +601,7 @@
     {
         if (model != null)
         {
-            model.Commands = new List<string>() {"Add", "Copy", "Move", "Put", "Remove", "Set"};
+            model.Commands = new List<string>() { "Add", "Copy", "Move", "Put", "Remove", "Set" };
         }
     }
 
@@ -616,7 +616,3 @@
 
 
 }
-
-
-
-
