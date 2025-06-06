@@ -1,6 +1,7 @@
 ﻿@page "/multipleInputEditor"
 @page "/multipleInputEditor/{sampleName}"
 
+@using JLio.Extensions.Math
 @using Microsoft.AspNetCore.Components.WebAssembly.Hosting
 @using System.Web
 @using System.Runtime.CompilerServices
@@ -395,8 +396,8 @@
         JLioScript script;
         try
         {
-
-            script = JLioConvert.Parse(model.ScriptText);
+            var parseOption = ParseOptions.CreateDefault().RegisterMath();
+            script = JLioConvert.Parse(model.ScriptText,parseOption);
         }
         catch (Exception)
         {
