@@ -1,6 +1,6 @@
 [
   {
-    "description": "This sample shows how a new object can be created. There is not need to start with an object for JLio. With the add command the object can be created. \n\nThe value can be anything, as long as it is a valid json notation. Even a function can be used . See samples with functions.",
+    "description": "This sample shows how a new object can be created.  There is not need to start with an object for JLio. With the add command the object can be created. \n\nThe value can be anything, as long as it is a valid json notation. Even a function can be used . See samples with functions.",
     "model": {
       "inputObjects": [],
       "name": "Sample-1",
