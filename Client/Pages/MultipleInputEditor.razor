@@ -1,7 +1,10 @@
 ﻿@page "/multipleInputEditor"
 @page "/multipleInputEditor/{sampleName}"
 
+@using JLio.Extensions.ETL
 @using JLio.Extensions.Math
+@using JLio.Extensions.Text
+@using JLio.Extensions.TimeDate
 @using Microsoft.AspNetCore.Components.WebAssembly.Hosting
 @using System.Web
 @using System.Runtime.CompilerServices
@@ -396,7 +399,11 @@
         JLioScript script;
         try
         {
-            var parseOption = ParseOptions.CreateDefault().RegisterMath();
+            var parseOption = ParseOptions.CreateDefault()
+                .RegisterMath()
+                .RegisterText()
+                .RegisterETL()
+                .RegisterTimeDate();
             script = JLioConvert.Parse(model.ScriptText,parseOption);
         }
         catch (Exception)
