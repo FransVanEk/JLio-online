@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows using dateparse function to convert string dates with specific formats into datetime objects.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"dateString\": \"15-03-2024\",\r\n  \"timeString\": \"14:30:00\"\r\n}",
+        "name": "strings"
+      }
+    ],
+    "name": "Sample-93",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"dateString\": \"15-03-2024\",\n  \"timeString\": \"14:30:00\",\n  \"parsedDate\": \"2024-03-15T00:00:00Z\",\n  \"parsedTime\": \"1970-01-01T14:30:00Z\"\n}",
+        "name": "strings"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.strings.parsedDate\",\r\n    \"value\": \"=dateparse(@.dateString,'dd-MM-yyyy')\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.strings.parsedTime\",\r\n    \"value\": \"=dateparse(@.timeString,'HH:mm:ss')\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "timedate"
+  ],
+  "title": "Parse dates from strings with format"
+}

@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows using insert and delete functions to modify text by inserting or removing characters.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"text\": \"HelloWorld\",\r\n  \"code\": \"AB-CD-EF\"\r\n}",
+        "name": "data"
+      }
+    ],
+    "name": "Sample-89",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"text\": \"HelloWorld\",\n  \"code\": \"AB-CD-EF\",\n  \"insertedText\": \"Hello World\",\n  \"cleanCode\": \"ABCDEF\"\n}",
+        "name": "data"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.data.insertedText\",\r\n    \"value\": \"=insert(@.text,5,' ')\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.data.cleanCode\",\r\n    \"value\": \"=delete(@.code,'-')\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "text"
+  ],
+  "title": "Insert and delete text operations"
+}

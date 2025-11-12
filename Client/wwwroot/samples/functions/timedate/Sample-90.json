@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates adding time units to dates using the dateadd function for days, hours, and minutes.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"orderDate\": \"2024-01-15T10:00:00Z\"\r\n}",
+        "name": "order"
+      }
+    ],
+    "name": "Sample-90",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"orderDate\": \"2024-01-15T10:00:00Z\",\n  \"deliveryDate\": \"2024-01-20T10:00:00Z\",\n  \"reminderTime\": \"2024-01-15T12:00:00Z\"\n}",
+        "name": "order"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.order.deliveryDate\",\r\n    \"value\": \"=dateadd(@.orderDate,'days',5)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.order.reminderTime\",\r\n    \"value\": \"=dateadd(@.orderDate,'hours',2)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "timedate"
+  ],
+  "title": "Add time units to dates"
+}

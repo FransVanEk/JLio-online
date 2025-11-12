@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates extracting date parts like year, month, day, hour from a datetime value.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"timestamp\": \"2024-03-15T14:30:45Z\"\r\n}",
+        "name": "event"
+      }
+    ],
+    "name": "Sample-92",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"timestamp\": \"2024-03-15T14:30:45Z\",\n  \"year\": 2024,\n  \"month\": 3,\n  \"day\": 15,\n  \"hour\": 14\n}",
+        "name": "event"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.event.year\",\r\n    \"value\": \"=year(@.timestamp)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.event.month\",\r\n    \"value\": \"=month(@.timestamp)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.event.day\",\r\n    \"value\": \"=day(@.timestamp)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.event.hour\",\r\n    \"value\": \"=hour(@.timestamp)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "timedate"
+  ],
+  "title": "Extract date parts from datetime"
+}

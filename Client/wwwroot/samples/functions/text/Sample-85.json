@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows case conversion functions to change text to uppercase, lowercase, or proper case.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"name\": \"john DOE\",\r\n  \"email\": \"John.Doe@EXAMPLE.COM\"\r\n}",
+        "name": "user"
+      }
+    ],
+    "name": "Sample-85",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"name\": \"john DOE\",\n  \"email\": \"John.Doe@EXAMPLE.COM\",\n  \"properName\": \"John Doe\",\n  \"upperName\": \"JOHN DOE\",\n  \"lowerEmail\": \"john.doe@example.com\"\n}",
+        "name": "user"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.user.properName\",\r\n    \"value\": \"=propercase(@.name)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.user.upperName\",\r\n    \"value\": \"=uppercase(@.name)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.user.lowerEmail\",\r\n    \"value\": \"=lowercase(@.email)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "text"
+  ],
+  "title": "Text case conversion functions"
+}

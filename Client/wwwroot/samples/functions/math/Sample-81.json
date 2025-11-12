@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates using math functions to perform arithmetic operations. The add, subtract, multiply, and divide functions can be used for calculations.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"price\": 100,\r\n  \"taxRate\": 0.08,\r\n  \"discount\": 10\r\n}",
+        "name": "order"
+      }
+    ],
+    "name": "Sample-81",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"price\": 100,\n  \"taxRate\": 0.08,\n  \"discount\": 10,\n  \"tax\": 8.0,\n  \"subtotal\": 90,\n  \"total\": 98.0\n}",
+        "name": "order"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.order.tax\",\r\n    \"value\": \"=multiply(@.price,@.taxRate)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.order.subtotal\",\r\n    \"value\": \"=subtract(@.price,@.discount)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.order.total\",\r\n    \"value\": \"=add(@.subtotal,@.tax)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "math"
+  ],
+  "title": "Math operations for order calculation"
+}

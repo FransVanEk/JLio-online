@@ -18,9 +18,9 @@
     </div>
 }
     <div class="row" style="margin-bottom: 20px;">
-        <div class="col-12">
+        <div class="col-12 col-md-6 col-lg-4">
             <h4>Filter by Tag:</h4>
-            <RadzenSelectBar @bind-Value=@selectedTag TValue="string" Multiple="false" Data="@tags" Change=@(args => OnFilterChange()) style="flex-wrap: wrap;"/>
+            <RadzenDropDown @bind-Value=@selectedTag TValue="string" Data="@tags" Change=@(args => OnFilterChange()) Style="width: 100%; max-width: 400px;" Placeholder="Select a tag..."/>
         </div>
     </div>
     <div class="row">

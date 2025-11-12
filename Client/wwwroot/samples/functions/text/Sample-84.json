@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates text manipulation using substring and trim functions to extract and clean text data.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"text\": \"  Hello World  \",\r\n  \"code\": \"ABC-12345-XYZ\"\r\n}",
+        "name": "data"
+      }
+    ],
+    "name": "Sample-84",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"text\": \"  Hello World  \",\n  \"code\": \"ABC-12345-XYZ\",\n  \"trimmedText\": \"Hello World\",\n  \"extractedCode\": \"12345\"\n}",
+        "name": "data"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.data.trimmedText\",\r\n    \"value\": \"=trim(@.text)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.data.extractedCode\",\r\n    \"value\": \"=substring(@.code,4,5)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "text"
+  ],
+  "title": "Substring and trim text functions"
+}

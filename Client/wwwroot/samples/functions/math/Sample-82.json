@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows using min and max functions to find the minimum and maximum values in a dataset.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"temperatures\": [72, 68, 75, 82, 70, 65, 78]\r\n}",
+        "name": "weather"
+      }
+    ],
+    "name": "Sample-82",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"temperatures\": [72, 68, 75, 82, 70, 65, 78],\n  \"minTemp\": 65,\n  \"maxTemp\": 82,\n  \"range\": 17\n}",
+        "name": "weather"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.weather.minTemp\",\r\n    \"value\": \"=min(@.temperatures)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.weather.maxTemp\",\r\n    \"value\": \"=max(@.temperatures)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.weather.range\",\r\n    \"value\": \"=subtract(@.maxTemp,@.minTemp)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "math"
+  ],
+  "title": "Min and Max calculations"
+}
