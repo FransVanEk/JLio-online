@@ -25,7 +25,7 @@
     </div>
     <div class="row">
         <div class="col-12 col-lg-3" style="margin-bottom: 20px;">
-            <h5>Samples (@filteredSamples.Count())</h5>
+            <h5>Samples (@filteredSamples.Count)</h5>
             <RadzenListBox AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" @bind-Value=@selectedSampleTitle Data=@filteredSamples Change=@(OnChange) TextProperty="Title" ValueProperty="Title" Style="height: 500px; width: 100%;"/>
         </div>
         @if (selectedSample != null)
@@ -65,6 +65,7 @@
 
 @code {
 
+    List<SampleMetadata> allMetadata = new List<SampleMetadata>();
     IEnumerable<string> tags { get; set; } = new List<string>();
     string selectedTag { get; set; } = string.Empty;
     string selectedSampleTitle { get; set; } = string.Empty;
@@ -72,19 +73,21 @@
     JsonDiff jsonDiff;
     string before;
     string after;
-    IEnumerable<Sample> filteredSamples { get; set; } = new List<Sample>();
+    List<SampleMetadata> filteredSamples { get; set; } = new List<SampleMetadata>();
     Sample selectedSample { get; set; }
     bool isInitialized = false;
 
     async Task Download()
     {
+        await samplesstore.GetSamples();
         var bytes = System.Text.Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(samplesstore.Samples, Formatting.Indented));
         await SaveAsFile.SaveAs(js, "samples.json", bytes);
     }
 
     protected override async Task OnInitializedAsync()
     {
-        await samplesstore.GetSamples();
+        // Load only metadata first (1 HTTP request instead of 160+)
+        allMetadata = await samplesstore.GetSampleMetadataAsync();
         tags = GetTags();
         selectedTag = "All"; // Set default to "All"
         filteredSamples = GetFilteredSamples();
@@ -97,7 +100,7 @@
     private List<string> GetTags()
     {
         var tagList = new List<string> { "All" };
-        var sampleTags = samplesstore?.Samples?.Where(s => s.Tags != null).SelectMany(s => s.Tags).Distinct().OrderBy(t => t).ToList();
+        var sampleTags = allMetadata?.Where(s => s.Tags != null).SelectMany(s => s.Tags).Distinct().OrderBy(t => t).ToList();
         if (sampleTags != null)
         {
             tagList.AddRange(sampleTags);
@@ -105,22 +108,21 @@
         return tagList;
     }
 
-    private IEnumerable<Sample> GetFilteredSamples()
+    private List<SampleMetadata> GetFilteredSamples()
     {
         if (string.IsNullOrWhiteSpace(selectedTag) || selectedTag == "All")
         {
-            return samplesstore.Samples;
+            return allMetadata;
         }
-        return samplesstore.Samples.Where(s => s.Tags.Contains(selectedTag)).ToList();
+        return allMetadata.Where(s => s.Tags.Contains(selectedTag)).ToList();
     }
 
     async Task OnFilterChange()
     {
         filteredSamples = GetFilteredSamples();
-        var enumerable = filteredSamples as Sample[] ?? filteredSamples.ToArray();
-        if (enumerable.All(f => f.Title != selectedSampleTitle))
+        if (filteredSamples.All(f => f.Title != selectedSampleTitle))
         {
-            selectedSampleTitle = enumerable.FirstOrDefault()?.Title;
+            selectedSampleTitle = filteredSamples.FirstOrDefault()?.Title;
             await SetSelectedSample();
             await UpdateView();
         }
@@ -128,7 +130,12 @@
 
     private async Task SetSelectedSample()
     {
-        selectedSample = samplesstore.Samples.FirstOrDefault(s => s.Title == selectedSampleTitle);
+        // Load the specific sample on-demand
+        var metadata = filteredSamples.FirstOrDefault(s => s.Title == selectedSampleTitle);
+        if (metadata != null)
+        {
+            selectedSample = await samplesstore.GetSampleAsync(metadata.Number);
+        }
         await UpdateView();
     }
 

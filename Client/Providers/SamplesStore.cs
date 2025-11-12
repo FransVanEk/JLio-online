@@ -11,6 +11,7 @@ namespace JLioOnline.Client.Providers
     public class SamplesStore
     {
         private readonly HttpClient client;
+        private List<SampleMetadata>? _sampleMetadataCache;
 
         public SamplesStore(HttpClient client)
         {
@@ -19,80 +20,82 @@ namespace JLioOnline.Client.Providers
 
         public Samples Samples { get; set; } = new Samples();
 
+        /// <summary>
+        /// Gets the list of all sample metadata (lightweight, just titles and tags)
+        /// </summary>
+        public async Task<List<SampleMetadata>> GetSampleMetadataAsync()
+        {
+            if (_sampleMetadataCache != null)
+            {
+                return _sampleMetadataCache;
+            }
+
+            try
+            {
+                var metadata = await client.GetFromJsonAsync<List<SampleMetadata>>("samples/samples-index.json");
+                _sampleMetadataCache = metadata ?? new List<SampleMetadata>();
+                return _sampleMetadataCache;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading sample metadata: {ex.Message}");
+                return new List<SampleMetadata>();
+            }
+        }
+
+        /// <summary>
+        /// Gets a specific sample's full content by its number
+        /// </summary>
+        public async Task<Sample?> GetSampleAsync(int sampleNumber)
+        {
+            var metadata = await GetSampleMetadataAsync();
+            var sampleMeta = metadata.FirstOrDefault(m => m.Number == sampleNumber);
+            
+            if (sampleMeta == null)
+            {
+                return null;
+            }
+
+            try
+            {
+                var sample = await client.GetFromJsonAsync<Sample>($"samples/{sampleMeta.Path}");
+                return sample;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error loading sample {sampleNumber}: {ex.Message}");
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Legacy method - loads all samples at once (expensive!)
+        /// Consider using GetSampleMetadataAsync() + GetSampleAsync() instead
+        /// </summary>
         public async Task<Samples> GetSamples()
         {
             if (Samples == null || !Samples.Any())
             {
                 var allSamples = new List<Sample>();
+                var metadata = await GetSampleMetadataAsync();
 
-                // Define the structure: category -> tag -> sample file ranges
-                // Format: { category, tag, startSample, endSample }
-                var sampleRanges = new (string category, string tag, int[] samples)[]
+                // Load each sample (this is expensive - only use when you need ALL samples)
+                foreach (var meta in metadata)
                 {
-                    // Commands
-                    ("commands", "add", new[] { 1, 2, 3, 6, 8, 20, 21, 22, 23, 24, 25, 27, 33, 34, 35 }),
-                    ("commands", "set", new[] { 4, 5, 7, 9, 26, 28, 29, 31, 36, 38 }),
-                    ("commands", "copy", new[] { 10, 12, 16, 17, 18, 46, 47 }),
-                    ("commands", "move", new[] { 11, 13, 14, 15, 19, 48, 49, 50 }),
-                    ("commands", "put", new[] { 39, 40, 96, 97, 98 }),
-                    ("commands", "remove", new[] { 42, 43, 44, 99, 100 }),
-                    ("commands", "merge", new[] { 30, 51, 52, 53, 101 }),
-                    ("commands", "decisionTable", new[] { 32, 54, 55, 56, 102 }),
-                    ("commands", "ifElse", new[] { 153, 154, 155, 156, 157 }),
-                    ("commands", "compare", new[] { 158, 159, 160, 161, 162 }),
-                    ("commands", "flatten", new[] { 133, 134, 135, 136, 137 }),
-                    ("commands", "resolve", new[] { 138, 139, 140, 141, 142 }),
-                    ("commands", "restore", new[] { 143, 144, 145, 146, 147 }),
-                    ("commands", "toCsv", new[] { 148, 149, 150, 151, 152 }),
-                    
-                    // Functions - Core
-                    ("functions", "datetime", new[] { 41, 57, 58, 59, 103 }),
-                    ("functions", "newGuid", new[] { 60, 61, 62, 108, 109 }),
-                    ("functions", "concat", new[] { 37, 45, 63, 64, 65 }),
-                    ("functions", "fetch", new[] { 66, 67, 68, 104, 105 }),
-                    ("functions", "parse", new[] { 69, 70, 71, 110, 111 }),
-                    ("functions", "toString", new[] { 72, 73, 74, 116, 117 }),
-                    ("functions", "partial", new[] { 75, 76, 77, 112, 113 }),
-                    ("functions", "promote", new[] { 78, 79, 80, 114, 115 }),
-                    ("functions", "indirect", new[] { 118, 119, 120, 121, 122 }),
-                    ("functions", "scriptPath", new[] { 163, 164, 165, 166, 167 }),
-                    
-                    // Functions - Extensions
-                    ("functions", "math", new[] { 81, 82, 83, 106, 107 }),
-                    ("functions", "math-ext", new[] { 178, 179, 180, 181, 182, 183, 184, 185, 186 }),
-                    ("functions", "text", new[] { 84, 85, 86, 87, 88, 89 }),
-                    ("functions", "timedate", new[] { 90, 91, 92, 93, 94, 95 }),
-                    ("functions", "timedate-ext", new[] { 168, 169, 170, 171, 172, 173, 174, 175, 176, 177 })
-                };
-
-                // Load samples based on the defined ranges (much faster - only 176 requests instead of 5800)
-                foreach (var (category, tag, samples) in sampleRanges)
-                {
-                    var folderPath = $"samples/{category}/{tag}";
-                    
-                    foreach (var sampleNum in samples)
+                    try
                     {
-                        try
+                        var sample = await client.GetFromJsonAsync<Sample>($"samples/{meta.Path}");
+                        if (sample != null)
                         {
-                            var samplePath = $"{folderPath}/Sample-{sampleNum}.json";
-                            var sample = await client.GetFromJsonAsync<Sample>(samplePath);
-                            if (sample != null)
-                            {
-                                allSamples.Add(sample);
-                            }
-                        }
-                        catch
-                        {
-                            // File doesn't exist or couldn't be loaded, continue
-                            continue;
+                            allSamples.Add(sample);
                         }
                     }
+                    catch
+                    {
+                        // File doesn't exist or couldn't be loaded, continue
+                        continue;
+                    }
                 }
-
-                // Sort samples by their name (Sample-1, Sample-2, etc.)
-                allSamples = allSamples
-                    .OrderBy(s => int.TryParse(s.Model?.Name?.Replace("Sample-", ""), out int num) ? num : 0)
-                    .ToList();
 
                 Samples = new Samples(allSamples.ToArray());
             }
