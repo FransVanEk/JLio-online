@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates generating unique IDs for multiple items in an array using newGuid function.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "[\r\n  {\"name\": \"item1\"},\r\n  {\"name\": \"item2\"},\r\n  {\"name\": \"item3\"}\r\n]",
+        "name": "items"
+      }
+    ],
+    "name": "Sample-60",
+    "OutputObjects": [
+      {
+        "jsonString": "[\n  {\"name\": \"item1\", \"id\": \"a1b16cc8-3cb8-4877-8592-1725efbd71e4\"},\n  {\"name\": \"item2\", \"id\": \"b2c27dd9-4dc9-5988-9603-2836fgce82f5\"},\n  {\"name\": \"item3\", \"id\": \"c3d38ee0-5ed0-6099-0714-3947ghdf93g6\"}\n]",
+        "name": "items"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.items[*].id\",\r\n    \"value\": \"=newGuid()\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "newGuid"
+  ],
+  "title": "Generate unique IDs for array items"
+}

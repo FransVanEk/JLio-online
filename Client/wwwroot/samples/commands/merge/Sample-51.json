@@ -1,0 +1,31 @@
+{
+  "description": "This sample demonstrates merging two simple objects, combining their properties.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"name\": \"John\",\r\n  \"age\": 30\r\n}",
+        "name": "person1"
+      },
+      {
+        "jsonString": "{\r\n  \"city\": \"New York\",\r\n  \"country\": \"USA\"\r\n}",
+        "name": "person2"
+      }
+    ],
+    "name": "Sample-51",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"name\": \"John\",\n  \"age\": 30\n}",
+        "name": "person1"
+      },
+      {
+        "jsonString": "{\n  \"city\": \"New York\",\n  \"country\": \"USA\",\n  \"name\": \"John\",\n  \"age\": 30\n}",
+        "name": "person2"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.person1\",\r\n    \"targetPath\": \"$.person2\",\r\n    \"command\": \"merge\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "merge"
+  ],
+  "title": "Merge two objects"
+}

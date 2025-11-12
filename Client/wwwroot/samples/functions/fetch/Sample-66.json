@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates using fetch function to extract specific values from nested structures.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"user\": {\r\n    \"profile\": {\r\n      \"name\": \"John Doe\",\r\n      \"email\": \"john@example.com\"\r\n    }\r\n  }\r\n}",
+        "name": "data"
+      }
+    ],
+    "name": "Sample-66",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"user\": {\n    \"profile\": {\n      \"name\": \"John Doe\",\n      \"email\": \"john@example.com\"\n    }\n  },\n  \"userName\": \"John Doe\",\n  \"userEmail\": \"john@example.com\"\n}",
+        "name": "data"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.data.userName\",\r\n    \"value\": \"=fetch(@.user.profile.name)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.data.userEmail\",\r\n    \"value\": \"=fetch(@.user.profile.email)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "fetch"
+  ],
+  "title": "Fetch nested values"
+}

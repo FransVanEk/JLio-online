@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows using fetch to extract and restructure data from arrays.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "[\r\n  {\r\n    \"product\": {\"name\": \"Widget\", \"price\": 10},\r\n    \"quantity\": 5\r\n  },\r\n  {\r\n    \"product\": {\"name\": \"Gadget\", \"price\": 20},\r\n    \"quantity\": 3\r\n  }\r\n]",
+        "name": "orderItems"
+      }
+    ],
+    "name": "Sample-67",
+    "OutputObjects": [
+      {
+        "jsonString": "[\n  {\n    \"product\": {\"name\": \"Widget\", \"price\": 10},\n    \"quantity\": 5,\n    \"productName\": \"Widget\"\n  },\n  {\n    \"product\": {\"name\": \"Gadget\", \"price\": 20},\n    \"quantity\": 3,\n    \"productName\": \"Gadget\"\n  }\n]",
+        "name": "orderItems"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.orderItems[*].productName\",\r\n    \"value\": \"=fetch(@.product.name)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "fetch"
+  ],
+  "title": "Fetch from array items"
+}

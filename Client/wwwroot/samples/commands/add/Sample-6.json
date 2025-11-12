@@ -1,0 +1,23 @@
+{
+  "description": "This sample shows how to add a property to all items in an existing array. \nAll array items get the new property with the JSON-path notation [*]. ",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n    \"myArray\": [\r\n        {\r\n            \"myItem\": 1\r\n        },\r\n        {\r\n            \"myItem\": 2\r\n        },\r\n        {\r\n            \"myItem\": 3\r\n        }\r\n    ]\r\n}",
+        "name": "sample"
+      }
+    ],
+    "name": "Sample-6",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"myArray\": [\n    {\n      \"myItem\": 1,\n      \"newProperty\": \"new\"\n    },\n    {\n      \"myItem\": 2,\n      \"newProperty\": \"new\"\n    },\n    {\n      \"myItem\": 3,\n      \"newProperty\": \"new\"\n    }\n  ]\n}",
+        "name": "sample"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.sample.myArray[*].newProperty\",\r\n    \"value\": \"new\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add"
+  ],
+  "title": "Add a property to items in an array"
+}

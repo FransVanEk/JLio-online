@@ -1,0 +1,23 @@
+{
+  "description": "when a primitive needs to become an object, the promote function can help. \n\nIn this sample the items in  an array get put into individual objects with a propertyname defined by the arguments of the promote function\n ",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n    \"demo\": [\r\n        1,\r\n        2\r\n    ]\r\n}",
+        "name": "sample"
+      }
+    ],
+    "name": "Sample-28",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"demo\": [\n    {\n      \"newProperty\": 1\n    },\n    {\n      \"newProperty\": 2\n    }\n  ]\n}",
+        "name": "sample"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.sample.demo[*]\",\r\n    \"value\": \"=promote('newProperty')\",\r\n    \"command\": \"set\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "set"
+  ],
+  "title": "Use promote function on all items in an array"
+}

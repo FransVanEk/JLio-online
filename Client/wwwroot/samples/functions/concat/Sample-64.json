@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows using concat with numbers and strings to create formatted messages.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"userName\": \"John\",\r\n  \"score\": 95,\r\n  \"total\": 100\r\n}",
+        "name": "result"
+      }
+    ],
+    "name": "Sample-64",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"userName\": \"John\",\n  \"score\": 95,\n  \"total\": 100,\n  \"message\": \"John scored 95 out of 100\"\n}",
+        "name": "result"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.result.message\",\r\n    \"value\": \"=concat(@.userName,' scored ',@.score,' out of ',@.total)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "concat"
+  ],
+  "title": "Concat numbers and strings for messages"
+}

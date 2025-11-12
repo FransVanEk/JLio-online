@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates using partial on array items to extract consistent fields.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "[\r\n  {\"id\": 1, \"name\": \"Alice\", \"email\": \"alice@example.com\", \"internal\": \"x\"},\r\n  {\"id\": 2, \"name\": \"Bob\", \"email\": \"bob@example.com\", \"internal\": \"y\"}\r\n]",
+        "name": "users"
+      }
+    ],
+    "name": "Sample-77",
+    "OutputObjects": [
+      {
+        "jsonString": "[\n  {\"id\": 1, \"name\": \"Alice\"},\n  {\"id\": 2, \"name\": \"Bob\"}\n]",
+        "name": "users"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.users[*]\",\r\n    \"value\": \"=partial(@.id,@.name)\",\r\n    \"command\": \"set\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "set",
+    "partial"
+  ],
+  "title": "Partial on array items"
+}

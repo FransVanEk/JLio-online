@@ -1,0 +1,23 @@
+{
+  "description": "The array wil replaced with the value of the set command when the whole array is targeted with the path. The property to which the path points, in this case holds an array, will get the new value.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n    \"myArray\": [\r\n        {\r\n            \"myItem\": 1\r\n        },\r\n        {\r\n            \"myItem\": 2\r\n        },\r\n        {\r\n            \"myItem\": 3\r\n        }\r\n    ]\r\n}",
+        "name": "sample"
+      }
+    ],
+    "name": "Sample-9",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"myArray\": \"new\"\n}",
+        "name": "sample"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.sample.myArray\",\r\n    \"value\": \"new\",\r\n    \"command\": \"set\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "set"
+  ],
+  "title": "Set a property value to an array"
+}

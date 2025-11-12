@@ -1,0 +1,31 @@
+{
+  "description": "This sample demonstrates merging nested objects while preserving existing nested structure.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"config\": {\r\n    \"timeout\": 30,\r\n    \"retries\": 3\r\n  }\r\n}",
+        "name": "defaults"
+      },
+      {
+        "jsonString": "{\r\n  \"config\": {\r\n    \"timeout\": 60\r\n  }\r\n}",
+        "name": "custom"
+      }
+    ],
+    "name": "Sample-53",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"config\": {\n    \"timeout\": 30,\n    \"retries\": 3\n  }\n}",
+        "name": "defaults"
+      },
+      {
+        "jsonString": "{\n  \"config\": {\n    \"timeout\": 60,\n    \"retries\": 3\n  }\n}",
+        "name": "custom"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.defaults.config\",\r\n    \"targetPath\": \"$.custom.config\",\r\n    \"command\": \"merge\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "merge"
+  ],
+  "title": "Merge nested configuration objects"
+}

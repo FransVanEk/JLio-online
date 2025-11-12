@@ -1,0 +1,24 @@
+{
+  "description": "The copy command can create a new object using the JSON-Path notation on the \"toPath\" property. But if the target doesn't exist, the target will get the value of the source. When a multiple items are selected, the target will \n add the value one after the other not creating an array. \nTo add a copied values into an non existing array, the array needs to be created before the move. ",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n    \"myobject\": {\r\n        \"mySource\": 1\r\n    },\r\n    \"myobject2\": {\r\n        \"mySource\": 2\r\n    }\r\n}",
+        "name": "sample"
+      }
+    ],
+    "name": "Sample-23",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"myobject\": {\n    \"mySource\": 1\n  },\n  \"myobject2\": {\n    \"mySource\": 2\n  },\n  \"myArray\": [\n    1,\n    2\n  ]\n}",
+        "name": "sample"
+      }
+    ],
+    "scriptText": "[\n  {\n    \"path\" : \"$.sample.myArray\",\n    \"value\" : [],\n    \"command\" : \"add\"\n  },\n  {\n    \"fromPath\": \"$..mySource\",\n    \"toPath\": \"$.sample.myArray\",\n    \"command\": \"copy\"\n  }\n]"
+  },
+  "tags": [
+    "add",
+    "copy"
+  ],
+  "title": "Copy multiple values as an array when array doesn't exist"
+}

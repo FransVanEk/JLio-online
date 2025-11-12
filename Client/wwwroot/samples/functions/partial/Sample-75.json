@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates using partial function to extract only specific fields from a complex object.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"user\": {\r\n    \"id\": 1,\r\n    \"name\": \"John\",\r\n    \"email\": \"john@example.com\",\r\n    \"password\": \"secret\",\r\n    \"internalId\": \"xyz\"\r\n  }\r\n}",
+        "name": "data"
+      }
+    ],
+    "name": "Sample-75",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"user\": {\n    \"id\": 1,\n    \"name\": \"John\",\n    \"email\": \"john@example.com\"\n  }\n}",
+        "name": "data"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.data.user\",\r\n    \"value\": \"=partial(@.id,@.name,@.email)\",\r\n    \"command\": \"set\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "set",
+    "partial"
+  ],
+  "title": "Partial to extract specific fields"
+}

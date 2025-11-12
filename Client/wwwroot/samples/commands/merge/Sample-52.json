@@ -1,0 +1,31 @@
+{
+  "description": "This sample shows merging arrays with a strategy to handle duplicates and maintain unique values.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "[\r\n  {\"id\": 1, \"name\": \"Alice\"},\r\n  {\"id\": 2, \"name\": \"Bob\"}\r\n]",
+        "name": "users1"
+      },
+      {
+        "jsonString": "[\r\n  {\"id\": 2, \"name\": \"Bob Updated\"},\r\n  {\"id\": 3, \"name\": \"Charlie\"}\r\n]",
+        "name": "users2"
+      }
+    ],
+    "name": "Sample-52",
+    "OutputObjects": [
+      {
+        "jsonString": "[\n  {\"id\": 1, \"name\": \"Alice\"},\n  {\"id\": 2, \"name\": \"Bob\"}\n]",
+        "name": "users1"
+      },
+      {
+        "jsonString": "[\n  {\"id\": 2, \"name\": \"Bob\"},\n  {\"id\": 3, \"name\": \"Charlie\"},\n  {\"id\": 1, \"name\": \"Alice\"}\n]",
+        "name": "users2"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.users1\",\r\n    \"settings\": {\r\n      \"arraySettings\": [\r\n        {\r\n          \"arrayPath\": \"$.users2\",\r\n          \"keyPaths\": [\"id\"]\r\n        }\r\n      ],\r\n      \"strategy\": \"onlyValues\"\r\n    },\r\n    \"targetPath\": \"$.users2\",\r\n    \"command\": \"merge\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "merge"
+  ],
+  "title": "Merge arrays with key-based matching"
+}

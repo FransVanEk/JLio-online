@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows using datetime function to add timestamps to multiple objects in an array.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "[\r\n  {\"event\": \"login\"},\r\n  {\"event\": \"logout\"},\r\n  {\"event\": \"update\"}\r\n]",
+        "name": "logs"
+      }
+    ],
+    "name": "Sample-58",
+    "OutputObjects": [
+      {
+        "jsonString": "[\n  {\"event\": \"login\", \"timestamp\": \"2021-12-08T19:25:25.323Z\"},\n  {\"event\": \"logout\", \"timestamp\": \"2021-12-08T19:25:25.324Z\"},\n  {\"event\": \"update\", \"timestamp\": \"2021-12-08T19:25:25.325Z\"}\n]",
+        "name": "logs"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.logs[*].timestamp\",\r\n    \"value\": \"=datetime()\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "datetime"
+  ],
+  "title": "Add datetime to array items"
+}

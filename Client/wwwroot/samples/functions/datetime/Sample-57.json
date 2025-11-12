@@ -1,0 +1,19 @@
+{
+  "description": "This sample demonstrates using datetime function with custom formatting to create date strings in specific formats.",
+  "model": {
+    "inputObjects": [],
+    "name": "Sample-57",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"createdAt\": \"2021-12-08\",\n  \"timestamp\": \"19:25:25\"\n}",
+        "name": "record"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.record.createdAt\",\r\n    \"value\": \"=datetime('yyyy-MM-dd')\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.record.timestamp\",\r\n    \"value\": \"=datetime('HH:mm:ss')\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "datetime"
+  ],
+  "title": "Datetime with custom formatting"
+}

@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates using toString function to convert numbers to strings.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"id\": 12345,\r\n  \"version\": 2.5\r\n}",
+        "name": "data"
+      }
+    ],
+    "name": "Sample-72",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"id\": 12345,\n  \"version\": 2.5,\n  \"idString\": \"12345\",\n  \"versionString\": \"2.5\"\n}",
+        "name": "data"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.data.idString\",\r\n    \"value\": \"=toString(@.id)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.data.versionString\",\r\n    \"value\": \"=toString(@.version)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "toString"
+  ],
+  "title": "Convert numbers to strings"
+}

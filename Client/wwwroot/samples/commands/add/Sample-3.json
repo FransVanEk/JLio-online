@@ -1,0 +1,18 @@
+{
+  "description": "This sample shows how a new object can be created. There is not need to start with an object for JLio. With the add command the object can be created. In this case the value of tha add command didn't hold the entire object , but it uses the path notation to define the structure. \nIf an path element doesn't exist the path will be created. All path elements exect the last element will be objects, so they can contain the property for the child elements. The last property will be given the actual value in the add command\n\nThe value can be anything, as long as it is a valid json notation. Even a function can be used . See samples with functions.",
+  "model": {
+    "inputObjects": [],
+    "name": "Sample-3",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"newProperty\": 2\n}",
+        "name": "myObject"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.myObject.newProperty\",\r\n    \"value\": 2,\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add"
+  ],
+  "title": "Create a new object using the JSON-path notation"
+}

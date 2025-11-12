@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows using partial to create a clean copy without sensitive data.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"account\": {\r\n    \"accountNumber\": \"123456\",\r\n    \"balance\": 5000,\r\n    \"pin\": \"1234\",\r\n    \"ssn\": \"xxx-xx-xxxx\"\r\n  }\r\n}",
+        "name": "banking"
+      }
+    ],
+    "name": "Sample-76",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"account\": {\n    \"accountNumber\": \"123456\",\n    \"balance\": 5000,\n    \"pin\": \"1234\",\n    \"ssn\": \"xxx-xx-xxxx\"\n  },\n  \"publicData\": {\n    \"accountNumber\": \"123456\",\n    \"balance\": 5000\n  }\n}",
+        "name": "banking"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.banking.publicData\",\r\n    \"value\": \"=partial($.banking.account,@.accountNumber,@.balance)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "partial"
+  ],
+  "title": "Partial for data sanitization"
+}

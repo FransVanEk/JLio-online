@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates using fetch in combination with set to transform object structures.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"oldStructure\": {\r\n    \"data\": {\r\n      \"value1\": \"A\",\r\n      \"value2\": \"B\"\r\n    }\r\n  }\r\n}",
+        "name": "source"
+      }
+    ],
+    "name": "Sample-68",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"oldStructure\": {\n    \"data\": {\n      \"value1\": \"A\",\n      \"value2\": \"B\"\n    }\n  },\n  \"newStructure\": {\n    \"first\": \"A\",\n    \"second\": \"B\"\n  }\n}",
+        "name": "source"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.source.newStructure\",\r\n    \"value\": {\r\n      \"first\": \"=fetch(@.oldStructure.data.value1)\",\r\n      \"second\": \"=fetch(@.oldStructure.data.value2)\"\r\n    },\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "fetch"
+  ],
+  "title": "Fetch to restructure data"
+}

@@ -1,0 +1,20 @@
+{
+  "description": "This sample shows creating a tracking object with both a GUID identifier and a timestamp.",
+  "model": {
+    "inputObjects": [],
+    "name": "Sample-61",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"trackingId\": \"a1b16cc8-3cb8-4877-8592-1725efbd71e4\",\n  \"sessionId\": \"b2c27dd9-4dc9-5988-9603-2836fgce82f5\",\n  \"createdAt\": \"2021-12-08T19:25:25.323Z\"\n}",
+        "name": "session"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.session.trackingId\",\r\n    \"value\": \"=newGuid()\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.session.sessionId\",\r\n    \"value\": \"=newGuid()\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.session.createdAt\",\r\n    \"value\": \"=datetime()\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "newGuid",
+    "datetime"
+  ],
+  "title": "Create session with multiple GUIDs"
+}

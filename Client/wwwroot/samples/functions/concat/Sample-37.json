@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates setting a property value using a concat function to combine multiple string values.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"firstName\": \"John\",\r\n  \"lastName\": \"Doe\"\r\n}",
+        "name": "person"
+      }
+    ],
+    "name": "Sample-37",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"fullName\": \"John Doe\"\n}",
+        "name": "person"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.person.fullName\",\r\n    \"value\": \"=concat(@.firstName,' ',@.lastName)\",\r\n    \"command\": \"set\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "set",
+    "concat"
+  ],
+  "title": "Set property using concat function"
+}

@@ -1,0 +1,23 @@
+{
+  "description": "This sample demonstrates adding a boolean value to an object. Boolean values are commonly used for flags and status indicators.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"user\": \"John\"\r\n}",
+        "name": "sample"
+      }
+    ],
+    "name": "Sample-35",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"user\": \"John\",\n  \"isActive\": true\n}",
+        "name": "sample"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.sample.isActive\",\r\n    \"value\": true,\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add"
+  ],
+  "title": "Add boolean property to object"
+}

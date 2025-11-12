@@ -1,0 +1,23 @@
+{
+  "description": "when a primitive needs to become an object, the promote function can help. \n\nIn this sample the primitive type on an inputobject gets put into individual object with a property name defined by the argument of the promote function\n ",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "1",
+        "name": "sample"
+      }
+    ],
+    "name": "Sample-29",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"newProperty\": 1\n}",
+        "name": "sample"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.sample\",\r\n    \"value\": \"=promote('newProperty')\",\r\n    \"command\": \"set\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "set"
+  ],
+  "title": "Use promote function to promote primitive input object "
+}

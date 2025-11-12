@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows using put with a function to set a timestamp. The put command works seamlessly with functions.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"event\": \"login\"\r\n}",
+        "name": "log"
+      }
+    ],
+    "name": "Sample-41",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"event\": \"login\",\n  \"timestamp\": \"2021-12-08T19:25:25.323Z\"\n}",
+        "name": "log"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.log.timestamp\",\r\n    \"value\": \"=datetime()\",\r\n    \"command\": \"put\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "put",
+    "datetime"
+  ],
+  "title": "Put with datetime function"
+}

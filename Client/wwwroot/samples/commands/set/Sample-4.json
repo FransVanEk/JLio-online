@@ -1,0 +1,23 @@
+{
+  "description": "This sample shows how a property is set to new value\nThe value can be anything, as long as it is a valid json notation. Even a function can be used . \nSee samples with functions.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"myProperty\": 2\r\n}",
+        "name": "sample"
+      }
+    ],
+    "name": "Sample-4",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"myProperty\": \"new value\"\n}",
+        "name": "sample"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.sample.myProperty\",\r\n    \"value\": \"new value\",\r\n    \"command\": \"set\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "set"
+  ],
+  "title": "Set property value on existing object"
+}

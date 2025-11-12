@@ -1,0 +1,23 @@
+{
+  "description": "This sample shows moving items between arrays with filtering to only move specific items.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"inbox\": [\r\n    {\"id\": 1, \"priority\": \"high\"},\r\n    {\"id\": 2, \"priority\": \"low\"},\r\n    {\"id\": 3, \"priority\": \"high\"}\r\n  ],\r\n  \"urgent\": []\r\n}",
+        "name": "tasks"
+      }
+    ],
+    "name": "Sample-50",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"inbox\": [\n    {\"id\": 2, \"priority\": \"low\"}\n  ],\n  \"urgent\": [\n    {\"id\": 1, \"priority\": \"high\"},\n    {\"id\": 3, \"priority\": \"high\"}\n  ]\n}",
+        "name": "tasks"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"fromPath\": \"$.tasks.inbox[?(@.priority=='high')]\",\r\n    \"toPath\": \"$.tasks.urgent\",\r\n    \"command\": \"move\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "move"
+  ],
+  "title": "Move filtered items between arrays"
+}

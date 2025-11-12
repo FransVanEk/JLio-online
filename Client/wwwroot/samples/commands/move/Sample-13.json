@@ -1,0 +1,23 @@
+{
+  "description": "With the move command a element can be added to an array. If the destination is an Array the selected item(s) are added to the existing array. the source elements will be removed.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n    \"myobject\": {\r\n        \"myProperty\": \"C\"\r\n    },\r\n    \"myArray\": [\r\n        \"A\",\r\n        \"B\"\r\n    ]\r\n}",
+        "name": "sample"
+      }
+    ],
+    "name": "Sample-13",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"myobject\": {},\n  \"myArray\": [\n    \"A\",\n    \"B\",\n    \"C\"\n  ]\n}",
+        "name": "sample"
+      }
+    ],
+    "scriptText": "[\n  {\n    \"fromPath\": \"$.sample.myobject.myProperty\",\n    \"toPath\": \"$.sample.myArray\",\n    \"command\": \"move\"\n  }\n]"
+  },
+  "tags": [
+    "move"
+  ],
+  "title": "Move part of object to an array"
+}

@@ -1,0 +1,23 @@
+{
+  "description": "This sample shows how to set a property to an item in an existing array. Not all array items get the new property due to the JSON-path notation [?(@.myItem==2)].",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n    \"myArray\": [\r\n        {\r\n            \"myItem\": 1\r\n        },\r\n        {\r\n            \"myItem\": 2\r\n        },\r\n        {\r\n            \"myItem\": 3\r\n        }\r\n    ]\r\n}",
+        "name": "sample"
+      }
+    ],
+    "name": "Sample-7",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"myArray\": [\n    {\n      \"myItem\": 1\n    },\n    {\n      \"myItem\": \"two\"\n    },\n    {\n      \"myItem\": 3\n    }\n  ]\n}",
+        "name": "sample"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.sample.myArray[?(@.myItem==2)].myItem\",\r\n    \"value\": \"two\",\r\n    \"command\": \"set\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "set"
+  ],
+  "title": "Set a property value to an item in an array using a filter"
+}

@@ -1,0 +1,24 @@
+{
+  "description": "The move command can create a new object using the JSON-Path notation on the \"toPath\" property. But if the target doesn't exist, the target will get the value of the source. When a single item is selected, the target will not be an array but the same single item. \nTo add a moved value into an non existing array, the array needs to be created before the move. ",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n    \"myobject\": {\r\n        \"mySource\":  3\r\n    }\r\n}",
+        "name": "sample"
+      }
+    ],
+    "name": "Sample-21",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"myobject\": {},\n  \"myArray\": [\n    3\n  ]\n}",
+        "name": "sample"
+      }
+    ],
+    "scriptText": "[\n  {\n    \"path\": \"$.sample.myArray\",\n    \"value\": [],\n    \"command\": \"add\"\n  },\n  {\n    \"fromPath\": \"$.sample.myobject.mySource\",\n    \"toPath\": \"$.sample.myArray\",\n    \"command\": \"move\"\n  }\n]"
+  },
+  "tags": [
+    "add",
+    "move"
+  ],
+  "title": "Move singe value as an array when array doesn't exist"
+}

@@ -1,0 +1,23 @@
+{
+  "description": "This sample shows how to set an entire object to replace existing nested structure with a new one.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"address\": {\r\n    \"street\": \"Old Street\",\r\n    \"number\": 123\r\n  }\r\n}",
+        "name": "location"
+      }
+    ],
+    "name": "Sample-38",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"address\": {\n    \"street\": \"Main Avenue\",\n    \"number\": 456,\n    \"city\": \"Boston\",\n    \"zipCode\": \"02101\"\n  }\n}",
+        "name": "location"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.location.address\",\r\n    \"value\": {\r\n      \"street\": \"Main Avenue\",\r\n      \"number\": 456,\r\n      \"city\": \"Boston\",\r\n      \"zipCode\": \"02101\"\r\n    },\r\n    \"command\": \"set\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "set"
+  ],
+  "title": "Set entire nested object"
+}

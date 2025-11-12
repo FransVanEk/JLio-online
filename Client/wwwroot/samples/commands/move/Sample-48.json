@@ -1,0 +1,23 @@
+{
+  "description": "This sample shows moving a property from one nested level to another, removing it from the source.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"temp\": {\r\n    \"userId\": \"user123\"\r\n  },\r\n  \"permanent\": {}\r\n}",
+        "name": "data"
+      }
+    ],
+    "name": "Sample-48",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"temp\": {},\n  \"permanent\": {\n    \"userId\": \"user123\"\n  }\n}",
+        "name": "data"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"fromPath\": \"$.data.temp.userId\",\r\n    \"toPath\": \"$.data.permanent.userId\",\r\n    \"command\": \"move\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "move"
+  ],
+  "title": "Move property between nested objects"
+}

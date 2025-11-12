@@ -1,0 +1,23 @@
+{
+  "description": "The remove command deletes a property from an object. This sample shows removing a single property.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"name\": \"John\",\r\n  \"age\": 30,\r\n  \"password\": \"secret123\"\r\n}",
+        "name": "user"
+      }
+    ],
+    "name": "Sample-42",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"name\": \"John\",\n  \"age\": 30\n}",
+        "name": "user"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.user.password\",\r\n    \"command\": \"remove\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "remove"
+  ],
+  "title": "Remove property from object"
+}

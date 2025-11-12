@@ -1,0 +1,23 @@
+{
+  "description": "This sample demonstrates removing multiple properties from an object using the recursive descent operator (..).",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"user1\": {\r\n    \"name\": \"John\",\r\n    \"tempData\": \"x\"\r\n  },\r\n  \"user2\": {\r\n    \"name\": \"Jane\",\r\n    \"tempData\": \"y\"\r\n  }\r\n}",
+        "name": "data"
+      }
+    ],
+    "name": "Sample-43",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"user1\": {\n    \"name\": \"John\"\n  },\n  \"user2\": {\n    \"name\": \"Jane\"\n  }\n}",
+        "name": "data"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$..tempData\",\r\n    \"command\": \"remove\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "remove"
+  ],
+  "title": "Remove multiple properties with recursive path"
+}

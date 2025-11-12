@@ -1,0 +1,23 @@
+{
+  "description": "Use fetch function to change the structure of complex objects.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "[\r\n    {\r\n        \"name\": \"piet\",\r\n        \"age\": 20,\r\n        \"address\": \"street\",\r\n        \"number\": 1,\r\n        \"city\": \"amsterdam\"\r\n    },\r\n     {\r\n        \"name\": \"jantje\",\r\n        \"age\": 201,\r\n        \"address\": \"laan\",\r\n        \"number\": 10,\r\n        \"city\": \"utrecht\"\r\n    }\r\n]",
+        "name": "source"
+      }
+    ],
+    "name": "Sample-31",
+    "OutputObjects": [
+      {
+        "jsonString": "[\n  {\n    \"naam\": \"piet\",\n    \"leeftijd\": 20,\n    \"adres\": {\n      \"straat-nummer\": \"street 1\",\n      \"plaats\": \"amsterdam\"\n    }\n  },\n  {\n    \"naam\": \"jantje\",\n    \"leeftijd\": 201,\n    \"adres\": {\n      \"straat-nummer\": \"laan 10\",\n      \"plaats\": \"utrecht\"\n    }\n  }\n]",
+        "name": "source"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.source[*]\",\r\n    \"value\": {\r\n      \"naam\": \"=fetch(@.name)\",\r\n      \"leeftijd\": \"=fetch(@.age)\",\r\n      \"adres\" : {\r\n          \"straat-nummer\": \"=concat(@.address,' ',@.number)\",\r\n          \"plaats\": \"=fetch(@.city)\"\r\n      }\r\n    },\r\n    \"command\": \"set\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "set"
+  ],
+  "title": "Fetch function on array and transform objects"
+}

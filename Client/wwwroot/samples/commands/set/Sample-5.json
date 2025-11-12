@@ -1,0 +1,23 @@
+{
+  "description": "This sample shows how multiple properties are set to new value using the .. notation of Json-path.\nThe value can be anything, as long as it is a valid json notation. In this case a function is used.\n",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n    \"myobject\": {\r\n        \"myProperty\": \"A\"\r\n    },\r\n     \"myobject2\": {\r\n        \"myProperty\": \"B\"\r\n    }\r\n}",
+        "name": "Sample"
+      }
+    ],
+    "name": "Sample-5",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"myobject\": {\n    \"myProperty\": \"086b0672-9a1a-45dc-bc19-2a46e00fc74c\"\n  },\n  \"myobject2\": {\n    \"myProperty\": \"1ff73f04-db53-4cf5-99f8-dfed38357413\"\n  }\n}",
+        "name": "Sample"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$..myProperty\",\r\n    \"value\": \"=newGuid()\",\r\n    \"command\": \"set\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "set"
+  ],
+  "title": "Set multiple properties with one set command (value:function)"
+}

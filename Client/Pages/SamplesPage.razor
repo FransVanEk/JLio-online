@@ -17,31 +17,20 @@
         </div>
     </div>
 }
-    <div class="row">
-        <div class=" col-3" style="margin-bottom: 20px;">
-            Filter:
-        </div>
-        <div class=" col-9">
-
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-12">
+            <h4>Filter by Tag:</h4>
+            <RadzenSelectBar @bind-Value=@selectedTag TValue="string" Multiple="false" Data="@tags" Change=@(args => OnFilterChange()) style="flex-wrap: wrap;"/>
         </div>
     </div>
     <div class="row">
-        <div class=" col-3">
-
-            <div class="row">
-                <div class=" col-12" style="margin-bottom: 20px;">
-                    <RadzenSelectBar @bind-Value=@selectedTag TValue="string" Multiple="false"  Data="@tags" Change=@(args => OnFilterChange())/>
-                </div>
-            </div>
-            <div class="row">
-                <div class=" col-12">
-                    <RadzenListBox AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" @bind-Value=@selectedSampleTitle Data=@filteredSamples Change=@(OnChange) TextProperty="Title" ValueProperty="Title" Style="height: 350px"/>
-                </div>
-            </div>
+        <div class="col-12 col-lg-3" style="margin-bottom: 20px;">
+            <h5>Samples (@filteredSamples.Count())</h5>
+            <RadzenListBox AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" @bind-Value=@selectedSampleTitle Data=@filteredSamples Change=@(OnChange) TextProperty="Title" ValueProperty="Title" Style="height: 500px; width: 100%;"/>
         </div>
         @if (selectedSample != null)
         {
-            <div class=" col-9">
+            <div class="col-12 col-lg-9">
                 <div class="row">
                     <div class="col-12">
                         <h3>@selectedSample.Model.Name - @selectedSample.Title</h3>
@@ -97,6 +86,7 @@
     {
         await samplesstore.GetSamples();
         tags = GetTags();
+        selectedTag = "All"; // Set default to "All"
         filteredSamples = GetFilteredSamples();
         selectedSampleTitle = filteredSamples.FirstOrDefault()?.Title;
         await SetSelectedSample();
@@ -106,12 +96,18 @@
 
     private List<string> GetTags()
     {
-        return samplesstore?.Samples?.Where(s => s.Tags != null).SelectMany(s => s.Tags).Distinct().OrderBy(t => t).ToList();
+        var tagList = new List<string> { "All" };
+        var sampleTags = samplesstore?.Samples?.Where(s => s.Tags != null).SelectMany(s => s.Tags).Distinct().OrderBy(t => t).ToList();
+        if (sampleTags != null)
+        {
+            tagList.AddRange(sampleTags);
+        }
+        return tagList;
     }
 
     private IEnumerable<Sample> GetFilteredSamples()
     {
-        if (string.IsNullOrWhiteSpace(selectedTag))
+        if (string.IsNullOrWhiteSpace(selectedTag) || selectedTag == "All")
         {
             return samplesstore.Samples;
         }

@@ -1,0 +1,18 @@
+{
+  "description": "This sample demonstrates adding nested objects with multiple properties using the add command. It shows how to create complex nested structures in a single operation.",
+  "model": {
+    "inputObjects": [],
+    "name": "Sample-33",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"user\": {\n    \"profile\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"email\": \"john.doe@example.com\"\n    }\n  }\n}",
+        "name": "myObject"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.myObject.user.profile\",\r\n    \"value\": {\r\n      \"firstName\": \"John\",\r\n      \"lastName\": \"Doe\",\r\n      \"email\": \"john.doe@example.com\"\r\n    },\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add"
+  ],
+  "title": "Add nested object with multiple properties"
+}

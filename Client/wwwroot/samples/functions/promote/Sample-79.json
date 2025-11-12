@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows using promote to convert numeric values into structured objects.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"scores\": [95, 87, 92, 78]\r\n}",
+        "name": "test"
+      }
+    ],
+    "name": "Sample-79",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"scores\": [\n    {\"score\": 95},\n    {\"score\": 87},\n    {\"score\": 92},\n    {\"score\": 78}\n  ]\n}",
+        "name": "test"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.test.scores[*]\",\r\n    \"value\": \"=promote('score')\",\r\n    \"command\": \"set\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "set",
+    "promote"
+  ],
+  "title": "Promote numbers to score objects"
+}

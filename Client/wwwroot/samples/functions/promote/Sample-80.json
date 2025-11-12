@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates using promote with different property names for different scenarios.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"temperature\": 72\r\n}",
+        "name": "sensor"
+      }
+    ],
+    "name": "Sample-80",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"temperature\": {\n    \"value\": 72\n  }\n}",
+        "name": "sensor"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.sensor.temperature\",\r\n    \"value\": \"=promote('value')\",\r\n    \"command\": \"set\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "set",
+    "promote"
+  ],
+  "title": "Promote primitive to named property"
+}
