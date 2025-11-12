@@ -28,7 +28,7 @@
             <h5>Samples (@filteredSamples.Count)</h5>
             <RadzenListBox AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" @bind-Value=@selectedSampleTitle Data=@filteredSamples Change=@(OnChange) TextProperty="Title" ValueProperty="Title" Style="height: 500px; width: 100%;"/>
         </div>
-        @if (selectedSample != null)
+        @if (selectedSample != null && selectedSample.Model != null)
         {
             <div class="col-12 col-lg-9">
                 <div class="row">
