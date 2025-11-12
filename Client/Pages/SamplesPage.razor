@@ -1,6 +1,8 @@
 @page "/samples"
 @using Microsoft.AspNetCore.Components.WebAssembly.Hosting
 @using System.Web
+@using System.Threading
+@implements IDisposable
 
 @inject SamplesStore samplesstore
 @inject IWebAssemblyHostEnvironment HostEnvironment
@@ -76,6 +78,7 @@
     List<SampleMetadata> filteredSamples { get; set; } = new List<SampleMetadata>();
     Sample selectedSample { get; set; }
     bool isInitialized = false;
+    private CancellationTokenSource _updateCancellation;
 
     async Task Download()
     {
@@ -130,24 +133,50 @@
 
     private async Task SetSelectedSample()
     {
+        // Cancel any pending update
+        _updateCancellation?.Cancel();
+        _updateCancellation = new CancellationTokenSource();
+        var cancellationToken = _updateCancellation.Token;
+        
         // Load the specific sample on-demand
         var metadata = filteredSamples.FirstOrDefault(s => s.Title == selectedSampleTitle);
         if (metadata != null)
         {
             selectedSample = await samplesstore.GetSampleAsync(metadata.Number);
         }
-        await UpdateView();
+        
+        // Small delay to avoid rapid successive updates
+        try
+        {
+            await Task.Delay(50, cancellationToken);
+            if (!cancellationToken.IsCancellationRequested)
+            {
+                await UpdateView();
+            }
+        }
+        catch (TaskCanceledException)
+        {
+            // Cancelled by new selection, ignore
+        }
     }
 
     private async Task UpdateView()
     {
         if (selectedSample?.Model == null) { return; }
-        scriptEditor?.Update(selectedSample.Model.ScriptText);
-        after = JsonConvert.SerializeObject(ParseList(selectedSample.Model.OutputObjects), Formatting.Indented);
-        before = JsonConvert.SerializeObject(ParseList(selectedSample.Model.InputObjects), Formatting.Indented);
-        if (jsonDiff != null)
+        
+        try
         {
-            await jsonDiff?.Update(before, after);
+            scriptEditor?.Update(selectedSample.Model.ScriptText);
+            after = JsonConvert.SerializeObject(ParseList(selectedSample.Model.OutputObjects), Formatting.Indented);
+            before = JsonConvert.SerializeObject(ParseList(selectedSample.Model.InputObjects), Formatting.Indented);
+            if (jsonDiff != null)
+            {
+                await jsonDiff?.Update(before, after);
+            }
+        }
+        catch (Exception)
+        {
+            // Ignore disposed object errors when switching samples quickly
         }
     }
 
@@ -188,5 +217,11 @@
         {
             NavigationManager.NavigateTo($"/multipleInputEditor/{HttpUtility.UrlEncode(selectedSample.Title)}");
         }
+    }
+
+    public void Dispose()
+    {
+        _updateCancellation?.Cancel();
+        _updateCancellation?.Dispose();
     }
 }
