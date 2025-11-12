@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-5",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"myobject\": {\n    \"myProperty\": \"086b0672-9a1a-45dc-bc19-2a46e00fc74c\"\n  },\n  \"myobject2\": {\n    \"myProperty\": \"1ff73f04-db53-4cf5-99f8-dfed38357413\"\n  }\n}",
         "name": "Sample"

@@ -8,7 +8,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.result\",\r\n    \"value\": \"=pow(@.base, @.exponent)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "base": 2,
       "exponent": 10,

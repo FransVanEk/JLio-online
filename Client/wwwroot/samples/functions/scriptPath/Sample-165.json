@@ -10,7 +10,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.products[*].ref\",\r\n    \"value\": \"=scriptPath()\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "products": [
         { "id": "P1", "name": "Widget", "ref": "$.products[0]" },

@@ -10,7 +10,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.customers[*].idPath\",\r\n    \"value\": \"=scriptPath()\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "customers": [
         { "id": "C001", "name": "Alice", "idPath": "$.customers[0]" },

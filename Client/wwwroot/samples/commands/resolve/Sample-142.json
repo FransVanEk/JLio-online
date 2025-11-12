@@ -20,7 +20,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.project.teamId\",\r\n    \"refPath\": \"$.teams\",\r\n    \"command\": \"resolve\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "project": {
         "teamId": {

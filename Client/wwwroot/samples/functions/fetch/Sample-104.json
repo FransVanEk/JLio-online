@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-104",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"order\": {\n    \"customer\": {\"name\": \"John\", \"id\": 123},\n    \"items\": [{\"sku\": \"A1\", \"price\": 10}]\n  },\n  \"summary\": {\n    \"customerName\": \"John\",\n    \"firstSku\": \"A1\"\n  }\n}",
         "name": "data"

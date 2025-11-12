@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-68",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"oldStructure\": {\n    \"data\": {\n      \"value1\": \"A\",\n      \"value2\": \"B\"\n    }\n  },\n  \"newStructure\": {\n    \"first\": \"A\",\n    \"second\": \"B\"\n  }\n}",
         "name": "source"

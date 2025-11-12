@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-107",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"dividend\": 17,\n  \"divisor\": 5,\n  \"values\": [10, 20, 30, 40, 50],\n  \"remainder\": 2,\n  \"average\": 30,\n  \"sum\": 150\n}",
         "name": "stats"

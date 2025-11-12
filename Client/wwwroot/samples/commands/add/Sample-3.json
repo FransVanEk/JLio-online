@@ -3,7 +3,7 @@
   "model": {
     "inputObjects": [],
     "name": "Sample-3",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"newProperty\": 2\n}",
         "name": "myObject"

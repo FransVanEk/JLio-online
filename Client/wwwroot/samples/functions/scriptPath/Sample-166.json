@@ -11,7 +11,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.data[*].pathInfo\",\r\n    \"value\": \"=scriptPath()\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "data": [
         { "value": 100, "pathInfo": "$.data[0]" },

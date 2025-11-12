@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-82",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"temperatures\": [72, 68, 75, 82, 70, 65, 78],\n  \"minTemp\": 65,\n  \"maxTemp\": 82,\n  \"range\": 17\n}",
         "name": "weather"

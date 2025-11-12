@@ -14,7 +14,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.tags[*]\",\r\n    \"refPath\": \"$.tagStore\",\r\n    \"command\": \"resolve\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "tags": [
         "JavaScript",

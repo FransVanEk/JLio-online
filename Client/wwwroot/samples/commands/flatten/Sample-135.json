@@ -16,7 +16,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.company.employee\",\r\n    \"delimiter\": \".\",\r\n    \"command\": \"flatten\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "company": {
         "name": "Acme Corp",

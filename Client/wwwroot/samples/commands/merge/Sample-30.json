@@ -12,7 +12,7 @@
       }
     ],
     "name": "Sample-30",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "[\n  {\n    \"key\": {\n      \"id\": \"1\"\n    },\n    \"item\": \"1\",\n    \"valueFirst\": \"first id 1\",\n    \"valueCommon\": \"common first id 1\"\n  },\n  {\n    \"key\": {\n      \"id\": \"2\"\n    },\n    \"item\": 2,\n    \"valueFirst\": \"first id 2\",\n    \"valueCommon\": \"common first id 2\"\n  },\n  {\n    \"key\": {\n      \"id\": \"3\"\n    },\n    \"item\": 3.1,\n    \"valueFirst\": \"first id 3\",\n    \"valueCommon\": \"common first id 3\"\n  }\n]",
         "name": "first"

@@ -9,7 +9,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$\",\r\n    \"delimiter\": \".\",\r\n    \"command\": \"restore\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "response": {
         "status": 200,

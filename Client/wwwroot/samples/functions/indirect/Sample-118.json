@@ -10,7 +10,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.result\",\r\n    \"value\": \"=indirect($.dynamicField)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "dynamicField": "user.name",
       "user": {

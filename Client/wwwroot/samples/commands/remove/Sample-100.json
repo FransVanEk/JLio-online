@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-100",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"a\": 1,\n  \"c\": 3\n}",
         "name": "data"

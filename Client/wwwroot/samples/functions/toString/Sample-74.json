@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-74",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"temperature\": 72,\n  \"humidity\": 65,\n  \"summary\": \"Temperature: 72\u00b0F, Humidity: 65%\"\n}",
         "name": "weather"

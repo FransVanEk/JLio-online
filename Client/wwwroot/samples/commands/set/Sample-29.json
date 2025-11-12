@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-29",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"newProperty\": 1\n}",
         "name": "sample"

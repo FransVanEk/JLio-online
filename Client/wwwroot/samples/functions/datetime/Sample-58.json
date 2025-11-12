@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-58",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "[\n  {\"event\": \"login\", \"timestamp\": \"2021-12-08T19:25:25.323Z\"},\n  {\"event\": \"logout\", \"timestamp\": \"2021-12-08T19:25:25.324Z\"},\n  {\"event\": \"update\", \"timestamp\": \"2021-12-08T19:25:25.325Z\"}\n]",
         "name": "logs"

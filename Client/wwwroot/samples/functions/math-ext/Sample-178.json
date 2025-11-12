@@ -7,7 +7,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.medianScore\",\r\n    \"value\": \"=median(@.scores[*])\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "scores": [85, 92, 78, 95, 88],
       "medianScore": 88

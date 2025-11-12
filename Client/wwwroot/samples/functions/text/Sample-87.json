@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-87",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"filename\": \"document.pdf\",\n  \"path\": \"/home/user/files/report.txt\",\n  \"extension\": \"pdf\",\n  \"basename\": \"document\"\n}",
         "name": "file"

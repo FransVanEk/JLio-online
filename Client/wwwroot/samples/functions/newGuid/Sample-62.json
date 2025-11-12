@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-62",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"amount\": 100,\n  \"currency\": \"USD\",\n  \"correlationId\": \"a1b16cc8-3cb8-4877-8592-1725efbd71e4\"\n}",
         "name": "transaction"

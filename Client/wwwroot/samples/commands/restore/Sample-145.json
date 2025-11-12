@@ -10,7 +10,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.data*\",\r\n    \"delimiter\": \".\",\r\n    \"command\": \"restore\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "id": 123,
       "data": {

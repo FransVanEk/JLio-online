@@ -12,7 +12,7 @@
       }
     ],
     "name": "Sample-101",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"a\": {\"x\": 1},\n  \"b\": 2\n}",
         "name": "obj1"

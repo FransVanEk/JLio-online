@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-97",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"name\": \"Project\",\n  \"tags\": [\"important\", \"urgent\", \"review\"]\n}",
         "name": "project"

@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-89",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"text\": \"HelloWorld\",\n  \"code\": \"AB-CD-EF\",\n  \"insertedText\": \"Hello World\",\n  \"cleanCode\": \"ABCDEF\"\n}",
         "name": "data"

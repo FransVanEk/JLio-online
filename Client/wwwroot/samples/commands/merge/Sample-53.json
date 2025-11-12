@@ -12,7 +12,7 @@
       }
     ],
     "name": "Sample-53",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"config\": {\n    \"timeout\": 30,\n    \"retries\": 3\n  }\n}",
         "name": "defaults"

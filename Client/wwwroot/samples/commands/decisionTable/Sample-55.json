@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-55",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "[\n  {\n    \"yearsOfService\": 3,\n    \"performanceRating\": \"excellent\",\n    \"vacationDays\": 20,\n    \"bonus\": 5000\n  },\n  {\n    \"yearsOfService\": 1,\n    \"performanceRating\": \"good\",\n    \"vacationDays\": 10,\n    \"bonus\": 1000\n  }\n]",
         "name": "employees"

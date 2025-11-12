@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-111",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"items\": [\r\n    \"{\\\"id\\\":1,\\\"name\\\":\\\"Item1\\\"}\",\r\n    \"{\\\"id\\\":2,\\\"name\\\":\\\"Item2\\\"}\"\r\n  ],\n  \"parsed\": [\n    {\"id\": 1, \"name\": \"Item1\"},\n    {\"id\": 2, \"name\": \"Item2\"}\n  ]\n}",
         "name": "strings"

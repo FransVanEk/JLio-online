@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-31",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "[\n  {\n    \"naam\": \"piet\",\n    \"leeftijd\": 20,\n    \"adres\": {\n      \"straat-nummer\": \"street 1\",\n      \"plaats\": \"amsterdam\"\n    }\n  },\n  {\n    \"naam\": \"jantje\",\n    \"leeftijd\": 201,\n    \"adres\": {\n      \"straat-nummer\": \"laan 10\",\n      \"plaats\": \"utrecht\"\n    }\n  }\n]",
         "name": "source"

@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-28",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"demo\": [\n    {\n      \"newProperty\": 1\n    },\n    {\n      \"newProperty\": 2\n    }\n  ]\n}",
         "name": "sample"

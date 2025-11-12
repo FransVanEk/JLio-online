@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-40",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"status\": \"completed\",\n  \"priority\": 1\n}",
         "name": "task"

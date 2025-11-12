@@ -7,7 +7,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.itemCount\",\r\n    \"value\": \"=count(@.items[*])\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "items": ["apple", "banana", "cherry", "date"],
       "itemCount": 4

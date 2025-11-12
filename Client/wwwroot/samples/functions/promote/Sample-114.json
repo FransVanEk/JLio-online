@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-114",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"errors\": [\n    {\"code\": 404},\n    {\"code\": 500},\n    {\"code\": 403}\n  ]\n}",
         "name": "response"

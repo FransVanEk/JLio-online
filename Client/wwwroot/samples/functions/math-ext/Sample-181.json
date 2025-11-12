@@ -9,7 +9,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.result\",\r\n    \"value\": \"=calculate((@.base * @.rate) + @.bonus)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "base": 50,
       "rate": 1.5,

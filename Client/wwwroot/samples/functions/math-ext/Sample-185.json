@@ -7,7 +7,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.rounded\",\r\n    \"value\": \"=ceiling(@.value)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "value": 45.2,
       "rounded": 46

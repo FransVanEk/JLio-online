@@ -16,7 +16,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$..ref://*\",\r\n    \"refPath\": \"$.users\",\r\n    \"command\": \"resolve\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "userId": {
         "name": "Alice"

@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-83",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"value\": -15.67,\n  \"price\": 19.99,\n  \"absoluteValue\": 15.67,\n  \"roundedPrice\": 20,\n  \"ceilingPrice\": 20\n}",
         "name": "data"

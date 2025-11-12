@@ -16,7 +16,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"leftPath\": \"$.before\",\r\n    \"rightPath\": \"$.after\",\r\n    \"targetPath\": \"$.changes\",\r\n    \"command\": \"compare\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "before": [
         1,

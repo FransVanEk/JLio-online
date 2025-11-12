@@ -17,7 +17,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$\",\r\n    \"delimiter\": \":\",\r\n    \"command\": \"flatten\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "config:database:connection:host": "localhost",
       "config:database:connection:port": 5432,

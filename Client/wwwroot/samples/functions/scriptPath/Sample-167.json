@@ -10,7 +10,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.records[*].auditPath\",\r\n    \"value\": \"=scriptPath()\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "records": [
         { "id": "R1", "status": "active", "auditPath": "$.records[0]" },

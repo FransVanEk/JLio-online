@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-64",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"userName\": \"John\",\n  \"score\": 95,\n  \"total\": 100,\n  \"message\": \"John scored 95 out of 100\"\n}",
         "name": "result"

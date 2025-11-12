@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-79",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"scores\": [\n    {\"score\": 95},\n    {\"score\": 87},\n    {\"score\": 92},\n    {\"score\": 78}\n  ]\n}",
         "name": "test"

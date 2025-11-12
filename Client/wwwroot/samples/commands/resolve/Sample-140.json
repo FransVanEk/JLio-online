@@ -15,7 +15,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.order.customerId\",\r\n    \"refPath\": \"$.customers\",\r\n    \"command\": \"resolve\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "order": {
         "customerId": {

@@ -16,7 +16,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.items[*]\",\r\n    \"delimiter\": \"_\",\r\n    \"command\": \"flatten\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "items": [
         {

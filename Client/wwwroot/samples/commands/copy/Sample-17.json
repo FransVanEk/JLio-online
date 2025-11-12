@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-17",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"myobject\": {\r\n        \"mySource\":  [3,4,5,6,7]\r\n    },\n  \"myArray\": [\n    1,\n    2,\n      3,\n      4,\n      5,\n      6,\n      7\n     ]\n}",
         "name": "sample"

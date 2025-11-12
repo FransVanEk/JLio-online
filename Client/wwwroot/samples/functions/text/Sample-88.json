@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-88",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"password\": \"MyP@ssw0rd\",\n  \"email\": \"user@example.com\",\n  \"passwordLength\": 10,\n  \"isValidEmail\": true\n}",
         "name": "credentials"

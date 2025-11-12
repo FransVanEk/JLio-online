@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-54",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "[\n  {\n    \"weight\": 5,\n    \"destination\": \"domestic\",\n    \"cost\": 10,\n    \"method\": \"standard\"\n  },\n  {\n    \"weight\": 15,\n    \"destination\": \"international\",\n    \"cost\": 50,\n    \"method\": \"express\"\n  }\n]",
         "name": "shipments"

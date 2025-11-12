@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-70",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"configString\": \"{\\\"timeout\\\":30,\\\"retries\\\":3,\\\"enabled\\\":true}\",\n  \"config\": {\n    \"timeout\": 30,\n    \"retries\": 3,\n    \"enabled\": true\n  }\n}",
         "name": "settings"

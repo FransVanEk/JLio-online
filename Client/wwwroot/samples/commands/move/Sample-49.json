@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-49",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"draft\": {},\n  \"published\": {\n    \"items\": [\"a\", \"b\", \"c\"]\n  }\n}",
         "name": "document"

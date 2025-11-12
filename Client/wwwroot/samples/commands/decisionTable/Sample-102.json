@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-102",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "[\n  {\"creditScore\": 750, \"income\": 80000, \"approved\": true, \"rate\": 3.5},\n  {\"creditScore\": 600, \"income\": 45000, \"approved\": false, \"rate\": 0}\n]",
         "name": "applications"

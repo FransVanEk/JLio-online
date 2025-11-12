@@ -3,7 +3,7 @@
   "model": {
     "inputObjects": [],
     "name": "Sample-33",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"user\": {\n    \"profile\": {\n      \"firstName\": \"John\",\n      \"lastName\": \"Doe\",\n      \"email\": \"john.doe@example.com\"\n    }\n  }\n}",
         "name": "myObject"

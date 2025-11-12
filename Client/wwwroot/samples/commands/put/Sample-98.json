@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-98",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"count\": 5,\n  \"limit\": 10,\n  \"status\": \"under_limit\"\n}",
         "name": "counter"

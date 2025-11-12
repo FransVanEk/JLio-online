@@ -13,7 +13,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.dbHost\",\r\n    \"value\": \"=indirect($.setting)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "setting": "config.database.host",
       "config": {

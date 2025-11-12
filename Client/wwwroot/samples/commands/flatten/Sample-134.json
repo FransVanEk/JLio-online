@@ -16,7 +16,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$\",\r\n    \"delimiter\": \"_\",\r\n    \"command\": \"flatten\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "order_customer_firstName": "Jane",
       "order_customer_lastName": "Smith",

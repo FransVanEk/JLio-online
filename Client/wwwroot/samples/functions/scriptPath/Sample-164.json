@@ -12,7 +12,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.order.items[*].location\",\r\n    \"value\": \"=scriptPath()\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "order": {
         "items": [

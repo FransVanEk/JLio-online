@@ -3,7 +3,7 @@
   "model": {
     "inputObjects": [],
     "name": "Sample-103",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"meeting\": \"2024-06-15T14:30:00Z\",\n  \"deadline\": \"2024-12-31T23:59:59Z\"\n}",
         "name": "schedule"

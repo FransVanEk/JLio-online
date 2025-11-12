@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-76",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"account\": {\n    \"accountNumber\": \"123456\",\n    \"balance\": 5000,\n    \"pin\": \"1234\",\n    \"ssn\": \"xxx-xx-xxxx\"\n  },\n  \"publicData\": {\n    \"accountNumber\": \"123456\",\n    \"balance\": 5000\n  }\n}",
         "name": "banking"

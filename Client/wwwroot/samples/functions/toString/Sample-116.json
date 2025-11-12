@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-116",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"config\": {\n    \"enabled\": true,\n    \"timeout\": 30,\n    \"retries\": 3\n  },\n  \"serialized\": \"{\\\"enabled\\\":true,\\\"timeout\\\":30,\\\"retries\\\":3}\"\n}",
         "name": "settings"

@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-50",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"inbox\": [\n    {\"id\": 2, \"priority\": \"low\"}\n  ],\n  \"urgent\": [\n    {\"id\": 1, \"priority\": \"high\"},\n    {\"id\": 3, \"priority\": \"high\"}\n  ]\n}",
         "name": "tasks"

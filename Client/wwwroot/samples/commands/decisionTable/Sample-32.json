@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-32",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "[\n  {\n    \"age\": 25,\n    \"name\": \"John Smith\",\n    \"email\": \"john.smith@email.com\",\n    \"pricing\": {\n      \"discount\": 0.0\n    },\n    \"category\": \"default\"\n  },\n  {\n    \"age\": 65,\n    \"membership\": {\n      \"level\": \"gold\"\n    },\n    \"name\": \"Jane Smith\",\n    \"email\": \"jane.smith@email.com\",\n    \"pricing\": {\n      \"discount\": 0.25\n    },\n    \"category\": \"senior_gold\"\n  }\n]",
         "name": "customer"

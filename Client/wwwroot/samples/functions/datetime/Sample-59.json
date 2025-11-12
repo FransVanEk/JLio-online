@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-59",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"action\": \"update\",\n  \"user\": \"admin\",\n  \"performedAt\": \"2021-12-08T19:25:25.323Z\",\n  \"dateOnly\": \"2021-12-08\"\n}",
         "name": "audit"

@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-80",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"temperature\": {\n    \"value\": 72\n  }\n}",
         "name": "sensor"

@@ -10,7 +10,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.account\",\r\n    \"condition\": \"@.balance >= 1000\",\r\n    \"ifTrue\": [\r\n      {\r\n        \"path\": \"$.account.tier\",\r\n        \"value\": \"premium\",\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"ifFalse\": [\r\n      {\r\n        \"path\": \"$.account.tier\",\r\n        \"value\": \"basic\",\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"command\": \"ifElse\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "account": {
         "balance": 500,

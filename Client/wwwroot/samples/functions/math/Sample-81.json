@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-81",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"price\": 100,\n  \"taxRate\": 0.08,\n  \"discount\": 10,\n  \"tax\": 8.0,\n  \"subtotal\": 90,\n  \"total\": 98.0\n}",
         "name": "order"

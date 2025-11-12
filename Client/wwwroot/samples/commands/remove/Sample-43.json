@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-43",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"user1\": {\n    \"name\": \"John\"\n  },\n  \"user2\": {\n    \"name\": \"Jane\"\n  }\n}",
         "name": "data"

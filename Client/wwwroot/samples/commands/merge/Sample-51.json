@@ -12,7 +12,7 @@
       }
     ],
     "name": "Sample-51",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"name\": \"John\",\n  \"age\": 30\n}",
         "name": "person1"

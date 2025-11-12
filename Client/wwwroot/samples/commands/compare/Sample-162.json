@@ -24,7 +24,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"leftPath\": \"$.configOld\",\r\n    \"rightPath\": \"$.configNew\",\r\n    \"targetPath\": \"$.configDiff\",\r\n    \"command\": \"compare\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "configOld": {
         "database": {

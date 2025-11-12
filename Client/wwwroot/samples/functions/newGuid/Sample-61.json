@@ -3,7 +3,7 @@
   "model": {
     "inputObjects": [],
     "name": "Sample-61",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"trackingId\": \"a1b16cc8-3cb8-4877-8592-1725efbd71e4\",\n  \"sessionId\": \"b2c27dd9-4dc9-5988-9603-2836fgce82f5\",\n  \"createdAt\": \"2021-12-08T19:25:25.323Z\"\n}",
         "name": "session"

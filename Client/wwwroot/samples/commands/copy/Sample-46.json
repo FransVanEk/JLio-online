@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-46",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"original\": {\n    \"id\": 1,\n    \"data\": {\n      \"value\": \"test\"\n    }\n  },\n  \"backup\": {\n    \"id\": 1,\n    \"data\": {\n      \"value\": \"test\"\n    }\n  }\n}",
         "name": "source"

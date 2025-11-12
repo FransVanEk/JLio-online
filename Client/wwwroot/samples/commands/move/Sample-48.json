@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-48",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"temp\": {},\n  \"permanent\": {\n    \"userId\": \"user123\"\n  }\n}",
         "name": "data"

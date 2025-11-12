@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-73",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"isEnabled\": true,\n  \"count\": 42,\n  \"status\": \"true\",\n  \"countText\": \"42\"\n}",
         "name": "config"

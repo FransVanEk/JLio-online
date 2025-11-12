@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-117",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"tags\": [\"javascript\", \"react\", \"typescript\"],\n  \"tagString\": \"javascript, react, typescript\"\n}",
         "name": "post"

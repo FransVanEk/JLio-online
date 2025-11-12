@@ -3,7 +3,7 @@
   "model": {
     "inputObjects": [],
     "name": "Sample-109",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"transaction\": {\n    \"primaryKey\": \"guid1\",\n    \"secondaryKey\": \"guid2\",\n    \"verificationKey\": \"guid3\"\n  }\n}",
         "name": "record"

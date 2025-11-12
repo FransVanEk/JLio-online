@@ -3,7 +3,7 @@
   "model": {
     "inputObjects": [],
     "name": "Sample-24",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"date\": \"2021-12-08T19:25:25.323Z\",\n  \"dateUTC\": \"2021-12-08T18:25:25.325Z\",\n  \"dateStartOfDay\": \"2021-12-08T00:00:00Z\",\n  \"dateStartOfDayUTC\": \"2021-12-08T00:00:00Z\",\n  \"dateFormat\": \"08-12-21 19:25\",\n  \"dateUTCFormat\": \"08-12-21 18:25\",\n  \"dateStartOfDayFormat\": \"08-12-21 00:00\",\n  \"dateStartOfDayUTCFormat\": \"08-12-21 00:00\"\n}",
         "name": "sample"

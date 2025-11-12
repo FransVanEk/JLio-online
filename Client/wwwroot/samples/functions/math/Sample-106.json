@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-106",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"value\": 16.75,\n  \"base\": 2,\n  \"exponent\": 3,\n  \"floored\": 16,\n  \"squareRoot\": 4.09,\n  \"powered\": 8\n}",
         "name": "calc"

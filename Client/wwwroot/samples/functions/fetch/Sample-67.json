@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-67",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "[\n  {\n    \"product\": {\"name\": \"Widget\", \"price\": 10},\n    \"quantity\": 5,\n    \"productName\": \"Widget\"\n  },\n  {\n    \"product\": {\"name\": \"Gadget\", \"price\": 20},\n    \"quantity\": 3,\n    \"productName\": \"Gadget\"\n  }\n]",
         "name": "orderItems"

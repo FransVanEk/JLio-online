@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-38",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"address\": {\n    \"street\": \"Main Avenue\",\n    \"number\": 456,\n    \"city\": \"Boston\",\n    \"zipCode\": \"02101\"\n  }\n}",
         "name": "location"

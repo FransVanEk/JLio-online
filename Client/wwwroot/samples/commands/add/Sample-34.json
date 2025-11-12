@@ -3,7 +3,7 @@
   "model": {
     "inputObjects": [],
     "name": "Sample-34",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"colors\": [\n    \"red\",\n    \"green\",\n    \"blue\"\n  ]\n}",
         "name": "myObject"

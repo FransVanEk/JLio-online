@@ -16,7 +16,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"leftPath\": \"$.original\",\r\n    \"rightPath\": \"$.updated\",\r\n    \"targetPath\": \"$.diff\",\r\n    \"command\": \"compare\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "original": {
         "name": "John",

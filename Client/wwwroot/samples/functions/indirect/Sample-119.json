@@ -13,7 +13,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.selectedPrice\",\r\n    \"value\": \"=indirect($.pathRef)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "pathRef": "items[0].price",
       "items": [

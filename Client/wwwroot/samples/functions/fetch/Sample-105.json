@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-105",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"scores\": [95, 87, 92, 78, 88],\n  \"highest\": 95,\n  \"lowest\": 78,\n  \"middle\": 92\n}",
         "name": "test"

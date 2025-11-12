@@ -8,7 +8,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.finalPrice\",\r\n    \"value\": \"=subtract(@.total, @.discount)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "total": 500,
       "discount": 75,

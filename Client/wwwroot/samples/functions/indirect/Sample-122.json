@@ -14,7 +14,7 @@
     }
   ],
   "scriptText": "[\r\n  {\r\n    \"path\": \"$.contactEmail\",\r\n    \"value\": \"=indirect($.targetPath)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "OutputObjects": [
+  "outputObjects": [
     {
       "targetPath": "order.customer.email",
       "order": {

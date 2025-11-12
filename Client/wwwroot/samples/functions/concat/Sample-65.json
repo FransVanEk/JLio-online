@@ -8,7 +8,7 @@
       }
     ],
     "name": "Sample-65",
-    "OutputObjects": [
+    "outputObjects": [
       {
         "jsonString": "{\n  \"protocol\": \"https\",\n  \"domain\": \"api.example.com\",\n  \"path\": \"/users\",\n  \"id\": 123,\n  \"url\": \"https://api.example.com/users/123\"\n}",
         "name": "endpoint"
