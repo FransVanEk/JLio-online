@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates validating numeric ranges and business rules.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"products\": [\r\n    {\"name\": \"Item A\", \"price\": 50, \"stock\": 100},\r\n    {\"name\": \"Item B\", \"price\": -10, \"stock\": 5},\r\n    {\"name\": \"Item C\", \"price\": 200, \"stock\": 0}\r\n  ]\r\n}",
+        "name": "inventory"
+      }
+    ],
+    "name": "Sample-150",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"products\": [\n    {\"name\": \"Item A\", \"price\": 50, \"stock\": 100, \"valid\": true},\n    {\"name\": \"Item B\", \"price\": -10, \"stock\": 5, \"valid\": false, \"errors\": [\"Price must be positive\"]},\n    {\"name\": \"Item C\", \"price\": 200, \"stock\": 0, \"valid\": false, \"errors\": [\"Stock must be greater than 0\"]}\n  ]\n}",
+        "name": "inventory"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.inventory.products[*]\",\r\n    \"rules\": [\r\n      {\"field\": \"price\", \"min\": 0, \"message\": \"Price must be positive\"},\r\n      {\"field\": \"stock\", \"min\": 1, \"message\": \"Stock must be greater than 0\"}\r\n    ],\r\n    \"addValidationFlag\": true,\r\n    \"addErrors\": true,\r\n    \"command\": \"validate\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "validate",
+    "etl"
+  ],
+  "title": "Validate numeric ranges"
+}

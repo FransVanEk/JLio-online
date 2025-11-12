@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates aggregating nested data structures for hierarchical reporting.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"departments\": [\r\n    {\r\n      \"name\": \"Engineering\",\r\n      \"employees\": [{\"salary\": 80000}, {\"salary\": 90000}]\r\n    },\r\n    {\r\n      \"name\": \"Sales\",\r\n      \"employees\": [{\"salary\": 60000}, {\"salary\": 65000}, {\"salary\": 70000}]\r\n    }\r\n  ]\r\n}",
+        "name": "company"
+      }
+    ],
+    "name": "Sample-142",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"departments\": [\n    {\n      \"name\": \"Engineering\",\n      \"employees\": [{\"salary\": 80000}, {\"salary\": 90000}],\n      \"totalSalary\": 170000,\n      \"employeeCount\": 2\n    },\n    {\n      \"name\": \"Sales\",\n      \"employees\": [{\"salary\": 60000}, {\"salary\": 65000}, {\"salary\": 70000}],\n      \"totalSalary\": 195000,\n      \"employeeCount\": 3\n    }\n  ]\n}",
+        "name": "company"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.company.departments[*].totalSalary\",\r\n    \"source\": \"@.employees\",\r\n    \"field\": \"salary\",\r\n    \"function\": \"sum\",\r\n    \"command\": \"aggregate\"\r\n  },\r\n  {\r\n    \"path\": \"$.company.departments[*].employeeCount\",\r\n    \"source\": \"@.employees\",\r\n    \"function\": \"count\",\r\n    \"command\": \"aggregate\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "aggregate",
+    "etl"
+  ],
+  "title": "Aggregate nested department data"
+}

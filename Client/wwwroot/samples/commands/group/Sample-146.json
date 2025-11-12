@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows grouping time-series data by date for temporal analysis.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"events\": [\r\n    {\"date\": \"2024-01-15\", \"type\": \"login\", \"user\": \"alice\"},\r\n    {\"date\": \"2024-01-15\", \"type\": \"purchase\", \"user\": \"bob\"},\r\n    {\"date\": \"2024-01-16\", \"type\": \"login\", \"user\": \"charlie\"},\r\n    {\"date\": \"2024-01-16\", \"type\": \"login\", \"user\": \"alice\"}\r\n  ]\r\n}",
+        "name": "analytics"
+      }
+    ],
+    "name": "Sample-146",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"byDate\": {\n    \"2024-01-15\": [\n      {\"date\": \"2024-01-15\", \"type\": \"login\", \"user\": \"alice\"},\n      {\"date\": \"2024-01-15\", \"type\": \"purchase\", \"user\": \"bob\"}\n    ],\n    \"2024-01-16\": [\n      {\"date\": \"2024-01-16\", \"type\": \"login\", \"user\": \"charlie\"},\n      {\"date\": \"2024-01-16\", \"type\": \"login\", \"user\": \"alice\"}\n    ]\n  }\n}",
+        "name": "analytics"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.analytics.byDate\",\r\n    \"source\": \"$.analytics.events\",\r\n    \"groupBy\": \"date\",\r\n    \"command\": \"group\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "group",
+    "etl"
+  ],
+  "title": "Group time-series data by date"
+}

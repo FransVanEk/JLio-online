@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates aggregating array values to calculate sum and count statistics.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"sales\": [\r\n    {\"product\": \"A\", \"amount\": 100},\r\n    {\"product\": \"B\", \"amount\": 200},\r\n    {\"product\": \"C\", \"amount\": 150}\r\n  ]\r\n}",
+        "name": "data"
+      }
+    ],
+    "name": "Sample-138",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"sales\": [\n    {\"product\": \"A\", \"amount\": 100},\n    {\"product\": \"B\", \"amount\": 200},\n    {\"product\": \"C\", \"amount\": 150}\n  ],\n  \"summary\": {\n    \"totalAmount\": 450,\n    \"count\": 3\n  }\n}",
+        "name": "data"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.data.summary\",\r\n    \"source\": \"$.data.sales\",\r\n    \"aggregations\": [\r\n      {\"field\": \"amount\", \"function\": \"sum\", \"as\": \"totalAmount\"},\r\n      {\"function\": \"count\", \"as\": \"count\"}\r\n    ],\r\n    \"command\": \"aggregate\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "aggregate",
+    "etl"
+  ],
+  "title": "Aggregate sum and count"
+}

@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows filtering objects based on numeric comparison to select high-value transactions.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"transactions\": [\r\n    {\"id\": \"T1\", \"amount\": 100},\r\n    {\"id\": \"T2\", \"amount\": 5000},\r\n    {\"id\": \"T3\", \"amount\": 250},\r\n    {\"id\": \"T4\", \"amount\": 10000}\r\n  ]\r\n}",
+        "name": "data"
+      }
+    ],
+    "name": "Sample-134",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"transactions\": [\n    {\"id\": \"T2\", \"amount\": 5000},\n    {\"id\": \"T4\", \"amount\": 10000}\n  ]\n}",
+        "name": "data"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.data.transactions[*]\",\r\n    \"condition\": \"@.amount > 1000\",\r\n    \"command\": \"filter\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "filter",
+    "etl"
+  ],
+  "title": "Filter high-value transactions"
+}

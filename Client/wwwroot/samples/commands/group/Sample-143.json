@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates grouping array elements by a field to organize data into categories.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"products\": [\r\n    {\"name\": \"Laptop\", \"category\": \"Electronics\", \"price\": 1000},\r\n    {\"name\": \"Shirt\", \"category\": \"Clothing\", \"price\": 50},\r\n    {\"name\": \"Phone\", \"category\": \"Electronics\", \"price\": 800},\r\n    {\"name\": \"Jeans\", \"category\": \"Clothing\", \"price\": 80}\r\n  ]\r\n}",
+        "name": "inventory"
+      }
+    ],
+    "name": "Sample-143",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"grouped\": {\n    \"Electronics\": [\n      {\"name\": \"Laptop\", \"category\": \"Electronics\", \"price\": 1000},\n      {\"name\": \"Phone\", \"category\": \"Electronics\", \"price\": 800}\n    ],\n    \"Clothing\": [\n      {\"name\": \"Shirt\", \"category\": \"Clothing\", \"price\": 50},\n      {\"name\": \"Jeans\", \"category\": \"Clothing\", \"price\": 80}\n    ]\n  }\n}",
+        "name": "inventory"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.inventory.grouped\",\r\n    \"source\": \"$.inventory.products\",\r\n    \"groupBy\": \"category\",\r\n    \"command\": \"group\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "group",
+    "etl"
+  ],
+  "title": "Group products by category"
+}

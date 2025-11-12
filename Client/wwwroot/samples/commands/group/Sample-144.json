@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows grouping with aggregation to create summary reports by group.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"sales\": [\r\n    {\"region\": \"North\", \"amount\": 1000},\r\n    {\"region\": \"South\", \"amount\": 1500},\r\n    {\"region\": \"North\", \"amount\": 2000},\r\n    {\"region\": \"South\", \"amount\": 1200}\r\n  ]\r\n}",
+        "name": "data"
+      }
+    ],
+    "name": "Sample-144",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"summary\": [\n    {\"region\": \"North\", \"totalSales\": 3000, \"count\": 2},\n    {\"region\": \"South\", \"totalSales\": 2700, \"count\": 2}\n  ]\n}",
+        "name": "data"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.data.summary\",\r\n    \"source\": \"$.data.sales\",\r\n    \"groupBy\": \"region\",\r\n    \"aggregations\": [\r\n      {\"field\": \"amount\", \"function\": \"sum\", \"as\": \"totalSales\"},\r\n      {\"function\": \"count\", \"as\": \"count\"}\r\n    ],\r\n    \"command\": \"group\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "group",
+    "etl"
+  ],
+  "title": "Group with aggregation for sales summary"
+}

@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows filtering by date range to select recent records.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"orders\": [\r\n    {\"id\": 1, \"date\": \"2024-01-15\", \"total\": 100},\r\n    {\"id\": 2, \"date\": \"2024-06-10\", \"total\": 200},\r\n    {\"id\": 3, \"date\": \"2024-08-20\", \"total\": 150}\r\n  ]\r\n}",
+        "name": "sales"
+      }
+    ],
+    "name": "Sample-136",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"orders\": [\n    {\"id\": 2, \"date\": \"2024-06-10\", \"total\": 200},\n    {\"id\": 3, \"date\": \"2024-08-20\", \"total\": 150}\n  ]\n}",
+        "name": "sales"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.sales.orders[*]\",\r\n    \"condition\": \"@.date > '2024-06-01'\",\r\n    \"command\": \"filter\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "filter",
+    "etl"
+  ],
+  "title": "Filter by date range"
+}

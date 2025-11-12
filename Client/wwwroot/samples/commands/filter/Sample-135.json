@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates filtering with multiple conditions using logical operators.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"products\": [\r\n    {\"name\": \"Laptop\", \"price\": 1200, \"inStock\": true},\r\n    {\"name\": \"Mouse\", \"price\": 25, \"inStock\": true},\r\n    {\"name\": \"Monitor\", \"price\": 300, \"inStock\": false},\r\n    {\"name\": \"Keyboard\", \"price\": 80, \"inStock\": true}\r\n  ]\r\n}",
+        "name": "inventory"
+      }
+    ],
+    "name": "Sample-135",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"products\": [\n    {\"name\": \"Monitor\", \"price\": 300, \"inStock\": false}\n  ]\n}",
+        "name": "inventory"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.inventory.products[*]\",\r\n    \"condition\": \"@.price > 100 && @.inStock == false\",\r\n    \"command\": \"filter\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "filter",
+    "etl"
+  ],
+  "title": "Filter with multiple conditions"
+}

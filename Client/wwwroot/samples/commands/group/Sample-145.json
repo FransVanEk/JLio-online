@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates grouping by multiple fields for hierarchical data organization.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"orders\": [\r\n    {\"customer\": \"Alice\", \"status\": \"completed\", \"amount\": 100},\r\n    {\"customer\": \"Bob\", \"status\": \"pending\", \"amount\": 200},\r\n    {\"customer\": \"Alice\", \"status\": \"pending\", \"amount\": 150},\r\n    {\"customer\": \"Bob\", \"status\": \"completed\", \"amount\": 180}\r\n  ]\r\n}",
+        "name": "data"
+      }
+    ],
+    "name": "Sample-145",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"grouped\": {\n    \"Alice\": {\n      \"completed\": [{\"customer\": \"Alice\", \"status\": \"completed\", \"amount\": 100}],\n      \"pending\": [{\"customer\": \"Alice\", \"status\": \"pending\", \"amount\": 150}]\n    },\n    \"Bob\": {\n      \"pending\": [{\"customer\": \"Bob\", \"status\": \"pending\", \"amount\": 200}],\n      \"completed\": [{\"customer\": \"Bob\", \"status\": \"completed\", \"amount\": 180}]\n    }\n  }\n}",
+        "name": "data"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.data.grouped\",\r\n    \"source\": \"$.data.orders\",\r\n    \"groupBy\": [\"customer\", \"status\"],\r\n    \"command\": \"group\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "group",
+    "etl"
+  ],
+  "title": "Group by multiple fields"
+}
