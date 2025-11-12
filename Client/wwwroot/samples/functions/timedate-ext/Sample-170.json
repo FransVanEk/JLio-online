@@ -1,0 +1,18 @@
+{
+  "title": "DateCompare - Compare two dates",
+  "tags": ["add", "dateCompare"],
+  "inputObjects": [
+    {
+      "startDate": "2024-01-15",
+      "endDate": "2024-06-30"
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.comparison\",\r\n    \"value\": \"=dateCompare(@.startDate, @.endDate)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "startDate": "2024-01-15",
+      "endDate": "2024-06-30",
+      "comparison": -1
+    }
+  ]
+}

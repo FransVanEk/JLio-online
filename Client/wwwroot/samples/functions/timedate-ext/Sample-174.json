@@ -1,0 +1,16 @@
+{
+  "title": "MaxDate - Find latest date",
+  "tags": ["add", "maxDate"],
+  "inputObjects": [
+    {
+      "dates": ["2024-01-15", "2024-06-30", "2024-03-20"]
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.latestDate\",\r\n    \"value\": \"=maxDate(@.dates[*])\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "dates": ["2024-01-15", "2024-06-30", "2024-03-20"],
+      "latestDate": "2024-06-30T00:00:00"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "title": "ScriptPath - Track nested object paths",
+  "tags": ["add", "scriptPath"],
+  "inputObjects": [
+    {
+      "order": {
+        "items": [
+          { "sku": "SKU-001", "qty": 2 },
+          { "sku": "SKU-002", "qty": 1 }
+        ]
+      }
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.order.items[*].location\",\r\n    \"value\": \"=scriptPath()\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "order": {
+        "items": [
+          { "sku": "SKU-001", "qty": 2, "location": "$.order.items[0]" },
+          { "sku": "SKU-002", "qty": 1, "location": "$.order.items[1]" }
+        ]
+      }
+    }
+  ]
+}

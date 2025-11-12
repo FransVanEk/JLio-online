@@ -1,0 +1,20 @@
+{
+  "title": "IsDateBetween - Check date range",
+  "tags": ["add", "isDateBetween"],
+  "inputObjects": [
+    {
+      "checkDate": "2024-06-15",
+      "startDate": "2024-06-01",
+      "endDate": "2024-06-30"
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.inRange\",\r\n    \"value\": \"=isDateBetween(@.checkDate, @.startDate, @.endDate)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "checkDate": "2024-06-15",
+      "startDate": "2024-06-01",
+      "endDate": "2024-06-30",
+      "inRange": true
+    }
+  ]
+}

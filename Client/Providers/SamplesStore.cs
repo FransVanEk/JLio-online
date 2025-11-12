@@ -29,7 +29,7 @@ namespace JLioOnline.Client.Providers
                 var categories = new Dictionary<string, string[]>
                 {
                     { "commands", new[] { "add", "set", "put", "remove", "copy", "move", "merge", "decisionTable", "ifElse", "compare", "flatten", "resolve", "restore", "toCsv" } },
-                    { "functions", new[] { "datetime", "newGuid", "concat", "fetch", "parse", "toString", "partial", "promote", "indirect", "math", "text", "timedate" } }
+                    { "functions", new[] { "datetime", "newGuid", "concat", "fetch", "parse", "toString", "partial", "promote", "indirect", "scriptPath", "math", "math-ext", "text", "timedate", "timedate-ext" } }
                 };
 
                 // Load samples from organized folder structure
@@ -40,8 +40,8 @@ namespace JLioOnline.Client.Providers
                         var folderPath = $"samples/{category.Key}/{tag}";
                         
                         // Try to load sample files for this tag
-                        // We'll try Sample-1 through Sample-100 (more than enough)
-                        for (int i = 1; i <= 100; i++)
+                        // We'll try Sample-1 through Sample-200 (more than enough)
+                        for (int i = 1; i <= 200; i++)
                         {
                             try
                             {

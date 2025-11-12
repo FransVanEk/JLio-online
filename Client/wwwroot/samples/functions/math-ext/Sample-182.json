@@ -1,0 +1,16 @@
+{
+  "title": "Sum - Total array values",
+  "tags": ["add", "sum"],
+  "inputObjects": [
+    {
+      "amounts": [100, 250, 75, 125]
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.totalAmount\",\r\n    \"value\": \"=sum(@.amounts[*])\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "amounts": [100, 250, 75, 125],
+      "totalAmount": 550
+    }
+  ]
+}

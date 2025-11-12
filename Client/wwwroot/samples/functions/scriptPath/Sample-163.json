@@ -1,0 +1,21 @@
+{
+  "title": "ScriptPath - Track array item paths",
+  "tags": ["add", "scriptPath"],
+  "inputObjects": [
+    {
+      "customers": [
+        { "id": "C001", "name": "Alice" },
+        { "id": "C002", "name": "Bob" }
+      ]
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.customers[*].idPath\",\r\n    \"value\": \"=scriptPath()\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "customers": [
+        { "id": "C001", "name": "Alice", "idPath": "$.customers[0]" },
+        { "id": "C002", "name": "Bob", "idPath": "$.customers[1]" }
+      ]
+    }
+  ]
+}

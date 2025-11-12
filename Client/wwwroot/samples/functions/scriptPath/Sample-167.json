@@ -1,0 +1,21 @@
+{
+  "title": "ScriptPath - Audit trail with paths",
+  "tags": ["add", "scriptPath"],
+  "inputObjects": [
+    {
+      "records": [
+        { "id": "R1", "status": "active" },
+        { "id": "R2", "status": "pending" }
+      ]
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.records[*].auditPath\",\r\n    \"value\": \"=scriptPath()\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "records": [
+        { "id": "R1", "status": "active", "auditPath": "$.records[0]" },
+        { "id": "R2", "status": "pending", "auditPath": "$.records[1]" }
+      ]
+    }
+  ]
+}

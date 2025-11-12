@@ -1,0 +1,20 @@
+{
+  "title": "IsDateBetween - Filter by date range",
+  "tags": ["add", "isDateBetween"],
+  "inputObjects": [
+    {
+      "event": "2024-12-25",
+      "seasonStart": "2024-12-01",
+      "seasonEnd": "2024-12-31"
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.isHolidaySeason\",\r\n    \"value\": \"=isDateBetween(@.event, @.seasonStart, @.seasonEnd)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "event": "2024-12-25",
+      "seasonStart": "2024-12-01",
+      "seasonEnd": "2024-12-31",
+      "isHolidaySeason": true
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "title": "Median - Array median",
+  "tags": ["add", "median"],
+  "inputObjects": [
+    {
+      "values": [10, 20, 30, 40, 50, 60]
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.middle\",\r\n    \"value\": \"=median(@.values[*])\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "values": [10, 20, 30, 40, 50, 60],
+      "middle": 35
+    }
+  ]
+}

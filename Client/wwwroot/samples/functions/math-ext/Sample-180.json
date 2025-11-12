@@ -1,0 +1,20 @@
+{
+  "title": "Calculate - Complex expression",
+  "tags": ["add", "calculate"],
+  "inputObjects": [
+    {
+      "price": 100,
+      "quantity": 5,
+      "taxRate": 0.08
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.total\",\r\n    \"value\": \"=calculate(@.price * @.quantity * (1 + @.taxRate))\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "price": 100,
+      "quantity": 5,
+      "taxRate": 0.08,
+      "total": 540
+    }
+  ]
+}

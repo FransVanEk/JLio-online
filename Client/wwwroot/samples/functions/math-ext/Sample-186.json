@@ -1,0 +1,18 @@
+{
+  "title": "Pow - Power calculation",
+  "tags": ["add", "pow"],
+  "inputObjects": [
+    {
+      "base": 2,
+      "exponent": 10
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.result\",\r\n    \"value\": \"=pow(@.base, @.exponent)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "base": 2,
+      "exponent": 10,
+      "result": 1024
+    }
+  ]
+}
