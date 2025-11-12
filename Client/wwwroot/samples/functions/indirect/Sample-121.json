@@ -1,0 +1,18 @@
+{
+  "title": "Indirect array element access",
+  "tags": ["indirect"],
+  "inputObjects": [
+    {
+      "arrayPath": "colors[2]",
+      "colors": ["red", "blue", "green", "yellow"]
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.selectedColor\",\r\n    \"value\": \"=indirect($.arrayPath)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "arrayPath": "colors[2]",
+      "colors": ["red", "blue", "green", "yellow"],
+      "selectedColor": "green"
+    }
+  ]
+}

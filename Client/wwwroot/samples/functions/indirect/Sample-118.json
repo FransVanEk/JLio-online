@@ -1,0 +1,22 @@
+{
+  "title": "Indirect reference to dynamic path",
+  "tags": ["indirect"],
+  "inputObjects": [
+    {
+      "dynamicField": "user.name",
+      "user": {
+        "name": "John Doe"
+      }
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.result\",\r\n    \"value\": \"=indirect($.dynamicField)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "dynamicField": "user.name",
+      "user": {
+        "name": "John Doe"
+      },
+      "result": "John Doe"
+    }
+  ]
+}

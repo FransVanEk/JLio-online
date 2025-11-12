@@ -1,0 +1,28 @@
+{
+  "title": "Indirect for configuration lookup",
+  "tags": ["indirect"],
+  "inputObjects": [
+    {
+      "setting": "config.database.host",
+      "config": {
+        "database": {
+          "host": "localhost",
+          "port": 5432
+        }
+      }
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.dbHost\",\r\n    \"value\": \"=indirect($.setting)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "setting": "config.database.host",
+      "config": {
+        "database": {
+          "host": "localhost",
+          "port": 5432
+        }
+      },
+      "dbHost": "localhost"
+    }
+  ]
+}
