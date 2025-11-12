@@ -167,7 +167,9 @@
         
         try
         {
-            scriptEditor?.Update(selectedSample.Model.ScriptText);
+            // Unescape the script text for proper Monaco editor display
+            var scriptText = selectedSample.Model.ScriptText?.Replace("\\r\\n", "\r\n").Replace("\\\"", "\"");
+            scriptEditor?.Update(scriptText);
             after = JsonConvert.SerializeObject(ParseList(selectedSample.Model.OutputObjects), Formatting.Indented);
             before = JsonConvert.SerializeObject(ParseList(selectedSample.Model.InputObjects), Formatting.Indented);
             if (jsonDiff != null)
