@@ -95,9 +95,9 @@
         selectedTag = "All"; // Set default to "All"
         filteredSamples = GetFilteredSamples();
         selectedSampleTitle = filteredSamples.FirstOrDefault()?.Title;
-        await SetSelectedSample();
-        await UpdateView();
         isInitialized = true;
+        // Load first sample after rendering
+        await SetSelectedSample();
     }
 
     private List<string> GetTags()
@@ -143,13 +143,14 @@
         if (metadata != null)
         {
             selectedSample = await samplesstore.GetSampleAsync(metadata.Number);
+            StateHasChanged(); // Force re-render after loading
         }
         
         // Small delay to avoid rapid successive updates
         try
         {
             await Task.Delay(50, cancellationToken);
-            if (!cancellationToken.IsCancellationRequested)
+            if (!cancellationToken.IsCancellationRequested && selectedSample?.Model != null)
             {
                 await UpdateView();
             }
