@@ -1,0 +1,44 @@
+{
+  "title": "Resolve nested references",
+  "tags": ["resolve"],
+  "inputObjects": [
+    {
+      "project": {
+        "teamId": "ref://teams/T001"
+      },
+      "teams": {
+        "T001": {
+          "name": "Development",
+          "leadId": "ref://employees/E100"
+        }
+      },
+      "employees": {
+        "E100": {
+          "name": "Sarah"
+        }
+      }
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.project.teamId\",\r\n    \"refPath\": \"$.teams\",\r\n    \"command\": \"resolve\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "project": {
+        "teamId": {
+          "name": "Development",
+          "leadId": "ref://employees/E100"
+        }
+      },
+      "teams": {
+        "T001": {
+          "name": "Development",
+          "leadId": "ref://employees/E100"
+        }
+      },
+      "employees": {
+        "E100": {
+          "name": "Sarah"
+        }
+      }
+    }
+  ]
+}

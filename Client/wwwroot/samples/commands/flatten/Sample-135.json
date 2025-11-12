@@ -1,0 +1,29 @@
+{
+  "title": "Flatten specific path only",
+  "tags": ["flatten"],
+  "inputObjects": [
+    {
+      "company": {
+        "name": "Acme Corp",
+        "employee": {
+          "id": 123,
+          "details": {
+            "role": "Developer",
+            "level": "Senior"
+          }
+        }
+      }
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.company.employee\",\r\n    \"delimiter\": \".\",\r\n    \"command\": \"flatten\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "company": {
+        "name": "Acme Corp",
+        "employee.id": 123,
+        "employee.details.role": "Developer",
+        "employee.details.level": "Senior"
+      }
+    }
+  ]
+}

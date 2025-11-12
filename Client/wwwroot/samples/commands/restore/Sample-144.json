@@ -1,0 +1,23 @@
+{
+  "title": "Restore with custom delimiter",
+  "tags": ["restore"],
+  "inputObjects": [
+    {
+      "company_name": "Acme Corp",
+      "company_address_street": "123 Main St",
+      "company_address_city": "Boston"
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$\",\r\n    \"delimiter\": \"_\",\r\n    \"command\": \"restore\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "company": {
+        "name": "Acme Corp",
+        "address": {
+          "street": "123 Main St",
+          "city": "Boston"
+        }
+      }
+    }
+  ]
+}

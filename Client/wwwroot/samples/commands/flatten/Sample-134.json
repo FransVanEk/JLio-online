@@ -1,0 +1,27 @@
+{
+  "title": "Flatten with custom delimiter",
+  "tags": ["flatten"],
+  "inputObjects": [
+    {
+      "order": {
+        "customer": {
+          "firstName": "Jane",
+          "lastName": "Smith"
+        },
+        "items": {
+          "product": "Laptop",
+          "price": 999
+        }
+      }
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$\",\r\n    \"delimiter\": \"_\",\r\n    \"command\": \"flatten\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "order_customer_firstName": "Jane",
+      "order_customer_lastName": "Smith",
+      "order_items_product": "Laptop",
+      "order_items_price": 999
+    }
+  ]
+}

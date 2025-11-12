@@ -1,0 +1,29 @@
+{
+  "title": "Flatten array elements",
+  "tags": ["flatten"],
+  "inputObjects": [
+    {
+      "items": [
+        {
+          "product": {
+            "name": "Phone",
+            "specs": {
+              "memory": "128GB"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.items[*]\",\r\n    \"delimiter\": \"_\",\r\n    \"command\": \"flatten\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "items": [
+        {
+          "product_name": "Phone",
+          "product_specs_memory": "128GB"
+        }
+      ]
+    }
+  ]
+}

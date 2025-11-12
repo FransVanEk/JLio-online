@@ -1,0 +1,25 @@
+{
+  "title": "Restore configuration settings",
+  "tags": ["restore"],
+  "inputObjects": [
+    {
+      "config:database:host": "localhost",
+      "config:database:port": 5432,
+      "config:cache:enabled": true
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$\",\r\n    \"delimiter\": \":\",\r\n    \"command\": \"restore\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "config": {
+        "database": {
+          "host": "localhost",
+          "port": 5432
+        },
+        "cache": {
+          "enabled": true
+        }
+      }
+    }
+  ]
+}

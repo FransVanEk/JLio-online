@@ -1,0 +1,21 @@
+{
+  "title": "IfElse with string condition",
+  "tags": ["ifElse"],
+  "inputObjects": [
+    {
+      "product": {
+        "type": "digital",
+        "shipping": ""
+      }
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.product\",\r\n    \"condition\": \"@.type == 'physical'\",\r\n    \"ifTrue\": [\r\n      {\r\n        \"path\": \"$.product.shipping\",\r\n        \"value\": \"required\",\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"ifFalse\": [\r\n      {\r\n        \"path\": \"$.product.shipping\",\r\n        \"value\": \"not required\",\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"command\": \"ifElse\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "product": {
+        "type": "digital",
+        "shipping": "not required"
+      }
+    }
+  ]
+}

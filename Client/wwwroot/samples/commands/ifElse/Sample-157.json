@@ -1,0 +1,25 @@
+{
+  "title": "IfElse for access control",
+  "tags": ["ifElse"],
+  "inputObjects": [
+    {
+      "user": {
+        "role": "admin",
+        "permissions": []
+      }
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.user\",\r\n    \"condition\": \"@.role == 'admin'\",\r\n    \"ifTrue\": [\r\n      {\r\n        \"path\": \"$.user.permissions\",\r\n        \"value\": [\"read\", \"write\", \"delete\"],\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"ifFalse\": [\r\n      {\r\n        \"path\": \"$.user.permissions\",\r\n        \"value\": [\"read\"],\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"command\": \"ifElse\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "user": {
+        "role": "admin",
+        "permissions": [
+          "read",
+          "write",
+          "delete"
+        ]
+      }
+    }
+  ]
+}

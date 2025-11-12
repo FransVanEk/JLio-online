@@ -1,0 +1,43 @@
+{
+  "title": "Compare two objects for differences",
+  "tags": ["compare"],
+  "inputObjects": [
+    {
+      "original": {
+        "name": "John",
+        "age": 30,
+        "city": "New York"
+      },
+      "updated": {
+        "name": "John",
+        "age": 31,
+        "city": "Boston"
+      }
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"leftPath\": \"$.original\",\r\n    \"rightPath\": \"$.updated\",\r\n    \"targetPath\": \"$.diff\",\r\n    \"command\": \"compare\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "original": {
+        "name": "John",
+        "age": 30,
+        "city": "New York"
+      },
+      "updated": {
+        "name": "John",
+        "age": 31,
+        "city": "Boston"
+      },
+      "diff": {
+        "age": {
+          "left": 30,
+          "right": 31
+        },
+        "city": {
+          "left": "New York",
+          "right": "Boston"
+        }
+      }
+    }
+  ]
+}

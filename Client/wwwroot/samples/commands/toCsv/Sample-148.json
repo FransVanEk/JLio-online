@@ -1,0 +1,38 @@
+{
+  "title": "Convert JSON array to CSV",
+  "tags": ["toCsv"],
+  "inputObjects": [
+    {
+      "users": [
+        {
+          "id": 1,
+          "name": "John",
+          "email": "john@example.com"
+        },
+        {
+          "id": 2,
+          "name": "Jane",
+          "email": "jane@example.com"
+        }
+      ]
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.users\",\r\n    \"targetPath\": \"$.csvData\",\r\n    \"command\": \"toCsv\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "users": [
+        {
+          "id": 1,
+          "name": "John",
+          "email": "john@example.com"
+        },
+        {
+          "id": 2,
+          "name": "Jane",
+          "email": "jane@example.com"
+        }
+      ],
+      "csvData": "id,name,email\\n1,John,john@example.com\\n2,Jane,jane@example.com"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "title": "Compare arrays for changes",
+  "tags": ["compare"],
+  "inputObjects": [
+    {
+      "before": [
+        1,
+        2,
+        3
+      ],
+      "after": [
+        1,
+        2,
+        4
+      ]
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"leftPath\": \"$.before\",\r\n    \"rightPath\": \"$.after\",\r\n    \"targetPath\": \"$.changes\",\r\n    \"command\": \"compare\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "before": [
+        1,
+        2,
+        3
+      ],
+      "after": [
+        1,
+        2,
+        4
+      ],
+      "changes": {
+        "removed": [
+          3
+        ],
+        "added": [
+          4
+        ]
+      }
+    }
+  ]
+}

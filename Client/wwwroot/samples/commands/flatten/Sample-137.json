@@ -1,0 +1,27 @@
+{
+  "title": "Flatten deeply nested config",
+  "tags": ["flatten"],
+  "inputObjects": [
+    {
+      "config": {
+        "database": {
+          "connection": {
+            "host": "localhost",
+            "port": 5432,
+            "credentials": {
+              "user": "admin"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$\",\r\n    \"delimiter\": \":\",\r\n    \"command\": \"flatten\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "config:database:connection:host": "localhost",
+      "config:database:connection:port": 5432,
+      "config:database:connection:credentials:user": "admin"
+    }
+  ]
+}

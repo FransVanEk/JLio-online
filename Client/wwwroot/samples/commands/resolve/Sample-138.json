@@ -1,0 +1,30 @@
+{
+  "title": "Resolve references in object",
+  "tags": ["resolve"],
+  "inputObjects": [
+    {
+      "productId": "ref://products/1",
+      "products": {
+        "1": {
+          "name": "Laptop",
+          "price": 999
+        }
+      }
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.productId\",\r\n    \"refPath\": \"$.products\",\r\n    \"command\": \"resolve\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "productId": {
+        "name": "Laptop",
+        "price": 999
+      },
+      "products": {
+        "1": {
+          "name": "Laptop",
+          "price": 999
+        }
+      }
+    }
+  ]
+}

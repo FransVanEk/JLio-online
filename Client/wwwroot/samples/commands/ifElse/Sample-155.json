@@ -1,0 +1,21 @@
+{
+  "title": "IfElse for status assignment",
+  "tags": ["ifElse"],
+  "inputObjects": [
+    {
+      "account": {
+        "balance": 500,
+        "tier": ""
+      }
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.account\",\r\n    \"condition\": \"@.balance >= 1000\",\r\n    \"ifTrue\": [\r\n      {\r\n        \"path\": \"$.account.tier\",\r\n        \"value\": \"premium\",\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"ifFalse\": [\r\n      {\r\n        \"path\": \"$.account.tier\",\r\n        \"value\": \"basic\",\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"command\": \"ifElse\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "account": {
+        "balance": 500,
+        "tier": "basic"
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "title": "Export with quotes for special characters",
+  "tags": ["toCsv"],
+  "inputObjects": [
+    {
+      "contacts": [
+        {
+          "name": "Smith, John",
+          "note": "Call at 3:00 PM"
+        },
+        {
+          "name": "Doe, Jane",
+          "note": "Send \"urgent\" email"
+        }
+      ]
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.contacts\",\r\n    \"targetPath\": \"$.csv\",\r\n    \"quoteChar\": \"\\\"\",\r\n    \"command\": \"toCsv\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "contacts": [
+        {
+          "name": "Smith, John",
+          "note": "Call at 3:00 PM"
+        },
+        {
+          "name": "Doe, Jane",
+          "note": "Send \"urgent\" email"
+        }
+      ],
+      "csv": "name,note\\n\\\"Smith, John\\\",\\\"Call at 3:00 PM\\\"\\n\\\"Doe, Jane\\\",\\\"Send \\\"\\\"urgent\\\"\\\" email\\\""
+    }
+  ]
+}

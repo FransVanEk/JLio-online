@@ -1,0 +1,25 @@
+{
+  "title": "Restore flattened object to nested structure",
+  "tags": ["restore"],
+  "inputObjects": [
+    {
+      "user.profile.name": "John Doe",
+      "user.profile.age": 30,
+      "user.profile.address.city": "New York"
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$\",\r\n    \"delimiter\": \".\",\r\n    \"command\": \"restore\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "user": {
+        "profile": {
+          "name": "John Doe",
+          "age": 30,
+          "address": {
+            "city": "New York"
+          }
+        }
+      }
+    }
+  ]
+}

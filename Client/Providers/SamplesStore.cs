@@ -28,7 +28,7 @@ namespace JLioOnline.Client.Providers
                 // Define the structure: category -> tag -> sample files
                 var categories = new Dictionary<string, string[]>
                 {
-                    { "commands", new[] { "add", "set", "put", "remove", "copy", "move", "merge", "decisionTable", "filter", "aggregate", "group", "validate" } },
+                    { "commands", new[] { "add", "set", "put", "remove", "copy", "move", "merge", "decisionTable", "ifElse", "compare", "flatten", "resolve", "restore", "toCsv" } },
                     { "functions", new[] { "datetime", "newGuid", "concat", "fetch", "parse", "toString", "partial", "promote", "math", "text", "timedate", "array", "logic", "conversion" } }
                 };
 

@@ -1,0 +1,59 @@
+{
+  "title": "Compare configuration versions",
+  "tags": ["compare"],
+  "inputObjects": [
+    {
+      "configOld": {
+        "database": {
+          "host": "localhost",
+          "port": 5432
+        },
+        "cache": {
+          "enabled": false
+        }
+      },
+      "configNew": {
+        "database": {
+          "host": "db.server.com",
+          "port": 5432
+        },
+        "cache": {
+          "enabled": true
+        }
+      }
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"leftPath\": \"$.configOld\",\r\n    \"rightPath\": \"$.configNew\",\r\n    \"targetPath\": \"$.configDiff\",\r\n    \"command\": \"compare\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "configOld": {
+        "database": {
+          "host": "localhost",
+          "port": 5432
+        },
+        "cache": {
+          "enabled": false
+        }
+      },
+      "configNew": {
+        "database": {
+          "host": "db.server.com",
+          "port": 5432
+        },
+        "cache": {
+          "enabled": true
+        }
+      },
+      "configDiff": {
+        "database.host": {
+          "left": "localhost",
+          "right": "db.server.com"
+        },
+        "cache.enabled": {
+          "left": false,
+          "right": true
+        }
+      }
+    }
+  ]
+}

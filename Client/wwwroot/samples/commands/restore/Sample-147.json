@@ -1,0 +1,27 @@
+{
+  "title": "Restore API response to nested object",
+  "tags": ["restore"],
+  "inputObjects": [
+    {
+      "response.status": 200,
+      "response.data.items.0.id": 1,
+      "response.data.items.0.name": "Product A"
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$\",\r\n    \"delimiter\": \".\",\r\n    \"command\": \"restore\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "response": {
+        "status": 200,
+        "data": {
+          "items": {
+            "0": {
+              "id": 1,
+              "name": "Product A"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "title": "Export with header option",
+  "tags": ["toCsv"],
+  "inputObjects": [
+    {
+      "orders": [
+        {
+          "orderId": "ORD001",
+          "amount": 150.50
+        },
+        {
+          "orderId": "ORD002",
+          "amount": 200.00
+        }
+      ]
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.orders\",\r\n    \"targetPath\": \"$.report\",\r\n    \"includeHeader\": true,\r\n    \"command\": \"toCsv\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "orders": [
+        {
+          "orderId": "ORD001",
+          "amount": 150.50
+        },
+        {
+          "orderId": "ORD002",
+          "amount": 200.00
+        }
+      ],
+      "report": "orderId,amount\\nORD001,150.5\\nORD002,200"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "title": "Convert with custom delimiter",
+  "tags": ["toCsv"],
+  "inputObjects": [
+    {
+      "products": [
+        {
+          "sku": "A123",
+          "name": "Laptop",
+          "price": 999
+        },
+        {
+          "sku": "B456",
+          "name": "Mouse",
+          "price": 25
+        }
+      ]
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.products\",\r\n    \"targetPath\": \"$.export\",\r\n    \"delimiter\": \";\",\r\n    \"command\": \"toCsv\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "products": [
+        {
+          "sku": "A123",
+          "name": "Laptop",
+          "price": 999
+        },
+        {
+          "sku": "B456",
+          "name": "Mouse",
+          "price": 25
+        }
+      ],
+      "export": "sku;name;price\\nA123;Laptop;999\\nB456;Mouse;25"
+    }
+  ]
+}

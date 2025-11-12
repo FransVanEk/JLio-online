@@ -1,0 +1,37 @@
+{
+  "title": "Resolve multiple references",
+  "tags": ["resolve"],
+  "inputObjects": [
+    {
+      "userId": "ref://users/100",
+      "managerId": "ref://users/200",
+      "users": {
+        "100": {
+          "name": "Alice"
+        },
+        "200": {
+          "name": "Bob"
+        }
+      }
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$..ref://*\",\r\n    \"refPath\": \"$.users\",\r\n    \"command\": \"resolve\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "userId": {
+        "name": "Alice"
+      },
+      "managerId": {
+        "name": "Bob"
+      },
+      "users": {
+        "100": {
+          "name": "Alice"
+        },
+        "200": {
+          "name": "Bob"
+        }
+      }
+    }
+  ]
+}

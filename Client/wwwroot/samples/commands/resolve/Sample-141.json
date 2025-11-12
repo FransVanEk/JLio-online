@@ -1,0 +1,29 @@
+{
+  "title": "Resolve array of references",
+  "tags": ["resolve"],
+  "inputObjects": [
+    {
+      "tags": [
+        "ref://tagStore/tag1",
+        "ref://tagStore/tag2"
+      ],
+      "tagStore": {
+        "tag1": "JavaScript",
+        "tag2": "Python"
+      }
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.tags[*]\",\r\n    \"refPath\": \"$.tagStore\",\r\n    \"command\": \"resolve\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "tags": [
+        "JavaScript",
+        "Python"
+      ],
+      "tagStore": {
+        "tag1": "JavaScript",
+        "tag2": "Python"
+      }
+    }
+  ]
+}

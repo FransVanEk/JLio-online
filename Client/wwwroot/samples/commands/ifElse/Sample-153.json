@@ -1,0 +1,21 @@
+{
+  "title": "IfElse based on value check",
+  "tags": ["ifElse"],
+  "inputObjects": [
+    {
+      "user": {
+        "age": 25,
+        "status": ""
+      }
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.user\",\r\n    \"condition\": \"@.age >= 18\",\r\n    \"ifTrue\": [\r\n      {\r\n        \"path\": \"$.user.status\",\r\n        \"value\": \"adult\",\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"ifFalse\": [\r\n      {\r\n        \"path\": \"$.user.status\",\r\n        \"value\": \"minor\",\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"command\": \"ifElse\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "user": {
+        "age": 25,
+        "status": "adult"
+      }
+    }
+  ]
+}

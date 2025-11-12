@@ -1,0 +1,25 @@
+{
+  "title": "Restore specific path only",
+  "tags": ["restore"],
+  "inputObjects": [
+    {
+      "id": 123,
+      "data.firstName": "Alice",
+      "data.lastName": "Smith",
+      "data.contact.email": "alice@example.com"
+    }
+  ],
+  "scriptText": "[\r\n  {\r\n    \"path\": \"$.data*\",\r\n    \"delimiter\": \".\",\r\n    \"command\": \"restore\"\r\n  }\r\n]",
+  "OutputObjects": [
+    {
+      "id": 123,
+      "data": {
+        "firstName": "Alice",
+        "lastName": "Smith",
+        "contact": {
+          "email": "alice@example.com"
+        }
+      }
+    }
+  ]
+}
