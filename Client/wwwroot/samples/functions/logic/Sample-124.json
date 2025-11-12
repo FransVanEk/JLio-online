@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows using NOT operator and equals comparison for logical checks.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"isActive\": false,\r\n  \"status\": \"completed\"\r\n}",
+        "name": "task"
+      }
+    ],
+    "name": "Sample-124",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"isActive\": false,\n  \"status\": \"completed\",\n  \"isInactive\": true,\n  \"isCompleted\": true\n}",
+        "name": "task"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.task.isInactive\",\r\n    \"value\": \"=not(@.isActive)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.task.isCompleted\",\r\n    \"value\": \"=equals(@.status,'completed')\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "logic"
+  ],
+  "title": "NOT operator and equals comparison"
+}

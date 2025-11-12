@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates using join function to combine array elements into strings.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"words\": [\"Hello\", \"World\"],\r\n  \"numbers\": [1, 2, 3, 4, 5]\r\n}",
+        "name": "arrays"
+      }
+    ],
+    "name": "Sample-120",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"words\": [\"Hello\", \"World\"],\n  \"numbers\": [1, 2, 3, 4, 5],\n  \"sentence\": \"Hello World\",\n  \"numberString\": \"1-2-3-4-5\"\n}",
+        "name": "arrays"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.arrays.sentence\",\r\n    \"value\": \"=join(@.words,' ')\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.arrays.numberString\",\r\n    \"value\": \"=join(@.numbers,'-')\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "array"
+  ],
+  "title": "Join array elements to strings"
+}

@@ -1,0 +1,23 @@
+{
+  "description": "This sample shows removing all null values from an object using a filter pattern.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"a\": 1,\r\n  \"b\": null,\r\n  \"c\": 3,\r\n  \"d\": null\r\n}",
+        "name": "data"
+      }
+    ],
+    "name": "Sample-100",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"a\": 1,\n  \"c\": 3\n}",
+        "name": "data"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.data.b\",\r\n    \"command\": \"remove\"\r\n  },\r\n  {\r\n    \"path\": \"$.data.d\",\r\n    \"command\": \"remove\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "remove"
+  ],
+  "title": "Remove null values"
+}

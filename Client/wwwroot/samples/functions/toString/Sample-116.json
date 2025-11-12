@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates converting complex objects to JSON strings for storage or transmission.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"config\": {\r\n    \"enabled\": true,\r\n    \"timeout\": 30,\r\n    \"retries\": 3\r\n  }\r\n}",
+        "name": "settings"
+      }
+    ],
+    "name": "Sample-116",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"config\": {\n    \"enabled\": true,\n    \"timeout\": 30,\n    \"retries\": 3\n  },\n  \"serialized\": \"{\\\"enabled\\\":true,\\\"timeout\\\":30,\\\"retries\\\":3}\"\n}",
+        "name": "settings"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.settings.serialized\",\r\n    \"value\": \"=toString(@.config)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "toString"
+  ],
+  "title": "Convert object to JSON string"
+}

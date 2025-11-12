@@ -1,0 +1,23 @@
+{
+  "description": "This sample demonstrates using put with array values to add or update array properties.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"name\": \"Project\"\r\n}",
+        "name": "project"
+      }
+    ],
+    "name": "Sample-97",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"name\": \"Project\",\n  \"tags\": [\"important\", \"urgent\", \"review\"]\n}",
+        "name": "project"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.project.tags\",\r\n    \"value\": [\"important\", \"urgent\", \"review\"],\r\n    \"command\": \"put\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "put"
+  ],
+  "title": "Put array property"
+}

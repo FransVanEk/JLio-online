@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates using promote to convert error codes to structured error objects.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"errors\": [404, 500, 403]\r\n}",
+        "name": "response"
+      }
+    ],
+    "name": "Sample-114",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"errors\": [\n    {\"code\": 404},\n    {\"code\": 500},\n    {\"code\": 403}\n  ]\n}",
+        "name": "response"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.response.errors[*]\",\r\n    \"value\": \"=promote('code')\",\r\n    \"command\": \"set\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "set",
+    "promote"
+  ],
+  "title": "Promote error codes to objects"
+}

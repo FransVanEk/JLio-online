@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows using modulo and average functions for calculations and statistics.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"dividend\": 17,\r\n  \"divisor\": 5,\r\n  \"values\": [10, 20, 30, 40, 50]\r\n}",
+        "name": "stats"
+      }
+    ],
+    "name": "Sample-107",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"dividend\": 17,\n  \"divisor\": 5,\n  \"values\": [10, 20, 30, 40, 50],\n  \"remainder\": 2,\n  \"average\": 30,\n  \"sum\": 150\n}",
+        "name": "stats"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.stats.remainder\",\r\n    \"value\": \"=mod(@.dividend,@.divisor)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.stats.average\",\r\n    \"value\": \"=average(@.values)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.stats.sum\",\r\n    \"value\": \"=sum(@.values)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "math"
+  ],
+  "title": "Modulo, average, and sum functions"
+}

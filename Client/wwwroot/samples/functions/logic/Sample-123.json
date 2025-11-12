@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates using logical AND and OR operators to combine conditions.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"age\": 25,\r\n  \"hasLicense\": true,\r\n  \"score\": 85,\r\n  \"attended\": true\r\n}",
+        "name": "person"
+      }
+    ],
+    "name": "Sample-123",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"age\": 25,\n  \"hasLicense\": true,\n  \"score\": 85,\n  \"attended\": true,\n  \"canDrive\": true,\n  \"passed\": true\n}",
+        "name": "person"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.person.canDrive\",\r\n    \"value\": \"=and(greaterThanOrEqual(@.age,18),equals(@.hasLicense,true))\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.person.passed\",\r\n    \"value\": \"=or(greaterThan(@.score,80),equals(@.attended,true))\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "logic"
+  ],
+  "title": "Logical AND and OR operations"
+}

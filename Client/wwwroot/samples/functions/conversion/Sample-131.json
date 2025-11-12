@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows converting dates to timestamps and vice versa.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"date\": \"2024-01-15T10:00:00Z\",\r\n  \"timestamp\": 1705316400000\r\n}",
+        "name": "temporal"
+      }
+    ],
+    "name": "Sample-131",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"date\": \"2024-01-15T10:00:00Z\",\n  \"timestamp\": 1705316400000,\n  \"unixTime\": 1705316400,\n  \"fromTimestamp\": \"2024-01-15T10:00:00Z\"\n}",
+        "name": "temporal"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.temporal.unixTime\",\r\n    \"value\": \"=toTimestamp(@.date)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.temporal.fromTimestamp\",\r\n    \"value\": \"=fromTimestamp(@.timestamp)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "conversion"
+  ],
+  "title": "Convert between dates and timestamps"
+}

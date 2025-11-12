@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows using split function to convert delimited strings into arrays.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"csv\": \"apple,banana,cherry\",\r\n  \"path\": \"/home/user/documents\"\r\n}",
+        "name": "strings"
+      }
+    ],
+    "name": "Sample-119",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"csv\": \"apple,banana,cherry\",\n  \"path\": \"/home/user/documents\",\n  \"fruits\": [\"apple\", \"banana\", \"cherry\"],\n  \"pathParts\": [\"\", \"home\", \"user\", \"documents\"]\n}",
+        "name": "strings"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.strings.fruits\",\r\n    \"value\": \"=split(@.csv,',')\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.strings.pathParts\",\r\n    \"value\": \"=split(@.path,'/')\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "array"
+  ],
+  "title": "Split strings into arrays"
+}

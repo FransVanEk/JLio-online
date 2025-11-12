@@ -1,0 +1,31 @@
+{
+  "description": "This sample demonstrates deep merging of nested structures preserving and combining nested properties.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"a\": {\"x\": 1},\r\n  \"b\": 2\r\n}",
+        "name": "obj1"
+      },
+      {
+        "jsonString": "{\r\n  \"a\": {\"y\": 3},\r\n  \"c\": 4\r\n}",
+        "name": "obj2"
+      }
+    ],
+    "name": "Sample-101",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"a\": {\"x\": 1},\n  \"b\": 2\n}",
+        "name": "obj1"
+      },
+      {
+        "jsonString": "{\n  \"a\": {\"y\": 3, \"x\": 1},\n  \"c\": 4,\n  \"b\": 2\n}",
+        "name": "obj2"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.obj1\",\r\n    \"targetPath\": \"$.obj2\",\r\n    \"command\": \"merge\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "merge"
+  ],
+  "title": "Deep merge nested objects"
+}

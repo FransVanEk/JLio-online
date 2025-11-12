@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates using fetch with array indexing to extract specific array elements.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"scores\": [95, 87, 92, 78, 88]\r\n}",
+        "name": "test"
+      }
+    ],
+    "name": "Sample-105",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"scores\": [95, 87, 92, 78, 88],\n  \"highest\": 95,\n  \"lowest\": 78,\n  \"middle\": 92\n}",
+        "name": "test"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.test.highest\",\r\n    \"value\": \"=fetch(@.scores[0])\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.test.lowest\",\r\n    \"value\": \"=fetch(@.scores[3])\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.test.middle\",\r\n    \"value\": \"=fetch(@.scores[2])\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "fetch"
+  ],
+  "title": "Fetch array elements by index"
+}

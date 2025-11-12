@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates generating GUIDs for database records that need unique identifiers.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"users\": [\r\n    {\"name\": \"Alice\"},\r\n    {\"name\": \"Bob\"},\r\n    {\"name\": \"Charlie\"}\r\n  ]\r\n}",
+        "name": "database"
+      }
+    ],
+    "name": "Sample-108",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"users\": [\n    {\"name\": \"Alice\", \"id\": \"guid1\"},\n    {\"name\": \"Bob\", \"id\": \"guid2\"},\n    {\"name\": \"Charlie\", \"id\": \"guid3\"}\n  ]\n}",
+        "name": "database"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.database.users[*].id\",\r\n    \"value\": \"=newGuid()\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "newGuid"
+  ],
+  "title": "Generate GUIDs for database records"
+}

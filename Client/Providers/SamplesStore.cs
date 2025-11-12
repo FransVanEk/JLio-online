@@ -29,7 +29,7 @@ namespace JLioOnline.Client.Providers
                 var categories = new Dictionary<string, string[]>
                 {
                     { "commands", new[] { "add", "set", "put", "remove", "copy", "move", "merge", "decisionTable" } },
-                    { "functions", new[] { "datetime", "newGuid", "concat", "fetch", "parse", "toString", "partial", "promote", "math", "text", "timedate" } }
+                    { "functions", new[] { "datetime", "newGuid", "concat", "fetch", "parse", "toString", "partial", "promote", "math", "text", "timedate", "array", "logic", "conversion" } }
                 };
 
                 // Load samples from organized folder structure

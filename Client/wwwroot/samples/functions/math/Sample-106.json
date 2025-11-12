@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates advanced math functions including floor, sqrt, and power for calculations.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"value\": 16.75,\r\n  \"base\": 2,\r\n  \"exponent\": 3\r\n}",
+        "name": "calc"
+      }
+    ],
+    "name": "Sample-106",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"value\": 16.75,\n  \"base\": 2,\n  \"exponent\": 3,\n  \"floored\": 16,\n  \"squareRoot\": 4.09,\n  \"powered\": 8\n}",
+        "name": "calc"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.calc.floored\",\r\n    \"value\": \"=floor(@.value)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.calc.squareRoot\",\r\n    \"value\": \"=sqrt(@.value)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.calc.powered\",\r\n    \"value\": \"=power(@.base,@.exponent)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "math"
+  ],
+  "title": "Floor, sqrt, and power functions"
+}

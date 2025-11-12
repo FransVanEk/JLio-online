@@ -1,0 +1,23 @@
+{
+  "description": "This sample demonstrates removing nested objects completely from the parent structure.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"data\": {\r\n    \"temp\": {\"value\": 1},\r\n    \"permanent\": {\"value\": 2}\r\n  }\r\n}",
+        "name": "obj"
+      }
+    ],
+    "name": "Sample-99",
+    "OutputObjects": [
+      {
+        "jsonString": "{\n  \"data\": {\n    \"permanent\": {\"value\": 2}\n  }\n}",
+        "name": "obj"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.obj.data.temp\",\r\n    \"command\": \"remove\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "remove"
+  ],
+  "title": "Remove nested object"
+}
