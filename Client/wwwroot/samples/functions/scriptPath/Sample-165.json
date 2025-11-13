@@ -1,21 +1,42 @@
 {
   "title": "ScriptPath - Build reference map",
-  "tags": ["add", "scriptPath"],
-  "inputObjects": [
-    {
-      "products": [
-        { "id": "P1", "name": "Widget" },
-        { "id": "P2", "name": "Gadget" }
-      ]
-    }
+  "tags": [
+    "add",
+    "scriptPath"
   ],
-  "scriptText": "[\r\n  {\r\n    \"path\": \"$.products[*].ref\",\r\n    \"value\": \"=scriptPath()\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "outputObjects": [
-    {
-      "products": [
-        { "id": "P1", "name": "Widget", "ref": "$.products[0]" },
-        { "id": "P2", "name": "Gadget", "ref": "$.products[1]" }
-      ]
-    }
-  ]
+  "model": {
+    "name": "Sample-165",
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.products[*].ref\",\r\n    \"value\": \"=scriptPath()\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "products": [
+          {
+            "id": "P1",
+            "name": "Widget"
+          },
+          {
+            "id": "P2",
+            "name": "Gadget"
+          }
+        ]
+      }
+    ],
+    "outputObjects": [
+      {
+        "products": [
+          {
+            "id": "P1",
+            "name": "Widget",
+            "ref": "$.products[0]"
+          },
+          {
+            "id": "P2",
+            "name": "Gadget",
+            "ref": "$.products[1]"
+          }
+        ]
+      }
+    ]
+  },
+  "description": "This sample shows scriptpath - build reference map."
 }

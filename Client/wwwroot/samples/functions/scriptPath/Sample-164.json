@@ -1,25 +1,46 @@
 {
   "title": "ScriptPath - Track nested object paths",
-  "tags": ["add", "scriptPath"],
-  "inputObjects": [
-    {
-      "order": {
-        "items": [
-          { "sku": "SKU-001", "qty": 2 },
-          { "sku": "SKU-002", "qty": 1 }
-        ]
-      }
-    }
+  "tags": [
+    "add",
+    "scriptPath"
   ],
-  "scriptText": "[\r\n  {\r\n    \"path\": \"$.order.items[*].location\",\r\n    \"value\": \"=scriptPath()\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "outputObjects": [
-    {
-      "order": {
-        "items": [
-          { "sku": "SKU-001", "qty": 2, "location": "$.order.items[0]" },
-          { "sku": "SKU-002", "qty": 1, "location": "$.order.items[1]" }
-        ]
+  "model": {
+    "name": "Sample-164",
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.order.items[*].location\",\r\n    \"value\": \"=scriptPath()\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "order": {
+          "items": [
+            {
+              "sku": "SKU-001",
+              "qty": 2
+            },
+            {
+              "sku": "SKU-002",
+              "qty": 1
+            }
+          ]
+        }
       }
-    }
-  ]
+    ],
+    "outputObjects": [
+      {
+        "order": {
+          "items": [
+            {
+              "sku": "SKU-001",
+              "qty": 2,
+              "location": "$.order.items[0]"
+            },
+            {
+              "sku": "SKU-002",
+              "qty": 1,
+              "location": "$.order.items[1]"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "description": "This sample shows scriptpath - track nested object paths."
 }

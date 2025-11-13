@@ -1,30 +1,36 @@
 {
   "title": "Resolve references in object",
-  "tags": ["resolve"],
-  "inputObjects": [
-    {
-      "productId": "ref://products/1",
-      "products": {
-        "1": {
-          "name": "Laptop",
-          "price": 999
-        }
-      }
-    }
+  "tags": [
+    "resolve"
   ],
-  "scriptText": "[\r\n  {\r\n    \"path\": \"$.productId\",\r\n    \"refPath\": \"$.products\",\r\n    \"command\": \"resolve\"\r\n  }\r\n]",
-  "outputObjects": [
-    {
-      "productId": {
-        "name": "Laptop",
-        "price": 999
-      },
-      "products": {
-        "1": {
-          "name": "Laptop",
-          "price": 999
+  "model": {
+    "name": "Sample-138",
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.productId\",\r\n    \"refPath\": \"$.products\",\r\n    \"command\": \"resolve\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "productId": "ref://products/1",
+        "products": {
+          "1": {
+            "name": "Laptop",
+            "price": 999
+          }
         }
       }
-    }
-  ]
+    ],
+    "outputObjects": [
+      {
+        "productId": {
+          "name": "Laptop",
+          "price": 999
+        },
+        "products": {
+          "1": {
+            "name": "Laptop",
+            "price": 999
+          }
+        }
+      }
+    ]
+  },
+  "description": "This sample shows resolve references in object."
 }

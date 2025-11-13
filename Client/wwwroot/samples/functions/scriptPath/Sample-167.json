@@ -1,21 +1,42 @@
 {
   "title": "ScriptPath - Audit trail with paths",
-  "tags": ["add", "scriptPath"],
-  "inputObjects": [
-    {
-      "records": [
-        { "id": "R1", "status": "active" },
-        { "id": "R2", "status": "pending" }
-      ]
-    }
+  "tags": [
+    "add",
+    "scriptPath"
   ],
-  "scriptText": "[\r\n  {\r\n    \"path\": \"$.records[*].auditPath\",\r\n    \"value\": \"=scriptPath()\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "outputObjects": [
-    {
-      "records": [
-        { "id": "R1", "status": "active", "auditPath": "$.records[0]" },
-        { "id": "R2", "status": "pending", "auditPath": "$.records[1]" }
-      ]
-    }
-  ]
+  "model": {
+    "name": "Sample-167",
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.records[*].auditPath\",\r\n    \"value\": \"=scriptPath()\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "records": [
+          {
+            "id": "R1",
+            "status": "active"
+          },
+          {
+            "id": "R2",
+            "status": "pending"
+          }
+        ]
+      }
+    ],
+    "outputObjects": [
+      {
+        "records": [
+          {
+            "id": "R1",
+            "status": "active",
+            "auditPath": "$.records[0]"
+          },
+          {
+            "id": "R2",
+            "status": "pending",
+            "auditPath": "$.records[1]"
+          }
+        ]
+      }
+    ]
+  },
+  "description": "This sample shows scriptpath - audit trail with paths."
 }

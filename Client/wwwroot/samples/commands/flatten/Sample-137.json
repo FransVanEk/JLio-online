@@ -1,27 +1,33 @@
 {
   "title": "Flatten deeply nested config",
-  "tags": ["flatten"],
-  "inputObjects": [
-    {
-      "config": {
-        "database": {
-          "connection": {
-            "host": "localhost",
-            "port": 5432,
-            "credentials": {
-              "user": "admin"
+  "tags": [
+    "flatten"
+  ],
+  "model": {
+    "name": "Sample-137",
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$\",\r\n    \"delimiter\": \":\",\r\n    \"command\": \"flatten\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "config": {
+          "database": {
+            "connection": {
+              "host": "localhost",
+              "port": 5432,
+              "credentials": {
+                "user": "admin"
+              }
             }
           }
         }
       }
-    }
-  ],
-  "scriptText": "[\r\n  {\r\n    \"path\": \"$\",\r\n    \"delimiter\": \":\",\r\n    \"command\": \"flatten\"\r\n  }\r\n]",
-  "outputObjects": [
-    {
-      "config:database:connection:host": "localhost",
-      "config:database:connection:port": 5432,
-      "config:database:connection:credentials:user": "admin"
-    }
-  ]
+    ],
+    "outputObjects": [
+      {
+        "config:database:connection:host": "localhost",
+        "config:database:connection:port": 5432,
+        "config:database:connection:credentials:user": "admin"
+      }
+    ]
+  },
+  "description": "This sample shows flatten deeply nested config."
 }

@@ -1,34 +1,40 @@
 {
   "title": "Resolve with external lookup",
-  "tags": ["resolve"],
-  "inputObjects": [
-    {
-      "order": {
-        "customerId": "ref://customers/C123"
-      },
-      "customers": {
-        "C123": {
-          "name": "John Doe",
-          "email": "john@example.com"
-        }
-      }
-    }
+  "tags": [
+    "resolve"
   ],
-  "scriptText": "[\r\n  {\r\n    \"path\": \"$.order.customerId\",\r\n    \"refPath\": \"$.customers\",\r\n    \"command\": \"resolve\"\r\n  }\r\n]",
-  "outputObjects": [
-    {
-      "order": {
-        "customerId": {
-          "name": "John Doe",
-          "email": "john@example.com"
-        }
-      },
-      "customers": {
-        "C123": {
-          "name": "John Doe",
-          "email": "john@example.com"
+  "model": {
+    "name": "Sample-140",
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.order.customerId\",\r\n    \"refPath\": \"$.customers\",\r\n    \"command\": \"resolve\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "order": {
+          "customerId": "ref://customers/C123"
+        },
+        "customers": {
+          "C123": {
+            "name": "John Doe",
+            "email": "john@example.com"
+          }
         }
       }
-    }
-  ]
+    ],
+    "outputObjects": [
+      {
+        "order": {
+          "customerId": {
+            "name": "John Doe",
+            "email": "john@example.com"
+          }
+        },
+        "customers": {
+          "C123": {
+            "name": "John Doe",
+            "email": "john@example.com"
+          }
+        }
+      }
+    ]
+  },
+  "description": "This sample shows resolve with external lookup."
 }

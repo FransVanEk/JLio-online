@@ -1,29 +1,35 @@
 {
   "title": "Flatten specific path only",
-  "tags": ["flatten"],
-  "inputObjects": [
-    {
-      "company": {
-        "name": "Acme Corp",
-        "employee": {
-          "id": 123,
-          "details": {
-            "role": "Developer",
-            "level": "Senior"
+  "tags": [
+    "flatten"
+  ],
+  "model": {
+    "name": "Sample-135",
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.company.employee\",\r\n    \"delimiter\": \".\",\r\n    \"command\": \"flatten\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "company": {
+          "name": "Acme Corp",
+          "employee": {
+            "id": 123,
+            "details": {
+              "role": "Developer",
+              "level": "Senior"
+            }
           }
         }
       }
-    }
-  ],
-  "scriptText": "[\r\n  {\r\n    \"path\": \"$.company.employee\",\r\n    \"delimiter\": \".\",\r\n    \"command\": \"flatten\"\r\n  }\r\n]",
-  "outputObjects": [
-    {
-      "company": {
-        "name": "Acme Corp",
-        "employee.id": 123,
-        "employee.details.role": "Developer",
-        "employee.details.level": "Senior"
+    ],
+    "outputObjects": [
+      {
+        "company": {
+          "name": "Acme Corp",
+          "employee.id": 123,
+          "employee.details.role": "Developer",
+          "employee.details.level": "Senior"
+        }
       }
-    }
-  ]
+    ]
+  },
+  "description": "This sample shows flatten specific path only."
 }

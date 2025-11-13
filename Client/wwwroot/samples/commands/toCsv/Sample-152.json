@@ -1,34 +1,40 @@
 {
   "title": "Export with quotes for special characters",
-  "tags": ["toCsv"],
-  "inputObjects": [
-    {
-      "contacts": [
-        {
-          "name": "Smith, John",
-          "note": "Call at 3:00 PM"
-        },
-        {
-          "name": "Doe, Jane",
-          "note": "Send \"urgent\" email"
-        }
-      ]
-    }
+  "tags": [
+    "toCsv"
   ],
-  "scriptText": "[\r\n  {\r\n    \"path\": \"$.contacts\",\r\n    \"targetPath\": \"$.csv\",\r\n    \"quoteChar\": \"\\\"\",\r\n    \"command\": \"toCsv\"\r\n  }\r\n]",
-  "outputObjects": [
-    {
-      "contacts": [
-        {
-          "name": "Smith, John",
-          "note": "Call at 3:00 PM"
-        },
-        {
-          "name": "Doe, Jane",
-          "note": "Send \"urgent\" email"
-        }
-      ],
-      "csv": "name,note\\n\\\"Smith, John\\\",\\\"Call at 3:00 PM\\\"\\n\\\"Doe, Jane\\\",\\\"Send \\\"\\\"urgent\\\"\\\" email\\\""
-    }
-  ]
+  "model": {
+    "name": "Sample-152",
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.contacts\",\r\n    \"targetPath\": \"$.csv\",\r\n    \"quoteChar\": \"\\\"\",\r\n    \"command\": \"toCsv\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "contacts": [
+          {
+            "name": "Smith, John",
+            "note": "Call at 3:00 PM"
+          },
+          {
+            "name": "Doe, Jane",
+            "note": "Send \"urgent\" email"
+          }
+        ]
+      }
+    ],
+    "outputObjects": [
+      {
+        "contacts": [
+          {
+            "name": "Smith, John",
+            "note": "Call at 3:00 PM"
+          },
+          {
+            "name": "Doe, Jane",
+            "note": "Send \"urgent\" email"
+          }
+        ],
+        "csv": "name,note\\n\\\"Smith, John\\\",\\\"Call at 3:00 PM\\\"\\n\\\"Doe, Jane\\\",\\\"Send \\\"\\\"urgent\\\"\\\" email\\\""
+      }
+    ]
+  },
+  "description": "This sample shows export with quotes for special characters."
 }

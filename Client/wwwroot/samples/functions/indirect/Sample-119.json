@@ -1,28 +1,34 @@
 {
   "title": "Indirect with computed path from data",
-  "tags": ["indirect"],
-  "inputObjects": [
-    {
-      "pathRef": "items[0].price",
-      "items": [
-        {
-          "name": "Product A",
-          "price": 99.99
-        }
-      ]
-    }
+  "tags": [
+    "indirect"
   ],
-  "scriptText": "[\r\n  {\r\n    \"path\": \"$.selectedPrice\",\r\n    \"value\": \"=indirect($.pathRef)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "outputObjects": [
-    {
-      "pathRef": "items[0].price",
-      "items": [
-        {
-          "name": "Product A",
-          "price": 99.99
-        }
-      ],
-      "selectedPrice": 99.99
-    }
-  ]
+  "model": {
+    "name": "Sample-119",
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.selectedPrice\",\r\n    \"value\": \"=indirect($.pathRef)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "pathRef": "items[0].price",
+        "items": [
+          {
+            "name": "Product A",
+            "price": 99.99
+          }
+        ]
+      }
+    ],
+    "outputObjects": [
+      {
+        "pathRef": "items[0].price",
+        "items": [
+          {
+            "name": "Product A",
+            "price": 99.99
+          }
+        ],
+        "selectedPrice": 99.99
+      }
+    ]
+  },
+  "description": "This sample shows indirect with computed path from data."
 }

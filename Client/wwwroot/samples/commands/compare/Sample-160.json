@@ -1,47 +1,53 @@
 {
   "title": "Compare nested objects",
-  "tags": ["compare"],
-  "inputObjects": [
-    {
-      "v1": {
-        "user": {
-          "profile": {
-            "email": "old@example.com"
-          }
-        }
-      },
-      "v2": {
-        "user": {
-          "profile": {
-            "email": "new@example.com"
-          }
-        }
-      }
-    }
+  "tags": [
+    "compare"
   ],
-  "scriptText": "[\r\n  {\r\n    \"leftPath\": \"$.v1\",\r\n    \"rightPath\": \"$.v2\",\r\n    \"targetPath\": \"$.delta\",\r\n    \"command\": \"compare\"\r\n  }\r\n]",
-  "outputObjects": [
-    {
-      "v1": {
-        "user": {
-          "profile": {
-            "email": "old@example.com"
+  "model": {
+    "name": "Sample-160",
+    "scriptText": "[\r\n  {\r\n    \"leftPath\": \"$.v1\",\r\n    \"rightPath\": \"$.v2\",\r\n    \"targetPath\": \"$.delta\",\r\n    \"command\": \"compare\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "v1": {
+          "user": {
+            "profile": {
+              "email": "old@example.com"
+            }
           }
-        }
-      },
-      "v2": {
-        "user": {
-          "profile": {
-            "email": "new@example.com"
+        },
+        "v2": {
+          "user": {
+            "profile": {
+              "email": "new@example.com"
+            }
           }
-        }
-      },
-      "delta": {
-        "user.profile.email": {
-          "left": "old@example.com",
-          "right": "new@example.com"
         }
       }
-    }
-  ]
+    ],
+    "outputObjects": [
+      {
+        "v1": {
+          "user": {
+            "profile": {
+              "email": "old@example.com"
+            }
+          }
+        },
+        "v2": {
+          "user": {
+            "profile": {
+              "email": "new@example.com"
+            }
+          }
+        },
+        "delta": {
+          "user.profile.email": {
+            "left": "old@example.com",
+            "right": "new@example.com"
+          }
+        }
+      }
+    ]
+  },
+  "description": "This sample shows compare nested objects."
 }

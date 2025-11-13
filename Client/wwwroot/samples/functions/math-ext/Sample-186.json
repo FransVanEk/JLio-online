@@ -1,18 +1,25 @@
 {
   "title": "Pow - Power calculation",
-  "tags": ["add", "pow"],
-  "inputObjects": [
-    {
-      "base": 2,
-      "exponent": 10
-    }
+  "tags": [
+    "add",
+    "pow"
   ],
-  "scriptText": "[\r\n  {\r\n    \"path\": \"$.result\",\r\n    \"value\": \"=pow(@.base, @.exponent)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "outputObjects": [
-    {
-      "base": 2,
-      "exponent": 10,
-      "result": 1024
-    }
-  ]
+  "model": {
+    "name": "Sample-186",
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.result\",\r\n    \"value\": \"=pow(@.base, @.exponent)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "base": 2,
+        "exponent": 10
+      }
+    ],
+    "outputObjects": [
+      {
+        "base": 2,
+        "exponent": 10,
+        "result": 1024
+      }
+    ]
+  },
+  "description": "This sample shows pow - power calculation."
 }

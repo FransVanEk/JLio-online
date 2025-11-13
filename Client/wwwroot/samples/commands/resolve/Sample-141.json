@@ -1,29 +1,35 @@
 {
   "title": "Resolve array of references",
-  "tags": ["resolve"],
-  "inputObjects": [
-    {
-      "tags": [
-        "ref://tagStore/tag1",
-        "ref://tagStore/tag2"
-      ],
-      "tagStore": {
-        "tag1": "JavaScript",
-        "tag2": "Python"
-      }
-    }
+  "tags": [
+    "resolve"
   ],
-  "scriptText": "[\r\n  {\r\n    \"path\": \"$.tags[*]\",\r\n    \"refPath\": \"$.tagStore\",\r\n    \"command\": \"resolve\"\r\n  }\r\n]",
-  "outputObjects": [
-    {
-      "tags": [
-        "JavaScript",
-        "Python"
-      ],
-      "tagStore": {
-        "tag1": "JavaScript",
-        "tag2": "Python"
+  "model": {
+    "name": "Sample-141",
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.tags[*]\",\r\n    \"refPath\": \"$.tagStore\",\r\n    \"command\": \"resolve\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "tags": [
+          "ref://tagStore/tag1",
+          "ref://tagStore/tag2"
+        ],
+        "tagStore": {
+          "tag1": "JavaScript",
+          "tag2": "Python"
+        }
       }
-    }
-  ]
+    ],
+    "outputObjects": [
+      {
+        "tags": [
+          "JavaScript",
+          "Python"
+        ],
+        "tagStore": {
+          "tag1": "JavaScript",
+          "tag2": "Python"
+        }
+      }
+    ]
+  },
+  "description": "This sample shows resolve array of references."
 }

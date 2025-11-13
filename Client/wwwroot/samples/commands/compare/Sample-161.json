@@ -1,36 +1,42 @@
 {
   "title": "Compare with ignore option",
-  "tags": ["compare"],
-  "inputObjects": [
-    {
-      "doc1": {
-        "id": 1,
-        "name": "Test",
-        "timestamp": "2021-01-01"
-      },
-      "doc2": {
-        "id": 1,
-        "name": "Test",
-        "timestamp": "2021-01-02"
-      }
-    }
+  "tags": [
+    "compare"
   ],
-  "scriptText": "[\r\n  {\r\n    \"leftPath\": \"$.doc1\",\r\n    \"rightPath\": \"$.doc2\",\r\n    \"targetPath\": \"$.result\",\r\n    \"ignoreFields\": [\"timestamp\"],\r\n    \"command\": \"compare\"\r\n  }\r\n]",
-  "outputObjects": [
-    {
-      "doc1": {
-        "id": 1,
-        "name": "Test",
-        "timestamp": "2021-01-01"
-      },
-      "doc2": {
-        "id": 1,
-        "name": "Test",
-        "timestamp": "2021-01-02"
-      },
-      "result": {
-        "equal": true
+  "model": {
+    "name": "Sample-161",
+    "scriptText": "[\r\n  {\r\n    \"leftPath\": \"$.doc1\",\r\n    \"rightPath\": \"$.doc2\",\r\n    \"targetPath\": \"$.result\",\r\n    \"ignoreFields\": [\"timestamp\"],\r\n    \"command\": \"compare\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "doc1": {
+          "id": 1,
+          "name": "Test",
+          "timestamp": "2021-01-01"
+        },
+        "doc2": {
+          "id": 1,
+          "name": "Test",
+          "timestamp": "2021-01-02"
+        }
       }
-    }
-  ]
+    ],
+    "outputObjects": [
+      {
+        "doc1": {
+          "id": 1,
+          "name": "Test",
+          "timestamp": "2021-01-01"
+        },
+        "doc2": {
+          "id": 1,
+          "name": "Test",
+          "timestamp": "2021-01-02"
+        },
+        "result": {
+          "equal": true
+        }
+      }
+    ]
+  },
+  "description": "This sample shows compare with ignore option."
 }

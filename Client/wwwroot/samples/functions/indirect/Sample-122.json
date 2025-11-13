@@ -1,30 +1,36 @@
 {
   "title": "Indirect with nested object navigation",
-  "tags": ["indirect"],
-  "inputObjects": [
-    {
-      "targetPath": "order.customer.email",
-      "order": {
-        "id": 123,
-        "customer": {
-          "name": "Alice",
-          "email": "alice@example.com"
+  "tags": [
+    "indirect"
+  ],
+  "model": {
+    "name": "Sample-122",
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.contactEmail\",\r\n    \"value\": \"=indirect($.targetPath)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "targetPath": "order.customer.email",
+        "order": {
+          "id": 123,
+          "customer": {
+            "name": "Alice",
+            "email": "alice@example.com"
+          }
         }
       }
-    }
-  ],
-  "scriptText": "[\r\n  {\r\n    \"path\": \"$.contactEmail\",\r\n    \"value\": \"=indirect($.targetPath)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "outputObjects": [
-    {
-      "targetPath": "order.customer.email",
-      "order": {
-        "id": 123,
-        "customer": {
-          "name": "Alice",
-          "email": "alice@example.com"
-        }
-      },
-      "contactEmail": "alice@example.com"
-    }
-  ]
+    ],
+    "outputObjects": [
+      {
+        "targetPath": "order.customer.email",
+        "order": {
+          "id": 123,
+          "customer": {
+            "name": "Alice",
+            "email": "alice@example.com"
+          }
+        },
+        "contactEmail": "alice@example.com"
+      }
+    ]
+  },
+  "description": "This sample shows indirect with nested object navigation."
 }

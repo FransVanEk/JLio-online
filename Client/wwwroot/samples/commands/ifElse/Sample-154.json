@@ -1,21 +1,27 @@
 {
   "title": "IfElse for discount calculation",
-  "tags": ["ifElse"],
-  "inputObjects": [
-    {
-      "order": {
-        "amount": 150,
-        "discount": 0
-      }
-    }
+  "tags": [
+    "ifElse"
   ],
-  "scriptText": "[\r\n  {\r\n    \"path\": \"$.order\",\r\n    \"condition\": \"@.amount > 100\",\r\n    \"ifTrue\": [\r\n      {\r\n        \"path\": \"$.order.discount\",\r\n        \"value\": 10,\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"ifFalse\": [\r\n      {\r\n        \"path\": \"$.order.discount\",\r\n        \"value\": 0,\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"command\": \"ifElse\"\r\n  }\r\n]",
-  "outputObjects": [
-    {
-      "order": {
-        "amount": 150,
-        "discount": 10
+  "model": {
+    "name": "Sample-154",
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.order\",\r\n    \"condition\": \"@.amount > 100\",\r\n    \"ifTrue\": [\r\n      {\r\n        \"path\": \"$.order.discount\",\r\n        \"value\": 10,\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"ifFalse\": [\r\n      {\r\n        \"path\": \"$.order.discount\",\r\n        \"value\": 0,\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"command\": \"ifElse\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "order": {
+          "amount": 150,
+          "discount": 0
+        }
       }
-    }
-  ]
+    ],
+    "outputObjects": [
+      {
+        "order": {
+          "amount": 150,
+          "discount": 10
+        }
+      }
+    ]
+  },
+  "description": "This sample shows ifelse for discount calculation."
 }

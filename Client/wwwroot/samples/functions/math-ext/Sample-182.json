@@ -1,16 +1,33 @@
 {
   "title": "Sum - Total array values",
-  "tags": ["add", "sum"],
-  "inputObjects": [
-    {
-      "amounts": [100, 250, 75, 125]
-    }
+  "tags": [
+    "add",
+    "sum"
   ],
-  "scriptText": "[\r\n  {\r\n    \"path\": \"$.totalAmount\",\r\n    \"value\": \"=sum(@.amounts[*])\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "outputObjects": [
-    {
-      "amounts": [100, 250, 75, 125],
-      "totalAmount": 550
-    }
-  ]
+  "model": {
+    "name": "Sample-182",
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.totalAmount\",\r\n    \"value\": \"=sum(@.amounts[*])\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "amounts": [
+          100,
+          250,
+          75,
+          125
+        ]
+      }
+    ],
+    "outputObjects": [
+      {
+        "amounts": [
+          100,
+          250,
+          75,
+          125
+        ],
+        "totalAmount": 550
+      }
+    ]
+  },
+  "description": "This sample shows sum - total array values."
 }

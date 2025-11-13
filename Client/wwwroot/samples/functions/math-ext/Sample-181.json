@@ -1,20 +1,27 @@
 {
   "title": "Calculate - Formula evaluation",
-  "tags": ["add", "calculate"],
-  "inputObjects": [
-    {
-      "base": 50,
-      "rate": 1.5,
-      "bonus": 10
-    }
+  "tags": [
+    "add",
+    "calculate"
   ],
-  "scriptText": "[\r\n  {\r\n    \"path\": \"$.result\",\r\n    \"value\": \"=calculate((@.base * @.rate) + @.bonus)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "outputObjects": [
-    {
-      "base": 50,
-      "rate": 1.5,
-      "bonus": 10,
-      "result": 85
-    }
-  ]
+  "model": {
+    "name": "Sample-181",
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.result\",\r\n    \"value\": \"=calculate((@.base * @.rate) + @.bonus)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "base": 50,
+        "rate": 1.5,
+        "bonus": 10
+      }
+    ],
+    "outputObjects": [
+      {
+        "base": 50,
+        "rate": 1.5,
+        "bonus": 10,
+        "result": 85
+      }
+    ]
+  },
+  "description": "This sample shows calculate - formula evaluation."
 }

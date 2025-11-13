@@ -1,22 +1,28 @@
 {
   "title": "Indirect reference to dynamic path",
-  "tags": ["indirect"],
-  "inputObjects": [
-    {
-      "dynamicField": "user.name",
-      "user": {
-        "name": "John Doe"
-      }
-    }
+  "tags": [
+    "indirect"
   ],
-  "scriptText": "[\r\n  {\r\n    \"path\": \"$.result\",\r\n    \"value\": \"=indirect($.dynamicField)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-  "outputObjects": [
-    {
-      "dynamicField": "user.name",
-      "user": {
-        "name": "John Doe"
-      },
-      "result": "John Doe"
-    }
-  ]
+  "model": {
+    "name": "Sample-118",
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.result\",\r\n    \"value\": \"=indirect($.dynamicField)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "dynamicField": "user.name",
+        "user": {
+          "name": "John Doe"
+        }
+      }
+    ],
+    "outputObjects": [
+      {
+        "dynamicField": "user.name",
+        "user": {
+          "name": "John Doe"
+        },
+        "result": "John Doe"
+      }
+    ]
+  },
+  "description": "This sample shows indirect reference to dynamic path."
 }

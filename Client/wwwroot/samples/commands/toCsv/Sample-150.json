@@ -1,34 +1,40 @@
 {
   "title": "Export with header option",
-  "tags": ["toCsv"],
-  "inputObjects": [
-    {
-      "orders": [
-        {
-          "orderId": "ORD001",
-          "amount": 150.50
-        },
-        {
-          "orderId": "ORD002",
-          "amount": 200.00
-        }
-      ]
-    }
+  "tags": [
+    "toCsv"
   ],
-  "scriptText": "[\r\n  {\r\n    \"path\": \"$.orders\",\r\n    \"targetPath\": \"$.report\",\r\n    \"includeHeader\": true,\r\n    \"command\": \"toCsv\"\r\n  }\r\n]",
-  "outputObjects": [
-    {
-      "orders": [
-        {
-          "orderId": "ORD001",
-          "amount": 150.50
-        },
-        {
-          "orderId": "ORD002",
-          "amount": 200.00
-        }
-      ],
-      "report": "orderId,amount\\nORD001,150.5\\nORD002,200"
-    }
-  ]
+  "model": {
+    "name": "Sample-150",
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.orders\",\r\n    \"targetPath\": \"$.report\",\r\n    \"includeHeader\": true,\r\n    \"command\": \"toCsv\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "orders": [
+          {
+            "orderId": "ORD001",
+            "amount": 150.5
+          },
+          {
+            "orderId": "ORD002",
+            "amount": 200.0
+          }
+        ]
+      }
+    ],
+    "outputObjects": [
+      {
+        "orders": [
+          {
+            "orderId": "ORD001",
+            "amount": 150.5
+          },
+          {
+            "orderId": "ORD002",
+            "amount": 200.0
+          }
+        ],
+        "report": "orderId,amount\\nORD001,150.5\\nORD002,200"
+      }
+    ]
+  },
+  "description": "This sample shows export with header option."
 }
