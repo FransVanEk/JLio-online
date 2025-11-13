@@ -1,33 +1,24 @@
-{
-  "title": "Count - Count array elements",
-  "tags": [
-    "add",
-    "count"
-  ],
-  "model": {
-    "name": "Sample-183",
-    "scriptText": "[\r\n  {\r\n    \"path\": \"$.itemCount\",\r\n    \"value\": \"=count(@.items[*])\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-    "inputObjects": [
-      {
-        "items": [
-          "apple",
-          "banana",
-          "cherry",
-          "date"
-        ]
-      }
-    ],
-    "outputObjects": [
-      {
-        "items": [
-          "apple",
-          "banana",
-          "cherry",
-          "date"
-        ],
-        "itemCount": 4
-      }
-    ]
-  },
-  "description": "This sample shows count - count array elements."
+﻿{
+    "title":  "Count - Count array elements",
+    "tags":  [
+                 "add",
+                 "count"
+             ],
+    "model":  {
+                  "name":  "Sample-183",
+                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.itemCount\",\r\n    \"value\": \"=count(@.items[*])\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\\\"items\\\":[\\\"apple\\\",\\\"banana\\\",\\\"cherry\\\",\\\"date\\\"]}",
+                                           "name":  "i"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\\\"items\\\":[\\\"apple\\\",\\\"banana\\\",\\\"cherry\\\",\\\"date\\\"],\\\"itemCount\\\":4}",
+                                            "name":  "i"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows count - count array elements."
 }

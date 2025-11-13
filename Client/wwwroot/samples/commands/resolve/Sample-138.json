@@ -1,36 +1,23 @@
-{
-  "title": "Resolve references in object",
-  "tags": [
-    "resolve"
-  ],
-  "model": {
-    "name": "Sample-138",
-    "scriptText": "[\r\n  {\r\n    \"path\": \"$.productId\",\r\n    \"refPath\": \"$.products\",\r\n    \"command\": \"resolve\"\r\n  }\r\n]",
-    "inputObjects": [
-      {
-        "productId": "ref://products/1",
-        "products": {
-          "1": {
-            "name": "Laptop",
-            "price": 999
-          }
-        }
-      }
-    ],
-    "outputObjects": [
-      {
-        "productId": {
-          "name": "Laptop",
-          "price": 999
-        },
-        "products": {
-          "1": {
-            "name": "Laptop",
-            "price": 999
-          }
-        }
-      }
-    ]
-  },
-  "description": "This sample shows resolve references in object."
+﻿{
+    "title":  "Resolve references in object",
+    "tags":  [
+                 "resolve"
+             ],
+    "model":  {
+                  "name":  "Sample-138",
+                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.productId\",\r\n    \"refPath\": \"$.products\",\r\n    \"command\": \"resolve\"\r\n  }\r\n]",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\\\"productId\\\":\\\"ref://products/1\\\",\\\"products\\\":{\\\"1\\\":{\\\"name\\\":\\\"Laptop\\\",\\\"price\\\":999}}}",
+                                           "name":  "p"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\\\"productId\\\":{\\\"name\\\":\\\"Laptop\\\",\\\"price\\\":999},\\\"products\\\":{\\\"1\\\":{\\\"name\\\":\\\"Laptop\\\",\\\"price\\\":999}}}",
+                                            "name":  "p"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows resolve references in object."
 }

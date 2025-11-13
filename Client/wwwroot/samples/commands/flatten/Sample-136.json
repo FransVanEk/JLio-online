@@ -1,35 +1,23 @@
-{
-  "title": "Flatten array elements",
-  "tags": [
-    "flatten"
-  ],
-  "model": {
-    "name": "Sample-136",
-    "scriptText": "[\r\n  {\r\n    \"path\": \"$.items[*]\",\r\n    \"delimiter\": \"_\",\r\n    \"command\": \"flatten\"\r\n  }\r\n]",
-    "inputObjects": [
-      {
-        "items": [
-          {
-            "product": {
-              "name": "Phone",
-              "specs": {
-                "memory": "128GB"
-              }
-            }
-          }
-        ]
-      }
-    ],
-    "outputObjects": [
-      {
-        "items": [
-          {
-            "product_name": "Phone",
-            "product_specs_memory": "128GB"
-          }
-        ]
-      }
-    ]
-  },
-  "description": "This sample shows flatten array elements."
+﻿{
+    "title":  "Flatten array elements",
+    "tags":  [
+                 "flatten"
+             ],
+    "model":  {
+                  "name":  "Sample-136",
+                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.items[*]\",\r\n    \"delimiter\": \"_\",\r\n    \"command\": \"flatten\"\r\n  }\r\n]",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\\\"items\\\":[{\\\"product\\\":{\\\"name\\\":\\\"Phone\\\",\\\"specs\\\":{\\\"memory\\\":\\\"128GB\\\"}}}]}",
+                                           "name":  "i"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\\\"items\\\":[{\\\"product_name\\\":\\\"Phone\\\",\\\"product_specs_memory\\\":\\\"128GB\\\"}]}",
+                                            "name":  "i"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows flatten array elements."
 }

@@ -1,49 +1,23 @@
-{
-  "title": "Compare two objects for differences",
-  "tags": [
-    "compare"
-  ],
-  "model": {
-    "name": "Sample-158",
-    "scriptText": "[\r\n  {\r\n    \"leftPath\": \"$.original\",\r\n    \"rightPath\": \"$.updated\",\r\n    \"targetPath\": \"$.diff\",\r\n    \"command\": \"compare\"\r\n  }\r\n]",
-    "inputObjects": [
-      {
-        "original": {
-          "name": "John",
-          "age": 30,
-          "city": "New York"
-        },
-        "updated": {
-          "name": "John",
-          "age": 31,
-          "city": "Boston"
-        }
-      }
-    ],
-    "outputObjects": [
-      {
-        "original": {
-          "name": "John",
-          "age": 30,
-          "city": "New York"
-        },
-        "updated": {
-          "name": "John",
-          "age": 31,
-          "city": "Boston"
-        },
-        "diff": {
-          "age": {
-            "left": 30,
-            "right": 31
-          },
-          "city": {
-            "left": "New York",
-            "right": "Boston"
-          }
-        }
-      }
-    ]
-  },
-  "description": "This sample shows compare two objects for differences."
+﻿{
+    "title":  "Compare two objects for differences",
+    "tags":  [
+                 "compare"
+             ],
+    "model":  {
+                  "name":  "Sample-158",
+                  "scriptText":  "[\r\n  {\r\n    \"leftPath\": \"$.original\",\r\n    \"rightPath\": \"$.updated\",\r\n    \"targetPath\": \"$.diff\",\r\n    \"command\": \"compare\"\r\n  }\r\n]",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\\\"original\\\":{\\\"name\\\":\\\"John\\\",\\\"age\\\":30,\\\"city\\\":\\\"New York\\\"},\\\"updated\\\":{\\\"name\\\":\\\"John\\\",\\\"age\\\":31,\\\"city\\\":\\\"Boston\\\"}}",
+                                           "name":  "d"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\\\"original\\\":{\\\"name\\\":\\\"John\\\",\\\"age\\\":30,\\\"city\\\":\\\"New York\\\"},\\\"updated\\\":{\\\"name\\\":\\\"John\\\",\\\"age\\\":31,\\\"city\\\":\\\"Boston\\\"},\\\"diff\\\":{\\\"age\\\":{\\\"left\\\":30,\\\"right\\\":31},\\\"city\\\":{\\\"left\\\":\\\"New York\\\",\\\"right\\\":\\\"Boston\\\"}}}",
+                                            "name":  "d"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows compare two objects for differences."
 }

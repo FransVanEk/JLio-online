@@ -1,44 +1,23 @@
-{
-  "title": "Convert JSON array to CSV",
-  "tags": [
-    "toCsv"
-  ],
-  "model": {
-    "name": "Sample-148",
-    "scriptText": "[\r\n  {\r\n    \"path\": \"$.users\",\r\n    \"targetPath\": \"$.csvData\",\r\n    \"command\": \"toCsv\"\r\n  }\r\n]",
-    "inputObjects": [
-      {
-        "users": [
-          {
-            "id": 1,
-            "name": "John",
-            "email": "john@example.com"
-          },
-          {
-            "id": 2,
-            "name": "Jane",
-            "email": "jane@example.com"
-          }
-        ]
-      }
-    ],
-    "outputObjects": [
-      {
-        "users": [
-          {
-            "id": 1,
-            "name": "John",
-            "email": "john@example.com"
-          },
-          {
-            "id": 2,
-            "name": "Jane",
-            "email": "jane@example.com"
-          }
-        ],
-        "csvData": "id,name,email\\n1,John,john@example.com\\n2,Jane,jane@example.com"
-      }
-    ]
-  },
-  "description": "This sample shows convert json array to csv."
+﻿{
+    "title":  "Convert JSON array to CSV",
+    "tags":  [
+                 "toCsv"
+             ],
+    "model":  {
+                  "name":  "Sample-148",
+                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.users\",\r\n    \"targetPath\": \"$.csvData\",\r\n    \"command\": \"toCsv\"\r\n  }\r\n]",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\\\"users\\\":[{\\\"id\\\":1,\\\"name\\\":\\\"John\\\",\\\"email\\\":\\\"john@example.com\\\"},{\\\"id\\\":2,\\\"name\\\":\\\"Jane\\\",\\\"email\\\":\\\"jane@example.com\\\"}]}",
+                                           "name":  "u"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\\\"users\\\":[{\\\"id\\\":1,\\\"name\\\":\\\"John\\\",\\\"email\\\":\\\"john@example.com\\\"},{\\\"id\\\":2,\\\"name\\\":\\\"Jane\\\",\\\"email\\\":\\\"jane@example.com\\\"}],\\\"csvData\\\":\\\"id,name,email\\\\n1,John,john@example.com\\\\n2,Jane,jane@example.com\\\"}",
+                                            "name":  "u"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows convert json array to csv."
 }

@@ -8,27 +8,14 @@
     "scriptText": "[\r\n  {\r\n    \"path\": \"$.contactEmail\",\r\n    \"value\": \"=indirect($.targetPath)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
     "inputObjects": [
       {
-        "targetPath": "order.customer.email",
-        "order": {
-          "id": 123,
-          "customer": {
-            "name": "Alice",
-            "email": "alice@example.com"
-          }
-        }
+        "jsonString": "{\r\n  \"targetPath\": \"order.customer.email\",\r\n  \"order\": {\r\n    \"id\": 123,\r\n    \"customer\": {\r\n      \"name\": \"Alice\",\r\n      \"email\": \"alice@example.com\"\r\n    }\r\n  }\r\n}",
+        "name": "data"
       }
     ],
     "outputObjects": [
       {
-        "targetPath": "order.customer.email",
-        "order": {
-          "id": 123,
-          "customer": {
-            "name": "Alice",
-            "email": "alice@example.com"
-          }
-        },
-        "contactEmail": "alice@example.com"
+        "jsonString": "{\r\n  \"targetPath\": \"order.customer.email\",\r\n  \"order\": {\r\n    \"id\": 123,\r\n    \"customer\": {\r\n      \"name\": \"Alice\",\r\n      \"email\": \"alice@example.com\"\r\n    }\r\n  },\r\n  \"contactEmail\": \"alice@example.com\"\r\n}",
+        "name": "data"
       }
     ]
   },

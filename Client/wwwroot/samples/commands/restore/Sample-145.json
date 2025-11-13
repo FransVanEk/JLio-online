@@ -1,31 +1,23 @@
-{
-  "title": "Restore specific path only",
-  "tags": [
-    "restore"
-  ],
-  "model": {
-    "name": "Sample-145",
-    "scriptText": "[\r\n  {\r\n    \"path\": \"$.data*\",\r\n    \"delimiter\": \".\",\r\n    \"command\": \"restore\"\r\n  }\r\n]",
-    "inputObjects": [
-      {
-        "id": 123,
-        "data.firstName": "Alice",
-        "data.lastName": "Smith",
-        "data.contact.email": "alice@example.com"
-      }
-    ],
-    "outputObjects": [
-      {
-        "id": 123,
-        "data": {
-          "firstName": "Alice",
-          "lastName": "Smith",
-          "contact": {
-            "email": "alice@example.com"
-          }
-        }
-      }
-    ]
-  },
-  "description": "This sample shows restore specific path only."
+﻿{
+    "title":  "Restore specific path only",
+    "tags":  [
+                 "restore"
+             ],
+    "model":  {
+                  "name":  "Sample-145",
+                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.data*\",\r\n    \"delimiter\": \".\",\r\n    \"command\": \"restore\"\r\n  }\r\n]",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\\\"id\\\":123,\\\"data.firstName\\\":\\\"Alice\\\",\\\"data.lastName\\\":\\\"Smith\\\",\\\"data.contact.email\\\":\\\"alice@example.com\\\"}",
+                                           "name":  "d"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\\\"id\\\":123,\\\"data\\\":{\\\"firstName\\\":\\\"Alice\\\",\\\"lastName\\\":\\\"Smith\\\",\\\"contact\\\":{\\\"email\\\":\\\"alice@example.com\\\"}}}",
+                                            "name":  "d"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows restore specific path only."
 }

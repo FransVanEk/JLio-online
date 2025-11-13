@@ -8,25 +8,14 @@
     "scriptText": "[\r\n  {\r\n    \"path\": \"$.dbHost\",\r\n    \"value\": \"=indirect($.setting)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
     "inputObjects": [
       {
-        "setting": "config.database.host",
-        "config": {
-          "database": {
-            "host": "localhost",
-            "port": 5432
-          }
-        }
+        "jsonString": "{\r\n  \"setting\": \"config.database.host\",\r\n  \"config\": {\r\n    \"database\": {\r\n      \"host\": \"localhost\",\r\n      \"port\": 5432\r\n    }\r\n  }\r\n}",
+        "name": "data"
       }
     ],
     "outputObjects": [
       {
-        "setting": "config.database.host",
-        "config": {
-          "database": {
-            "host": "localhost",
-            "port": 5432
-          }
-        },
-        "dbHost": "localhost"
+        "jsonString": "{\r\n  \"setting\": \"config.database.host\",\r\n  \"config\": {\r\n    \"database\": {\r\n      \"host\": \"localhost\",\r\n      \"port\": 5432\r\n    }\r\n  },\r\n  \"dbHost\": \"localhost\"\r\n}",
+        "name": "data"
       }
     ]
   },

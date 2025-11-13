@@ -1,47 +1,23 @@
-{
-  "title": "Compare arrays for changes",
-  "tags": [
-    "compare"
-  ],
-  "model": {
-    "name": "Sample-159",
-    "scriptText": "[\r\n  {\r\n    \"leftPath\": \"$.before\",\r\n    \"rightPath\": \"$.after\",\r\n    \"targetPath\": \"$.changes\",\r\n    \"command\": \"compare\"\r\n  }\r\n]",
-    "inputObjects": [
-      {
-        "before": [
-          1,
-          2,
-          3
-        ],
-        "after": [
-          1,
-          2,
-          4
-        ]
-      }
-    ],
-    "outputObjects": [
-      {
-        "before": [
-          1,
-          2,
-          3
-        ],
-        "after": [
-          1,
-          2,
-          4
-        ],
-        "changes": {
-          "removed": [
-            3
-          ],
-          "added": [
-            4
-          ]
-        }
-      }
-    ]
-  },
-  "description": "This sample shows compare arrays for changes."
+﻿{
+    "title":  "Compare arrays for changes",
+    "tags":  [
+                 "compare"
+             ],
+    "model":  {
+                  "name":  "Sample-159",
+                  "scriptText":  "[\r\n  {\r\n    \"leftPath\": \"$.before\",\r\n    \"rightPath\": \"$.after\",\r\n    \"targetPath\": \"$.changes\",\r\n    \"command\": \"compare\"\r\n  }\r\n]",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\\\"before\\\":[1,2,3],\\\"after\\\":[1,2,4]}",
+                                           "name":  "d"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\\\"before\\\":[1,2,3],\\\"after\\\":[1,2,4],\\\"changes\\\":{\\\"removed\\\":[3],\\\"added\\\":[4]}}",
+                                            "name":  "d"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows compare arrays for changes."
 }

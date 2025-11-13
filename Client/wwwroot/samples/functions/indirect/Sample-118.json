@@ -8,19 +8,14 @@
     "scriptText": "[\r\n  {\r\n    \"path\": \"$.result\",\r\n    \"value\": \"=indirect($.dynamicField)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
     "inputObjects": [
       {
-        "dynamicField": "user.name",
-        "user": {
-          "name": "John Doe"
-        }
+        "jsonString": "{\r\n  \"dynamicField\": \"user.name\",\r\n  \"user\": {\r\n    \"name\": \"John Doe\"\r\n  }\r\n}",
+        "name": "data"
       }
     ],
     "outputObjects": [
       {
-        "dynamicField": "user.name",
-        "user": {
-          "name": "John Doe"
-        },
-        "result": "John Doe"
+        "jsonString": "{\r\n  \"dynamicField\": \"user.name\",\r\n  \"user\": {\r\n    \"name\": \"John Doe\"\r\n  },\r\n  \"result\": \"John Doe\"\r\n}",
+        "name": "data"
       }
     ]
   },

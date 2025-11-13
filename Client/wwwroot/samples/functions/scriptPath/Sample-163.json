@@ -1,42 +1,24 @@
-{
-  "title": "ScriptPath - Track array item paths",
-  "tags": [
-    "add",
-    "scriptPath"
-  ],
-  "model": {
-    "name": "Sample-163",
-    "scriptText": "[\r\n  {\r\n    \"path\": \"$.customers[*].idPath\",\r\n    \"value\": \"=scriptPath()\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-    "inputObjects": [
-      {
-        "customers": [
-          {
-            "id": "C001",
-            "name": "Alice"
-          },
-          {
-            "id": "C002",
-            "name": "Bob"
-          }
-        ]
-      }
-    ],
-    "outputObjects": [
-      {
-        "customers": [
-          {
-            "id": "C001",
-            "name": "Alice",
-            "idPath": "$.customers[0]"
-          },
-          {
-            "id": "C002",
-            "name": "Bob",
-            "idPath": "$.customers[1]"
-          }
-        ]
-      }
-    ]
-  },
-  "description": "This sample shows scriptpath - track array item paths."
+﻿{
+    "title":  "ScriptPath - Track array item paths",
+    "tags":  [
+                 "add",
+                 "scriptPath"
+             ],
+    "model":  {
+                  "name":  "Sample-163",
+                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.customers[*].idPath\",\r\n    \"value\": \"=scriptPath()\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\\\"customers\\\":[{\\\"id\\\":\\\"C001\\\",\\\"name\\\":\\\"Alice\\\"},{\\\"id\\\":\\\"C002\\\",\\\"name\\\":\\\"Bob\\\"}]}",
+                                           "name":  "c"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\\\"customers\\\":[{\\\"id\\\":\\\"C001\\\",\\\"name\\\":\\\"Alice\\\",\\\"idPath\\\":\\\"$.customers[0]\\\"},{\\\"id\\\":\\\"C002\\\",\\\"name\\\":\\\"Bob\\\",\\\"idPath\\\":\\\"$.customers[1]\\\"}]}",
+                                            "name":  "c"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows scriptpath - track array item paths."
 }

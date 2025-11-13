@@ -1,27 +1,23 @@
-{
-  "title": "IfElse for status assignment",
-  "tags": [
-    "ifElse"
-  ],
-  "model": {
-    "name": "Sample-155",
-    "scriptText": "[\r\n  {\r\n    \"path\": \"$.account\",\r\n    \"condition\": \"@.balance >= 1000\",\r\n    \"ifTrue\": [\r\n      {\r\n        \"path\": \"$.account.tier\",\r\n        \"value\": \"premium\",\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"ifFalse\": [\r\n      {\r\n        \"path\": \"$.account.tier\",\r\n        \"value\": \"basic\",\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"command\": \"ifElse\"\r\n  }\r\n]",
-    "inputObjects": [
-      {
-        "account": {
-          "balance": 500,
-          "tier": ""
-        }
-      }
-    ],
-    "outputObjects": [
-      {
-        "account": {
-          "balance": 500,
-          "tier": "basic"
-        }
-      }
-    ]
-  },
-  "description": "This sample shows ifelse for status assignment."
+﻿{
+    "title":  "IfElse for status assignment",
+    "tags":  [
+                 "ifElse"
+             ],
+    "model":  {
+                  "name":  "Sample-155",
+                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.account\",\r\n    \"condition\": \"@.balance \u003e= 1000\",\r\n    \"ifTrue\": [\r\n      {\r\n        \"path\": \"$.account.tier\",\r\n        \"value\": \"premium\",\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"ifFalse\": [\r\n      {\r\n        \"path\": \"$.account.tier\",\r\n        \"value\": \"basic\",\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"command\": \"ifElse\"\r\n  }\r\n]",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\\\"account\\\":{\\\"balance\\\":500,\\\"tier\\\":\\\"\\\"}}",
+                                           "name":  "a"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\\\"account\\\":{\\\"balance\\\":500,\\\"tier\\\":\\\"basic\\\"}}",
+                                            "name":  "a"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows ifelse for status assignment."
 }

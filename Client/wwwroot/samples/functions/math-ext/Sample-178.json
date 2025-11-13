@@ -1,35 +1,24 @@
-{
-  "title": "Median - Calculate median value",
-  "tags": [
-    "add",
-    "median"
-  ],
-  "model": {
-    "name": "Sample-178",
-    "scriptText": "[\r\n  {\r\n    \"path\": \"$.medianScore\",\r\n    \"value\": \"=median(@.scores[*])\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-    "inputObjects": [
-      {
-        "scores": [
-          85,
-          92,
-          78,
-          95,
-          88
-        ]
-      }
-    ],
-    "outputObjects": [
-      {
-        "scores": [
-          85,
-          92,
-          78,
-          95,
-          88
-        ],
-        "medianScore": 88
-      }
-    ]
-  },
-  "description": "This sample shows median - calculate median value."
+﻿{
+    "title":  "Median - Calculate median value",
+    "tags":  [
+                 "add",
+                 "median"
+             ],
+    "model":  {
+                  "name":  "Sample-178",
+                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.medianScore\",\r\n    \"value\": \"=median(@.scores[*])\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\\\"scores\\\":[85,92,78,95,88]}",
+                                           "name":  "m"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\\\"scores\\\":[85,92,78,95,88],\\\"medianScore\\\":88}",
+                                            "name":  "m"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows median - calculate median value."
 }

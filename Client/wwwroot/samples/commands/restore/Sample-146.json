@@ -1,31 +1,23 @@
-{
-  "title": "Restore configuration settings",
-  "tags": [
-    "restore"
-  ],
-  "model": {
-    "name": "Sample-146",
-    "scriptText": "[\r\n  {\r\n    \"path\": \"$\",\r\n    \"delimiter\": \":\",\r\n    \"command\": \"restore\"\r\n  }\r\n]",
-    "inputObjects": [
-      {
-        "config:database:host": "localhost",
-        "config:database:port": 5432,
-        "config:cache:enabled": true
-      }
-    ],
-    "outputObjects": [
-      {
-        "config": {
-          "database": {
-            "host": "localhost",
-            "port": 5432
-          },
-          "cache": {
-            "enabled": true
-          }
-        }
-      }
-    ]
-  },
-  "description": "This sample shows restore configuration settings."
+﻿{
+    "title":  "Restore configuration settings",
+    "tags":  [
+                 "restore"
+             ],
+    "model":  {
+                  "name":  "Sample-146",
+                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$\",\r\n    \"delimiter\": \":\",\r\n    \"command\": \"restore\"\r\n  }\r\n]",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\\\"config:database:host\\\":\\\"localhost\\\",\\\"config:database:port\\\":5432,\\\"config:cache:enabled\\\":true}",
+                                           "name":  "d"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\\\"config\\\":{\\\"database\\\":{\\\"host\\\":\\\"localhost\\\",\\\"port\\\":5432},\\\"cache\\\":{\\\"enabled\\\":true}}}",
+                                            "name":  "d"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows restore configuration settings."
 }
