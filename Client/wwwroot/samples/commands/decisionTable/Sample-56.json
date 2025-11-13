@@ -1,0 +1,23 @@
+{
+  "description": "This sample shows a decision table for product pricing based on quantity and customer type.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "[\r\n  {\r\n    \"quantity\": 100,\r\n    \"customerType\": \"wholesale\"\r\n  },\r\n  {\r\n    \"quantity\": 5,\r\n    \"customerType\": \"retail\"\r\n  }\r\n]",
+        "name": "orders"
+      }
+    ],
+    "name": "Sample-56",
+    "outputObjects": [
+      {
+        "jsonString": "[\n  {\n    \"quantity\": 100,\n    \"customerType\": \"wholesale\",\n    \"unitPrice\": 8.0,\n    \"discountPercent\": 20\n  },\n  {\n    \"quantity\": 5,\n    \"customerType\": \"retail\",\n    \"unitPrice\": 10.0,\n    \"discountPercent\": 0\n  }\n]",
+        "name": "orders"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"command\": \"decisionTable\",\r\n    \"path\": \"$.orders[*]\",\r\n    \"decisionTable\": {\r\n      \"inputs\": [\r\n        {\r\n          \"name\": \"quantity\",\r\n          \"path\": \"@.quantity\",\r\n          \"type\": \"number\"\r\n        },\r\n        {\r\n          \"name\": \"customerType\",\r\n          \"path\": \"@.customerType\",\r\n          \"type\": \"string\"\r\n        }\r\n      ],\r\n      \"outputs\": [\r\n        {\r\n          \"name\": \"unitPrice\",\r\n          \"path\": \"@.unitPrice\"\r\n        },\r\n        {\r\n          \"name\": \"discountPercent\",\r\n          \"path\": \"@.discountPercent\"\r\n        }\r\n      ],\r\n      \"rules\": [\r\n        {\r\n          \"priority\": 1,\r\n          \"conditions\": {\r\n            \"quantity\": \">50\",\r\n            \"customerType\": \"wholesale\"\r\n          },\r\n          \"results\": {\r\n            \"unitPrice\": 8.0,\r\n            \"discountPercent\": 20\r\n          }\r\n        },\r\n        {\r\n          \"priority\": 2,\r\n          \"conditions\": {\r\n            \"customerType\": \"wholesale\"\r\n          },\r\n          \"results\": {\r\n            \"unitPrice\": 9.0,\r\n            \"discountPercent\": 10\r\n          }\r\n        },\r\n        {\r\n          \"priority\": 3,\r\n          \"conditions\": {\r\n            \"quantity\": \">20\"\r\n          },\r\n          \"results\": {\r\n            \"unitPrice\": 9.5,\r\n            \"discountPercent\": 5\r\n          }\r\n        }\r\n      ],\r\n      \"executionStrategy\": {\r\n        \"mode\": \"firstMatch\",\r\n        \"conflictResolution\": \"priority\",\r\n        \"stopOnError\": false\r\n      },\r\n      \"defaultResults\": {\r\n        \"unitPrice\": 10.0,\r\n        \"discountPercent\": 0\r\n      }\r\n    }\r\n  }\r\n]"
+  },
+  "tags": [
+    "decisionTable"
+  ],
+  "title": "Decision table for product pricing"
+}

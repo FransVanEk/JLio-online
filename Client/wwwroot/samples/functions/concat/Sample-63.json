@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates using concat function to build a full address from multiple components.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"street\": \"123 Main St\",\r\n  \"city\": \"Boston\",\r\n  \"state\": \"MA\",\r\n  \"zip\": \"02101\"\r\n}",
+        "name": "address"
+      }
+    ],
+    "name": "Sample-63",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"street\": \"123 Main St\",\n  \"city\": \"Boston\",\n  \"state\": \"MA\",\n  \"zip\": \"02101\",\n  \"fullAddress\": \"123 Main St, Boston, MA 02101\"\n}",
+        "name": "address"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.address.fullAddress\",\r\n    \"value\": \"=concat(@.street,', ',@.city,', ',@.state,' ',@.zip)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "concat"
+  ],
+  "title": "Concat for full address"
+}

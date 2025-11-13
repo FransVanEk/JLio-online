@@ -1,0 +1,31 @@
+{
+  "description": "in the sample two arrays are merged. it uses the the keys settings to indicate how the items in the arrays need to be identified. ",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "[\r\n    {\r\n        \"key\": {\r\n            \"id\": \"1\"\r\n        },\r\n        \"item\": \"1\",\r\n        \"valueFirst\": \"first id 1\",\r\n        \"valueCommon\": \"common first id 1\"\r\n    },\r\n    {\r\n        \"key\": {\r\n            \"id\": \"2\"\r\n        },\r\n        \"item\": 2,\r\n        \"valueFirst\": \"first id 2\",\r\n        \"valueCommon\": \"common first id 2\"\r\n    },\r\n    {\r\n        \"key\": {\r\n            \"id\": \"3\"\r\n        },\r\n        \"item\": 3.1,\r\n        \"valueFirst\": \"first id 3\",\r\n        \"valueCommon\": \"common first id 3\"\r\n    }\r\n]",
+        "name": "first"
+      },
+      {
+        "jsonString": "[\r\n    {\r\n        \"key\": {\r\n            \"id\": \"4\"\r\n        },\r\n        \"item\": \"4\",\r\n        \"valueSecond\": \"second id 4\",\r\n        \"valueCommon\": \"common second id 4\"\r\n    },\r\n    {\r\n        \"key\": {\r\n            \"id\": \"2\"\r\n        },\r\n        \"item\": 5,\r\n        \"valueSecond\": \"second id 2\",\r\n        \"valueCommon\": \"common second id 2\"\r\n    },\r\n    {\r\n        \"key\": {\r\n            \"id\": \"1\"\r\n        },\r\n        \"item\": 3.1,\r\n        \"valueSecond\": \"second id 1\",\r\n        \"valueCommon\": \"common second id 1\"\r\n    }\r\n]",
+        "name": "second"
+      }
+    ],
+    "name": "Sample-30",
+    "outputObjects": [
+      {
+        "jsonString": "[\n  {\n    \"key\": {\n      \"id\": \"1\"\n    },\n    \"item\": \"1\",\n    \"valueFirst\": \"first id 1\",\n    \"valueCommon\": \"common first id 1\"\n  },\n  {\n    \"key\": {\n      \"id\": \"2\"\n    },\n    \"item\": 2,\n    \"valueFirst\": \"first id 2\",\n    \"valueCommon\": \"common first id 2\"\n  },\n  {\n    \"key\": {\n      \"id\": \"3\"\n    },\n    \"item\": 3.1,\n    \"valueFirst\": \"first id 3\",\n    \"valueCommon\": \"common first id 3\"\n  }\n]",
+        "name": "first"
+      },
+      {
+        "jsonString": "[\n  {\n    \"key\": {\n      \"id\": \"4\"\n    },\n    \"item\": \"4\",\n    \"valueSecond\": \"second id 4\",\n    \"valueCommon\": \"common second id 4\"\n  },\n  {\n    \"key\": {\n      \"id\": \"2\"\n    },\n    \"item\": 2,\n    \"valueSecond\": \"second id 2\",\n    \"valueCommon\": \"common first id 2\"\n  },\n  {\n    \"key\": {\n      \"id\": \"1\"\n    },\n    \"item\": \"1\",\n    \"valueSecond\": \"second id 1\",\n    \"valueCommon\": \"common first id 1\"\n  },\n  {\n    \"key\": {\n      \"id\": \"3\"\n    },\n    \"item\": 3.1,\n    \"valueFirst\": \"first id 3\",\n    \"valueCommon\": \"common first id 3\"\n  }\n]",
+        "name": "second"
+      }
+    ],
+    "scriptText": "[\n  {\n    \"path\": \"$.first\",\n    \"settings\": {\n      \"arraySettings\": [\n        {\n          \"arrayPath\": \"$.second\",\n          \"keyPaths\": [\n            \"key.id\"\n          ]\n        }\n      ],\n      \"strategy\": \"onlyValues\"\n    },\n    \"targetPath\": \"$.second\",\n    \"command\": \"merge\"\n  }\n]"
+  },
+  "tags": [
+    "merge"
+  ],
+  "title": "Merge two arrays with keys only values"
+}

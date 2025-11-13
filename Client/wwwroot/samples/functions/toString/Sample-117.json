@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows converting arrays to delimited strings for display purposes.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"tags\": [\"javascript\", \"react\", \"typescript\"]\r\n}",
+        "name": "post"
+      }
+    ],
+    "name": "Sample-117",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"tags\": [\"javascript\", \"react\", \"typescript\"],\n  \"tagString\": \"javascript, react, typescript\"\n}",
+        "name": "post"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.post.tagString\",\r\n    \"value\": \"=toString(@.tags)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "toString"
+  ],
+  "title": "Convert array to string"
+}

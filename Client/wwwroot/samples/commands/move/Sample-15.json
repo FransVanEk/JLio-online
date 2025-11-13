@@ -1,0 +1,23 @@
+{
+  "description": "The move command will take the sources  by the toPath property and place it into a array. This means that if the source is an array, this array will be added to the designation array as one item. If the arrays should be merged use the [*] notation.\nSee sample: Move items out an array into an existing array as separate items.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n    \"myobject\": {\r\n        \"mySource\":  [3,4,5,6,7]\r\n    },\r\n    \"myArray\": [\r\n        1,\r\n        2\r\n    ]\r\n}",
+        "name": "sample"
+      }
+    ],
+    "name": "Sample-15",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"myobject\": {},\n  \"myArray\": [\n    1,\n    2,\n     3,\n      4,\n      5,\n      6,\n      7\n     ]\n}",
+        "name": "sample"
+      }
+    ],
+    "scriptText": "[\n  {\n    \"fromPath\": \"$.sample.myobject.mySource[*]\",\n    \"toPath\": \"$.sample.myArray\",\n    \"command\": \"move\"\n  }\n]"
+  },
+  "tags": [
+    "move"
+  ],
+  "title": "Move items out an array into an existing array as separate items."
+}

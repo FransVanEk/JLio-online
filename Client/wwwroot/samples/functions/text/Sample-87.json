@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows using leftstring and rightstring functions to extract parts of text from left or right side.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"filename\": \"document.pdf\",\r\n  \"path\": \"/home/user/files/report.txt\"\r\n}",
+        "name": "file"
+      }
+    ],
+    "name": "Sample-87",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"filename\": \"document.pdf\",\n  \"path\": \"/home/user/files/report.txt\",\n  \"extension\": \"pdf\",\n  \"basename\": \"document\"\n}",
+        "name": "file"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.file.extension\",\r\n    \"value\": \"=rightstring(@.filename,3)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.file.basename\",\r\n    \"value\": \"=leftstring(@.filename,8)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "text"
+  ],
+  "title": "Left and right string extraction"
+}

@@ -1,0 +1,23 @@
+{
+  "description": "This sample shows a decision table for loan approval based on credit score and income.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "[\r\n  {\"creditScore\": 750, \"income\": 80000},\r\n  {\"creditScore\": 600, \"income\": 45000}\r\n]",
+        "name": "applications"
+      }
+    ],
+    "name": "Sample-102",
+    "outputObjects": [
+      {
+        "jsonString": "[\n  {\"creditScore\": 750, \"income\": 80000, \"approved\": true, \"rate\": 3.5},\n  {\"creditScore\": 600, \"income\": 45000, \"approved\": false, \"rate\": 0}\n]",
+        "name": "applications"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"command\": \"decisionTable\",\r\n    \"path\": \"$.applications[*]\",\r\n    \"decisionTable\": {\r\n      \"inputs\": [\r\n        {\"name\": \"creditScore\", \"path\": \"@.creditScore\", \"type\": \"number\"},\r\n        {\"name\": \"income\", \"path\": \"@.income\", \"type\": \"number\"}\r\n      ],\r\n      \"outputs\": [\r\n        {\"name\": \"approved\", \"path\": \"@.approved\"},\r\n        {\"name\": \"rate\", \"path\": \"@.rate\"}\r\n      ],\r\n      \"rules\": [\r\n        {\"priority\": 1, \"conditions\": {\"creditScore\": \">=700\", \"income\": \">60000\"}, \"results\": {\"approved\": true, \"rate\": 3.5}},\r\n        {\"priority\": 2, \"conditions\": {\"creditScore\": \">=650\"}, \"results\": {\"approved\": true, \"rate\": 4.5}}\r\n      ],\r\n      \"executionStrategy\": {\"mode\": \"firstMatch\", \"conflictResolution\": \"priority\", \"stopOnError\": false},\r\n      \"defaultResults\": {\"approved\": false, \"rate\": 0}\r\n    }\r\n  }\r\n]"
+  },
+  "tags": [
+    "decisionTable"
+  ],
+  "title": "Decision table for loan approval"
+}

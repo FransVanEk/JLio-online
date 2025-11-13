@@ -1,0 +1,25 @@
+{
+  "description": "This sample demonstrates using toString with concat to build formatted strings.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"temperature\": 72,\r\n  \"humidity\": 65\r\n}",
+        "name": "weather"
+      }
+    ],
+    "name": "Sample-74",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"temperature\": 72,\n  \"humidity\": 65,\n  \"summary\": \"Temperature: 72\u00b0F, Humidity: 65%\"\n}",
+        "name": "weather"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.weather.summary\",\r\n    \"value\": \"=concat('Temperature: ',toString(@.temperature),'\u00b0F, Humidity: ',toString(@.humidity),'%')\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "toString",
+    "concat"
+  ],
+  "title": "ToString with concat for formatting"
+}

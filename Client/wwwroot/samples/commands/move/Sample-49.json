@@ -1,0 +1,23 @@
+{
+  "description": "This sample demonstrates moving multiple matching properties using a wildcard pattern.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"draft\": {\r\n    \"items\": [\"a\", \"b\", \"c\"]\r\n  },\r\n  \"published\": {}\r\n}",
+        "name": "document"
+      }
+    ],
+    "name": "Sample-49",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"draft\": {},\n  \"published\": {\n    \"items\": [\"a\", \"b\", \"c\"]\n  }\n}",
+        "name": "document"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"fromPath\": \"$.document.draft.items\",\r\n    \"toPath\": \"$.document.published.items\",\r\n    \"command\": \"move\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "move"
+  ],
+  "title": "Move collection to new location"
+}

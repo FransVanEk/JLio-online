@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates using abs, round, and ceil functions for number manipulation.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"value\": -15.67,\r\n  \"price\": 19.99\r\n}",
+        "name": "data"
+      }
+    ],
+    "name": "Sample-83",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"value\": -15.67,\n  \"price\": 19.99,\n  \"absoluteValue\": 15.67,\n  \"roundedPrice\": 20,\n  \"ceilingPrice\": 20\n}",
+        "name": "data"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.data.absoluteValue\",\r\n    \"value\": \"=abs(@.value)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.data.roundedPrice\",\r\n    \"value\": \"=round(@.price)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.data.ceilingPrice\",\r\n    \"value\": \"=ceil(@.price)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "math"
+  ],
+  "title": "Absolute value and rounding functions"
+}

@@ -1,0 +1,23 @@
+{
+  "description": "This sample shows a decision table for calculating shipping costs based on weight and destination.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "[\r\n  {\r\n    \"weight\": 5,\r\n    \"destination\": \"domestic\"\r\n  },\r\n  {\r\n    \"weight\": 15,\r\n    \"destination\": \"international\"\r\n  }\r\n]",
+        "name": "shipments"
+      }
+    ],
+    "name": "Sample-54",
+    "outputObjects": [
+      {
+        "jsonString": "[\n  {\n    \"weight\": 5,\n    \"destination\": \"domestic\",\n    \"cost\": 10,\n    \"method\": \"standard\"\n  },\n  {\n    \"weight\": 15,\n    \"destination\": \"international\",\n    \"cost\": 50,\n    \"method\": \"express\"\n  }\n]",
+        "name": "shipments"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"command\": \"decisionTable\",\r\n    \"path\": \"$.shipments[*]\",\r\n    \"decisionTable\": {\r\n      \"inputs\": [\r\n        {\r\n          \"name\": \"weight\",\r\n          \"path\": \"@.weight\",\r\n          \"type\": \"number\"\r\n        },\r\n        {\r\n          \"name\": \"destination\",\r\n          \"path\": \"@.destination\",\r\n          \"type\": \"string\"\r\n        }\r\n      ],\r\n      \"outputs\": [\r\n        {\r\n          \"name\": \"cost\",\r\n          \"path\": \"@.cost\"\r\n        },\r\n        {\r\n          \"name\": \"method\",\r\n          \"path\": \"@.method\"\r\n        }\r\n      ],\r\n      \"rules\": [\r\n        {\r\n          \"priority\": 1,\r\n          \"conditions\": {\r\n            \"weight\": \"<10\",\r\n            \"destination\": \"domestic\"\r\n          },\r\n          \"results\": {\r\n            \"cost\": 10,\r\n            \"method\": \"standard\"\r\n          }\r\n        },\r\n        {\r\n          \"priority\": 2,\r\n          \"conditions\": {\r\n            \"weight\": \">=10\",\r\n            \"destination\": \"domestic\"\r\n          },\r\n          \"results\": {\r\n            \"cost\": 25,\r\n            \"method\": \"standard\"\r\n          }\r\n        },\r\n        {\r\n          \"priority\": 3,\r\n          \"conditions\": {\r\n            \"destination\": \"international\"\r\n          },\r\n          \"results\": {\r\n            \"cost\": 50,\r\n            \"method\": \"express\"\r\n          }\r\n        }\r\n      ],\r\n      \"executionStrategy\": {\r\n        \"mode\": \"firstMatch\",\r\n        \"conflictResolution\": \"priority\",\r\n        \"stopOnError\": false\r\n      },\r\n      \"defaultResults\": {\r\n        \"cost\": 100,\r\n        \"method\": \"special\"\r\n      }\r\n    }\r\n  }\r\n]"
+  },
+  "tags": [
+    "decisionTable"
+  ],
+  "title": "Decision table for shipping cost calculation"
+}

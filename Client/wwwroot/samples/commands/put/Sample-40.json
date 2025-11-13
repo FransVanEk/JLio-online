@@ -1,0 +1,23 @@
+{
+  "description": "The put command can update existing properties. This sample demonstrates updating an existing value with put.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"status\": \"pending\",\r\n  \"priority\": 1\r\n}",
+        "name": "task"
+      }
+    ],
+    "name": "Sample-40",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"status\": \"completed\",\n  \"priority\": 1\n}",
+        "name": "task"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.task.status\",\r\n    \"value\": \"completed\",\r\n    \"command\": \"put\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "put"
+  ],
+  "title": "Put to update existing property"
+}

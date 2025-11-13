@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows using fetch to extract multiple values from different paths in one operation.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"order\": {\r\n    \"customer\": {\"name\": \"John\", \"id\": 123},\r\n    \"items\": [{\"sku\": \"A1\", \"price\": 10}]\r\n  }\r\n}",
+        "name": "data"
+      }
+    ],
+    "name": "Sample-104",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"order\": {\n    \"customer\": {\"name\": \"John\", \"id\": 123},\n    \"items\": [{\"sku\": \"A1\", \"price\": 10}]\n  },\n  \"summary\": {\n    \"customerName\": \"John\",\n    \"firstSku\": \"A1\"\n  }\n}",
+        "name": "data"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.data.summary\",\r\n    \"value\": {\r\n      \"customerName\": \"=fetch(@.order.customer.name)\",\r\n      \"firstSku\": \"=fetch(@.order.items[0].sku)\"\r\n    },\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "fetch"
+  ],
+  "title": "Fetch multiple values to summary"
+}

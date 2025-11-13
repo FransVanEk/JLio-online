@@ -1,0 +1,1834 @@
+[
+  {
+    "name": "Sample-1.json",
+    "number": 1,
+    "category": "commands",
+    "subcategory": "add",
+    "title": "Create a new object with add",
+    "tags": [
+      "add"
+    ],
+    "path": "commands/add/Sample-1.json"
+  },
+  {
+    "name": "Sample-2.json",
+    "number": 2,
+    "category": "commands",
+    "subcategory": "add",
+    "title": "Add a property to an existing object. (value: object)",
+    "tags": [
+      "add"
+    ],
+    "path": "commands/add/Sample-2.json"
+  },
+  {
+    "name": "Sample-3.json",
+    "number": 3,
+    "category": "commands",
+    "subcategory": "add",
+    "title": "Create a new object using the JSON-path notation",
+    "tags": [
+      "add"
+    ],
+    "path": "commands/add/Sample-3.json"
+  },
+  {
+    "name": "Sample-4.json",
+    "number": 4,
+    "category": "commands",
+    "subcategory": "set",
+    "title": "Set property value on existing object",
+    "tags": [
+      "set"
+    ],
+    "path": "commands/set/Sample-4.json"
+  },
+  {
+    "name": "Sample-5.json",
+    "number": 5,
+    "category": "commands",
+    "subcategory": "set",
+    "title": "Set multiple properties with one set command (value:function)",
+    "tags": [
+      "set"
+    ],
+    "path": "commands/set/Sample-5.json"
+  },
+  {
+    "name": "Sample-6.json",
+    "number": 6,
+    "category": "commands",
+    "subcategory": "add",
+    "title": "Add a property to items in an array",
+    "tags": [
+      "add"
+    ],
+    "path": "commands/add/Sample-6.json"
+  },
+  {
+    "name": "Sample-7.json",
+    "number": 7,
+    "category": "commands",
+    "subcategory": "set",
+    "title": "Set a property value to an item in an array using a filter",
+    "tags": [
+      "set"
+    ],
+    "path": "commands/set/Sample-7.json"
+  },
+  {
+    "name": "Sample-8.json",
+    "number": 8,
+    "category": "commands",
+    "subcategory": "add",
+    "title": "Add a value to an array",
+    "tags": [
+      "add"
+    ],
+    "path": "commands/add/Sample-8.json"
+  },
+  {
+    "name": "Sample-9.json",
+    "number": 9,
+    "category": "commands",
+    "subcategory": "set",
+    "title": "Set a property value to an array",
+    "tags": [
+      "set"
+    ],
+    "path": "commands/set/Sample-9.json"
+  },
+  {
+    "name": "Sample-10.json",
+    "number": 10,
+    "category": "commands",
+    "subcategory": "copy",
+    "title": "Copy part of object to a new object",
+    "tags": [
+      "copy"
+    ],
+    "path": "commands/copy/Sample-10.json"
+  },
+  {
+    "name": "Sample-11.json",
+    "number": 11,
+    "category": "commands",
+    "subcategory": "move",
+    "title": "move part of object to a new object",
+    "tags": [
+      "move"
+    ],
+    "path": "commands/move/Sample-11.json"
+  },
+  {
+    "name": "Sample-12.json",
+    "number": 12,
+    "category": "commands",
+    "subcategory": "copy",
+    "title": "copy part of object to an array",
+    "tags": [
+      "copy"
+    ],
+    "path": "commands/copy/Sample-12.json"
+  },
+  {
+    "name": "Sample-13.json",
+    "number": 13,
+    "category": "commands",
+    "subcategory": "move",
+    "title": "Move part of object to an array",
+    "tags": [
+      "move"
+    ],
+    "path": "commands/move/Sample-13.json"
+  },
+  {
+    "name": "Sample-14.json",
+    "number": 14,
+    "category": "commands",
+    "subcategory": "move",
+    "title": "Move items out an array into an existing array as single item.",
+    "tags": [
+      "move"
+    ],
+    "path": "commands/move/Sample-14.json"
+  },
+  {
+    "name": "Sample-15.json",
+    "number": 15,
+    "category": "commands",
+    "subcategory": "move",
+    "title": "Move items out an array into an existing array as separate items.",
+    "tags": [
+      "move"
+    ],
+    "path": "commands/move/Sample-15.json"
+  },
+  {
+    "name": "Sample-16.json",
+    "number": 16,
+    "category": "commands",
+    "subcategory": "copy",
+    "title": "Copy items out an array into an existing array as single item.",
+    "tags": [
+      "copy"
+    ],
+    "path": "commands/copy/Sample-16.json"
+  },
+  {
+    "name": "Sample-17.json",
+    "number": 17,
+    "category": "commands",
+    "subcategory": "copy",
+    "title": "Copy items out an array into an existing array as separate items.",
+    "tags": [
+      "copy"
+    ],
+    "path": "commands/copy/Sample-17.json"
+  },
+  {
+    "name": "Sample-18.json",
+    "number": 18,
+    "category": "commands",
+    "subcategory": "copy",
+    "title": "Copy items out an array into an existing array as separate items with a filter.",
+    "tags": [
+      "copy"
+    ],
+    "path": "commands/copy/Sample-18.json"
+  },
+  {
+    "name": "Sample-19.json",
+    "number": 19,
+    "category": "commands",
+    "subcategory": "move",
+    "title": "Move items out an array into an existing array as separate items with a filter.",
+    "tags": [
+      "move"
+    ],
+    "path": "commands/move/Sample-19.json"
+  },
+  {
+    "name": "Sample-20.json",
+    "number": 20,
+    "category": "commands",
+    "subcategory": "add",
+    "title": "Copy singe value as an array when array doesn't exist",
+    "tags": [
+      "add",
+      "copy"
+    ],
+    "path": "commands/add/Sample-20.json"
+  },
+  {
+    "name": "Sample-21.json",
+    "number": 21,
+    "category": "commands",
+    "subcategory": "add",
+    "title": "Move singe value as an array when array doesn't exist",
+    "tags": [
+      "add",
+      "move"
+    ],
+    "path": "commands/add/Sample-21.json"
+  },
+  {
+    "name": "Sample-22.json",
+    "number": 22,
+    "category": "commands",
+    "subcategory": "add",
+    "title": "Move multiple values as an array when array doesn't exist",
+    "tags": [
+      "add",
+      "move"
+    ],
+    "path": "commands/add/Sample-22.json"
+  },
+  {
+    "name": "Sample-23.json",
+    "number": 23,
+    "category": "commands",
+    "subcategory": "add",
+    "title": "Copy multiple values as an array when array doesn't exist",
+    "tags": [
+      "add",
+      "copy"
+    ],
+    "path": "commands/add/Sample-23.json"
+  },
+  {
+    "name": "Sample-24.json",
+    "number": 24,
+    "category": "commands",
+    "subcategory": "add",
+    "title": "Function DateTime",
+    "tags": [
+      "add"
+    ],
+    "path": "commands/add/Sample-24.json"
+  },
+  {
+    "name": "Sample-25.json",
+    "number": 25,
+    "category": "commands",
+    "subcategory": "add",
+    "title": "function newGuid()",
+    "tags": [
+      "add"
+    ],
+    "path": "commands/add/Sample-25.json"
+  },
+  {
+    "name": "Sample-26.json",
+    "number": 26,
+    "category": "commands",
+    "subcategory": "set",
+    "title": "Use partial function to get only the desired properties",
+    "tags": [
+      "set"
+    ],
+    "path": "commands/set/Sample-26.json"
+  },
+  {
+    "name": "Sample-27.json",
+    "number": 27,
+    "category": "commands",
+    "subcategory": "add",
+    "title": "Use partial function to add only the desired properties from another object",
+    "tags": [
+      "add"
+    ],
+    "path": "commands/add/Sample-27.json"
+  },
+  {
+    "name": "Sample-28.json",
+    "number": 28,
+    "category": "commands",
+    "subcategory": "set",
+    "title": "Use promote function on all items in an array",
+    "tags": [
+      "set"
+    ],
+    "path": "commands/set/Sample-28.json"
+  },
+  {
+    "name": "Sample-29.json",
+    "number": 29,
+    "category": "commands",
+    "subcategory": "set",
+    "title": "Use promote function to promote primitive input object ",
+    "tags": [
+      "set"
+    ],
+    "path": "commands/set/Sample-29.json"
+  },
+  {
+    "name": "Sample-30.json",
+    "number": 30,
+    "category": "commands",
+    "subcategory": "merge",
+    "title": "Merge two arrays with keys only values",
+    "tags": [
+      "merge"
+    ],
+    "path": "commands/merge/Sample-30.json"
+  },
+  {
+    "name": "Sample-31.json",
+    "number": 31,
+    "category": "commands",
+    "subcategory": "set",
+    "title": "Fetch function on array and transform objects",
+    "tags": [
+      "set"
+    ],
+    "path": "commands/set/Sample-31.json"
+  },
+  {
+    "name": "Sample-32.json",
+    "number": 32,
+    "category": "commands",
+    "subcategory": "decisionTable",
+    "title": "sample of decision table",
+    "tags": [
+      "decisionTable"
+    ],
+    "path": "commands/decisionTable/Sample-32.json"
+  },
+  {
+    "name": "Sample-33.json",
+    "number": 33,
+    "category": "commands",
+    "subcategory": "add",
+    "title": "Add nested object with multiple properties",
+    "tags": [
+      "add"
+    ],
+    "path": "commands/add/Sample-33.json"
+  },
+  {
+    "name": "Sample-34.json",
+    "number": 34,
+    "category": "commands",
+    "subcategory": "add",
+    "title": "Add array to new object",
+    "tags": [
+      "add"
+    ],
+    "path": "commands/add/Sample-34.json"
+  },
+  {
+    "name": "Sample-35.json",
+    "number": 35,
+    "category": "commands",
+    "subcategory": "add",
+    "title": "Add boolean property to object",
+    "tags": [
+      "add"
+    ],
+    "path": "commands/add/Sample-35.json"
+  },
+  {
+    "name": "Sample-36.json",
+    "number": 36,
+    "category": "commands",
+    "subcategory": "set",
+    "title": "Set multiple properties in sequence",
+    "tags": [
+      "set"
+    ],
+    "path": "commands/set/Sample-36.json"
+  },
+  {
+    "name": "Sample-37.json",
+    "number": 37,
+    "category": "functions",
+    "subcategory": "concat",
+    "title": "Set property using concat function",
+    "tags": [
+      "set",
+      "concat"
+    ],
+    "path": "functions/concat/Sample-37.json"
+  },
+  {
+    "name": "Sample-38.json",
+    "number": 38,
+    "category": "commands",
+    "subcategory": "set",
+    "title": "Set entire nested object",
+    "tags": [
+      "set"
+    ],
+    "path": "commands/set/Sample-38.json"
+  },
+  {
+    "name": "Sample-39.json",
+    "number": 39,
+    "category": "commands",
+    "subcategory": "put",
+    "title": "Put new property to object",
+    "tags": [
+      "put"
+    ],
+    "path": "commands/put/Sample-39.json"
+  },
+  {
+    "name": "Sample-40.json",
+    "number": 40,
+    "category": "commands",
+    "subcategory": "put",
+    "title": "Put to update existing property",
+    "tags": [
+      "put"
+    ],
+    "path": "commands/put/Sample-40.json"
+  },
+  {
+    "name": "Sample-41.json",
+    "number": 41,
+    "category": "functions",
+    "subcategory": "datetime",
+    "title": "Put with datetime function",
+    "tags": [
+      "put",
+      "datetime"
+    ],
+    "path": "functions/datetime/Sample-41.json"
+  },
+  {
+    "name": "Sample-42.json",
+    "number": 42,
+    "category": "commands",
+    "subcategory": "remove",
+    "title": "Remove property from object",
+    "tags": [
+      "remove"
+    ],
+    "path": "commands/remove/Sample-42.json"
+  },
+  {
+    "name": "Sample-43.json",
+    "number": 43,
+    "category": "commands",
+    "subcategory": "remove",
+    "title": "Remove multiple properties with recursive path",
+    "tags": [
+      "remove"
+    ],
+    "path": "commands/remove/Sample-43.json"
+  },
+  {
+    "name": "Sample-44.json",
+    "number": 44,
+    "category": "commands",
+    "subcategory": "remove",
+    "title": "Remove item from array by index",
+    "tags": [
+      "remove"
+    ],
+    "path": "commands/remove/Sample-44.json"
+  },
+  {
+    "name": "Sample-45.json",
+    "number": 45,
+    "category": "functions",
+    "subcategory": "concat",
+    "title": "Copy and transform value",
+    "tags": [
+      "copy",
+      "concat"
+    ],
+    "path": "functions/concat/Sample-45.json"
+  },
+  {
+    "name": "Sample-46.json",
+    "number": 46,
+    "category": "commands",
+    "subcategory": "copy",
+    "title": "Copy nested object structure",
+    "tags": [
+      "copy"
+    ],
+    "path": "commands/copy/Sample-46.json"
+  },
+  {
+    "name": "Sample-47.json",
+    "number": 47,
+    "category": "commands",
+    "subcategory": "copy",
+    "title": "Copy filtered array items",
+    "tags": [
+      "copy",
+      "add"
+    ],
+    "path": "commands/copy/Sample-47.json"
+  },
+  {
+    "name": "Sample-48.json",
+    "number": 48,
+    "category": "commands",
+    "subcategory": "move",
+    "title": "Move property between nested objects",
+    "tags": [
+      "move"
+    ],
+    "path": "commands/move/Sample-48.json"
+  },
+  {
+    "name": "Sample-49.json",
+    "number": 49,
+    "category": "commands",
+    "subcategory": "move",
+    "title": "Move collection to new location",
+    "tags": [
+      "move"
+    ],
+    "path": "commands/move/Sample-49.json"
+  },
+  {
+    "name": "Sample-50.json",
+    "number": 50,
+    "category": "commands",
+    "subcategory": "move",
+    "title": "Move filtered items between arrays",
+    "tags": [
+      "move"
+    ],
+    "path": "commands/move/Sample-50.json"
+  },
+  {
+    "name": "Sample-51.json",
+    "number": 51,
+    "category": "commands",
+    "subcategory": "merge",
+    "title": "Merge two objects",
+    "tags": [
+      "merge"
+    ],
+    "path": "commands/merge/Sample-51.json"
+  },
+  {
+    "name": "Sample-52.json",
+    "number": 52,
+    "category": "commands",
+    "subcategory": "merge",
+    "title": "Merge arrays with key-based matching",
+    "tags": [
+      "merge"
+    ],
+    "path": "commands/merge/Sample-52.json"
+  },
+  {
+    "name": "Sample-53.json",
+    "number": 53,
+    "category": "commands",
+    "subcategory": "merge",
+    "title": "Merge nested configuration objects",
+    "tags": [
+      "merge"
+    ],
+    "path": "commands/merge/Sample-53.json"
+  },
+  {
+    "name": "Sample-54.json",
+    "number": 54,
+    "category": "commands",
+    "subcategory": "decisionTable",
+    "title": "Decision table for shipping cost calculation",
+    "tags": [
+      "decisionTable"
+    ],
+    "path": "commands/decisionTable/Sample-54.json"
+  },
+  {
+    "name": "Sample-55.json",
+    "number": 55,
+    "category": "commands",
+    "subcategory": "decisionTable",
+    "title": "Decision table for employee benefits",
+    "tags": [
+      "decisionTable"
+    ],
+    "path": "commands/decisionTable/Sample-55.json"
+  },
+  {
+    "name": "Sample-56.json",
+    "number": 56,
+    "category": "commands",
+    "subcategory": "decisionTable",
+    "title": "Decision table for product pricing",
+    "tags": [
+      "decisionTable"
+    ],
+    "path": "commands/decisionTable/Sample-56.json"
+  },
+  {
+    "name": "Sample-57.json",
+    "number": 57,
+    "category": "functions",
+    "subcategory": "datetime",
+    "title": "Datetime with custom formatting",
+    "tags": [
+      "add",
+      "datetime"
+    ],
+    "path": "functions/datetime/Sample-57.json"
+  },
+  {
+    "name": "Sample-58.json",
+    "number": 58,
+    "category": "functions",
+    "subcategory": "datetime",
+    "title": "Add datetime to array items",
+    "tags": [
+      "add",
+      "datetime"
+    ],
+    "path": "functions/datetime/Sample-58.json"
+  },
+  {
+    "name": "Sample-59.json",
+    "number": 59,
+    "category": "functions",
+    "subcategory": "datetime",
+    "title": "Datetime for audit records",
+    "tags": [
+      "add",
+      "datetime"
+    ],
+    "path": "functions/datetime/Sample-59.json"
+  },
+  {
+    "name": "Sample-60.json",
+    "number": 60,
+    "category": "functions",
+    "subcategory": "newGuid",
+    "title": "Generate unique IDs for array items",
+    "tags": [
+      "add",
+      "newGuid"
+    ],
+    "path": "functions/newGuid/Sample-60.json"
+  },
+  {
+    "name": "Sample-61.json",
+    "number": 61,
+    "category": "functions",
+    "subcategory": "newGuid",
+    "title": "Create session with multiple GUIDs",
+    "tags": [
+      "add",
+      "newGuid",
+      "datetime"
+    ],
+    "path": "functions/newGuid/Sample-61.json"
+  },
+  {
+    "name": "Sample-62.json",
+    "number": 62,
+    "category": "functions",
+    "subcategory": "newGuid",
+    "title": "Add correlation ID to transaction",
+    "tags": [
+      "add",
+      "newGuid"
+    ],
+    "path": "functions/newGuid/Sample-62.json"
+  },
+  {
+    "name": "Sample-63.json",
+    "number": 63,
+    "category": "functions",
+    "subcategory": "concat",
+    "title": "Concat for full address",
+    "tags": [
+      "add",
+      "concat"
+    ],
+    "path": "functions/concat/Sample-63.json"
+  },
+  {
+    "name": "Sample-64.json",
+    "number": 64,
+    "category": "functions",
+    "subcategory": "concat",
+    "title": "Concat numbers and strings for messages",
+    "tags": [
+      "add",
+      "concat"
+    ],
+    "path": "functions/concat/Sample-64.json"
+  },
+  {
+    "name": "Sample-65.json",
+    "number": 65,
+    "category": "functions",
+    "subcategory": "concat",
+    "title": "Concat for building URLs",
+    "tags": [
+      "add",
+      "concat"
+    ],
+    "path": "functions/concat/Sample-65.json"
+  },
+  {
+    "name": "Sample-66.json",
+    "number": 66,
+    "category": "functions",
+    "subcategory": "fetch",
+    "title": "Fetch nested values",
+    "tags": [
+      "add",
+      "fetch"
+    ],
+    "path": "functions/fetch/Sample-66.json"
+  },
+  {
+    "name": "Sample-67.json",
+    "number": 67,
+    "category": "functions",
+    "subcategory": "fetch",
+    "title": "Fetch from array items",
+    "tags": [
+      "add",
+      "fetch"
+    ],
+    "path": "functions/fetch/Sample-67.json"
+  },
+  {
+    "name": "Sample-68.json",
+    "number": 68,
+    "category": "functions",
+    "subcategory": "fetch",
+    "title": "Fetch to restructure data",
+    "tags": [
+      "add",
+      "fetch"
+    ],
+    "path": "functions/fetch/Sample-68.json"
+  },
+  {
+    "name": "Sample-69.json",
+    "number": 69,
+    "category": "functions",
+    "subcategory": "parse",
+    "title": "Parse JSON string to object",
+    "tags": [
+      "add",
+      "parse"
+    ],
+    "path": "functions/parse/Sample-69.json"
+  },
+  {
+    "name": "Sample-70.json",
+    "number": 70,
+    "category": "functions",
+    "subcategory": "parse",
+    "title": "Parse configuration from string",
+    "tags": [
+      "add",
+      "parse"
+    ],
+    "path": "functions/parse/Sample-70.json"
+  },
+  {
+    "name": "Sample-71.json",
+    "number": 71,
+    "category": "functions",
+    "subcategory": "parse",
+    "title": "Parse array from JSON string",
+    "tags": [
+      "add",
+      "parse"
+    ],
+    "path": "functions/parse/Sample-71.json"
+  },
+  {
+    "name": "Sample-72.json",
+    "number": 72,
+    "category": "functions",
+    "subcategory": "toString",
+    "title": "Convert numbers to strings",
+    "tags": [
+      "add",
+      "toString"
+    ],
+    "path": "functions/toString/Sample-72.json"
+  },
+  {
+    "name": "Sample-73.json",
+    "number": 73,
+    "category": "functions",
+    "subcategory": "toString",
+    "title": "ToString for boolean and number values",
+    "tags": [
+      "add",
+      "toString"
+    ],
+    "path": "functions/toString/Sample-73.json"
+  },
+  {
+    "name": "Sample-74.json",
+    "number": 74,
+    "category": "functions",
+    "subcategory": "toString",
+    "title": "ToString with concat for formatting",
+    "tags": [
+      "add",
+      "toString",
+      "concat"
+    ],
+    "path": "functions/toString/Sample-74.json"
+  },
+  {
+    "name": "Sample-75.json",
+    "number": 75,
+    "category": "functions",
+    "subcategory": "partial",
+    "title": "Partial to extract specific fields",
+    "tags": [
+      "set",
+      "partial"
+    ],
+    "path": "functions/partial/Sample-75.json"
+  },
+  {
+    "name": "Sample-76.json",
+    "number": 76,
+    "category": "functions",
+    "subcategory": "partial",
+    "title": "Partial for data sanitization",
+    "tags": [
+      "add",
+      "partial"
+    ],
+    "path": "functions/partial/Sample-76.json"
+  },
+  {
+    "name": "Sample-77.json",
+    "number": 77,
+    "category": "functions",
+    "subcategory": "partial",
+    "title": "Partial on array items",
+    "tags": [
+      "set",
+      "partial"
+    ],
+    "path": "functions/partial/Sample-77.json"
+  },
+  {
+    "name": "Sample-78.json",
+    "number": 78,
+    "category": "functions",
+    "subcategory": "promote",
+    "title": "Promote strings to objects",
+    "tags": [
+      "set",
+      "promote"
+    ],
+    "path": "functions/promote/Sample-78.json"
+  },
+  {
+    "name": "Sample-79.json",
+    "number": 79,
+    "category": "functions",
+    "subcategory": "promote",
+    "title": "Promote numbers to score objects",
+    "tags": [
+      "set",
+      "promote"
+    ],
+    "path": "functions/promote/Sample-79.json"
+  },
+  {
+    "name": "Sample-80.json",
+    "number": 80,
+    "category": "functions",
+    "subcategory": "promote",
+    "title": "Promote primitive to named property",
+    "tags": [
+      "set",
+      "promote"
+    ],
+    "path": "functions/promote/Sample-80.json"
+  },
+  {
+    "name": "Sample-81.json",
+    "number": 81,
+    "category": "functions",
+    "subcategory": "math",
+    "title": "Math operations for order calculation",
+    "tags": [
+      "add",
+      "math"
+    ],
+    "path": "functions/math/Sample-81.json"
+  },
+  {
+    "name": "Sample-82.json",
+    "number": 82,
+    "category": "functions",
+    "subcategory": "math",
+    "title": "Min and Max calculations",
+    "tags": [
+      "add",
+      "math"
+    ],
+    "path": "functions/math/Sample-82.json"
+  },
+  {
+    "name": "Sample-83.json",
+    "number": 83,
+    "category": "functions",
+    "subcategory": "math",
+    "title": "Absolute value and rounding functions",
+    "tags": [
+      "add",
+      "math"
+    ],
+    "path": "functions/math/Sample-83.json"
+  },
+  {
+    "name": "Sample-84.json",
+    "number": 84,
+    "category": "functions",
+    "subcategory": "text",
+    "title": "Substring and trim text functions",
+    "tags": [
+      "add",
+      "text"
+    ],
+    "path": "functions/text/Sample-84.json"
+  },
+  {
+    "name": "Sample-85.json",
+    "number": 85,
+    "category": "functions",
+    "subcategory": "text",
+    "title": "Text case conversion functions",
+    "tags": [
+      "add",
+      "text"
+    ],
+    "path": "functions/text/Sample-85.json"
+  },
+  {
+    "name": "Sample-86.json",
+    "number": 86,
+    "category": "functions",
+    "subcategory": "text",
+    "title": "Replace and pad text functions",
+    "tags": [
+      "add",
+      "text"
+    ],
+    "path": "functions/text/Sample-86.json"
+  },
+  {
+    "name": "Sample-87.json",
+    "number": 87,
+    "category": "functions",
+    "subcategory": "text",
+    "title": "Left and right string extraction",
+    "tags": [
+      "add",
+      "text"
+    ],
+    "path": "functions/text/Sample-87.json"
+  },
+  {
+    "name": "Sample-88.json",
+    "number": 88,
+    "category": "functions",
+    "subcategory": "text",
+    "title": "Text length and contains validation",
+    "tags": [
+      "add",
+      "text"
+    ],
+    "path": "functions/text/Sample-88.json"
+  },
+  {
+    "name": "Sample-89.json",
+    "number": 89,
+    "category": "functions",
+    "subcategory": "text",
+    "title": "Insert and delete text operations",
+    "tags": [
+      "add",
+      "text"
+    ],
+    "path": "functions/text/Sample-89.json"
+  },
+  {
+    "name": "Sample-96.json",
+    "number": 96,
+    "category": "commands",
+    "subcategory": "put",
+    "title": "Put nested object structure",
+    "tags": [
+      "put"
+    ],
+    "path": "commands/put/Sample-96.json"
+  },
+  {
+    "name": "Sample-97.json",
+    "number": 97,
+    "category": "commands",
+    "subcategory": "put",
+    "title": "Put array property",
+    "tags": [
+      "put"
+    ],
+    "path": "commands/put/Sample-97.json"
+  },
+  {
+    "name": "Sample-98.json",
+    "number": 98,
+    "category": "commands",
+    "subcategory": "put",
+    "title": "Put conditional status value",
+    "tags": [
+      "put"
+    ],
+    "path": "commands/put/Sample-98.json"
+  },
+  {
+    "name": "Sample-99.json",
+    "number": 99,
+    "category": "commands",
+    "subcategory": "remove",
+    "title": "Remove nested object",
+    "tags": [
+      "remove"
+    ],
+    "path": "commands/remove/Sample-99.json"
+  },
+  {
+    "name": "Sample-100.json",
+    "number": 100,
+    "category": "commands",
+    "subcategory": "remove",
+    "title": "Remove null values",
+    "tags": [
+      "remove"
+    ],
+    "path": "commands/remove/Sample-100.json"
+  },
+  {
+    "name": "Sample-101.json",
+    "number": 101,
+    "category": "commands",
+    "subcategory": "merge",
+    "title": "Deep merge nested objects",
+    "tags": [
+      "merge"
+    ],
+    "path": "commands/merge/Sample-101.json"
+  },
+  {
+    "name": "Sample-102.json",
+    "number": 102,
+    "category": "commands",
+    "subcategory": "decisionTable",
+    "title": "Decision table for loan approval",
+    "tags": [
+      "decisionTable"
+    ],
+    "path": "commands/decisionTable/Sample-102.json"
+  },
+  {
+    "name": "Sample-103.json",
+    "number": 103,
+    "category": "functions",
+    "subcategory": "datetime",
+    "title": "Create specific datetime values",
+    "tags": [
+      "add",
+      "datetime"
+    ],
+    "path": "functions/datetime/Sample-103.json"
+  },
+  {
+    "name": "Sample-104.json",
+    "number": 104,
+    "category": "functions",
+    "subcategory": "fetch",
+    "title": "Fetch multiple values to summary",
+    "tags": [
+      "add",
+      "fetch"
+    ],
+    "path": "functions/fetch/Sample-104.json"
+  },
+  {
+    "name": "Sample-105.json",
+    "number": 105,
+    "category": "functions",
+    "subcategory": "fetch",
+    "title": "Fetch array elements by index",
+    "tags": [
+      "add",
+      "fetch"
+    ],
+    "path": "functions/fetch/Sample-105.json"
+  },
+  {
+    "name": "Sample-106.json",
+    "number": 106,
+    "category": "functions",
+    "subcategory": "math",
+    "title": "Floor, sqrt, and power functions",
+    "tags": [
+      "add",
+      "math"
+    ],
+    "path": "functions/math/Sample-106.json"
+  },
+  {
+    "name": "Sample-107.json",
+    "number": 107,
+    "category": "functions",
+    "subcategory": "math",
+    "title": "Modulo, average, and sum functions",
+    "tags": [
+      "add",
+      "math"
+    ],
+    "path": "functions/math/Sample-107.json"
+  },
+  {
+    "name": "Sample-108.json",
+    "number": 108,
+    "category": "functions",
+    "subcategory": "newGuid",
+    "title": "Generate GUIDs for database records",
+    "tags": [
+      "add",
+      "newGuid"
+    ],
+    "path": "functions/newGuid/Sample-108.json"
+  },
+  {
+    "name": "Sample-109.json",
+    "number": 109,
+    "category": "functions",
+    "subcategory": "newGuid",
+    "title": "Create composite GUID keys",
+    "tags": [
+      "add",
+      "newGuid"
+    ],
+    "path": "functions/newGuid/Sample-109.json"
+  },
+  {
+    "name": "Sample-110.json",
+    "number": 110,
+    "category": "functions",
+    "subcategory": "parse",
+    "title": "Parse complex nested JSON",
+    "tags": [
+      "add",
+      "parse"
+    ],
+    "path": "functions/parse/Sample-110.json"
+  },
+  {
+    "name": "Sample-111.json",
+    "number": 111,
+    "category": "functions",
+    "subcategory": "parse",
+    "title": "Parse array of JSON strings",
+    "tags": [
+      "add",
+      "parse"
+    ],
+    "path": "functions/parse/Sample-111.json"
+  },
+  {
+    "name": "Sample-112.json",
+    "number": 112,
+    "category": "functions",
+    "subcategory": "partial",
+    "title": "Partial for API response filtering",
+    "tags": [
+      "add",
+      "partial"
+    ],
+    "path": "functions/partial/Sample-112.json"
+  },
+  {
+    "name": "Sample-113.json",
+    "number": 113,
+    "category": "functions",
+    "subcategory": "partial",
+    "title": "Partial for lightweight object copies",
+    "tags": [
+      "set",
+      "partial"
+    ],
+    "path": "functions/partial/Sample-113.json"
+  },
+  {
+    "name": "Sample-114.json",
+    "number": 114,
+    "category": "functions",
+    "subcategory": "promote",
+    "title": "Promote error codes to objects",
+    "tags": [
+      "set",
+      "promote"
+    ],
+    "path": "functions/promote/Sample-114.json"
+  },
+  {
+    "name": "Sample-115.json",
+    "number": 115,
+    "category": "functions",
+    "subcategory": "promote",
+    "title": "Promote with metadata wrapping",
+    "tags": [
+      "set",
+      "promote"
+    ],
+    "path": "functions/promote/Sample-115.json"
+  },
+  {
+    "name": "Sample-116.json",
+    "number": 116,
+    "category": "functions",
+    "subcategory": "toString",
+    "title": "Convert object to JSON string",
+    "tags": [
+      "add",
+      "toString"
+    ],
+    "path": "functions/toString/Sample-116.json"
+  },
+  {
+    "name": "Sample-117.json",
+    "number": 117,
+    "category": "functions",
+    "subcategory": "toString",
+    "title": "Convert array to string",
+    "tags": [
+      "add",
+      "toString"
+    ],
+    "path": "functions/toString/Sample-117.json"
+  },
+  {
+    "name": "Sample-118.json",
+    "number": 118,
+    "category": "functions",
+    "subcategory": "indirect",
+    "title": "Indirect reference to dynamic path",
+    "tags": [
+      "indirect"
+    ],
+    "path": "functions/indirect/Sample-118.json"
+  },
+  {
+    "name": "Sample-119.json",
+    "number": 119,
+    "category": "functions",
+    "subcategory": "indirect",
+    "title": "Indirect with computed path from data",
+    "tags": [
+      "indirect"
+    ],
+    "path": "functions/indirect/Sample-119.json"
+  },
+  {
+    "name": "Sample-120.json",
+    "number": 120,
+    "category": "functions",
+    "subcategory": "indirect",
+    "title": "Indirect for configuration lookup",
+    "tags": [
+      "indirect"
+    ],
+    "path": "functions/indirect/Sample-120.json"
+  },
+  {
+    "name": "Sample-121.json",
+    "number": 121,
+    "category": "functions",
+    "subcategory": "indirect",
+    "title": "Indirect array element access",
+    "tags": [
+      "indirect"
+    ],
+    "path": "functions/indirect/Sample-121.json"
+  },
+  {
+    "name": "Sample-122.json",
+    "number": 122,
+    "category": "functions",
+    "subcategory": "indirect",
+    "title": "Indirect with nested object navigation",
+    "tags": [
+      "indirect"
+    ],
+    "path": "functions/indirect/Sample-122.json"
+  },
+  {
+    "name": "Sample-133.json",
+    "number": 133,
+    "category": "commands",
+    "subcategory": "flatten",
+    "title": "Flatten nested object to flat structure",
+    "tags": [
+      "flatten"
+    ],
+    "path": "commands/flatten/Sample-133.json"
+  },
+  {
+    "name": "Sample-134.json",
+    "number": 134,
+    "category": "commands",
+    "subcategory": "flatten",
+    "title": "Flatten with custom delimiter",
+    "tags": [
+      "flatten"
+    ],
+    "path": "commands/flatten/Sample-134.json"
+  },
+  {
+    "name": "Sample-135.json",
+    "number": 135,
+    "category": "commands",
+    "subcategory": "flatten",
+    "title": "Flatten specific path only",
+    "tags": [
+      "flatten"
+    ],
+    "path": "commands/flatten/Sample-135.json"
+  },
+  {
+    "name": "Sample-136.json",
+    "number": 136,
+    "category": "commands",
+    "subcategory": "flatten",
+    "title": "Flatten array elements",
+    "tags": [
+      "flatten"
+    ],
+    "path": "commands/flatten/Sample-136.json"
+  },
+  {
+    "name": "Sample-137.json",
+    "number": 137,
+    "category": "commands",
+    "subcategory": "flatten",
+    "title": "Flatten deeply nested config",
+    "tags": [
+      "flatten"
+    ],
+    "path": "commands/flatten/Sample-137.json"
+  },
+  {
+    "name": "Sample-138.json",
+    "number": 138,
+    "category": "commands",
+    "subcategory": "resolve",
+    "title": "Resolve references in object",
+    "tags": [
+      "resolve"
+    ],
+    "path": "commands/resolve/Sample-138.json"
+  },
+  {
+    "name": "Sample-139.json",
+    "number": 139,
+    "category": "commands",
+    "subcategory": "resolve",
+    "title": "Resolve multiple references",
+    "tags": [
+      "resolve"
+    ],
+    "path": "commands/resolve/Sample-139.json"
+  },
+  {
+    "name": "Sample-140.json",
+    "number": 140,
+    "category": "commands",
+    "subcategory": "resolve",
+    "title": "Resolve with external lookup",
+    "tags": [
+      "resolve"
+    ],
+    "path": "commands/resolve/Sample-140.json"
+  },
+  {
+    "name": "Sample-141.json",
+    "number": 141,
+    "category": "commands",
+    "subcategory": "resolve",
+    "title": "Resolve array of references",
+    "tags": [
+      "resolve"
+    ],
+    "path": "commands/resolve/Sample-141.json"
+  },
+  {
+    "name": "Sample-142.json",
+    "number": 142,
+    "category": "commands",
+    "subcategory": "resolve",
+    "title": "Resolve nested references",
+    "tags": [
+      "resolve"
+    ],
+    "path": "commands/resolve/Sample-142.json"
+  },
+  {
+    "name": "Sample-143.json",
+    "number": 143,
+    "category": "commands",
+    "subcategory": "restore",
+    "title": "Restore flattened object to nested structure",
+    "tags": [
+      "restore"
+    ],
+    "path": "commands/restore/Sample-143.json"
+  },
+  {
+    "name": "Sample-144.json",
+    "number": 144,
+    "category": "commands",
+    "subcategory": "restore",
+    "title": "Restore with custom delimiter",
+    "tags": [
+      "restore"
+    ],
+    "path": "commands/restore/Sample-144.json"
+  },
+  {
+    "name": "Sample-145.json",
+    "number": 145,
+    "category": "commands",
+    "subcategory": "restore",
+    "title": "Restore specific path only",
+    "tags": [
+      "restore"
+    ],
+    "path": "commands/restore/Sample-145.json"
+  },
+  {
+    "name": "Sample-146.json",
+    "number": 146,
+    "category": "commands",
+    "subcategory": "restore",
+    "title": "Restore configuration settings",
+    "tags": [
+      "restore"
+    ],
+    "path": "commands/restore/Sample-146.json"
+  },
+  {
+    "name": "Sample-147.json",
+    "number": 147,
+    "category": "commands",
+    "subcategory": "restore",
+    "title": "Restore API response to nested object",
+    "tags": [
+      "restore"
+    ],
+    "path": "commands/restore/Sample-147.json"
+  },
+  {
+    "name": "Sample-148.json",
+    "number": 148,
+    "category": "commands",
+    "subcategory": "toCsv",
+    "title": "Convert JSON array to CSV",
+    "tags": [
+      "toCsv"
+    ],
+    "path": "commands/toCsv/Sample-148.json"
+  },
+  {
+    "name": "Sample-149.json",
+    "number": 149,
+    "category": "commands",
+    "subcategory": "toCsv",
+    "title": "Convert with custom delimiter",
+    "tags": [
+      "toCsv"
+    ],
+    "path": "commands/toCsv/Sample-149.json"
+  },
+  {
+    "name": "Sample-150.json",
+    "number": 150,
+    "category": "commands",
+    "subcategory": "toCsv",
+    "title": "Export with header option",
+    "tags": [
+      "toCsv"
+    ],
+    "path": "commands/toCsv/Sample-150.json"
+  },
+  {
+    "name": "Sample-151.json",
+    "number": 151,
+    "category": "commands",
+    "subcategory": "toCsv",
+    "title": "Convert selected fields only",
+    "tags": [
+      "toCsv"
+    ],
+    "path": "commands/toCsv/Sample-151.json"
+  },
+  {
+    "name": "Sample-152.json",
+    "number": 152,
+    "category": "commands",
+    "subcategory": "toCsv",
+    "title": "Export with quotes for special characters",
+    "tags": [
+      "toCsv"
+    ],
+    "path": "commands/toCsv/Sample-152.json"
+  },
+  {
+    "name": "Sample-153.json",
+    "number": 153,
+    "category": "commands",
+    "subcategory": "ifElse",
+    "title": "IfElse based on value check",
+    "tags": [
+      "ifElse"
+    ],
+    "path": "commands/ifElse/Sample-153.json"
+  },
+  {
+    "name": "Sample-154.json",
+    "number": 154,
+    "category": "commands",
+    "subcategory": "ifElse",
+    "title": "IfElse for discount calculation",
+    "tags": [
+      "ifElse"
+    ],
+    "path": "commands/ifElse/Sample-154.json"
+  },
+  {
+    "name": "Sample-155.json",
+    "number": 155,
+    "category": "commands",
+    "subcategory": "ifElse",
+    "title": "IfElse for status assignment",
+    "tags": [
+      "ifElse"
+    ],
+    "path": "commands/ifElse/Sample-155.json"
+  },
+  {
+    "name": "Sample-156.json",
+    "number": 156,
+    "category": "commands",
+    "subcategory": "ifElse",
+    "title": "IfElse with string condition",
+    "tags": [
+      "ifElse"
+    ],
+    "path": "commands/ifElse/Sample-156.json"
+  },
+  {
+    "name": "Sample-157.json",
+    "number": 157,
+    "category": "commands",
+    "subcategory": "ifElse",
+    "title": "IfElse for access control",
+    "tags": [
+      "ifElse"
+    ],
+    "path": "commands/ifElse/Sample-157.json"
+  },
+  {
+    "name": "Sample-158.json",
+    "number": 158,
+    "category": "commands",
+    "subcategory": "compare",
+    "title": "Compare two objects for differences",
+    "tags": [
+      "compare"
+    ],
+    "path": "commands/compare/Sample-158.json"
+  },
+  {
+    "name": "Sample-159.json",
+    "number": 159,
+    "category": "commands",
+    "subcategory": "compare",
+    "title": "Compare arrays for changes",
+    "tags": [
+      "compare"
+    ],
+    "path": "commands/compare/Sample-159.json"
+  },
+  {
+    "name": "Sample-160.json",
+    "number": 160,
+    "category": "commands",
+    "subcategory": "compare",
+    "title": "Compare nested objects",
+    "tags": [
+      "compare"
+    ],
+    "path": "commands/compare/Sample-160.json"
+  },
+  {
+    "name": "Sample-161.json",
+    "number": 161,
+    "category": "commands",
+    "subcategory": "compare",
+    "title": "Compare with ignore option",
+    "tags": [
+      "compare"
+    ],
+    "path": "commands/compare/Sample-161.json"
+  },
+  {
+    "name": "Sample-162.json",
+    "number": 162,
+    "category": "commands",
+    "subcategory": "compare",
+    "title": "Compare configuration versions",
+    "tags": [
+      "compare"
+    ],
+    "path": "commands/compare/Sample-162.json"
+  },
+  {
+    "name": "Sample-163.json",
+    "number": 163,
+    "category": "functions",
+    "subcategory": "scriptPath",
+    "title": "ScriptPath - Track array item paths",
+    "tags": [
+      "add",
+      "scriptPath"
+    ],
+    "path": "functions/scriptPath/Sample-163.json"
+  },
+  {
+    "name": "Sample-164.json",
+    "number": 164,
+    "category": "functions",
+    "subcategory": "scriptPath",
+    "title": "ScriptPath - Track nested object paths",
+    "tags": [
+      "add",
+      "scriptPath"
+    ],
+    "path": "functions/scriptPath/Sample-164.json"
+  },
+  {
+    "name": "Sample-165.json",
+    "number": 165,
+    "category": "functions",
+    "subcategory": "scriptPath",
+    "title": "ScriptPath - Build reference map",
+    "tags": [
+      "add",
+      "scriptPath"
+    ],
+    "path": "functions/scriptPath/Sample-165.json"
+  },
+  {
+    "name": "Sample-166.json",
+    "number": 166,
+    "category": "functions",
+    "subcategory": "scriptPath",
+    "title": "ScriptPath - Conditional logic with path",
+    "tags": [
+      "add",
+      "scriptPath"
+    ],
+    "path": "functions/scriptPath/Sample-166.json"
+  },
+  {
+    "name": "Sample-167.json",
+    "number": 167,
+    "category": "functions",
+    "subcategory": "scriptPath",
+    "title": "ScriptPath - Audit trail with paths",
+    "tags": [
+      "add",
+      "scriptPath"
+    ],
+    "path": "functions/scriptPath/Sample-167.json"
+  },
+  {
+    "name": "Sample-178.json",
+    "number": 178,
+    "category": "functions",
+    "subcategory": "math-ext",
+    "title": "Median - Calculate median value",
+    "tags": [
+      "add",
+      "median"
+    ],
+    "path": "functions/math-ext/Sample-178.json"
+  },
+  {
+    "name": "Sample-179.json",
+    "number": 179,
+    "category": "functions",
+    "subcategory": "math-ext",
+    "title": "Median - Array median",
+    "tags": [
+      "add",
+      "median"
+    ],
+    "path": "functions/math-ext/Sample-179.json"
+  },
+  {
+    "name": "Sample-180.json",
+    "number": 180,
+    "category": "functions",
+    "subcategory": "math-ext",
+    "title": "Calculate - Complex expression",
+    "tags": [
+      "add",
+      "calculate"
+    ],
+    "path": "functions/math-ext/Sample-180.json"
+  },
+  {
+    "name": "Sample-181.json",
+    "number": 181,
+    "category": "functions",
+    "subcategory": "math-ext",
+    "title": "Calculate - Formula evaluation",
+    "tags": [
+      "add",
+      "calculate"
+    ],
+    "path": "functions/math-ext/Sample-181.json"
+  },
+  {
+    "name": "Sample-182.json",
+    "number": 182,
+    "category": "functions",
+    "subcategory": "math-ext",
+    "title": "Sum - Total array values",
+    "tags": [
+      "add",
+      "sum"
+    ],
+    "path": "functions/math-ext/Sample-182.json"
+  },
+  {
+    "name": "Sample-183.json",
+    "number": 183,
+    "category": "functions",
+    "subcategory": "math-ext",
+    "title": "Count - Count array elements",
+    "tags": [
+      "add",
+      "count"
+    ],
+    "path": "functions/math-ext/Sample-183.json"
+  },
+  {
+    "name": "Sample-184.json",
+    "number": 184,
+    "category": "functions",
+    "subcategory": "math-ext",
+    "title": "Subtract - Subtract two values",
+    "tags": [
+      "add",
+      "subtract"
+    ],
+    "path": "functions/math-ext/Sample-184.json"
+  },
+  {
+    "name": "Sample-185.json",
+    "number": 185,
+    "category": "functions",
+    "subcategory": "math-ext",
+    "title": "Ceiling - Round up to integer",
+    "tags": [
+      "add",
+      "ceiling"
+    ],
+    "path": "functions/math-ext/Sample-185.json"
+  },
+  {
+    "name": "Sample-186.json",
+    "number": 186,
+    "category": "functions",
+    "subcategory": "math-ext",
+    "title": "Pow - Power calculation",
+    "tags": [
+      "add",
+      "pow"
+    ],
+    "path": "functions/math-ext/Sample-186.json"
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows using promote to wrap primitive values with metadata fields.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"value\": 42\r\n}",
+        "name": "data"
+      }
+    ],
+    "name": "Sample-115",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"value\": {\n    \"data\": 42\n  }\n}",
+        "name": "data"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.data.value\",\r\n    \"value\": \"=promote('data')\",\r\n    \"command\": \"set\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "set",
+    "promote"
+  ],
+  "title": "Promote with metadata wrapping"
+}

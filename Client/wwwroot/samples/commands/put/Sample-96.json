@@ -1,0 +1,23 @@
+{
+  "description": "This sample shows using put to create multiple nested properties in a single operation.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"id\": 1\r\n}",
+        "name": "record"
+      }
+    ],
+    "name": "Sample-96",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"id\": 1,\n  \"metadata\": {\n    \"created\": \"2024-01-15\",\n    \"author\": \"system\"\n  }\n}",
+        "name": "record"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.record.metadata\",\r\n    \"value\": {\r\n      \"created\": \"2024-01-15\",\r\n      \"author\": \"system\"\r\n    },\r\n    \"command\": \"put\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "put"
+  ],
+  "title": "Put nested object structure"
+}

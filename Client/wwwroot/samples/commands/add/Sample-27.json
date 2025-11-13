@@ -1,0 +1,23 @@
+{
+  "description": "The partial function allows to remove any unwanted ad even unknow properties from an object.\n\nIf the object only needs to contain certain properties, and the initial structure can vary, the partial function can help out a lot. \n\nThe  same result can be achieved with multi commands. For instance; copy the desired properties to a new object.  \n\nAnother way could be copy the object and than to check the existence of a property that should be removed and remove it afterwards. \n\nBoth solutions will work but with the partial function it is way more convenient.   \n ",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n    \"demo\": {\r\n        \"a\": 1,\r\n        \"b\": 2,\r\n        \"c\": {\r\n            \"d\": 3,\r\n            \"e\": 4\r\n        }\r\n    }\r\n}",
+        "name": "sample"
+      }
+    ],
+    "name": "Sample-27",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"demo\": {\n    \"a\": 1,\n    \"b\": 2,\n    \"c\": {\n      \"d\": 3,\n      \"e\": 4\n    }\n  },\n  \"trimmedDemo\": {\n    \"b\": 2,\n    \"c\": {\n      \"d\": 3\n    }\n  }\n}",
+        "name": "sample"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.sample.trimmedDemo\",\r\n    \"value\": \"=partial($.sample.demo,@.b,@.c.d)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add"
+  ],
+  "title": "Use partial function to add only the desired properties from another object"
+}

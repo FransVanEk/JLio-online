@@ -1,0 +1,23 @@
+{
+  "description": "This sample demonstrates a decision table for determining employee benefits based on tenure and performance.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "[\r\n  {\r\n    \"yearsOfService\": 3,\r\n    \"performanceRating\": \"excellent\"\r\n  },\r\n  {\r\n    \"yearsOfService\": 1,\r\n    \"performanceRating\": \"good\"\r\n  }\r\n]",
+        "name": "employees"
+      }
+    ],
+    "name": "Sample-55",
+    "outputObjects": [
+      {
+        "jsonString": "[\n  {\n    \"yearsOfService\": 3,\n    \"performanceRating\": \"excellent\",\n    \"vacationDays\": 20,\n    \"bonus\": 5000\n  },\n  {\n    \"yearsOfService\": 1,\n    \"performanceRating\": \"good\",\n    \"vacationDays\": 10,\n    \"bonus\": 1000\n  }\n]",
+        "name": "employees"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"command\": \"decisionTable\",\r\n    \"path\": \"$.employees[*]\",\r\n    \"decisionTable\": {\r\n      \"inputs\": [\r\n        {\r\n          \"name\": \"yearsOfService\",\r\n          \"path\": \"@.yearsOfService\",\r\n          \"type\": \"number\"\r\n        },\r\n        {\r\n          \"name\": \"performanceRating\",\r\n          \"path\": \"@.performanceRating\",\r\n          \"type\": \"string\"\r\n        }\r\n      ],\r\n      \"outputs\": [\r\n        {\r\n          \"name\": \"vacationDays\",\r\n          \"path\": \"@.vacationDays\"\r\n        },\r\n        {\r\n          \"name\": \"bonus\",\r\n          \"path\": \"@.bonus\"\r\n        }\r\n      ],\r\n      \"rules\": [\r\n        {\r\n          \"priority\": 1,\r\n          \"conditions\": {\r\n            \"yearsOfService\": \">=5\",\r\n            \"performanceRating\": \"excellent\"\r\n          },\r\n          \"results\": {\r\n            \"vacationDays\": 25,\r\n            \"bonus\": 10000\r\n          }\r\n        },\r\n        {\r\n          \"priority\": 2,\r\n          \"conditions\": {\r\n            \"yearsOfService\": \">=2\",\r\n            \"performanceRating\": \"excellent\"\r\n          },\r\n          \"results\": {\r\n            \"vacationDays\": 20,\r\n            \"bonus\": 5000\r\n          }\r\n        },\r\n        {\r\n          \"priority\": 3,\r\n          \"conditions\": {\r\n            \"performanceRating\": \"good\"\r\n          },\r\n          \"results\": {\r\n            \"vacationDays\": 10,\r\n            \"bonus\": 1000\r\n          }\r\n        }\r\n      ],\r\n      \"executionStrategy\": {\r\n        \"mode\": \"firstMatch\",\r\n        \"conflictResolution\": \"priority\",\r\n        \"stopOnError\": false\r\n      },\r\n      \"defaultResults\": {\r\n        \"vacationDays\": 5,\r\n        \"bonus\": 0\r\n      }\r\n    }\r\n  }\r\n]"
+  },
+  "tags": [
+    "decisionTable"
+  ],
+  "title": "Decision table for employee benefits"
+}

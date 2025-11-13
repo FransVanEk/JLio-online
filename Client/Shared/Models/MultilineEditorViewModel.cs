@@ -31,6 +31,7 @@ namespace JLioOnline.Client.Shared.Models
         [JsonProperty("name")]
         public string Name { get; set; } = string.Empty;
 
+        [JsonProperty("outputObjects")]
         public List<JsonObjectViewModel> OutputObjects { get; set; } = new List<JsonObjectViewModel>();
 
         [JsonProperty("scriptText")]

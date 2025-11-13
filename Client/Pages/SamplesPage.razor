@@ -1,6 +1,9 @@
 @page "/samples"
 @using Microsoft.AspNetCore.Components.WebAssembly.Hosting
 @using System.Web
+@using System.Threading
+@using System.Text.RegularExpressions
+@implements IDisposable
 
 @inject SamplesStore samplesstore
 @inject IWebAssemblyHostEnvironment HostEnvironment
@@ -17,31 +20,20 @@
         </div>
     </div>
 }
-    <div class="row">
-        <div class=" col-3" style="margin-bottom: 20px;">
-            Filter:
-        </div>
-        <div class=" col-9">
-
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-12 col-md-6 col-lg-4">
+            <h4>Filter by Tag:</h4>
+            <RadzenDropDown @bind-Value=@selectedTag TValue="string" Data="@tags" Change=@(args => OnFilterChange()) Style="width: 100%; max-width: 400px;" Placeholder="Select a tag..."/>
         </div>
     </div>
     <div class="row">
-        <div class=" col-3">
-
-            <div class="row">
-                <div class=" col-12" style="margin-bottom: 20px;">
-                    <RadzenSelectBar @bind-Value=@selectedTag TValue="string" Multiple="false"  Data="@tags" Change=@(args => OnFilterChange())/>
-                </div>
-            </div>
-            <div class="row">
-                <div class=" col-12">
-                    <RadzenListBox AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" @bind-Value=@selectedSampleTitle Data=@filteredSamples Change=@(OnChange) TextProperty="Title" ValueProperty="Title" Style="height: 350px"/>
-                </div>
-            </div>
+        <div class="col-12 col-lg-3" style="margin-bottom: 20px;">
+            <h5>Samples (@filteredSamples.Count)</h5>
+            <RadzenListBox AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" @bind-Value=@selectedSampleTitle Data=@filteredSamples Change=@(OnChange) TextProperty="Title" ValueProperty="Title" Style="height: 500px; width: 100%;"/>
         </div>
-        @if (selectedSample != null)
+        @if (selectedSample != null && selectedSample.Model != null)
         {
-            <div class=" col-9">
+            <div class="col-12 col-lg-9">
                 <div class="row">
                     <div class="col-12">
                         <h3>@selectedSample.Model.Name - @selectedSample.Title</h3>
@@ -76,6 +68,7 @@
 
 @code {
 
+    List<SampleMetadata> allMetadata = new List<SampleMetadata>();
     IEnumerable<string> tags { get; set; } = new List<string>();
     string selectedTag { get; set; } = string.Empty;
     string selectedSampleTitle { get; set; } = string.Empty;
@@ -83,48 +76,57 @@
     JsonDiff jsonDiff;
     string before;
     string after;
-    IEnumerable<Sample> filteredSamples { get; set; } = new List<Sample>();
+    List<SampleMetadata> filteredSamples { get; set; } = new List<SampleMetadata>();
     Sample selectedSample { get; set; }
     bool isInitialized = false;
+    private CancellationTokenSource _updateCancellation;
 
     async Task Download()
     {
+        await samplesstore.GetSamples();
         var bytes = System.Text.Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(samplesstore.Samples, Formatting.Indented));
         await SaveAsFile.SaveAs(js, "samples.json", bytes);
     }
 
     protected override async Task OnInitializedAsync()
     {
-        await samplesstore.GetSamples();
+        // Load only metadata first (1 HTTP request instead of 160+)
+        allMetadata = await samplesstore.GetSampleMetadataAsync();
         tags = GetTags();
+        selectedTag = "All"; // Set default to "All"
         filteredSamples = GetFilteredSamples();
         selectedSampleTitle = filteredSamples.FirstOrDefault()?.Title;
-        await SetSelectedSample();
-        await UpdateView();
         isInitialized = true;
+        // Load first sample after rendering
+        await SetSelectedSample();
     }
 
     private List<string> GetTags()
     {
-        return samplesstore?.Samples?.Where(s => s.Tags != null).SelectMany(s => s.Tags).Distinct().OrderBy(t => t).ToList();
+        var tagList = new List<string> { "All" };
+        var sampleTags = allMetadata?.Where(s => s.Tags != null).SelectMany(s => s.Tags).Distinct().OrderBy(t => t).ToList();
+        if (sampleTags != null)
+        {
+            tagList.AddRange(sampleTags);
+        }
+        return tagList;
     }
 
-    private IEnumerable<Sample> GetFilteredSamples()
+    private List<SampleMetadata> GetFilteredSamples()
     {
-        if (string.IsNullOrWhiteSpace(selectedTag))
+        if (string.IsNullOrWhiteSpace(selectedTag) || selectedTag == "All")
         {
-            return samplesstore.Samples;
+            return allMetadata;
         }
-        return samplesstore.Samples.Where(s => s.Tags.Contains(selectedTag)).ToList();
+        return allMetadata.Where(s => s.Tags.Contains(selectedTag)).ToList();
     }
 
     async Task OnFilterChange()
     {
         filteredSamples = GetFilteredSamples();
-        var enumerable = filteredSamples as Sample[] ?? filteredSamples.ToArray();
-        if (enumerable.All(f => f.Title != selectedSampleTitle))
+        if (filteredSamples.All(f => f.Title != selectedSampleTitle))
         {
-            selectedSampleTitle = enumerable.FirstOrDefault()?.Title;
+            selectedSampleTitle = filteredSamples.FirstOrDefault()?.Title;
             await SetSelectedSample();
             await UpdateView();
         }
@@ -132,19 +134,55 @@
 
     private async Task SetSelectedSample()
     {
-        selectedSample = samplesstore.Samples.FirstOrDefault(s => s.Title == selectedSampleTitle);
-        await UpdateView();
+        // Cancel any pending update
+        _updateCancellation?.Cancel();
+        _updateCancellation = new CancellationTokenSource();
+        var cancellationToken = _updateCancellation.Token;
+        
+        // Load the specific sample on-demand
+        var metadata = filteredSamples.FirstOrDefault(s => s.Title == selectedSampleTitle);
+        if (metadata != null)
+        {
+            selectedSample = await samplesstore.GetSampleAsync(metadata.Number);
+            StateHasChanged(); // Force re-render after loading
+        }
+        
+        // Small delay to avoid rapid successive updates
+        try
+        {
+            await Task.Delay(50, cancellationToken);
+            if (!cancellationToken.IsCancellationRequested && selectedSample?.Model != null)
+            {
+                await UpdateView();
+            }
+        }
+        catch (TaskCanceledException)
+        {
+            // Cancelled by new selection, ignore
+        }
     }
 
     private async Task UpdateView()
     {
         if (selectedSample?.Model == null) { return; }
-        scriptEditor?.Update(selectedSample.Model.ScriptText);
-        after = JsonConvert.SerializeObject(ParseList(selectedSample.Model.OutputObjects), Formatting.Indented);
-        before = JsonConvert.SerializeObject(ParseList(selectedSample.Model.InputObjects), Formatting.Indented);
-        if (jsonDiff != null)
+        
+        try
         {
-            await jsonDiff?.Update(before, after);
+            // Unescape the script text for proper Monaco editor display
+            var scriptText = selectedSample.Model.ScriptText != null 
+                ? Regex.Unescape(selectedSample.Model.ScriptText) 
+                : null;
+            scriptEditor?.Update(scriptText);
+            after = JsonConvert.SerializeObject(ParseList(selectedSample.Model.OutputObjects), Formatting.Indented);
+            before = JsonConvert.SerializeObject(ParseList(selectedSample.Model.InputObjects), Formatting.Indented);
+            if (jsonDiff != null)
+            {
+                await jsonDiff?.Update(before, after);
+            }
+        }
+        catch (Exception)
+        {
+            // Ignore disposed object errors when switching samples quickly
         }
     }
 
@@ -185,5 +223,11 @@
         {
             NavigationManager.NavigateTo($"/multipleInputEditor/{HttpUtility.UrlEncode(selectedSample.Title)}");
         }
+    }
+
+    public void Dispose()
+    {
+        _updateCancellation?.Cancel();
+        _updateCancellation?.Dispose();
     }
 }

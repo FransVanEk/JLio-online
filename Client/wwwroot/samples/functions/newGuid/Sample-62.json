@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates using newGuid to set a correlation ID for related transactions.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"amount\": 100,\r\n  \"currency\": \"USD\"\r\n}",
+        "name": "transaction"
+      }
+    ],
+    "name": "Sample-62",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"amount\": 100,\n  \"currency\": \"USD\",\n  \"correlationId\": \"a1b16cc8-3cb8-4877-8592-1725efbd71e4\"\n}",
+        "name": "transaction"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.transaction.correlationId\",\r\n    \"value\": \"=newGuid()\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "newGuid"
+  ],
+  "title": "Add correlation ID to transaction"
+}
