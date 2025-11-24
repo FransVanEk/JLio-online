@@ -1,0 +1,23 @@
+﻿{
+    "title":  "Flatten with custom delimiter",
+    "tags":  [
+                 "flatten"
+             ],
+    "model":  {
+                  "name":  "Sample-134",
+                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$\",\r\n    \"delimiter\": \"_\",\r\n    \"command\": \"flatten\"\r\n  }\r\n]",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"order\":{\"customer\":{\"firstName\":\"Jane\",\"lastName\":\"Smith\"},\"items\":{\"product\":\"Laptop\",\"price\":999}}}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"order_customer_firstName\":\"Jane\",\"order_customer_lastName\":\"Smith\",\"order_items_product\":\"Laptop\",\"order_items_price\":999}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows flatten with custom delimiter."
+}

@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates using promote function to wrap primitive values in objects.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "[\r\n  \"apple\",\r\n  \"banana\",\r\n  \"cherry\"\r\n]",
+        "name": "fruits"
+      }
+    ],
+    "name": "Sample-78",
+    "outputObjects": [
+      {
+        "jsonString": "[\n  {\"name\": \"apple\"},\n  {\"name\": \"banana\"},\n  {\"name\": \"cherry\"}\n]",
+        "name": "fruits"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.fruits[*]\",\r\n    \"value\": \"=promote('name')\",\r\n    \"command\": \"set\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "set",
+    "promote"
+  ],
+  "title": "Promote strings to objects"
+}

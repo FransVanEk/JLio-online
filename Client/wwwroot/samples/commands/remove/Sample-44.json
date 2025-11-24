@@ -1,0 +1,23 @@
+{
+  "description": "This sample shows removing an item from an array using an index-based path.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"items\": [\"apple\", \"banana\", \"cherry\", \"date\"]\r\n}",
+        "name": "list"
+      }
+    ],
+    "name": "Sample-44",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"items\": [\"apple\", \"cherry\", \"date\"]\n}",
+        "name": "list"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.list.items[1]\",\r\n    \"command\": \"remove\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "remove"
+  ],
+  "title": "Remove item from array by index"
+}

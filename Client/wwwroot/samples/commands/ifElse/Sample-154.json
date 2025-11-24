@@ -1,0 +1,23 @@
+﻿{
+    "title":  "IfElse for discount calculation",
+    "tags":  [
+                 "ifElse"
+             ],
+    "model":  {
+                  "name":  "Sample-154",
+                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.order\",\r\n    \"condition\": \"@.amount \u003e 100\",\r\n    \"ifTrue\": [\r\n      {\r\n        \"path\": \"$.order.discount\",\r\n        \"value\": 10,\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"ifFalse\": [\r\n      {\r\n        \"path\": \"$.order.discount\",\r\n        \"value\": 0,\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"command\": \"ifElse\"\r\n  }\r\n]",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"order\":{\"amount\":150,\"discount\":0}}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"order\":{\"amount\":150,\"discount\":10}}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows ifelse for discount calculation."
+}

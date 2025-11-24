@@ -1,0 +1,23 @@
+﻿{
+    "title":  "Export with header option",
+    "tags":  [
+                 "toCsv"
+             ],
+    "model":  {
+                  "name":  "Sample-150",
+                  "scriptText":  "{\"path\":\"$.d.orders\",\"targetPath\":\"$.report\",\"includeHeader\":true,\"command\":\"toCsv\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\r\n  \"orders\": [\r\n    {\r\n      \"orderId\": \"ORD001\",\r\n      \"amount\": 150.5\r\n    },\r\n    {\r\n      \"orderId\": \"ORD002\",\r\n      \"amount\": 200.0\r\n    }\r\n  ]\r\n}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\r\n  \"orders\": [\r\n    {\r\n      \"orderId\": \"ORD001\",\r\n      \"amount\": 150.5\r\n    },\r\n    {\r\n      \"orderId\": \"ORD002\",\r\n      \"amount\": 200.0\r\n    }\r\n  ],\r\n  \"report\": \"orderId,amount\\nORD001,150.5\\nORD002,200\"\r\n}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows export with header option."
+}

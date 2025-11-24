@@ -1,0 +1,23 @@
+﻿{
+    "title":  "Convert selected fields only",
+    "tags":  [
+                 "toCsv"
+             ],
+    "model":  {
+                  "name":  "Sample-151",
+                  "scriptText":  "{\"path\":\"$.d.employees\",\"targetPath\":\"$.employeeList\",\"fields\":[\"id\",\"firstName\",\"lastName\"],\"command\":\"toCsv\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\r\n  \"employees\": [\r\n    {\r\n      \"id\": 1,\r\n      \"firstName\": \"Alice\",\r\n      \"lastName\": \"Johnson\",\r\n      \"department\": \"IT\",\r\n      \"salary\": 75000\r\n    },\r\n    {\r\n      \"id\": 2,\r\n      \"firstName\": \"Bob\",\r\n      \"lastName\": \"Smith\",\r\n      \"department\": \"HR\",\r\n      \"salary\": 65000\r\n    }\r\n  ]\r\n}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\r\n  \"employees\": [\r\n    {\r\n      \"id\": 1,\r\n      \"firstName\": \"Alice\",\r\n      \"lastName\": \"Johnson\",\r\n      \"department\": \"IT\",\r\n      \"salary\": 75000\r\n    },\r\n    {\r\n      \"id\": 2,\r\n      \"firstName\": \"Bob\",\r\n      \"lastName\": \"Smith\",\r\n      \"department\": \"HR\",\r\n      \"salary\": 65000\r\n    }\r\n  ],\r\n  \"employeeList\": \"id,firstName,lastName\\n1,Alice,Johnson\\n2,Bob,Smith\"\r\n}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows convert selected fields only."
+}

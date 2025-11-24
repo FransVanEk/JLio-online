@@ -1,0 +1,24 @@
+﻿{
+    "title":  "ScriptPath - Build reference map",
+    "tags":  [
+                 "add",
+                 "scriptPath"
+             ],
+    "model":  {
+                  "name":  "Sample-165",
+                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.products[*].ref\",\r\n    \"value\": \"=scriptPath()\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"products\":[{\"id\":\"P1\",\"name\":\"Widget\"},{\"id\":\"P2\",\"name\":\"Gadget\"}]}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"products\":[{\"id\":\"P1\",\"name\":\"Widget\",\"ref\":\"$.products[0]\"},{\"id\":\"P2\",\"name\":\"Gadget\",\"ref\":\"$.products[1]\"}]}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows scriptpath - build reference map."
+}

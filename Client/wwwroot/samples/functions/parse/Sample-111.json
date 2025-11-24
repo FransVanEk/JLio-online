@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows parsing multiple JSON strings in an array to create structured objects.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\"items\":[\"{\\\"id\\\":1,\\\"name\\\":\\\"Item1\\\"}\",\"{\\\"id\\\":2,\\\"name\\\":\\\"Item2\\\"}\"]}",
+        "name": "strings"
+      }
+    ],
+    "name": "Sample-111",
+    "outputObjects": [
+      {
+        "jsonString": "{\"items\":[\"{\\\"id\\\":1,\\\"name\\\":\\\"Item1\\\"}\",\"{\\\"id\\\":2,\\\"name\\\":\\\"Item2\\\"}\"],\"parsed\":[{\"id\":1,\"name\":\"Item1\"},{\"id\":2,\"name\":\"Item2\"}]}",
+        "name": "strings"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.strings.parsed\",\r\n    \"value\": [],\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.strings.parsed[0]\",\r\n    \"value\": \"=parse(@.items[0])\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.strings.parsed[1]\",\r\n    \"value\": \"=parse(@.items[1])\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "parse"
+  ],
+  "title": "Parse array of JSON strings"
+}

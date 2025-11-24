@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates concat for creating URLs or file paths from components.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"protocol\": \"https\",\r\n  \"domain\": \"api.example.com\",\r\n  \"path\": \"/users\",\r\n  \"id\": 123\r\n}",
+        "name": "endpoint"
+      }
+    ],
+    "name": "Sample-65",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"protocol\": \"https\",\n  \"domain\": \"api.example.com\",\n  \"path\": \"/users\",\n  \"id\": 123,\n  \"url\": \"https://api.example.com/users/123\"\n}",
+        "name": "endpoint"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.endpoint.url\",\r\n    \"value\": \"=concat(@.protocol,'://',@.domain,@.path,'/',@.id)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "concat"
+  ],
+  "title": "Concat for building URLs"
+}

@@ -1,0 +1,23 @@
+{
+  "description": "This sample shows copying an entire nested object to a new location, preserving its structure.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"original\": {\r\n    \"id\": 1,\r\n    \"data\": {\r\n      \"value\": \"test\"\r\n    }\r\n  }\r\n}",
+        "name": "source"
+      }
+    ],
+    "name": "Sample-46",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"original\": {\n    \"id\": 1,\n    \"data\": {\n      \"value\": \"test\"\n    }\n  },\n  \"backup\": {\n    \"id\": 1,\n    \"data\": {\n      \"value\": \"test\"\n    }\n  }\n}",
+        "name": "source"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"fromPath\": \"$.source.original\",\r\n    \"toPath\": \"$.source.backup\",\r\n    \"command\": \"copy\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "copy"
+  ],
+  "title": "Copy nested object structure"
+}

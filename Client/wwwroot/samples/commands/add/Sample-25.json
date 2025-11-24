@@ -1,0 +1,18 @@
+{
+  "description": "sample to create a guid and add it to a new object",
+  "model": {
+    "inputObjects": [],
+    "name": "Sample-25",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"myGuid\": \"a1b16cc8-3cb8-4877-8592-1725efbd71e4\"\n}",
+        "name": "sample"
+      }
+    ],
+    "scriptText": "[\n  {\n    \"path\": \"$.sample.myGuid\",\n    \"value\": \"=newGuid()\",\n    \"command\": \"add\"\n  }\n]"
+  },
+  "tags": [
+    "add"
+  ],
+  "title": "function newGuid()"
+}

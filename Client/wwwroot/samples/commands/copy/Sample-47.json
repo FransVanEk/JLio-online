@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates copying selected items from an array based on a filter condition.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"numbers\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\r\n}",
+        "name": "data"
+      }
+    ],
+    "name": "Sample-47",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"numbers\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],\n  \"evenNumbers\": []\n}",
+        "name": "data"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.data.evenNumbers\",\r\n    \"value\": [],\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"fromPath\": \"$.data.numbers[?(@ % 2 == 0)]\",\r\n    \"toPath\": \"$.data.evenNumbers\",\r\n    \"command\": \"copy\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "copy",
+    "add"
+  ],
+  "title": "Copy filtered array items"
+}

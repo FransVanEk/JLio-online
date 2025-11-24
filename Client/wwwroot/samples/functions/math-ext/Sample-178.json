@@ -1,0 +1,24 @@
+﻿{
+    "title":  "Median - Calculate median value",
+    "tags":  [
+                 "add",
+                 "median"
+             ],
+    "model":  {
+                  "name":  "Sample-178",
+                  "scriptText":  "{\"path\":\"$.data.medianScore\",\"value\":\"=median(@.scores[*])\",\"command\":\"add\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"scores\":[85,92,78,95,88]}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"scores\":[85,92,78,95,88],\"medianScore\":88}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows median - calculate median value."
+}

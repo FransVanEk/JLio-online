@@ -1,0 +1,23 @@
+{
+  "description": "The put command adds or updates a property. If the property exists, it updates; if not, it creates. This sample shows put creating a new property.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"id\": 1\r\n}",
+        "name": "item"
+      }
+    ],
+    "name": "Sample-39",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"id\": 1,\n  \"status\": \"active\"\n}",
+        "name": "item"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.item.status\",\r\n    \"value\": \"active\",\r\n    \"command\": \"put\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "put"
+  ],
+  "title": "Put new property to object"
+}

@@ -1,0 +1,23 @@
+﻿{
+    "title":  "Compare nested objects",
+    "tags":  [
+                 "compare"
+             ],
+    "model":  {
+                  "name":  "Sample-160",
+                  "scriptText":  "{\"leftPath\":\"$.data.v1\",\"rightPath\":\"$.data.v2\",\"targetPath\":\"$.data.delta\",\"command\":\"compare\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"v1\":{\"user\":{\"profile\":{\"email\":\"old@example.com\"}}},\"v2\":{\"user\":{\"profile\":{\"email\":\"new@example.com\"}}}}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"v1\":{\"user\":{\"profile\":{\"email\":\"old@example.com\"}}},\"v2\":{\"user\":{\"profile\":{\"email\":\"new@example.com\"}}},\"delta\":{\"user.profile.email\":{\"left\":\"old@example.com\",\"right\":\"new@example.com\"}}}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows compare nested objects."
+}

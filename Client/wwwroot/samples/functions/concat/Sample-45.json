@@ -1,0 +1,28 @@
+{
+  "description": "This sample demonstrates copying a value and transforming it using a function during the copy operation.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"price\": 100\r\n}",
+        "name": "product"
+      }
+    ],
+    "name": "Sample-45",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"price\": 100\n}",
+        "name": "product"
+      },
+      {
+        "jsonString": "\"Price: 100\"",
+        "name": "displayPrice"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"fromPath\": \"$.product.price\",\r\n    \"toPath\": \"$.displayPrice\",\r\n    \"command\": \"copy\"\r\n  },\r\n  {\r\n    \"path\": \"$.displayPrice\",\r\n    \"value\": \"=concat('Price: ',@)\",\r\n    \"command\": \"set\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "copy",
+    "concat"
+  ],
+  "title": "Copy and transform value"
+}

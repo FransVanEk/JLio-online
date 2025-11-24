@@ -1,0 +1,23 @@
+﻿{
+    "title":  "IfElse for access control",
+    "tags":  [
+                 "ifElse"
+             ],
+    "model":  {
+                  "name":  "Sample-157",
+                  "scriptText":  "{\"path\":\"$.d.user\",\"condition\":\"@.role == \u0027admin\u0027\",\"ifTrue\":[{\"path\":\"$.user.permissions\",\"value\":[\"read\",\"write\",\"delete\"],\"command\":\"set\"}],\"ifFalse\":[{\"path\":\"$.user.permissions\",\"value\":[\"read\"],\"command\":\"set\"}],\"command\":\"ifElse\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"user\":{\"role\":\"admin\",\"permissions\":[]}}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"user\":{\"role\":\"admin\",\"permissions\":[\"read\",\"write\",\"delete\"]}}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows ifelse for access control."
+}

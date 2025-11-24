@@ -1,0 +1,24 @@
+﻿{
+    "title":  "Median - Array median",
+    "tags":  [
+                 "add",
+                 "median"
+             ],
+    "model":  {
+                  "name":  "Sample-179",
+                  "scriptText":  "{\"path\":\"$.data.middle\",\"value\":\"=median(@.values[*])\",\"command\":\"add\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"values\":[10,20,30,40,50,60]}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"values\":[10,20,30,40,50,60],\"middle\":35}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows median - array median."
+}

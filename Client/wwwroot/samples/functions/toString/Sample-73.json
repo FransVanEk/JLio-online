@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows using toString to create string representations of complex values.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"isEnabled\": true,\r\n  \"count\": 42\r\n}",
+        "name": "config"
+      }
+    ],
+    "name": "Sample-73",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"isEnabled\": true,\n  \"count\": 42,\n  \"status\": \"true\",\n  \"countText\": \"42\"\n}",
+        "name": "config"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.config.status\",\r\n    \"value\": \"=toString(@.isEnabled)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.config.countText\",\r\n    \"value\": \"=toString(@.count)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "toString"
+  ],
+  "title": "ToString for boolean and number values"
+}

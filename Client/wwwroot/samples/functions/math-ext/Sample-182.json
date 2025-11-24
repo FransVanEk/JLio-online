@@ -1,0 +1,24 @@
+﻿{
+    "title":  "Sum - Total array values",
+    "tags":  [
+                 "add",
+                 "sum"
+             ],
+    "model":  {
+                  "name":  "Sample-182",
+                  "scriptText":  "{\"path\":\"$.data.totalAmount\",\"value\":\"=sum(@.amounts[*])\",\"command\":\"add\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"amounts\":[100,250,75,125]}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"amounts\":[100,250,75,125],\"totalAmount\":550}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows sum - total array values."
+}

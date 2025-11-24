@@ -1,0 +1,24 @@
+﻿{
+    "title":  "Calculate - Formula evaluation",
+    "tags":  [
+                 "add",
+                 "calculate"
+             ],
+    "model":  {
+                  "name":  "Sample-181",
+                  "scriptText":  "{\"path\":\"$.data.result\",\"value\":\"=calculate((@.base * @.rate) + @.bonus)\",\"command\":\"add\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"base\":50,\"rate\":1.5,\"bonus\":10}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"base\":50,\"rate\":1.5,\"bonus\":10,\"result\":85}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows calculate - formula evaluation."
+}

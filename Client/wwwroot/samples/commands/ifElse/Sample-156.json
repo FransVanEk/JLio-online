@@ -1,0 +1,23 @@
+﻿{
+    "title":  "IfElse with string condition",
+    "tags":  [
+                 "ifElse"
+             ],
+    "model":  {
+                  "name":  "Sample-156",
+                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.product\",\r\n    \"condition\": \"@.type == \u0027physical\u0027\",\r\n    \"ifTrue\": [\r\n      {\r\n        \"path\": \"$.product.shipping\",\r\n        \"value\": \"required\",\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"ifFalse\": [\r\n      {\r\n        \"path\": \"$.product.shipping\",\r\n        \"value\": \"not required\",\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"command\": \"ifElse\"\r\n  }\r\n]",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"product\":{\"type\":\"digital\",\"shipping\":\"\"}}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"product\":{\"type\":\"digital\",\"shipping\":\"not required\"}}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows ifelse with string condition."
+}

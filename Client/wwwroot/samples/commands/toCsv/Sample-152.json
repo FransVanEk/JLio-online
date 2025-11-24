@@ -1,0 +1,23 @@
+﻿{
+    "title":  "Export with quotes for special characters",
+    "tags":  [
+                 "toCsv"
+             ],
+    "model":  {
+                  "name":  "Sample-152",
+                  "scriptText":  "{\"path\":\"$.d.contacts\",\"targetPath\":\"$.csv\",\"quoteChar\":\"\\\"\",\"command\":\"toCsv\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\r\n  \"contacts\": [\r\n    {\r\n      \"name\": \"Smith, John\",\r\n      \"note\": \"Call at 3:00 PM\"\r\n    },\r\n    {\r\n      \"name\": \"Doe, Jane\",\r\n      \"note\": \"Send \\\"urgent\\\" email\"\r\n    }\r\n  ]\r\n}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\r\n  \"contacts\": [\r\n    {\r\n      \"name\": \"Smith, John\",\r\n      \"note\": \"Call at 3:00 PM\"\r\n    },\r\n    {\r\n      \"name\": \"Doe, Jane\",\r\n      \"note\": \"Send \\\"urgent\\\" email\"\r\n    }\r\n  ],\r\n  \"csv\": \"name,note\\n\\\"Smith, John\\\",\\\"Call at 3:00 PM\\\"\\n\\\"Doe, Jane\\\",\\\"Send \\\"urgent\\\" email\\\"\"\r\n}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows export with quotes for special characters."
+}

@@ -1,0 +1,24 @@
+﻿{
+    "title":  "Subtract - Subtract two values",
+    "tags":  [
+                 "add",
+                 "subtract"
+             ],
+    "model":  {
+                  "name":  "Sample-184",
+                  "scriptText":  "{\"path\":\"$.data.finalPrice\",\"value\":\"=subtract(@.total, @.discount)\",\"command\":\"add\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"total\":500,\"discount\":75}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"total\":500,\"discount\":75,\"finalPrice\":425}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows subtract - subtract two values."
+}

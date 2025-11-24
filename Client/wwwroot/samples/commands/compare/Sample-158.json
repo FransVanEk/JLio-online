@@ -1,0 +1,23 @@
+﻿{
+    "title":  "Compare two objects for differences",
+    "tags":  [
+                 "compare"
+             ],
+    "model":  {
+                  "name":  "Sample-158",
+                  "scriptText":  "{\"leftPath\":\"$.data.original\",\"rightPath\":\"$.data.updated\",\"targetPath\":\"$.data.diff\",\"command\":\"compare\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"original\":{\"name\":\"John\",\"age\":30,\"city\":\"New York\"},\"updated\":{\"name\":\"John\",\"age\":31,\"city\":\"Boston\"}}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"original\":{\"name\":\"John\",\"age\":30,\"city\":\"New York\"},\"updated\":{\"name\":\"John\",\"age\":31,\"city\":\"Boston\"},\"diff\":{\"age\":{\"left\":30,\"right\":31},\"city\":{\"left\":\"New York\",\"right\":\"Boston\"}}}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows compare two objects for differences."
+}

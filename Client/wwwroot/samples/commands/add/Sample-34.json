@@ -1,0 +1,18 @@
+{
+  "description": "This sample shows how to add an array to a new object. The array can contain primitive values or complex objects.",
+  "model": {
+    "inputObjects": [],
+    "name": "Sample-34",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"colors\": [\n    \"red\",\n    \"green\",\n    \"blue\"\n  ]\n}",
+        "name": "myObject"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.myObject.colors\",\r\n    \"value\": [\"red\", \"green\", \"blue\"],\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add"
+  ],
+  "title": "Add array to new object"
+}

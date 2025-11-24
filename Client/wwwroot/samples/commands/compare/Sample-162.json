@@ -1,0 +1,23 @@
+﻿{
+    "title":  "Compare configuration versions",
+    "tags":  [
+                 "compare"
+             ],
+    "model":  {
+                  "name":  "Sample-162",
+                  "scriptText":  "{\"leftPath\":\"$.data.configOld\",\"rightPath\":\"$.data.configNew\",\"targetPath\":\"$.data.configDiff\",\"command\":\"compare\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"configOld\":{\"database\":{\"host\":\"localhost\",\"port\":5432},\"cache\":{\"enabled\":false}},\"configNew\":{\"database\":{\"host\":\"db.server.com\",\"port\":5432},\"cache\":{\"enabled\":true}}}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"configOld\":{\"database\":{\"host\":\"localhost\",\"port\":5432},\"cache\":{\"enabled\":false}},\"configNew\":{\"database\":{\"host\":\"db.server.com\",\"port\":5432},\"cache\":{\"enabled\":true}},\"configDiff\":{\"database.host\":{\"left\":\"localhost\",\"right\":\"db.server.com\"},\"cache.enabled\":{\"left\":false,\"right\":true}}}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows compare configuration versions."
+}

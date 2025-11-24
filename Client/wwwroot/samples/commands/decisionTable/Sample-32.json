@@ -1,0 +1,23 @@
+{
+  "description": "this show how to change or add properties based upon conditions",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "[\r\n    {\r\n        \"age\": 25,\r\n        \"name\": \"John Smith\",\r\n        \"email\": \"john.smith@email.com\"\r\n    },\r\n    {\r\n        \"age\": 65,\r\n        \"membership\": {\r\n            \"level\": \"gold\"\r\n        },\r\n        \"name\": \"Jane Smith\",\r\n        \"email\": \"jane.smith@email.com\"\r\n    }\r\n]",
+        "name": "customer"
+      }
+    ],
+    "name": "Sample-32",
+    "outputObjects": [
+      {
+        "jsonString": "[\n  {\n    \"age\": 25,\n    \"name\": \"John Smith\",\n    \"email\": \"john.smith@email.com\",\n    \"pricing\": {\n      \"discount\": 0.0\n    },\n    \"category\": \"default\"\n  },\n  {\n    \"age\": 65,\n    \"membership\": {\n      \"level\": \"gold\"\n    },\n    \"name\": \"Jane Smith\",\n    \"email\": \"jane.smith@email.com\",\n    \"pricing\": {\n      \"discount\": 0.25\n    },\n    \"category\": \"senior_gold\"\n  }\n]",
+        "name": "customer"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"command\": \"decisionTable\",\r\n    \"path\": \"$.customer[*]\",\r\n    \"decisionTable\": {\r\n      \"inputs\": [\r\n        {\r\n          \"name\": \"age\",\r\n          \"path\": \"@.age\",\r\n          \"type\": \"number\"\r\n        },\r\n        {\r\n          \"name\": \"membershipLevel\",\r\n          \"path\": \"@.membership.level\",\r\n          \"type\": \"string\"\r\n        }\r\n      ],\r\n      \"outputs\": [\r\n        {\r\n          \"name\": \"discountRate\",\r\n          \"path\": \"@.pricing.discount\"\r\n        },\r\n        {\r\n          \"name\": \"category\",\r\n          \"path\": \"@.category\"\r\n        }\r\n      ],\r\n      \"rules\": [\r\n        {\r\n          \"priority\": 1,\r\n          \"conditions\": {\r\n            \"age\": \">=65\",\r\n            \"membershipLevel\": \"gold\"\r\n          },\r\n          \"results\": {\r\n            \"discountRate\": 0.25,\r\n            \"category\": \"senior_gold\"\r\n          }\r\n        },\r\n        {\r\n          \"priority\": 2,\r\n          \"conditions\": {\r\n            \"age\": \">=65\"\r\n          },\r\n          \"results\": {\r\n            \"discountRate\": 0.15,\r\n            \"category\": \"senior\"\r\n          }\r\n        },\r\n        {\r\n          \"priority\": 3,\r\n          \"conditions\": {\r\n            \"membershipLevel\": \"gold\"\r\n          },\r\n          \"results\": {\r\n            \"discountRate\": 0.20,\r\n            \"category\": \"gold\"\r\n          }\r\n        }\r\n      ],\r\n      \"executionStrategy\": {\r\n        \"mode\": \"firstMatch\",\r\n        \"conflictResolution\": \"priority\",\r\n        \"stopOnError\": false\r\n      },\r\n      \"defaultResults\": {\r\n        \"discountRate\": 0.0,\r\n        \"category\": \"default\" \r\n      }\r\n    }\r\n  }\r\n]"
+  },
+  "tags": [
+    "decisionTable"
+  ],
+  "title": "sample of decision table"
+}

@@ -1,0 +1,23 @@
+﻿{
+  "description": "This sample shows convert json array to csv.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\"users\":[{\"name\":\"piet\",\"age\":45},{\"name\":\"klaas\",\"age\":50,\"gender\":\"m\"},{\"name\":\"anna\",\"age\":35,\"gender\":\"f\"}]}",
+        "name": "data"
+      }
+    ],
+    "name": "Sample-148", 
+    "outputObjects": [
+      {
+        "jsonString": "{\"users\":[{\"name\":\"piet\",\"age\":45},{\"name\":\"klaas\",\"age\":50,\"gender\":\"m\"},{\"name\":\"anna\",\"age\":35,\"gender\":\"f\"}],\"csvData\":\"age,gender,name\\n45,,piet\\n50,m,klaas\\n35,f,anna\"}",
+        "name": "data"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.data.users\",\r\n    \"targetPath\": \"$.data.csvData\",\r\n    \"command\": \"toCsv\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "toCsv"
+  ],
+  "title": "Convert JSON array to CSV"
+}

@@ -1,0 +1,24 @@
+{
+  "description": "This sample shows parsing configuration strings stored as JSON text.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\"configString\":\"{\\\"timeout\\\":30,\\\"retries\\\":3,\\\"enabled\\\":true}\"}",
+        "name": "settings"
+      }
+    ],
+    "name": "Sample-70",
+    "outputObjects": [
+      {
+        "jsonString": "{\"configString\":\"{\\\"timeout\\\":30,\\\"retries\\\":3,\\\"enabled\\\":true}\",\"config\":{\"timeout\":30,\"retries\":3,\"enabled\":true}}",
+        "name": "settings"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.settings.config\",\r\n    \"value\": \"=parse(@.configString)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "parse"
+  ],
+  "title": "Parse configuration from string"
+}

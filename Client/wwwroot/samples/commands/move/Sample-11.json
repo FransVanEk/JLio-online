@@ -1,0 +1,27 @@
+{
+  "description": "With the copy command a new object can be created using the Json-Path notation in the toPath property. The source reference will be removed. This can leave an object without any properties as shown in the example",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n    \"myobject\": {\r\n        \"myProperty\": \"A\"\r\n    }\r\n}",
+        "name": "Sample"
+      }
+    ],
+    "name": "Sample-11",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"myobject\": {}\n}",
+        "name": "Sample"
+      },
+      {
+        "jsonString": "\"A\"",
+        "name": "newResult"
+      }
+    ],
+    "scriptText": "[\n  {\n    \"fromPath\": \"$.Sample.myobject.myProperty\",\n    \"toPath\": \"$.newResult\",\n    \"command\": \"move\"\n  }\n]"
+  },
+  "tags": [
+    "move"
+  ],
+  "title": "move part of object to a new object"
+}

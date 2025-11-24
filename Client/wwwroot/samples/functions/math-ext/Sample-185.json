@@ -1,0 +1,24 @@
+﻿{
+    "title":  "Ceiling - Round up to integer",
+    "tags":  [
+                 "add",
+                 "ceiling"
+             ],
+    "model":  {
+                  "name":  "Sample-185",
+                  "scriptText":  "{\"path\":\"$.data.rounded\",\"value\":\"=ceiling(@.value)\",\"command\":\"add\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"value\":45.2}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"value\":45.2,\"rounded\":46}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows ceiling - round up to integer."
+}

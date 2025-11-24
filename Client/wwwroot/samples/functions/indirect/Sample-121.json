@@ -1,0 +1,23 @@
+﻿{
+    "title":  "Indirect array element access",
+    "tags":  [
+                 "indirect"
+             ],
+    "model":  {
+                  "name":  "Sample-121",
+                  "scriptText":  "{\"path\":\"$.data.selectedColor\",\"value\":\"=indirect($.data.arrayPath)\",\"command\":\"add\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\r\n  \"arrayPath\": \"colors[2]\",\r\n  \"colors\": [\r\n    \"red\",\r\n    \"blue\",\r\n    \"green\",\r\n    \"yellow\"\r\n  ]\r\n}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\r\n  \"arrayPath\": \"colors[2]\",\r\n  \"colors\": [\r\n    \"red\",\r\n    \"blue\",\r\n    \"green\",\r\n    \"yellow\"\r\n  ],\r\n  \"selectedColor\": \"green\"\r\n}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows indirect array element access."
+}

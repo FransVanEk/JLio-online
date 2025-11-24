@@ -1,0 +1,2651 @@
+[
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: myObject"
+    ],
+    "pathRefs": [
+      "myObject"
+    ],
+    "targetRefs": [],
+    "inputProps": [],
+    "outputProps": [
+      "newProperty"
+    ],
+    "sampleName": "Sample-1",
+    "title": "Create a new object with add",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\add\\Sample-1.json",
+    "relativePath": "commands\\add\\Sample-1.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: data"
+    ],
+    "pathRefs": [
+      "data"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "a",
+      "b",
+      "c",
+      "d"
+    ],
+    "outputProps": [
+      "a",
+      "c"
+    ],
+    "sampleName": "Sample-100",
+    "title": "Remove null values",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\remove\\Sample-100.json",
+    "relativePath": "commands\\remove\\Sample-100.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: obj1",
+      "Missing output property: obj2"
+    ],
+    "pathRefs": [
+      "obj1"
+    ],
+    "targetRefs": [
+      "obj2"
+    ],
+    "inputProps": [
+      "a",
+      "b",
+      "c"
+    ],
+    "outputProps": [
+      "a",
+      "b",
+      "c"
+    ],
+    "sampleName": "Sample-101",
+    "title": "Deep merge nested objects",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\merge\\Sample-101.json",
+    "relativePath": "commands\\merge\\Sample-101.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: applications"
+    ],
+    "pathRefs": [
+      "applications"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "0",
+      "1"
+    ],
+    "outputProps": [
+      "0",
+      "1"
+    ],
+    "sampleName": "Sample-102",
+    "title": "Decision table for loan approval",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\decisionTable\\Sample-102.json",
+    "relativePath": "commands\\decisionTable\\Sample-102.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: schedule"
+    ],
+    "pathRefs": [
+      "schedule"
+    ],
+    "targetRefs": [],
+    "inputProps": [],
+    "outputProps": [
+      "meeting",
+      "deadline"
+    ],
+    "sampleName": "Sample-103",
+    "title": "Create specific datetime values",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\datetime\\Sample-103.json",
+    "relativePath": "functions\\datetime\\Sample-103.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: data"
+    ],
+    "pathRefs": [
+      "data"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "order"
+    ],
+    "outputProps": [
+      "order",
+      "summary"
+    ],
+    "sampleName": "Sample-104",
+    "title": "Fetch multiple values to summary",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\fetch\\Sample-104.json",
+    "relativePath": "functions\\fetch\\Sample-104.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: test"
+    ],
+    "pathRefs": [
+      "test"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "scores"
+    ],
+    "outputProps": [
+      "scores",
+      "highest",
+      "lowest",
+      "middle"
+    ],
+    "sampleName": "Sample-105",
+    "title": "Fetch array elements by index",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\fetch\\Sample-105.json",
+    "relativePath": "functions\\fetch\\Sample-105.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: calc"
+    ],
+    "pathRefs": [
+      "calc"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "value",
+      "base",
+      "exponent"
+    ],
+    "outputProps": [
+      "value",
+      "base",
+      "exponent",
+      "floored",
+      "squareRoot",
+      "powered"
+    ],
+    "sampleName": "Sample-106",
+    "title": "Floor, sqrt, and power functions",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\math\\Sample-106.json",
+    "relativePath": "functions\\math\\Sample-106.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: stats"
+    ],
+    "pathRefs": [
+      "stats"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "dividend",
+      "divisor",
+      "values"
+    ],
+    "outputProps": [
+      "dividend",
+      "divisor",
+      "values",
+      "remainder",
+      "average",
+      "sum"
+    ],
+    "sampleName": "Sample-107",
+    "title": "Modulo, average, and sum functions",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\math\\Sample-107.json",
+    "relativePath": "functions\\math\\Sample-107.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: database"
+    ],
+    "pathRefs": [
+      "database"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "users"
+    ],
+    "outputProps": [
+      "users"
+    ],
+    "sampleName": "Sample-108",
+    "title": "Generate GUIDs for database records",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\newGuid\\Sample-108.json",
+    "relativePath": "functions\\newGuid\\Sample-108.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: record"
+    ],
+    "pathRefs": [
+      "record"
+    ],
+    "targetRefs": [],
+    "inputProps": [],
+    "outputProps": [
+      "transaction"
+    ],
+    "sampleName": "Sample-109",
+    "title": "Create composite GUID keys",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\newGuid\\Sample-109.json",
+    "relativePath": "functions\\newGuid\\Sample-109.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: raw"
+    ],
+    "pathRefs": [
+      "raw"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "data"
+    ],
+    "outputProps": [
+      "data",
+      "parsed"
+    ],
+    "sampleName": "Sample-110",
+    "title": "Parse complex nested JSON",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\parse\\Sample-110.json",
+    "relativePath": "functions\\parse\\Sample-110.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: strings"
+    ],
+    "pathRefs": [
+      "strings"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "items"
+    ],
+    "outputProps": [
+      "items",
+      "parsed"
+    ],
+    "sampleName": "Sample-111",
+    "title": "Parse array of JSON strings",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\parse\\Sample-111.json",
+    "relativePath": "functions\\parse\\Sample-111.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: fullData"
+    ],
+    "pathRefs": [
+      "fullData"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "user"
+    ],
+    "outputProps": [
+      "user",
+      "apiResponse"
+    ],
+    "sampleName": "Sample-112",
+    "title": "Partial for API response filtering",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\partial\\Sample-112.json",
+    "relativePath": "functions\\partial\\Sample-112.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: tasks"
+    ],
+    "pathRefs": [
+      "tasks"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "0",
+      "1"
+    ],
+    "outputProps": [
+      "0",
+      "1"
+    ],
+    "sampleName": "Sample-113",
+    "title": "Partial for lightweight object copies",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\partial\\Sample-113.json",
+    "relativePath": "functions\\partial\\Sample-113.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: response"
+    ],
+    "pathRefs": [
+      "response"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "errors"
+    ],
+    "outputProps": [
+      "errors"
+    ],
+    "sampleName": "Sample-114",
+    "title": "Promote error codes to objects",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\promote\\Sample-114.json",
+    "relativePath": "functions\\promote\\Sample-114.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: data"
+    ],
+    "pathRefs": [
+      "data"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "value"
+    ],
+    "outputProps": [
+      "value"
+    ],
+    "sampleName": "Sample-115",
+    "title": "Promote with metadata wrapping",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\promote\\Sample-115.json",
+    "relativePath": "functions\\promote\\Sample-115.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: settings"
+    ],
+    "pathRefs": [
+      "settings"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "config"
+    ],
+    "outputProps": [
+      "config",
+      "serialized"
+    ],
+    "sampleName": "Sample-116",
+    "title": "Convert object to JSON string",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\toString\\Sample-116.json",
+    "relativePath": "functions\\toString\\Sample-116.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: post"
+    ],
+    "pathRefs": [
+      "post"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "tags"
+    ],
+    "outputProps": [
+      "tags",
+      "tagString"
+    ],
+    "sampleName": "Sample-117",
+    "title": "Convert array to string",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\toString\\Sample-117.json",
+    "relativePath": "functions\\toString\\Sample-117.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: result"
+    ],
+    "pathRefs": [
+      "result"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "dynamicField",
+      "user"
+    ],
+    "outputProps": [
+      "dynamicField",
+      "user",
+      "result"
+    ],
+    "sampleName": "Sample-118",
+    "title": "Indirect reference to dynamic path",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\indirect\\Sample-118.json",
+    "relativePath": "functions\\indirect\\Sample-118.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: selectedPrice"
+    ],
+    "pathRefs": [
+      "selectedPrice"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "pathRef",
+      "items"
+    ],
+    "outputProps": [
+      "pathRef",
+      "items",
+      "selectedPrice"
+    ],
+    "sampleName": "Sample-119",
+    "title": "Indirect with computed path from data",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\indirect\\Sample-119.json",
+    "relativePath": "functions\\indirect\\Sample-119.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: dbHost"
+    ],
+    "pathRefs": [
+      "dbHost"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "setting",
+      "config"
+    ],
+    "outputProps": [
+      "setting",
+      "config",
+      "dbHost"
+    ],
+    "sampleName": "Sample-120",
+    "title": "Indirect for configuration lookup",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\indirect\\Sample-120.json",
+    "relativePath": "functions\\indirect\\Sample-120.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: selectedColor"
+    ],
+    "pathRefs": [
+      "selectedColor"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "arrayPath",
+      "colors"
+    ],
+    "outputProps": [
+      "arrayPath",
+      "colors",
+      "selectedColor"
+    ],
+    "sampleName": "Sample-121",
+    "title": "Indirect array element access",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\indirect\\Sample-121.json",
+    "relativePath": "functions\\indirect\\Sample-121.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: contactEmail"
+    ],
+    "pathRefs": [
+      "contactEmail"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "targetPath",
+      "order"
+    ],
+    "outputProps": [
+      "targetPath",
+      "order",
+      "contactEmail"
+    ],
+    "sampleName": "Sample-122",
+    "title": "Indirect with nested object navigation",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\indirect\\Sample-122.json",
+    "relativePath": "functions\\indirect\\Sample-122.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-133.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\flatten\\Sample-133.json",
+    "relativePath": "commands\\flatten\\Sample-133.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-134.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\flatten\\Sample-134.json",
+    "relativePath": "commands\\flatten\\Sample-134.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-135.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\flatten\\Sample-135.json",
+    "relativePath": "commands\\flatten\\Sample-135.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-136.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\flatten\\Sample-136.json",
+    "relativePath": "commands\\flatten\\Sample-136.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-137.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\flatten\\Sample-137.json",
+    "relativePath": "commands\\flatten\\Sample-137.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-138.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\resolve\\Sample-138.json",
+    "relativePath": "commands\\resolve\\Sample-138.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-139.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\resolve\\Sample-139.json",
+    "relativePath": "commands\\resolve\\Sample-139.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-140.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\resolve\\Sample-140.json",
+    "relativePath": "commands\\resolve\\Sample-140.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-141.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\resolve\\Sample-141.json",
+    "relativePath": "commands\\resolve\\Sample-141.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-142.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\resolve\\Sample-142.json",
+    "relativePath": "commands\\resolve\\Sample-142.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-143.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\restore\\Sample-143.json",
+    "relativePath": "commands\\restore\\Sample-143.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-144.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\restore\\Sample-144.json",
+    "relativePath": "commands\\restore\\Sample-144.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-145.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\restore\\Sample-145.json",
+    "relativePath": "commands\\restore\\Sample-145.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-146.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\restore\\Sample-146.json",
+    "relativePath": "commands\\restore\\Sample-146.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-147.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\restore\\Sample-147.json",
+    "relativePath": "commands\\restore\\Sample-147.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n  \"des\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-148.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\toCsv\\Sample-148.json",
+    "relativePath": "commands\\toCsv\\Sample-148.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-149.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\toCsv\\Sample-149.json",
+    "relativePath": "commands\\toCsv\\Sample-149.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-150.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\toCsv\\Sample-150.json",
+    "relativePath": "commands\\toCsv\\Sample-150.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-151.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\toCsv\\Sample-151.json",
+    "relativePath": "commands\\toCsv\\Sample-151.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-152.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\toCsv\\Sample-152.json",
+    "relativePath": "commands\\toCsv\\Sample-152.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-153.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\ifElse\\Sample-153.json",
+    "relativePath": "commands\\ifElse\\Sample-153.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-154.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\ifElse\\Sample-154.json",
+    "relativePath": "commands\\ifElse\\Sample-154.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-155.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\ifElse\\Sample-155.json",
+    "relativePath": "commands\\ifElse\\Sample-155.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-156.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\ifElse\\Sample-156.json",
+    "relativePath": "commands\\ifElse\\Sample-156.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-157.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\ifElse\\Sample-157.json",
+    "relativePath": "commands\\ifElse\\Sample-157.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-158.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\compare\\Sample-158.json",
+    "relativePath": "commands\\compare\\Sample-158.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-159.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\compare\\Sample-159.json",
+    "relativePath": "commands\\compare\\Sample-159.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-160.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\compare\\Sample-160.json",
+    "relativePath": "commands\\compare\\Sample-160.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-161.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\compare\\Sample-161.json",
+    "relativePath": "commands\\compare\\Sample-161.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-162.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\compare\\Sample-162.json",
+    "relativePath": "commands\\compare\\Sample-162.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-163.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\scriptPath\\Sample-163.json",
+    "relativePath": "functions\\scriptPath\\Sample-163.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-164.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\scriptPath\\Sample-164.json",
+    "relativePath": "functions\\scriptPath\\Sample-164.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-165.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\scriptPath\\Sample-165.json",
+    "relativePath": "functions\\scriptPath\\Sample-165.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-166.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\scriptPath\\Sample-166.json",
+    "relativePath": "functions\\scriptPath\\Sample-166.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-167.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\scriptPath\\Sample-167.json",
+    "relativePath": "functions\\scriptPath\\Sample-167.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-178.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\math-ext\\Sample-178.json",
+    "relativePath": "functions\\math-ext\\Sample-178.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-179.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\math-ext\\Sample-179.json",
+    "relativePath": "functions\\math-ext\\Sample-179.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-180.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\math-ext\\Sample-180.json",
+    "relativePath": "functions\\math-ext\\Sample-180.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-181.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\math-ext\\Sample-181.json",
+    "relativePath": "functions\\math-ext\\Sample-181.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-182.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\math-ext\\Sample-182.json",
+    "relativePath": "functions\\math-ext\\Sample-182.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-183.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\math-ext\\Sample-183.json",
+    "relativePath": "functions\\math-ext\\Sample-183.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-184.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\math-ext\\Sample-184.json",
+    "relativePath": "functions\\math-ext\\Sample-184.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-185.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\math-ext\\Sample-185.json",
+    "relativePath": "functions\\math-ext\\Sample-185.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Parse error: Unexpected token '﻿', \"﻿{\r\n    \"t\"... is not valid JSON"
+    ],
+    "sampleName": "Sample-186.json",
+    "title": "Unknown",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\math-ext\\Sample-186.json",
+    "relativePath": "functions\\math-ext\\Sample-186.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: sample"
+    ],
+    "pathRefs": [
+      "sample"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "initial"
+    ],
+    "outputProps": [
+      "initial",
+      "newProperty"
+    ],
+    "sampleName": "Sample-2",
+    "title": "Add a property to an existing object. (value: object)",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\add\\Sample-2.json",
+    "relativePath": "commands\\add\\Sample-2.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: sample"
+    ],
+    "pathRefs": [
+      "sample"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "myobject"
+    ],
+    "outputProps": [
+      "myobject",
+      "myArray"
+    ],
+    "sampleName": "Sample-20",
+    "title": "Copy singe value as an array when array doesn't exist",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\add\\Sample-20.json",
+    "relativePath": "commands\\add\\Sample-20.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: sample"
+    ],
+    "pathRefs": [
+      "sample"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "myobject"
+    ],
+    "outputProps": [
+      "myobject",
+      "myArray"
+    ],
+    "sampleName": "Sample-21",
+    "title": "Move singe value as an array when array doesn't exist",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\add\\Sample-21.json",
+    "relativePath": "commands\\add\\Sample-21.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: sample"
+    ],
+    "pathRefs": [
+      "sample"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "myobject",
+      "myobject2"
+    ],
+    "outputProps": [
+      "myobject",
+      "myobject2",
+      "myArray"
+    ],
+    "sampleName": "Sample-22",
+    "title": "Move multiple values as an array when array doesn't exist",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\add\\Sample-22.json",
+    "relativePath": "commands\\add\\Sample-22.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: sample"
+    ],
+    "pathRefs": [
+      "sample"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "myobject",
+      "myobject2"
+    ],
+    "outputProps": [
+      "myobject",
+      "myobject2",
+      "myArray"
+    ],
+    "sampleName": "Sample-23",
+    "title": "Copy multiple values as an array when array doesn't exist",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\add\\Sample-23.json",
+    "relativePath": "commands\\add\\Sample-23.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: sample"
+    ],
+    "pathRefs": [
+      "sample"
+    ],
+    "targetRefs": [],
+    "inputProps": [],
+    "outputProps": [
+      "date",
+      "dateUTC",
+      "dateStartOfDay",
+      "dateStartOfDayUTC",
+      "dateFormat",
+      "dateUTCFormat",
+      "dateStartOfDayFormat",
+      "dateStartOfDayUTCFormat"
+    ],
+    "sampleName": "Sample-24",
+    "title": "Function DateTime",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\add\\Sample-24.json",
+    "relativePath": "commands\\add\\Sample-24.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: sample"
+    ],
+    "pathRefs": [
+      "sample"
+    ],
+    "targetRefs": [],
+    "inputProps": [],
+    "outputProps": [
+      "myGuid"
+    ],
+    "sampleName": "Sample-25",
+    "title": "function newGuid()",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\add\\Sample-25.json",
+    "relativePath": "commands\\add\\Sample-25.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: sample"
+    ],
+    "pathRefs": [
+      "sample"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "demo"
+    ],
+    "outputProps": [
+      "demo"
+    ],
+    "sampleName": "Sample-26",
+    "title": "Use partial function to get only the desired properties",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\set\\Sample-26.json",
+    "relativePath": "commands\\set\\Sample-26.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: sample"
+    ],
+    "pathRefs": [
+      "sample"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "demo"
+    ],
+    "outputProps": [
+      "demo",
+      "trimmedDemo"
+    ],
+    "sampleName": "Sample-27",
+    "title": "Use partial function to add only the desired properties from another object",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\add\\Sample-27.json",
+    "relativePath": "commands\\add\\Sample-27.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: sample"
+    ],
+    "pathRefs": [
+      "sample"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "demo"
+    ],
+    "outputProps": [
+      "demo"
+    ],
+    "sampleName": "Sample-28",
+    "title": "Use promote function on all items in an array",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\set\\Sample-28.json",
+    "relativePath": "commands\\set\\Sample-28.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: sample"
+    ],
+    "pathRefs": [
+      "sample"
+    ],
+    "targetRefs": [],
+    "inputProps": [],
+    "outputProps": [
+      "newProperty"
+    ],
+    "sampleName": "Sample-29",
+    "title": "Use promote function to promote primitive input object ",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\set\\Sample-29.json",
+    "relativePath": "commands\\set\\Sample-29.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: myObject"
+    ],
+    "pathRefs": [
+      "myObject"
+    ],
+    "targetRefs": [],
+    "inputProps": [],
+    "outputProps": [
+      "newProperty"
+    ],
+    "sampleName": "Sample-3",
+    "title": "Create a new object using the JSON-path notation",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\add\\Sample-3.json",
+    "relativePath": "commands\\add\\Sample-3.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: first",
+      "Missing output property: second"
+    ],
+    "pathRefs": [
+      "first"
+    ],
+    "targetRefs": [
+      "second"
+    ],
+    "inputProps": [
+      "0",
+      "1",
+      "2"
+    ],
+    "outputProps": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "sampleName": "Sample-30",
+    "title": "Merge two arrays with keys only values",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\merge\\Sample-30.json",
+    "relativePath": "commands\\merge\\Sample-30.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: source"
+    ],
+    "pathRefs": [
+      "source"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "0",
+      "1"
+    ],
+    "outputProps": [
+      "0",
+      "1"
+    ],
+    "sampleName": "Sample-31",
+    "title": "Fetch function on array and transform objects",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\set\\Sample-31.json",
+    "relativePath": "commands\\set\\Sample-31.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: customer"
+    ],
+    "pathRefs": [
+      "customer"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "0",
+      "1"
+    ],
+    "outputProps": [
+      "0",
+      "1"
+    ],
+    "sampleName": "Sample-32",
+    "title": "sample of decision table",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\decisionTable\\Sample-32.json",
+    "relativePath": "commands\\decisionTable\\Sample-32.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: myObject"
+    ],
+    "pathRefs": [
+      "myObject"
+    ],
+    "targetRefs": [],
+    "inputProps": [],
+    "outputProps": [
+      "user"
+    ],
+    "sampleName": "Sample-33",
+    "title": "Add nested object with multiple properties",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\add\\Sample-33.json",
+    "relativePath": "commands\\add\\Sample-33.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: myObject"
+    ],
+    "pathRefs": [
+      "myObject"
+    ],
+    "targetRefs": [],
+    "inputProps": [],
+    "outputProps": [
+      "colors"
+    ],
+    "sampleName": "Sample-34",
+    "title": "Add array to new object",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\add\\Sample-34.json",
+    "relativePath": "commands\\add\\Sample-34.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: sample"
+    ],
+    "pathRefs": [
+      "sample"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "user"
+    ],
+    "outputProps": [
+      "user",
+      "isActive"
+    ],
+    "sampleName": "Sample-35",
+    "title": "Add boolean property to object",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\add\\Sample-35.json",
+    "relativePath": "commands\\add\\Sample-35.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: person"
+    ],
+    "pathRefs": [
+      "person"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "name",
+      "age",
+      "city"
+    ],
+    "outputProps": [
+      "name",
+      "age",
+      "city"
+    ],
+    "sampleName": "Sample-36",
+    "title": "Set multiple properties in sequence",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\set\\Sample-36.json",
+    "relativePath": "commands\\set\\Sample-36.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: person"
+    ],
+    "pathRefs": [
+      "person"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "firstName",
+      "lastName"
+    ],
+    "outputProps": [
+      "firstName",
+      "lastName",
+      "fullName"
+    ],
+    "sampleName": "Sample-37",
+    "title": "Set property using concat function",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\concat\\Sample-37.json",
+    "relativePath": "functions\\concat\\Sample-37.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: location"
+    ],
+    "pathRefs": [
+      "location"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "address"
+    ],
+    "outputProps": [
+      "address"
+    ],
+    "sampleName": "Sample-38",
+    "title": "Set entire nested object",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\set\\Sample-38.json",
+    "relativePath": "commands\\set\\Sample-38.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: item"
+    ],
+    "pathRefs": [
+      "item"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "id"
+    ],
+    "outputProps": [
+      "id",
+      "status"
+    ],
+    "sampleName": "Sample-39",
+    "title": "Put new property to object",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\put\\Sample-39.json",
+    "relativePath": "commands\\put\\Sample-39.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: sample"
+    ],
+    "pathRefs": [
+      "sample"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "myProperty"
+    ],
+    "outputProps": [
+      "myProperty"
+    ],
+    "sampleName": "Sample-4",
+    "title": "Set property value on existing object",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\set\\Sample-4.json",
+    "relativePath": "commands\\set\\Sample-4.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: task"
+    ],
+    "pathRefs": [
+      "task"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "status",
+      "priority"
+    ],
+    "outputProps": [
+      "status",
+      "priority"
+    ],
+    "sampleName": "Sample-40",
+    "title": "Put to update existing property",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\put\\Sample-40.json",
+    "relativePath": "commands\\put\\Sample-40.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: log"
+    ],
+    "pathRefs": [
+      "log"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "event"
+    ],
+    "outputProps": [
+      "event",
+      "timestamp"
+    ],
+    "sampleName": "Sample-41",
+    "title": "Put with datetime function",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\datetime\\Sample-41.json",
+    "relativePath": "functions\\datetime\\Sample-41.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: user"
+    ],
+    "pathRefs": [
+      "user"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "name",
+      "age",
+      "password"
+    ],
+    "outputProps": [
+      "name",
+      "age"
+    ],
+    "sampleName": "Sample-42",
+    "title": "Remove property from object",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\remove\\Sample-42.json",
+    "relativePath": "commands\\remove\\Sample-42.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: list"
+    ],
+    "pathRefs": [
+      "list"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "items"
+    ],
+    "outputProps": [
+      "items"
+    ],
+    "sampleName": "Sample-44",
+    "title": "Remove item from array by index",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\remove\\Sample-44.json",
+    "relativePath": "commands\\remove\\Sample-44.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: displayPrice"
+    ],
+    "pathRefs": [
+      "displayPrice"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "price"
+    ],
+    "outputProps": [
+      "price"
+    ],
+    "sampleName": "Sample-45",
+    "title": "Copy and transform value",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\concat\\Sample-45.json",
+    "relativePath": "functions\\concat\\Sample-45.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: data"
+    ],
+    "pathRefs": [
+      "data"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "numbers"
+    ],
+    "outputProps": [
+      "numbers",
+      "evenNumbers"
+    ],
+    "sampleName": "Sample-47",
+    "title": "Copy filtered array items",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\copy\\Sample-47.json",
+    "relativePath": "commands\\copy\\Sample-47.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: person1",
+      "Missing output property: person2"
+    ],
+    "pathRefs": [
+      "person1"
+    ],
+    "targetRefs": [
+      "person2"
+    ],
+    "inputProps": [
+      "name",
+      "age",
+      "city",
+      "country"
+    ],
+    "outputProps": [
+      "name",
+      "age",
+      "city",
+      "country"
+    ],
+    "sampleName": "Sample-51",
+    "title": "Merge two objects",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\merge\\Sample-51.json",
+    "relativePath": "commands\\merge\\Sample-51.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: users1",
+      "Missing output property: users2"
+    ],
+    "pathRefs": [
+      "users1"
+    ],
+    "targetRefs": [
+      "users2"
+    ],
+    "inputProps": [
+      "0",
+      "1"
+    ],
+    "outputProps": [
+      "0",
+      "1",
+      "2"
+    ],
+    "sampleName": "Sample-52",
+    "title": "Merge arrays with key-based matching",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\merge\\Sample-52.json",
+    "relativePath": "commands\\merge\\Sample-52.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: defaults",
+      "Missing output property: custom"
+    ],
+    "pathRefs": [
+      "defaults"
+    ],
+    "targetRefs": [
+      "custom"
+    ],
+    "inputProps": [
+      "config"
+    ],
+    "outputProps": [
+      "config"
+    ],
+    "sampleName": "Sample-53",
+    "title": "Merge nested configuration objects",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\merge\\Sample-53.json",
+    "relativePath": "commands\\merge\\Sample-53.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: shipments"
+    ],
+    "pathRefs": [
+      "shipments"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "0",
+      "1"
+    ],
+    "outputProps": [
+      "0",
+      "1"
+    ],
+    "sampleName": "Sample-54",
+    "title": "Decision table for shipping cost calculation",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\decisionTable\\Sample-54.json",
+    "relativePath": "commands\\decisionTable\\Sample-54.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: employees"
+    ],
+    "pathRefs": [
+      "employees"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "0",
+      "1"
+    ],
+    "outputProps": [
+      "0",
+      "1"
+    ],
+    "sampleName": "Sample-55",
+    "title": "Decision table for employee benefits",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\decisionTable\\Sample-55.json",
+    "relativePath": "commands\\decisionTable\\Sample-55.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: orders"
+    ],
+    "pathRefs": [
+      "orders"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "0",
+      "1"
+    ],
+    "outputProps": [
+      "0",
+      "1"
+    ],
+    "sampleName": "Sample-56",
+    "title": "Decision table for product pricing",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\decisionTable\\Sample-56.json",
+    "relativePath": "commands\\decisionTable\\Sample-56.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: record"
+    ],
+    "pathRefs": [
+      "record"
+    ],
+    "targetRefs": [],
+    "inputProps": [],
+    "outputProps": [
+      "createdAt",
+      "timestamp"
+    ],
+    "sampleName": "Sample-57",
+    "title": "Datetime with custom formatting",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\datetime\\Sample-57.json",
+    "relativePath": "functions\\datetime\\Sample-57.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: logs"
+    ],
+    "pathRefs": [
+      "logs"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "0",
+      "1",
+      "2"
+    ],
+    "outputProps": [
+      "0",
+      "1",
+      "2"
+    ],
+    "sampleName": "Sample-58",
+    "title": "Add datetime to array items",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\datetime\\Sample-58.json",
+    "relativePath": "functions\\datetime\\Sample-58.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: audit"
+    ],
+    "pathRefs": [
+      "audit"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "action",
+      "user"
+    ],
+    "outputProps": [
+      "action",
+      "user",
+      "performedAt",
+      "dateOnly"
+    ],
+    "sampleName": "Sample-59",
+    "title": "Datetime for audit records",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\datetime\\Sample-59.json",
+    "relativePath": "functions\\datetime\\Sample-59.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: sample"
+    ],
+    "pathRefs": [
+      "sample"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "myArray"
+    ],
+    "outputProps": [
+      "myArray"
+    ],
+    "sampleName": "Sample-6",
+    "title": "Add a property to items in an array",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\add\\Sample-6.json",
+    "relativePath": "commands\\add\\Sample-6.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: items"
+    ],
+    "pathRefs": [
+      "items"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "0",
+      "1",
+      "2"
+    ],
+    "outputProps": [
+      "0",
+      "1",
+      "2"
+    ],
+    "sampleName": "Sample-60",
+    "title": "Generate unique IDs for array items",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\newGuid\\Sample-60.json",
+    "relativePath": "functions\\newGuid\\Sample-60.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: session"
+    ],
+    "pathRefs": [
+      "session"
+    ],
+    "targetRefs": [],
+    "inputProps": [],
+    "outputProps": [
+      "trackingId",
+      "sessionId",
+      "createdAt"
+    ],
+    "sampleName": "Sample-61",
+    "title": "Create session with multiple GUIDs",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\newGuid\\Sample-61.json",
+    "relativePath": "functions\\newGuid\\Sample-61.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: transaction"
+    ],
+    "pathRefs": [
+      "transaction"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "amount",
+      "currency"
+    ],
+    "outputProps": [
+      "amount",
+      "currency",
+      "correlationId"
+    ],
+    "sampleName": "Sample-62",
+    "title": "Add correlation ID to transaction",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\newGuid\\Sample-62.json",
+    "relativePath": "functions\\newGuid\\Sample-62.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: address"
+    ],
+    "pathRefs": [
+      "address"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "street",
+      "city",
+      "state",
+      "zip"
+    ],
+    "outputProps": [
+      "street",
+      "city",
+      "state",
+      "zip",
+      "fullAddress"
+    ],
+    "sampleName": "Sample-63",
+    "title": "Concat for full address",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\concat\\Sample-63.json",
+    "relativePath": "functions\\concat\\Sample-63.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: result"
+    ],
+    "pathRefs": [
+      "result"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "userName",
+      "score",
+      "total"
+    ],
+    "outputProps": [
+      "userName",
+      "score",
+      "total",
+      "message"
+    ],
+    "sampleName": "Sample-64",
+    "title": "Concat numbers and strings for messages",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\concat\\Sample-64.json",
+    "relativePath": "functions\\concat\\Sample-64.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: endpoint"
+    ],
+    "pathRefs": [
+      "endpoint"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "protocol",
+      "domain",
+      "path",
+      "id"
+    ],
+    "outputProps": [
+      "protocol",
+      "domain",
+      "path",
+      "id",
+      "url"
+    ],
+    "sampleName": "Sample-65",
+    "title": "Concat for building URLs",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\concat\\Sample-65.json",
+    "relativePath": "functions\\concat\\Sample-65.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: data"
+    ],
+    "pathRefs": [
+      "data"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "user"
+    ],
+    "outputProps": [
+      "user",
+      "userName",
+      "userEmail"
+    ],
+    "sampleName": "Sample-66",
+    "title": "Fetch nested values",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\fetch\\Sample-66.json",
+    "relativePath": "functions\\fetch\\Sample-66.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: orderItems"
+    ],
+    "pathRefs": [
+      "orderItems"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "0",
+      "1"
+    ],
+    "outputProps": [
+      "0",
+      "1"
+    ],
+    "sampleName": "Sample-67",
+    "title": "Fetch from array items",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\fetch\\Sample-67.json",
+    "relativePath": "functions\\fetch\\Sample-67.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: source"
+    ],
+    "pathRefs": [
+      "source"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "oldStructure"
+    ],
+    "outputProps": [
+      "oldStructure",
+      "newStructure"
+    ],
+    "sampleName": "Sample-68",
+    "title": "Fetch to restructure data",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\fetch\\Sample-68.json",
+    "relativePath": "functions\\fetch\\Sample-68.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: data"
+    ],
+    "pathRefs": [
+      "data"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "jsonString"
+    ],
+    "outputProps": [
+      "jsonString",
+      "parsedData"
+    ],
+    "sampleName": "Sample-69",
+    "title": "Parse JSON string to object",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\parse\\Sample-69.json",
+    "relativePath": "functions\\parse\\Sample-69.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: sample"
+    ],
+    "pathRefs": [
+      "sample"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "myArray"
+    ],
+    "outputProps": [
+      "myArray"
+    ],
+    "sampleName": "Sample-7",
+    "title": "Set a property value to an item in an array using a filter",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\set\\Sample-7.json",
+    "relativePath": "commands\\set\\Sample-7.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: settings"
+    ],
+    "pathRefs": [
+      "settings"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "configString"
+    ],
+    "outputProps": [
+      "configString",
+      "config"
+    ],
+    "sampleName": "Sample-70",
+    "title": "Parse configuration from string",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\parse\\Sample-70.json",
+    "relativePath": "functions\\parse\\Sample-70.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: data"
+    ],
+    "pathRefs": [
+      "data"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "arrayString"
+    ],
+    "outputProps": [
+      "arrayString",
+      "numbers"
+    ],
+    "sampleName": "Sample-71",
+    "title": "Parse array from JSON string",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\parse\\Sample-71.json",
+    "relativePath": "functions\\parse\\Sample-71.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: data"
+    ],
+    "pathRefs": [
+      "data"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "id",
+      "version"
+    ],
+    "outputProps": [
+      "id",
+      "version",
+      "idString",
+      "versionString"
+    ],
+    "sampleName": "Sample-72",
+    "title": "Convert numbers to strings",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\toString\\Sample-72.json",
+    "relativePath": "functions\\toString\\Sample-72.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: config"
+    ],
+    "pathRefs": [
+      "config"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "isEnabled",
+      "count"
+    ],
+    "outputProps": [
+      "isEnabled",
+      "count",
+      "status",
+      "countText"
+    ],
+    "sampleName": "Sample-73",
+    "title": "ToString for boolean and number values",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\toString\\Sample-73.json",
+    "relativePath": "functions\\toString\\Sample-73.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: weather"
+    ],
+    "pathRefs": [
+      "weather"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "temperature",
+      "humidity"
+    ],
+    "outputProps": [
+      "temperature",
+      "humidity",
+      "summary"
+    ],
+    "sampleName": "Sample-74",
+    "title": "ToString with concat for formatting",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\toString\\Sample-74.json",
+    "relativePath": "functions\\toString\\Sample-74.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: data"
+    ],
+    "pathRefs": [
+      "data"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "user"
+    ],
+    "outputProps": [
+      "user"
+    ],
+    "sampleName": "Sample-75",
+    "title": "Partial to extract specific fields",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\partial\\Sample-75.json",
+    "relativePath": "functions\\partial\\Sample-75.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: banking"
+    ],
+    "pathRefs": [
+      "banking"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "account"
+    ],
+    "outputProps": [
+      "account",
+      "publicData"
+    ],
+    "sampleName": "Sample-76",
+    "title": "Partial for data sanitization",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\partial\\Sample-76.json",
+    "relativePath": "functions\\partial\\Sample-76.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: users"
+    ],
+    "pathRefs": [
+      "users"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "0",
+      "1"
+    ],
+    "outputProps": [
+      "0",
+      "1"
+    ],
+    "sampleName": "Sample-77",
+    "title": "Partial on array items",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\partial\\Sample-77.json",
+    "relativePath": "functions\\partial\\Sample-77.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: fruits"
+    ],
+    "pathRefs": [
+      "fruits"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "0",
+      "1",
+      "2"
+    ],
+    "outputProps": [
+      "0",
+      "1",
+      "2"
+    ],
+    "sampleName": "Sample-78",
+    "title": "Promote strings to objects",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\promote\\Sample-78.json",
+    "relativePath": "functions\\promote\\Sample-78.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: test"
+    ],
+    "pathRefs": [
+      "test"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "scores"
+    ],
+    "outputProps": [
+      "scores"
+    ],
+    "sampleName": "Sample-79",
+    "title": "Promote numbers to score objects",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\promote\\Sample-79.json",
+    "relativePath": "functions\\promote\\Sample-79.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: sample"
+    ],
+    "pathRefs": [
+      "sample"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "myArray"
+    ],
+    "outputProps": [
+      "myArray"
+    ],
+    "sampleName": "Sample-8",
+    "title": "Add a value to an array",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\add\\Sample-8.json",
+    "relativePath": "commands\\add\\Sample-8.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: sensor"
+    ],
+    "pathRefs": [
+      "sensor"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "temperature"
+    ],
+    "outputProps": [
+      "temperature"
+    ],
+    "sampleName": "Sample-80",
+    "title": "Promote primitive to named property",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\promote\\Sample-80.json",
+    "relativePath": "functions\\promote\\Sample-80.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: order"
+    ],
+    "pathRefs": [
+      "order"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "price",
+      "taxRate",
+      "discount"
+    ],
+    "outputProps": [
+      "price",
+      "taxRate",
+      "discount",
+      "tax",
+      "subtotal",
+      "total"
+    ],
+    "sampleName": "Sample-81",
+    "title": "Math operations for order calculation",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\math\\Sample-81.json",
+    "relativePath": "functions\\math\\Sample-81.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: weather"
+    ],
+    "pathRefs": [
+      "weather"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "temperatures"
+    ],
+    "outputProps": [
+      "temperatures",
+      "minTemp",
+      "maxTemp",
+      "range"
+    ],
+    "sampleName": "Sample-82",
+    "title": "Min and Max calculations",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\math\\Sample-82.json",
+    "relativePath": "functions\\math\\Sample-82.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: data"
+    ],
+    "pathRefs": [
+      "data"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "value",
+      "price"
+    ],
+    "outputProps": [
+      "value",
+      "price",
+      "absoluteValue",
+      "roundedPrice",
+      "ceilingPrice"
+    ],
+    "sampleName": "Sample-83",
+    "title": "Absolute value and rounding functions",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\math\\Sample-83.json",
+    "relativePath": "functions\\math\\Sample-83.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: data"
+    ],
+    "pathRefs": [
+      "data"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "text",
+      "code"
+    ],
+    "outputProps": [
+      "text",
+      "code",
+      "trimmedText",
+      "extractedCode"
+    ],
+    "sampleName": "Sample-84",
+    "title": "Substring and trim text functions",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\text\\Sample-84.json",
+    "relativePath": "functions\\text\\Sample-84.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: user"
+    ],
+    "pathRefs": [
+      "user"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "name",
+      "email"
+    ],
+    "outputProps": [
+      "name",
+      "email",
+      "properName",
+      "upperName",
+      "lowerEmail"
+    ],
+    "sampleName": "Sample-85",
+    "title": "Text case conversion functions",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\text\\Sample-85.json",
+    "relativePath": "functions\\text\\Sample-85.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: data"
+    ],
+    "pathRefs": [
+      "data"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "text",
+      "id"
+    ],
+    "outputProps": [
+      "text",
+      "id",
+      "replacedText",
+      "paddedId"
+    ],
+    "sampleName": "Sample-86",
+    "title": "Replace and pad text functions",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\text\\Sample-86.json",
+    "relativePath": "functions\\text\\Sample-86.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: file"
+    ],
+    "pathRefs": [
+      "file"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "filename",
+      "path"
+    ],
+    "outputProps": [
+      "filename",
+      "path",
+      "extension",
+      "basename"
+    ],
+    "sampleName": "Sample-87",
+    "title": "Left and right string extraction",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\text\\Sample-87.json",
+    "relativePath": "functions\\text\\Sample-87.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: credentials"
+    ],
+    "pathRefs": [
+      "credentials"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "password",
+      "email"
+    ],
+    "outputProps": [
+      "password",
+      "email",
+      "passwordLength",
+      "isValidEmail"
+    ],
+    "sampleName": "Sample-88",
+    "title": "Text length and contains validation",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\text\\Sample-88.json",
+    "relativePath": "functions\\text\\Sample-88.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: data"
+    ],
+    "pathRefs": [
+      "data"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "text",
+      "code"
+    ],
+    "outputProps": [
+      "text",
+      "code",
+      "insertedText",
+      "cleanCode"
+    ],
+    "sampleName": "Sample-89",
+    "title": "Insert and delete text operations",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\functions\\text\\Sample-89.json",
+    "relativePath": "functions\\text\\Sample-89.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: sample"
+    ],
+    "pathRefs": [
+      "sample"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "myArray"
+    ],
+    "outputProps": [
+      "myArray"
+    ],
+    "sampleName": "Sample-9",
+    "title": "Set a property value to an array",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\set\\Sample-9.json",
+    "relativePath": "commands\\set\\Sample-9.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: record"
+    ],
+    "pathRefs": [
+      "record"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "id"
+    ],
+    "outputProps": [
+      "id",
+      "metadata"
+    ],
+    "sampleName": "Sample-96",
+    "title": "Put nested object structure",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\put\\Sample-96.json",
+    "relativePath": "commands\\put\\Sample-96.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: project"
+    ],
+    "pathRefs": [
+      "project"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "name"
+    ],
+    "outputProps": [
+      "name",
+      "tags"
+    ],
+    "sampleName": "Sample-97",
+    "title": "Put array property",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\put\\Sample-97.json",
+    "relativePath": "commands\\put\\Sample-97.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: counter"
+    ],
+    "pathRefs": [
+      "counter"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "count",
+      "limit"
+    ],
+    "outputProps": [
+      "count",
+      "limit",
+      "status"
+    ],
+    "sampleName": "Sample-98",
+    "title": "Put conditional status value",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\put\\Sample-98.json",
+    "relativePath": "commands\\put\\Sample-98.json"
+  },
+  {
+    "valid": false,
+    "issues": [
+      "Missing input property: obj"
+    ],
+    "pathRefs": [
+      "obj"
+    ],
+    "targetRefs": [],
+    "inputProps": [
+      "data"
+    ],
+    "outputProps": [
+      "data"
+    ],
+    "sampleName": "Sample-99",
+    "title": "Remove nested object",
+    "filePath": "C:\\Repos\\Private\\Jlio-online\\Client\\wwwroot\\samples\\commands\\remove\\Sample-99.json",
+    "relativePath": "commands\\remove\\Sample-99.json"
+  }
+]

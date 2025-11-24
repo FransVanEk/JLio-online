@@ -1,0 +1,23 @@
+﻿{
+    "title":  "Resolve multiple references",
+    "tags":  [
+                 "resolve"
+             ],
+    "model":  {
+                  "name":  "Sample-139",
+                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$..ref://*\",\r\n    \"refPath\": \"$.users\",\r\n    \"command\": \"resolve\"\r\n  }\r\n]",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"userId\":\"ref://users/100\",\"managerId\":\"ref://users/200\",\"users\":{\"100\":{\"name\":\"Alice\"},\"200\":{\"name\":\"Bob\"}}}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"userId\":{\"name\":\"Alice\"},\"managerId\":{\"name\":\"Bob\"},\"users\":{\"100\":{\"name\":\"Alice\"},\"200\":{\"name\":\"Bob\"}}}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows resolve multiple references."
+}

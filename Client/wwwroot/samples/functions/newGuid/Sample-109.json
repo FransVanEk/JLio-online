@@ -1,0 +1,19 @@
+{
+  "description": "This sample shows creating composite keys using multiple GUIDs for complex identification.",
+  "model": {
+    "inputObjects": [],
+    "name": "Sample-109",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"transaction\": {\n    \"primaryKey\": \"guid1\",\n    \"secondaryKey\": \"guid2\",\n    \"verificationKey\": \"guid3\"\n  }\n}",
+        "name": "record"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.record.transaction\",\r\n    \"value\": {\r\n      \"primaryKey\": \"=newGuid()\",\r\n      \"secondaryKey\": \"=newGuid()\",\r\n      \"verificationKey\": \"=newGuid()\"\r\n    },\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "newGuid"
+  ],
+  "title": "Create composite GUID keys"
+}

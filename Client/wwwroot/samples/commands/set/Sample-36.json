@@ -1,0 +1,23 @@
+{
+  "description": "This sample shows how to set multiple properties at once using separate set commands in a single script. Each property is updated independently.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"name\": \"old name\",\r\n  \"age\": 25,\r\n  \"city\": \"old city\"\r\n}",
+        "name": "person"
+      }
+    ],
+    "name": "Sample-36",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"name\": \"Jane Smith\",\n  \"age\": 30,\n  \"city\": \"New York\"\n}",
+        "name": "person"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.person.name\",\r\n    \"value\": \"Jane Smith\",\r\n    \"command\": \"set\"\r\n  },\r\n  {\r\n    \"path\": \"$.person.age\",\r\n    \"value\": 30,\r\n    \"command\": \"set\"\r\n  },\r\n  {\r\n    \"path\": \"$.person.city\",\r\n    \"value\": \"New York\",\r\n    \"command\": \"set\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "set"
+  ],
+  "title": "Set multiple properties in sequence"
+}

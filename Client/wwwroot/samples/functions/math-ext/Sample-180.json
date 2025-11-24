@@ -1,0 +1,24 @@
+﻿{
+    "title":  "Calculate - Complex expression",
+    "tags":  [
+                 "add",
+                 "calculate"
+             ],
+    "model":  {
+                  "name":  "Sample-180",
+                  "scriptText":  "{\"path\":\"$.data.total\",\"value\":\"=calculate(@.price * @.quantity * (1 + @.taxRate))\",\"command\":\"add\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"price\":100,\"quantity\":5,\"taxRate\":0.08}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"price\":100,\"quantity\":5,\"taxRate\":0.08,\"total\":540}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows calculate - complex expression."
+}

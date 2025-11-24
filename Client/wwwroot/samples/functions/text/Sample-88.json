@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates using text length and contains functions to validate and analyze text.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"password\": \"MyP@ssw0rd\",\r\n  \"email\": \"user@example.com\"\r\n}",
+        "name": "credentials"
+      }
+    ],
+    "name": "Sample-88",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"password\": \"MyP@ssw0rd\",\n  \"email\": \"user@example.com\",\n  \"passwordLength\": 10,\n  \"isValidEmail\": true\n}",
+        "name": "credentials"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.credentials.passwordLength\",\r\n    \"value\": \"=length(@.password)\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.credentials.isValidEmail\",\r\n    \"value\": \"=contains(@.email,'@')\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "text"
+  ],
+  "title": "Text length and contains validation"
+}

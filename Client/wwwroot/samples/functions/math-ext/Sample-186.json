@@ -1,0 +1,24 @@
+﻿{
+    "title":  "Pow - Power calculation",
+    "tags":  [
+                 "add",
+                 "pow"
+             ],
+    "model":  {
+                  "name":  "Sample-186",
+                  "scriptText":  "{\"path\":\"$.data.result\",\"value\":\"=pow(@.base, @.exponent)\",\"command\":\"add\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"base\":2,\"exponent\":10}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"base\":2,\"exponent\":10,\"result\":1024}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows pow - power calculation."
+}

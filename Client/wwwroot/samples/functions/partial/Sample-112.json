@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates using partial to create API response objects with selected fields only.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"user\": {\r\n    \"id\": 1,\r\n    \"name\": \"John\",\r\n    \"email\": \"john@example.com\",\r\n    \"password\": \"hashed\",\r\n    \"salt\": \"xyz\",\r\n    \"internalNotes\": \"VIP\"\r\n  }\r\n}",
+        "name": "fullData"
+      }
+    ],
+    "name": "Sample-112",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"user\": {\n    \"id\": 1,\n    \"name\": \"John\",\n    \"email\": \"john@example.com\",\n    \"password\": \"hashed\",\n    \"salt\": \"xyz\",\n    \"internalNotes\": \"VIP\"\n  },\n  \"apiResponse\": {\n    \"id\": 1,\n    \"name\": \"John\",\n    \"email\": \"john@example.com\"\n  }\n}",
+        "name": "fullData"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.fullData.apiResponse\",\r\n    \"value\": \"=partial(@.user,@.id,@.name,@.email)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "partial"
+  ],
+  "title": "Partial for API response filtering"
+}

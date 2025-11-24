@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates parsing complex nested JSON structures from string format.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\"data\":\"{\\\"user\\\":{\\\"name\\\":\\\"John\\\",\\\"age\\\":30,\\\"active\\\":true}}\"}",
+        "name": "raw"
+      }
+    ],
+    "name": "Sample-110",
+    "outputObjects": [
+      {
+        "jsonString": "{\"data\":\"{\\\"user\\\":{\\\"name\\\":\\\"John\\\",\\\"age\\\":30,\\\"active\\\":true}}\",\"parsed\":{\"user\":{\"name\":\"John\",\"age\":30,\"active\":true}}}",
+        "name": "raw"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.raw.parsed\",\r\n    \"value\": \"=parse(@.data)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "parse"
+  ],
+  "title": "Parse complex nested JSON"
+}

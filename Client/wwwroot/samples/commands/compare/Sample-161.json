@@ -1,0 +1,23 @@
+﻿{
+    "title":  "Compare with ignore option",
+    "tags":  [
+                 "compare"
+             ],
+    "model":  {
+                  "name":  "Sample-161",
+                  "scriptText":  "{\"leftPath\":\"$.data.doc1\",\"rightPath\":\"$.data.doc2\",\"targetPath\":\"$.data.result\",\"ignoreFields\":[\"timestamp\"],\"command\":\"compare\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"doc1\":{\"id\":1,\"name\":\"Test\",\"timestamp\":\"2021-01-01\"},\"doc2\":{\"id\":1,\"name\":\"Test\",\"timestamp\":\"2021-01-02\"}}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"doc1\":{\"id\":1,\"name\":\"Test\",\"timestamp\":\"2021-01-01\"},\"doc2\":{\"id\":1,\"name\":\"Test\",\"timestamp\":\"2021-01-02\"},\"result\":{\"equal\":true}}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows compare with ignore option."
+}

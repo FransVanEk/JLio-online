@@ -1,0 +1,24 @@
+﻿{
+    "title":  "ScriptPath - Conditional logic with path",
+    "tags":  [
+                 "add",
+                 "scriptPath"
+             ],
+    "model":  {
+                  "name":  "Sample-166",
+                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.data[*].pathInfo\",\r\n    \"value\": \"=scriptPath()\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"data\":[{\"value\":100},{\"value\":200},{\"value\":300}]}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"data\":[{\"value\":100,\"pathInfo\":\"$.data[0]\"},{\"value\":200,\"pathInfo\":\"$.data[1]\"},{\"value\":300,\"pathInfo\":\"$.data[2]\"}]}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows scriptpath - conditional logic with path."
+}

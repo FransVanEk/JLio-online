@@ -1,0 +1,23 @@
+﻿{
+    "title":  "Restore with custom delimiter",
+    "tags":  [
+                 "restore"
+             ],
+    "model":  {
+                  "name":  "Sample-144",
+                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$\",\r\n    \"delimiter\": \"_\",\r\n    \"command\": \"restore\"\r\n  }\r\n]",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"company_name\":\"Acme Corp\",\"company_address_street\":\"123 Main St\",\"company_address_city\":\"Boston\"}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"company\":{\"name\":\"Acme Corp\",\"address\":{\"street\":\"123 Main St\",\"city\":\"Boston\"}}}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows restore with custom delimiter."
+}

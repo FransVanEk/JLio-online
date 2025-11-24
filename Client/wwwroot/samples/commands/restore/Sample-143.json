@@ -1,0 +1,23 @@
+﻿{
+    "title":  "Restore flattened object to nested structure",
+    "tags":  [
+                 "restore"
+             ],
+    "model":  {
+                  "name":  "Sample-143",
+                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.dataransva\",\r\n    \"delimiter\": \".\",\r\n    \"command\": \"restore\"\r\n  }\r\n]",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"user.profile.name\":\"John Doe\",\"user.profile.age\":30,\"user.profile.address.city\":\"New York\"}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"user\":{\"profile\":{\"name\":\"John Doe\",\"age\":30,\"address\":{\"city\":\"New York\"}}}}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows restore flattened object to nested structure."
+}

@@ -1,0 +1,24 @@
+﻿{
+    "title":  "Count - Count array elements",
+    "tags":  [
+                 "add",
+                 "count"
+             ],
+    "model":  {
+                  "name":  "Sample-183",
+                  "scriptText":  "{\"path\":\"$.data.itemCount\",\"value\":\"=count(@.items[*])\",\"command\":\"add\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"items\":[\"apple\",\"banana\",\"cherry\",\"date\"]}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"items\":[\"apple\",\"banana\",\"cherry\",\"date\"],\"itemCount\":4}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows count - count array elements."
+}

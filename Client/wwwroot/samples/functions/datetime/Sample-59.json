@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates combining datetime with other properties to create a complete audit record.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"action\": \"update\",\r\n  \"user\": \"admin\"\r\n}",
+        "name": "audit"
+      }
+    ],
+    "name": "Sample-59",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"action\": \"update\",\n  \"user\": \"admin\",\n  \"performedAt\": \"2021-12-08T19:25:25.323Z\",\n  \"dateOnly\": \"2021-12-08\"\n}",
+        "name": "audit"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.audit.performedAt\",\r\n    \"value\": \"=datetime()\",\r\n    \"command\": \"add\"\r\n  },\r\n  {\r\n    \"path\": \"$.audit.dateOnly\",\r\n    \"value\": \"=datetime('yyyy-MM-dd')\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "datetime"
+  ],
+  "title": "Datetime for audit records"
+}

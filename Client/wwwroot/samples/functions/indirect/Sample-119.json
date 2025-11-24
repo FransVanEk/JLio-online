@@ -1,0 +1,23 @@
+{
+  "title": "Indirect with computed path from data",
+  "tags": [
+    "indirect"
+  ],
+  "model": {
+    "name": "Sample-119",
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.data.selectedPrice\",\r\n    \"value\": \"=indirect($.data.pathRef)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"pathRef\": \"items[0].price\",\r\n  \"items\": [\r\n    {\r\n      \"name\": \"Product A\",\r\n      \"price\": 99.99\r\n    }\r\n  ]\r\n}",
+        "name": "data"
+      }
+    ],
+    "outputObjects": [
+      {
+        "jsonString": "{\r\n  \"pathRef\": \"items[0].price\",\r\n  \"items\": [\r\n    {\r\n      \"name\": \"Product A\",\r\n      \"price\": 99.99\r\n    }\r\n  ],\r\n  \"selectedPrice\": 99.99\r\n}",
+        "name": "data"
+      }
+    ]
+  },
+  "description": "This sample shows indirect with computed path from data."
+}

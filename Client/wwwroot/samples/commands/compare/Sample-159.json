@@ -1,0 +1,23 @@
+﻿{
+    "title":  "Compare arrays for changes",
+    "tags":  [
+                 "compare"
+             ],
+    "model":  {
+                  "name":  "Sample-159",
+                  "scriptText":  "{\"leftPath\":\"$.data.before\",\"rightPath\":\"$.data.after\",\"targetPath\":\"$.data.changes\",\"command\":\"compare\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\"before\":[1,2,3],\"after\":[1,2,4]}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\"before\":[1,2,3],\"after\":[1,2,4],\"changes\":{\"removed\":[3],\"added\":[4]}}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows compare arrays for changes."
+}

@@ -1,0 +1,23 @@
+{
+  "description": "This sample shows using put to conditionally update values based on existing data.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n  \"count\": 5,\r\n  \"limit\": 10\r\n}",
+        "name": "counter"
+      }
+    ],
+    "name": "Sample-98",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"count\": 5,\n  \"limit\": 10,\n  \"status\": \"under_limit\"\n}",
+        "name": "counter"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.counter.status\",\r\n    \"value\": \"under_limit\",\r\n    \"command\": \"put\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "put"
+  ],
+  "title": "Put conditional status value"
+}

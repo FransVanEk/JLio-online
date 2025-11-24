@@ -1,0 +1,23 @@
+{
+  "description": "This sample shows how to add a value to an existing array. The value can be a valid JSON notation. Even a function as a string is allowed. \nThe command execution will add the value to the end of the existing array.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n    \"myArray\": [\r\n        1,\r\n        2,\r\n        3\r\n    ]\r\n}",
+        "name": "sample"
+      }
+    ],
+    "name": "Sample-8",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"myArray\": [\n    1,\n    2,\n    3,\n    4\n  ]\n}",
+        "name": "sample"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.sample.myArray\",\r\n    \"value\": 4,\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add"
+  ],
+  "title": "Add a value to an array"
+}

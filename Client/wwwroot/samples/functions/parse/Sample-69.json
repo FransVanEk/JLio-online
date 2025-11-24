@@ -1,0 +1,24 @@
+{
+  "description": "This sample demonstrates using parse function to convert JSON strings to objects.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\"jsonString\":\"{\\\"name\\\":\\\"John\\\",\\\"age\\\":30}\"}",
+        "name": "data"
+      }
+    ],
+    "name": "Sample-69",
+    "outputObjects": [
+      {
+        "jsonString": "{\"jsonString\":\"{\\\"name\\\":\\\"John\\\",\\\"age\\\":30}\",\"parsedData\":{\"name\":\"John\",\"age\":30}}",
+        "name": "data"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.data.parsedData\",\r\n    \"value\": \"=parse(@.jsonString)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add",
+    "parse"
+  ],
+  "title": "Parse JSON string to object"
+}

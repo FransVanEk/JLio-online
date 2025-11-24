@@ -1,0 +1,23 @@
+{
+  "description": "This sample shows how a new property is added to an existing object. \nThe value can be anything, as long as it is a valid json notation. Even a function can be used . See samples with functions.",
+  "model": {
+    "inputObjects": [
+      {
+        "jsonString": "{\r\n    \"initial\": \"value\"\r\n}",
+        "name": "sample"
+      }
+    ],
+    "name": "Sample-2",
+    "outputObjects": [
+      {
+        "jsonString": "{\n  \"initial\": \"value\",\n  \"newProperty\": {\n    \"new object\": \"Added by value\"\n  }\n}",
+        "name": "sample"
+      }
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.sample.newProperty\",\r\n    \"value\": {\r\n      \"new object\": \"Added by value\"\r\n    },\r\n    \"command\": \"add\"\r\n  }\r\n]"
+  },
+  "tags": [
+    "add"
+  ],
+  "title": "Add a property to an existing object. (value: object)"
+}
