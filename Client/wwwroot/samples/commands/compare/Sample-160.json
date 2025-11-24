@@ -5,17 +5,17 @@
              ],
     "model":  {
                   "name":  "Sample-160",
-                  "scriptText":  "[\r\n  {\r\n    \"leftPath\": \"$.v1\",\r\n    \"rightPath\": \"$.v2\",\r\n    \"targetPath\": \"$.delta\",\r\n    \"command\": \"compare\"\r\n  }\r\n]",
+                  "scriptText":  "{\"leftPath\":\"$.data.v1\",\"rightPath\":\"$.data.v2\",\"targetPath\":\"$.data.delta\",\"command\":\"compare\"}",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"v1\\\":{\\\"user\\\":{\\\"profile\\\":{\\\"email\\\":\\\"old@example.com\\\"}}},\\\"v2\\\":{\\\"user\\\":{\\\"profile\\\":{\\\"email\\\":\\\"new@example.com\\\"}}}}",
-                                           "name":  "d"
+                                           "jsonString":  "{\"v1\":{\"user\":{\"profile\":{\"email\":\"old@example.com\"}}},\"v2\":{\"user\":{\"profile\":{\"email\":\"new@example.com\"}}}}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"v1\\\":{\\\"user\\\":{\\\"profile\\\":{\\\"email\\\":\\\"old@example.com\\\"}}},\\\"v2\\\":{\\\"user\\\":{\\\"profile\\\":{\\\"email\\\":\\\"new@example.com\\\"}}},\\\"delta\\\":{\\\"user.profile.email\\\":{\\\"left\\\":\\\"old@example.com\\\",\\\"right\\\":\\\"new@example.com\\\"}}}",
-                                            "name":  "d"
+                                            "jsonString":  "{\"v1\":{\"user\":{\"profile\":{\"email\":\"old@example.com\"}}},\"v2\":{\"user\":{\"profile\":{\"email\":\"new@example.com\"}}},\"delta\":{\"user.profile.email\":{\"left\":\"old@example.com\",\"right\":\"new@example.com\"}}}",
+                                            "name":  "data"
                                         }
                                     ]
               },

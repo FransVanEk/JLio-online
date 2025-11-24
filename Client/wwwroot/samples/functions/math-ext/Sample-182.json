@@ -6,17 +6,17 @@
              ],
     "model":  {
                   "name":  "Sample-182",
-                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.totalAmount\",\r\n    \"value\": \"=sum(@.amounts[*])\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+                  "scriptText":  "{\"path\":\"$.data.totalAmount\",\"value\":\"=sum(@.amounts[*])\",\"command\":\"add\"}",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"amounts\\\":[100,250,75,125]}",
-                                           "name":  "t"
+                                           "jsonString":  "{\"amounts\":[100,250,75,125]}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"amounts\\\":[100,250,75,125],\\\"totalAmount\\\":550}",
-                                            "name":  "t"
+                                            "jsonString":  "{\"amounts\":[100,250,75,125],\"totalAmount\":550}",
+                                            "name":  "data"
                                         }
                                     ]
               },

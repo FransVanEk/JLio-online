@@ -5,17 +5,17 @@
              ],
     "model":  {
                   "name":  "Sample-159",
-                  "scriptText":  "[\r\n  {\r\n    \"leftPath\": \"$.before\",\r\n    \"rightPath\": \"$.after\",\r\n    \"targetPath\": \"$.changes\",\r\n    \"command\": \"compare\"\r\n  }\r\n]",
+                  "scriptText":  "{\"leftPath\":\"$.data.before\",\"rightPath\":\"$.data.after\",\"targetPath\":\"$.data.changes\",\"command\":\"compare\"}",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"before\\\":[1,2,3],\\\"after\\\":[1,2,4]}",
-                                           "name":  "d"
+                                           "jsonString":  "{\"before\":[1,2,3],\"after\":[1,2,4]}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"before\\\":[1,2,3],\\\"after\\\":[1,2,4],\\\"changes\\\":{\\\"removed\\\":[3],\\\"added\\\":[4]}}",
-                                            "name":  "d"
+                                            "jsonString":  "{\"before\":[1,2,3],\"after\":[1,2,4],\"changes\":{\"removed\":[3],\"added\":[4]}}",
+                                            "name":  "data"
                                         }
                                     ]
               },

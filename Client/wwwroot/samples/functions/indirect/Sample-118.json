@@ -1,23 +1,23 @@
 {
-  "title": "Indirect reference to dynamic path",
-  "tags": [
-    "indirect"
-  ],
+  "description": "This sample shows indirect reference to dynamic path.",
   "model": {
-    "name": "Sample-118",
-    "scriptText": "[\r\n  {\r\n    \"path\": \"$.result\",\r\n    \"value\": \"=indirect($.dynamicField)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
     "inputObjects": [
       {
         "jsonString": "{\r\n  \"dynamicField\": \"user.name\",\r\n  \"user\": {\r\n    \"name\": \"John Doe\"\r\n  }\r\n}",
         "name": "data"
       }
     ],
+    "name": "Sample-118",
     "outputObjects": [
       {
         "jsonString": "{\r\n  \"dynamicField\": \"user.name\",\r\n  \"user\": {\r\n    \"name\": \"John Doe\"\r\n  },\r\n  \"result\": \"John Doe\"\r\n}",
         "name": "data"
       }
-    ]
+    ],
+    "scriptText": "[\r\n  {\r\n    \"path\": \"$.data.result\",\r\n    \"value\": \"=indirect($.data.dynamicField)\",\r\n    \"command\": \"add\"\r\n  }\r\n]"
   },
-  "description": "This sample shows indirect reference to dynamic path."
+  "tags": [
+    "indirect"
+  ],
+  "title": "Indirect reference to dynamic path"
 }

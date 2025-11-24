@@ -10,7 +10,7 @@
     "name": "Sample-116",
     "outputObjects": [
       {
-        "jsonString": "{\n  \"config\": {\n    \"enabled\": true,\n    \"timeout\": 30,\n    \"retries\": 3\n  },\n  \"serialized\": \"{\\\"enabled\\\":true,\\\"timeout\\\":30,\\\"retries\\\":3}\"\n}",
+        "jsonString": "{\"config\":{\"enabled\":true,\"timeout\":30,\"retries\":3},\"serialized\":\"{\\\"enabled\\\":true,\\\"timeout\\\":30,\\\"retries\\\":3}\"}",
         "name": "settings"
       }
     ],

@@ -8,14 +8,14 @@
                   "scriptText":  "[\r\n  {\r\n    \"path\": \"$.order.customerId\",\r\n    \"refPath\": \"$.customers\",\r\n    \"command\": \"resolve\"\r\n  }\r\n]",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"order\\\":{\\\"customerId\\\":\\\"ref://customers/C123\\\"},\\\"customers\\\":{\\\"C123\\\":{\\\"name\\\":\\\"John Doe\\\",\\\"email\\\":\\\"john@example.com\\\"}}}",
-                                           "name":  "o"
+                                           "jsonString":  "{\"order\":{\"customerId\":\"ref://customers/C123\"},\"customers\":{\"C123\":{\"name\":\"John Doe\",\"email\":\"john@example.com\"}}}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"order\\\":{\\\"customerId\\\":{\\\"name\\\":\\\"John Doe\\\",\\\"email\\\":\\\"john@example.com\\\"}},\\\"customers\\\":{\\\"C123\\\":{\\\"name\\\":\\\"John Doe\\\",\\\"email\\\":\\\"john@example.com\\\"}}}",
-                                            "name":  "o"
+                                            "jsonString":  "{\"order\":{\"customerId\":{\"name\":\"John Doe\",\"email\":\"john@example.com\"}},\"customers\":{\"C123\":{\"name\":\"John Doe\",\"email\":\"john@example.com\"}}}",
+                                            "name":  "data"
                                         }
                                     ]
               },

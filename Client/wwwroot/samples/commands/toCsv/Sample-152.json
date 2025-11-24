@@ -5,17 +5,17 @@
              ],
     "model":  {
                   "name":  "Sample-152",
-                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.contacts\",\r\n    \"targetPath\": \"$.csv\",\r\n    \"quoteChar\": \"\\\"\",\r\n    \"command\": \"toCsv\"\r\n  }\r\n]",
+                  "scriptText":  "{\"path\":\"$.d.contacts\",\"targetPath\":\"$.csv\",\"quoteChar\":\"\\\"\",\"command\":\"toCsv\"}",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"contacts\\\":[{\\\"name\\\":\\\"Smith, John\\\",\\\"note\\\":\\\"Call at 3:00 PM\\\"},{\\\"name\\\":\\\"Doe, Jane\\\",\\\"note\\\":\\\"Send \\\\\"urgent\\\\\" email\\\"}]}",
-                                           "name":  "c"
+                                           "jsonString":  "{\r\n  \"contacts\": [\r\n    {\r\n      \"name\": \"Smith, John\",\r\n      \"note\": \"Call at 3:00 PM\"\r\n    },\r\n    {\r\n      \"name\": \"Doe, Jane\",\r\n      \"note\": \"Send \\\"urgent\\\" email\"\r\n    }\r\n  ]\r\n}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"contacts\\\":[{\\\"name\\\":\\\"Smith, John\\\",\\\"note\\\":\\\"Call at 3:00 PM\\\"},{\\\"name\\\":\\\"Doe, Jane\\\",\\\"note\\\":\\\"Send \\\\\"urgent\\\\\" email\\\"}],\\\"csv\\\":\\\"name,note\\\\n\\\\\\\\\"Smith, John\\\\\\\\\",\\\\\\\\\"Call at 3:00 PM\\\\\\\\\"\\\\n\\\\\\\\\"Doe, Jane\\\\\\\\\",\\\\\\\\\"Send \\\\\\\\\"\\\\\\\\\"urgent\\\\\\\\\"\\\\\\\\\" email\\\\\\\\\"\\\"}",
-                                            "name":  "c"
+                                            "jsonString":  "{\r\n  \"contacts\": [\r\n    {\r\n      \"name\": \"Smith, John\",\r\n      \"note\": \"Call at 3:00 PM\"\r\n    },\r\n    {\r\n      \"name\": \"Doe, Jane\",\r\n      \"note\": \"Send \\\"urgent\\\" email\"\r\n    }\r\n  ],\r\n  \"csv\": \"name,note\\n\\\"Smith, John\\\",\\\"Call at 3:00 PM\\\"\\n\\\"Doe, Jane\\\",\\\"Send \\\"urgent\\\" email\\\"\"\r\n}",
+                                            "name":  "data"
                                         }
                                     ]
               },

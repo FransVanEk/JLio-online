@@ -3,14 +3,14 @@
   "model": {
     "inputObjects": [
       {
-        "jsonString": "{\r\n  \"jsonString\": \"{\\\"name\\\":\\\"John\\\",\\\"age\\\":30}\"\r\n}",
+        "jsonString": "{\"jsonString\":\"{\\\"name\\\":\\\"John\\\",\\\"age\\\":30}\"}",
         "name": "data"
       }
     ],
     "name": "Sample-69",
     "outputObjects": [
       {
-        "jsonString": "{\n  \"jsonString\": \"{\\\"name\\\":\\\"John\\\",\\\"age\\\":30}\",\n  \"parsedData\": {\n    \"name\": \"John\",\n    \"age\": 30\n  }\n}",
+        "jsonString": "{\"jsonString\":\"{\\\"name\\\":\\\"John\\\",\\\"age\\\":30}\",\"parsedData\":{\"name\":\"John\",\"age\":30}}",
         "name": "data"
       }
     ],

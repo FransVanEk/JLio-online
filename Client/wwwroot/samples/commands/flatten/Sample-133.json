@@ -1,23 +1,23 @@
 ﻿{
-    "title":  "Flatten nested object to flat structure",
-    "tags":  [
-                 "flatten"
-             ],
-    "model":  {
-                  "name":  "Sample-133",
-                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$\",\r\n    \"delimiter\": \".\",\r\n    \"command\": \"flatten\"\r\n  }\r\n]",
-                  "inputObjects":  [
-                                       {
-                                           "jsonString":  "{\\\"user\\\":{\\\"profile\\\":{\\\"name\\\":\\\"John Doe\\\",\\\"age\\\":30,\\\"address\\\":{\\\"city\\\":\\\"New York\\\",\\\"zip\\\":\\\"10001\\\"}}}}",
-                                           "name":  "d"
-                                       }
-                                   ],
-                  "outputObjects":  [
-                                        {
-                                            "jsonString":  "{\\\"user.profile.name\\\":\\\"John Doe\\\",\\\"user.profile.age\\\":30,\\\"user.profile.address.city\\\":\\\"New York\\\",\\\"user.profile.address.zip\\\":\\\"10001\\\"}",
-                                            "name":  "d"
-                                        }
-                                    ]
-              },
-    "description":  "This sample shows flatten nested object to flat structure."
+    "title": "Flatten nested object to flat structure",
+    "tags": [
+        "flatten"
+    ],
+    "model": {
+        "name": "Sample-133",
+        "scriptText": "[\r\n  {\r\n    \"path\": \"$\",\r\n    \"delimiter\": \".\",\r\n    \"command\": \"flatten\"\r\n  }\r\n]",
+        "inputObjects": [
+            {
+                "jsonString": "{\"user\":{\"profile\":{\"name\":\"John Doe\",\"age\":30,\"address\":{\"city\":\"New York\",\"zip\":\"10001\"}}}}",
+                "name": "data"
+            }
+        ],
+        "outputObjects": [
+            {
+                "jsonString": "{\"user.profile.name\":\"John Doe\",\"user.profile.age\":30,\"user.profile.address.city\":\"New York\",\"user.profile.address.zip\":\"10001\"}",
+                "name": "data"
+            }
+        ]
+    },
+    "description": "This sample shows flatten nested object to flat structure."
 }

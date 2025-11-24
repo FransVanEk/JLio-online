@@ -3,14 +3,14 @@
   "model": {
     "inputObjects": [
       {
-        "jsonString": "{\r\n  \"configString\": \"{\\\"timeout\\\":30,\\\"retries\\\":3,\\\"enabled\\\":true}\"\r\n}",
+        "jsonString": "{\"configString\":\"{\\\"timeout\\\":30,\\\"retries\\\":3,\\\"enabled\\\":true}\"}",
         "name": "settings"
       }
     ],
     "name": "Sample-70",
     "outputObjects": [
       {
-        "jsonString": "{\n  \"configString\": \"{\\\"timeout\\\":30,\\\"retries\\\":3,\\\"enabled\\\":true}\",\n  \"config\": {\n    \"timeout\": 30,\n    \"retries\": 3,\n    \"enabled\": true\n  }\n}",
+        "jsonString": "{\"configString\":\"{\\\"timeout\\\":30,\\\"retries\\\":3,\\\"enabled\\\":true}\",\"config\":{\"timeout\":30,\"retries\":3,\"enabled\":true}}",
         "name": "settings"
       }
     ],

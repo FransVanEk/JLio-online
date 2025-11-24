@@ -12,6 +12,7 @@ namespace JLioOnline.Client.Providers
     {
         private readonly HttpClient client;
         private List<SampleMetadata>? _sampleMetadataCache;
+        private readonly Dictionary<int, Sample> _sampleCache = new();
 
         public SamplesStore(HttpClient client)
         {
@@ -19,6 +20,16 @@ namespace JLioOnline.Client.Providers
         }
 
         public Samples Samples { get; set; } = new Samples();
+
+        /// <summary>
+        /// Clears all cached data - useful when samples are updated during development
+        /// </summary>
+        public void ClearCache()
+        {
+            _sampleMetadataCache = null;
+            _sampleCache.Clear();
+            Samples = new Samples();
+        }
 
         /// <summary>
         /// Gets the list of all sample metadata (lightweight, just titles and tags)
@@ -32,7 +43,10 @@ namespace JLioOnline.Client.Providers
 
             try
             {
-                var metadata = await client.GetFromJsonAsync<List<SampleMetadata>>("samples/samples-index.json");
+                // Add cache busting for development
+                var cacheBuster = DateTime.UtcNow.Ticks.ToString();
+                var url = $"samples/samples-index.json?v={cacheBuster}";
+                var metadata = await client.GetFromJsonAsync<List<SampleMetadata>>(url);
                 _sampleMetadataCache = metadata ?? new List<SampleMetadata>();
                 return _sampleMetadataCache;
             }
@@ -48,6 +62,12 @@ namespace JLioOnline.Client.Providers
         /// </summary>
         public async Task<Sample?> GetSampleAsync(int sampleNumber)
         {
+            // Check cache first
+            if (_sampleCache.ContainsKey(sampleNumber))
+            {
+                return _sampleCache[sampleNumber];
+            }
+
             var metadata = await GetSampleMetadataAsync();
             var sampleMeta = metadata.FirstOrDefault(m => m.Number == sampleNumber);
             
@@ -58,7 +78,16 @@ namespace JLioOnline.Client.Providers
 
             try
             {
-                var sample = await client.GetFromJsonAsync<Sample>($"samples/{sampleMeta.Path}");
+                // Add cache busting for development
+                var cacheBuster = DateTime.UtcNow.Ticks.ToString();
+                var url = $"samples/{sampleMeta.Path}?v={cacheBuster}";
+                var sample = await client.GetFromJsonAsync<Sample>(url);
+                
+                if (sample != null)
+                {
+                    _sampleCache[sampleNumber] = sample;
+                }
+                
                 return sample;
             }
             catch (Exception ex)
@@ -84,7 +113,7 @@ namespace JLioOnline.Client.Providers
                 {
                     try
                     {
-                        var sample = await client.GetFromJsonAsync<Sample>($"samples/{meta.Path}");
+                        var sample = await GetSampleAsync(meta.Number);
                         if (sample != null)
                         {
                             allSamples.Add(sample);

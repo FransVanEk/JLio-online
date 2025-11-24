@@ -6,17 +6,17 @@
              ],
     "model":  {
                   "name":  "Sample-178",
-                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.medianScore\",\r\n    \"value\": \"=median(@.scores[*])\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+                  "scriptText":  "{\"path\":\"$.data.medianScore\",\"value\":\"=median(@.scores[*])\",\"command\":\"add\"}",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"scores\\\":[85,92,78,95,88]}",
-                                           "name":  "m"
+                                           "jsonString":  "{\"scores\":[85,92,78,95,88]}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"scores\\\":[85,92,78,95,88],\\\"medianScore\\\":88}",
-                                            "name":  "m"
+                                            "jsonString":  "{\"scores\":[85,92,78,95,88],\"medianScore\":88}",
+                                            "name":  "data"
                                         }
                                     ]
               },

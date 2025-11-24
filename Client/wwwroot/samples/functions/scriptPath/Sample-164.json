@@ -9,14 +9,14 @@
                   "scriptText":  "[\r\n  {\r\n    \"path\": \"$.order.items[*].location\",\r\n    \"value\": \"=scriptPath()\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"order\\\":{\\\"items\\\":[{\\\"sku\\\":\\\"SKU-001\\\",\\\"qty\\\":2},{\\\"sku\\\":\\\"SKU-002\\\",\\\"qty\\\":1}]}}",
-                                           "name":  "o"
+                                           "jsonString":  "{\"order\":{\"items\":[{\"sku\":\"SKU-001\",\"qty\":2},{\"sku\":\"SKU-002\",\"qty\":1}]}}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"order\\\":{\\\"items\\\":[{\\\"sku\\\":\\\"SKU-001\\\",\\\"qty\\\":2,\\\"location\\\":\\\"$.order.items[0]\\\"},{\\\"sku\\\":\\\"SKU-002\\\",\\\"qty\\\":1,\\\"location\\\":\\\"$.order.items[1]\\\"}]}}",
-                                            "name":  "o"
+                                            "jsonString":  "{\"order\":{\"items\":[{\"sku\":\"SKU-001\",\"qty\":2,\"location\":\"$.order.items[0]\"},{\"sku\":\"SKU-002\",\"qty\":1,\"location\":\"$.order.items[1]\"}]}}",
+                                            "name":  "data"
                                         }
                                     ]
               },

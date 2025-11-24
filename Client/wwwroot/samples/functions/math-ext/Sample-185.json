@@ -6,17 +6,17 @@
              ],
     "model":  {
                   "name":  "Sample-185",
-                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.rounded\",\r\n    \"value\": \"=ceiling(@.value)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+                  "scriptText":  "{\"path\":\"$.data.rounded\",\"value\":\"=ceiling(@.value)\",\"command\":\"add\"}",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"value\\\":45.2}",
-                                           "name":  "r"
+                                           "jsonString":  "{\"value\":45.2}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"value\\\":45.2,\\\"rounded\\\":46}",
-                                            "name":  "r"
+                                            "jsonString":  "{\"value\":45.2,\"rounded\":46}",
+                                            "name":  "data"
                                         }
                                     ]
               },

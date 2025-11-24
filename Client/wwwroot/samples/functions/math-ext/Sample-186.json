@@ -6,17 +6,17 @@
              ],
     "model":  {
                   "name":  "Sample-186",
-                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.result\",\r\n    \"value\": \"=pow(@.base, @.exponent)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+                  "scriptText":  "{\"path\":\"$.data.result\",\"value\":\"=pow(@.base, @.exponent)\",\"command\":\"add\"}",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"base\\\":2,\\\"exponent\\\":10}",
-                                           "name":  "r"
+                                           "jsonString":  "{\"base\":2,\"exponent\":10}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"base\\\":2,\\\"exponent\\\":10,\\\"result\\\":1024}",
-                                            "name":  "r"
+                                            "jsonString":  "{\"base\":2,\"exponent\":10,\"result\":1024}",
+                                            "name":  "data"
                                         }
                                     ]
               },

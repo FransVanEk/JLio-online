@@ -5,17 +5,17 @@
              ],
     "model":  {
                   "name":  "Sample-150",
-                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.orders\",\r\n    \"targetPath\": \"$.report\",\r\n    \"includeHeader\": true,\r\n    \"command\": \"toCsv\"\r\n  }\r\n]",
+                  "scriptText":  "{\"path\":\"$.d.orders\",\"targetPath\":\"$.report\",\"includeHeader\":true,\"command\":\"toCsv\"}",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"orders\\\":[{\\\"orderId\\\":\\\"ORD001\\\",\\\"amount\\\":150.5},{\\\"orderId\\\":\\\"ORD002\\\",\\\"amount\\\":200.0}]}",
-                                           "name":  "o"
+                                           "jsonString":  "{\r\n  \"orders\": [\r\n    {\r\n      \"orderId\": \"ORD001\",\r\n      \"amount\": 150.5\r\n    },\r\n    {\r\n      \"orderId\": \"ORD002\",\r\n      \"amount\": 200.0\r\n    }\r\n  ]\r\n}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"orders\\\":[{\\\"orderId\\\":\\\"ORD001\\\",\\\"amount\\\":150.5},{\\\"orderId\\\":\\\"ORD002\\\",\\\"amount\\\":200.0}],\\\"report\\\":\\\"orderId,amount\\\\nORD001,150.5\\\\nORD002,200\\\"}",
-                                            "name":  "o"
+                                            "jsonString":  "{\r\n  \"orders\": [\r\n    {\r\n      \"orderId\": \"ORD001\",\r\n      \"amount\": 150.5\r\n    },\r\n    {\r\n      \"orderId\": \"ORD002\",\r\n      \"amount\": 200.0\r\n    }\r\n  ],\r\n  \"report\": \"orderId,amount\\nORD001,150.5\\nORD002,200\"\r\n}",
+                                            "name":  "data"
                                         }
                                     ]
               },

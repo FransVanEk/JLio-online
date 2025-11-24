@@ -5,17 +5,17 @@
              ],
     "model":  {
                   "name":  "Sample-145",
-                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.data*\",\r\n    \"delimiter\": \".\",\r\n    \"command\": \"restore\"\r\n  }\r\n]",
+                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.data.data*\",\r\n    \"delimiter\": \".\",\r\n    \"command\": \"restore\"\r\n  }\r\n]",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"id\\\":123,\\\"data.firstName\\\":\\\"Alice\\\",\\\"data.lastName\\\":\\\"Smith\\\",\\\"data.contact.email\\\":\\\"alice@example.com\\\"}",
-                                           "name":  "d"
+                                           "jsonString":  "{\"id\":123,\"data.firstName\":\"Alice\",\"data.lastName\":\"Smith\",\"data.contact.email\":\"alice@example.com\"}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"id\\\":123,\\\"data\\\":{\\\"firstName\\\":\\\"Alice\\\",\\\"lastName\\\":\\\"Smith\\\",\\\"contact\\\":{\\\"email\\\":\\\"alice@example.com\\\"}}}",
-                                            "name":  "d"
+                                            "jsonString":  "{\"id\":123,\"data\":{\"firstName\":\"Alice\",\"lastName\":\"Smith\",\"contact\":{\"email\":\"alice@example.com\"}}}",
+                                            "name":  "data"
                                         }
                                     ]
               },

@@ -6,17 +6,17 @@
              ],
     "model":  {
                   "name":  "Sample-180",
-                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.total\",\r\n    \"value\": \"=calculate(@.price * @.quantity * (1 + @.taxRate))\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+                  "scriptText":  "{\"path\":\"$.data.total\",\"value\":\"=calculate(@.price * @.quantity * (1 + @.taxRate))\",\"command\":\"add\"}",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"price\\\":100,\\\"quantity\\\":5,\\\"taxRate\\\":0.08}",
-                                           "name":  "t"
+                                           "jsonString":  "{\"price\":100,\"quantity\":5,\"taxRate\":0.08}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"price\\\":100,\\\"quantity\\\":5,\\\"taxRate\\\":0.08,\\\"total\\\":540}",
-                                            "name":  "t"
+                                            "jsonString":  "{\"price\":100,\"quantity\":5,\"taxRate\":0.08,\"total\":540}",
+                                            "name":  "data"
                                         }
                                     ]
               },

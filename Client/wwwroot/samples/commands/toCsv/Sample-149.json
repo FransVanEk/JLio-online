@@ -5,17 +5,17 @@
              ],
     "model":  {
                   "name":  "Sample-149",
-                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.products\",\r\n    \"targetPath\": \"$.export\",\r\n    \"delimiter\": \";\",\r\n    \"command\": \"toCsv\"\r\n  }\r\n]",
+                  "scriptText":  "{\"path\":\"$.d.products\",\"targetPath\":\"$.export\",\"delimiter\":\";\",\"command\":\"toCsv\"}",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"products\\\":[{\\\"sku\\\":\\\"A123\\\",\\\"name\\\":\\\"Laptop\\\",\\\"price\\\":999},{\\\"sku\\\":\\\"B456\\\",\\\"name\\\":\\\"Mouse\\\",\\\"price\\\":25}]}",
-                                           "name":  "p"
+                                           "jsonString":  "{\r\n  \"products\": [\r\n    {\r\n      \"sku\": \"A123\",\r\n      \"name\": \"Laptop\",\r\n      \"price\": 999\r\n    },\r\n    {\r\n      \"sku\": \"B456\",\r\n      \"name\": \"Mouse\",\r\n      \"price\": 25\r\n    }\r\n  ]\r\n}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"products\\\":[{\\\"sku\\\":\\\"A123\\\",\\\"name\\\":\\\"Laptop\\\",\\\"price\\\":999},{\\\"sku\\\":\\\"B456\\\",\\\"name\\\":\\\"Mouse\\\",\\\"price\\\":25}],\\\"export\\\":\\\"sku;name;price\\\\nA123;Laptop;999\\\\nB456;Mouse;25\\\"}",
-                                            "name":  "p"
+                                            "jsonString":  "{\r\n  \"products\": [\r\n    {\r\n      \"sku\": \"A123\",\r\n      \"name\": \"Laptop\",\r\n      \"price\": 999\r\n    },\r\n    {\r\n      \"sku\": \"B456\",\r\n      \"name\": \"Mouse\",\r\n      \"price\": 25\r\n    }\r\n  ],\r\n  \"export\": \"sku;name;price\\nA123;Laptop;999\\nB456;Mouse;25\"\r\n}",
+                                            "name":  "data"
                                         }
                                     ]
               },

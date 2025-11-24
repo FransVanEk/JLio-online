@@ -5,17 +5,17 @@
              ],
     "model":  {
                   "name":  "Sample-158",
-                  "scriptText":  "[\r\n  {\r\n    \"leftPath\": \"$.original\",\r\n    \"rightPath\": \"$.updated\",\r\n    \"targetPath\": \"$.diff\",\r\n    \"command\": \"compare\"\r\n  }\r\n]",
+                  "scriptText":  "{\"leftPath\":\"$.data.original\",\"rightPath\":\"$.data.updated\",\"targetPath\":\"$.data.diff\",\"command\":\"compare\"}",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"original\\\":{\\\"name\\\":\\\"John\\\",\\\"age\\\":30,\\\"city\\\":\\\"New York\\\"},\\\"updated\\\":{\\\"name\\\":\\\"John\\\",\\\"age\\\":31,\\\"city\\\":\\\"Boston\\\"}}",
-                                           "name":  "d"
+                                           "jsonString":  "{\"original\":{\"name\":\"John\",\"age\":30,\"city\":\"New York\"},\"updated\":{\"name\":\"John\",\"age\":31,\"city\":\"Boston\"}}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"original\\\":{\\\"name\\\":\\\"John\\\",\\\"age\\\":30,\\\"city\\\":\\\"New York\\\"},\\\"updated\\\":{\\\"name\\\":\\\"John\\\",\\\"age\\\":31,\\\"city\\\":\\\"Boston\\\"},\\\"diff\\\":{\\\"age\\\":{\\\"left\\\":30,\\\"right\\\":31},\\\"city\\\":{\\\"left\\\":\\\"New York\\\",\\\"right\\\":\\\"Boston\\\"}}}",
-                                            "name":  "d"
+                                            "jsonString":  "{\"original\":{\"name\":\"John\",\"age\":30,\"city\":\"New York\"},\"updated\":{\"name\":\"John\",\"age\":31,\"city\":\"Boston\"},\"diff\":{\"age\":{\"left\":30,\"right\":31},\"city\":{\"left\":\"New York\",\"right\":\"Boston\"}}}",
+                                            "name":  "data"
                                         }
                                     ]
               },

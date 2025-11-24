@@ -5,17 +5,17 @@
              ],
     "model":  {
                   "name":  "Sample-157",
-                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.user\",\r\n    \"condition\": \"@.role == \u0027admin\u0027\",\r\n    \"ifTrue\": [\r\n      {\r\n        \"path\": \"$.user.permissions\",\r\n        \"value\": [\"read\", \"write\", \"delete\"],\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"ifFalse\": [\r\n      {\r\n        \"path\": \"$.user.permissions\",\r\n        \"value\": [\"read\"],\r\n        \"command\": \"set\"\r\n      }\r\n    ],\r\n    \"command\": \"ifElse\"\r\n  }\r\n]",
+                  "scriptText":  "{\"path\":\"$.d.user\",\"condition\":\"@.role == \u0027admin\u0027\",\"ifTrue\":[{\"path\":\"$.user.permissions\",\"value\":[\"read\",\"write\",\"delete\"],\"command\":\"set\"}],\"ifFalse\":[{\"path\":\"$.user.permissions\",\"value\":[\"read\"],\"command\":\"set\"}],\"command\":\"ifElse\"}",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"user\\\":{\\\"role\\\":\\\"admin\\\",\\\"permissions\\\":[]}}",
-                                           "name":  "u"
+                                           "jsonString":  "{\"user\":{\"role\":\"admin\",\"permissions\":[]}}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"user\\\":{\\\"role\\\":\\\"admin\\\",\\\"permissions\\\":[\\\"read\\\",\\\"write\\\",\\\"delete\\\"]}}",
-                                            "name":  "u"
+                                            "jsonString":  "{\"user\":{\"role\":\"admin\",\"permissions\":[\"read\",\"write\",\"delete\"]}}",
+                                            "name":  "data"
                                         }
                                     ]
               },

@@ -5,17 +5,17 @@
              ],
     "model":  {
                   "name":  "Sample-151",
-                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.employees\",\r\n    \"targetPath\": \"$.employeeList\",\r\n    \"fields\": [\"id\", \"firstName\", \"lastName\"],\r\n    \"command\": \"toCsv\"\r\n  }\r\n]",
+                  "scriptText":  "{\"path\":\"$.d.employees\",\"targetPath\":\"$.employeeList\",\"fields\":[\"id\",\"firstName\",\"lastName\"],\"command\":\"toCsv\"}",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"employees\\\":[{\\\"id\\\":1,\\\"firstName\\\":\\\"Alice\\\",\\\"lastName\\\":\\\"Johnson\\\",\\\"department\\\":\\\"IT\\\",\\\"salary\\\":75000},{\\\"id\\\":2,\\\"firstName\\\":\\\"Bob\\\",\\\"lastName\\\":\\\"Smith\\\",\\\"department\\\":\\\"HR\\\",\\\"salary\\\":65000}]}",
-                                           "name":  "e"
+                                           "jsonString":  "{\r\n  \"employees\": [\r\n    {\r\n      \"id\": 1,\r\n      \"firstName\": \"Alice\",\r\n      \"lastName\": \"Johnson\",\r\n      \"department\": \"IT\",\r\n      \"salary\": 75000\r\n    },\r\n    {\r\n      \"id\": 2,\r\n      \"firstName\": \"Bob\",\r\n      \"lastName\": \"Smith\",\r\n      \"department\": \"HR\",\r\n      \"salary\": 65000\r\n    }\r\n  ]\r\n}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"employees\\\":[{\\\"id\\\":1,\\\"firstName\\\":\\\"Alice\\\",\\\"lastName\\\":\\\"Johnson\\\",\\\"department\\\":\\\"IT\\\",\\\"salary\\\":75000},{\\\"id\\\":2,\\\"firstName\\\":\\\"Bob\\\",\\\"lastName\\\":\\\"Smith\\\",\\\"department\\\":\\\"HR\\\",\\\"salary\\\":65000}],\\\"employeeList\\\":\\\"id,firstName,lastName\\\\n1,Alice,Johnson\\\\n2,Bob,Smith\\\"}",
-                                            "name":  "e"
+                                            "jsonString":  "{\r\n  \"employees\": [\r\n    {\r\n      \"id\": 1,\r\n      \"firstName\": \"Alice\",\r\n      \"lastName\": \"Johnson\",\r\n      \"department\": \"IT\",\r\n      \"salary\": 75000\r\n    },\r\n    {\r\n      \"id\": 2,\r\n      \"firstName\": \"Bob\",\r\n      \"lastName\": \"Smith\",\r\n      \"department\": \"HR\",\r\n      \"salary\": 65000\r\n    }\r\n  ],\r\n  \"employeeList\": \"id,firstName,lastName\\n1,Alice,Johnson\\n2,Bob,Smith\"\r\n}",
+                                            "name":  "data"
                                         }
                                     ]
               },

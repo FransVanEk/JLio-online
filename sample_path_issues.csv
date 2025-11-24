@@ -1,0 +1,1498 @@
+"File","SampleName","Title","PathReferences","InputNames","OutputNames","MissingReferences","ScriptText"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\add\Sample-2.json","Sample-2","Add a property to an existing object. (value: object)","sample","sample","sample","sample","[
+  {
+    ""path"": ""$.sample.newProperty"",
+    ""value"": {
+      ""new object"": ""Added by value""
+    },
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\add\Sample-20.json","Sample-20","Copy singe value as an array when array doesn't exist","sample","sample","sample","sample","[
+  {
+    ""path"": ""$.sample.myArray"",
+    ""value"": [],
+    ""command"": ""add""
+  },
+  {
+    ""fromPath"": ""$.sample.myobject.mySource"",
+    ""toPath"": ""$.sample.myArray"",
+    ""command"": ""copy""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\add\Sample-21.json","Sample-21","Move singe value as an array when array doesn't exist","sample","sample","sample","sample","[
+  {
+    ""path"": ""$.sample.myArray"",
+    ""value"": [],
+    ""command"": ""add""
+  },
+  {
+    ""fromPath"": ""$.sample.myobject.mySource"",
+    ""toPath"": ""$.sample.myArray"",
+    ""command"": ""move""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\add\Sample-22.json","Sample-22","Move multiple values as an array when array doesn't exist","sample","sample","sample","sample","[
+  {
+    ""path"" : ""$.sample.myArray"",
+    ""value"" : [],
+    ""command"" : ""add""
+  },
+  {
+    ""fromPath"": ""$..mySource"",
+    ""toPath"": ""$.sample.myArray"",
+    ""command"": ""move""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\add\Sample-23.json","Sample-23","Copy multiple values as an array when array doesn't exist","sample","sample","sample","sample","[
+  {
+    ""path"" : ""$.sample.myArray"",
+    ""value"" : [],
+    ""command"" : ""add""
+  },
+  {
+    ""fromPath"": ""$..mySource"",
+    ""toPath"": ""$.sample.myArray"",
+    ""command"": ""copy""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\add\Sample-27.json","Sample-27","Use partial function to add only the desired properties from another object","sample","sample","sample","sample","[
+  {
+    ""path"": ""$.sample.trimmedDemo"",
+    ""value"": ""=partial($.sample.demo,@.b,@.c.d)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\add\Sample-35.json","Sample-35","Add boolean property to object","sample","sample","sample","sample","[
+  {
+    ""path"": ""$.sample.isActive"",
+    ""value"": true,
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\add\Sample-6.json","Sample-6","Add a property to items in an array","sample","sample","sample","sample","[
+  {
+    ""path"": ""$.sample.myArray[*].newProperty"",
+    ""value"": ""new"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\add\Sample-8.json","Sample-8","Add a value to an array","sample","sample","sample","sample","[
+  {
+    ""path"": ""$.sample.myArray"",
+    ""value"": 4,
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\compare\Sample-158.json","Sample-158","Compare two objects for differences","diff, original, updated","d","d","diff, original, updated","[
+  {
+    ""leftPath"": ""$.original"",
+    ""rightPath"": ""$.updated"",
+    ""targetPath"": ""$.diff"",
+    ""command"": ""compare""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\compare\Sample-159.json","Sample-159","Compare arrays for changes","changes, before, after","d","d","changes, before, after","[
+  {
+    ""leftPath"": ""$.before"",
+    ""rightPath"": ""$.after"",
+    ""targetPath"": ""$.changes"",
+    ""command"": ""compare""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\compare\Sample-160.json","Sample-160","Compare nested objects","delta, v1, v2","d","d","delta, v1, v2","[
+  {
+    ""leftPath"": ""$.v1"",
+    ""rightPath"": ""$.v2"",
+    ""targetPath"": ""$.delta"",
+    ""command"": ""compare""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\compare\Sample-161.json","Sample-161","Compare with ignore option","result, doc1, doc2","d","d","result, doc1, doc2","[
+  {
+    ""leftPath"": ""$.doc1"",
+    ""rightPath"": ""$.doc2"",
+    ""targetPath"": ""$.result"",
+    ""ignoreFields"": [""timestamp""],
+    ""command"": ""compare""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\compare\Sample-162.json","Sample-162","Compare configuration versions","configDiff, configOld, configNew","d","d","configDiff, configOld, configNew","[
+  {
+    ""leftPath"": ""$.configOld"",
+    ""rightPath"": ""$.configNew"",
+    ""targetPath"": ""$.configDiff"",
+    ""command"": ""compare""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\copy\Sample-10.json","Sample-10","Copy part of object to a new object","Sample, newResult","Sample","Sample, newResult","Sample, newResult","[
+  {
+    ""fromPath"": ""$.Sample.myobject.myProperty"",
+    ""toPath"": ""$.newResult"",
+    ""command"": ""copy""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\copy\Sample-12.json","Sample-12","copy part of object to an array","sample","sample","sample","sample","[
+  {
+    ""fromPath"": ""$.sample.myobject.myProperty"",
+    ""toPath"": ""$.sample.myArray"",
+    ""command"": ""copy""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\copy\Sample-16.json","Sample-16","Copy items out an array into an existing array as single item.","sample","sample","sample","sample","[
+  {
+    ""fromPath"": ""$.sample.myobject.mySource"",
+    ""toPath"": ""$.sample.myArray"",
+    ""command"": ""copy""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\copy\Sample-17.json","Sample-17","Copy items out an array into an existing array as separate items.","sample","sample","sample","sample","[
+  {
+    ""fromPath"": ""$.sample.myobject.mySource[*]"",
+    ""toPath"": ""$.sample.myArray"",
+    ""command"": ""copy""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\copy\Sample-18.json","Sample-18","Copy items out an array into an existing array as separate items with a filter.","sample","sample","sample","sample","[
+  {
+    ""fromPath"": ""$.sample.myobject.mySource[?(@ <6 )]"",
+    ""toPath"": ""$.sample.myArray"",
+    ""command"": ""copy""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\copy\Sample-46.json","Sample-46","Copy nested object structure","source","source","source","source","[
+  {
+    ""fromPath"": ""$.source.original"",
+    ""toPath"": ""$.source.backup"",
+    ""command"": ""copy""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\copy\Sample-47.json","Sample-47","Copy filtered array items","data","data","data","data","[
+  {
+    ""path"": ""$.data.evenNumbers"",
+    ""value"": [],
+    ""command"": ""add""
+  },
+  {
+    ""fromPath"": ""$.data.numbers[?(@ % 2 == 0)]"",
+    ""toPath"": ""$.data.evenNumbers"",
+    ""command"": ""copy""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\decisionTable\Sample-102.json","Sample-102","Decision table for loan approval","applications","applications","applications","applications","[
+  {
+    ""command"": ""decisionTable"",
+    ""path"": ""$.applications[*]"",
+    ""decisionTable"": {
+      ""inputs"": [
+        {""name"": ""creditScore"", ""path"": ""@.creditScore"", ""type"": ""number""},
+        {""name"": ""income"", ""path"": ""@.income"", ""type"": ""number""}
+      ],
+      ""outputs"": [
+        {""name"": ""approved"", ""path"": ""@.approved""},
+        {""name"": ""rate"", ""path"": ""@.rate""}
+      ],
+      ""rules"": [
+        {""priority"": 1, ""conditions"": {""creditScore"": "">=700"", ""income"": "">60000""}, ""results"": {""approved"": true, ""rate"": 3.5}},
+        {""priority"": 2, ""conditions"": {""creditScore"": "">=650""}, ""results"": {""approved"": true, ""rate"": 4.5}}
+      ],
+      ""executionStrategy"": {""mode"": ""firstMatch"", ""conflictResolution"": ""priority"", ""stopOnError"": false},
+      ""defaultResults"": {""approved"": false, ""rate"": 0}
+    }
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\decisionTable\Sample-32.json","Sample-32","sample of decision table","customer","customer","customer","customer","[
+  {
+    ""command"": ""decisionTable"",
+    ""path"": ""$.customer[*]"",
+    ""decisionTable"": {
+      ""inputs"": [
+        {
+          ""name"": ""age"",
+          ""path"": ""@.age"",
+          ""type"": ""number""
+        },
+        {
+          ""name"": ""membershipLevel"",
+          ""path"": ""@.membership.level"",
+          ""type"": ""string""
+        }
+      ],
+      ""outputs"": [
+        {
+          ""name"": ""discountRate"",
+          ""path"": ""@.pricing.discount""
+        },
+        {
+          ""name"": ""category"",
+          ""path"": ""@.category""
+        }
+      ],
+      ""rules"": [
+        {
+          ""priority"": 1,
+          ""conditions"": {
+            ""age"": "">=65"",
+            ""membershipLevel"": ""gold""
+          },
+          ""results"": {
+            ""discountRate"": 0.25,
+            ""category"": ""senior_gold""
+          }
+        },
+        {
+          ""priority"": 2,
+          ""conditions"": {
+            ""age"": "">=65""
+          },
+          ""results"": {
+            ""discountRate"": 0.15,
+            ""category"": ""senior""
+          }
+        },
+        {
+          ""priority"": 3,
+          ""conditions"": {
+            ""membershipLevel"": ""gold""
+          },
+          ""results"": {
+            ""discountRate"": 0.20,
+            ""category"": ""gold""
+          }
+        }
+      ],
+      ""executionStrategy"": {
+        ""mode"": ""firstMatch"",
+        ""conflictResolution"": ""priority"",
+        ""stopOnError"": false
+      },
+      ""defaultResults"": {
+        ""discountRate"": 0.0,
+        ""category"": ""default"" 
+      }
+    }
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\decisionTable\Sample-54.json","Sample-54","Decision table for shipping cost calculation","shipments","shipments","shipments","shipments","[
+  {
+    ""command"": ""decisionTable"",
+    ""path"": ""$.shipments[*]"",
+    ""decisionTable"": {
+      ""inputs"": [
+        {
+          ""name"": ""weight"",
+          ""path"": ""@.weight"",
+          ""type"": ""number""
+        },
+        {
+          ""name"": ""destination"",
+          ""path"": ""@.destination"",
+          ""type"": ""string""
+        }
+      ],
+      ""outputs"": [
+        {
+          ""name"": ""cost"",
+          ""path"": ""@.cost""
+        },
+        {
+          ""name"": ""method"",
+          ""path"": ""@.method""
+        }
+      ],
+      ""rules"": [
+        {
+          ""priority"": 1,
+          ""conditions"": {
+            ""weight"": ""<10"",
+            ""destination"": ""domestic""
+          },
+          ""results"": {
+            ""cost"": 10,
+            ""method"": ""standard""
+          }
+        },
+        {
+          ""priority"": 2,
+          ""conditions"": {
+            ""weight"": "">=10"",
+            ""destination"": ""domestic""
+          },
+          ""results"": {
+            ""cost"": 25,
+            ""method"": ""standard""
+          }
+        },
+        {
+          ""priority"": 3,
+          ""conditions"": {
+            ""destination"": ""international""
+          },
+          ""results"": {
+            ""cost"": 50,
+            ""method"": ""express""
+          }
+        }
+      ],
+      ""executionStrategy"": {
+        ""mode"": ""firstMatch"",
+        ""conflictResolution"": ""priority"",
+        ""stopOnError"": false
+      },
+      ""defaultResults"": {
+        ""cost"": 100,
+        ""method"": ""special""
+      }
+    }
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\decisionTable\Sample-55.json","Sample-55","Decision table for employee benefits","employees","employees","employees","employees","[
+  {
+    ""command"": ""decisionTable"",
+    ""path"": ""$.employees[*]"",
+    ""decisionTable"": {
+      ""inputs"": [
+        {
+          ""name"": ""yearsOfService"",
+          ""path"": ""@.yearsOfService"",
+          ""type"": ""number""
+        },
+        {
+          ""name"": ""performanceRating"",
+          ""path"": ""@.performanceRating"",
+          ""type"": ""string""
+        }
+      ],
+      ""outputs"": [
+        {
+          ""name"": ""vacationDays"",
+          ""path"": ""@.vacationDays""
+        },
+        {
+          ""name"": ""bonus"",
+          ""path"": ""@.bonus""
+        }
+      ],
+      ""rules"": [
+        {
+          ""priority"": 1,
+          ""conditions"": {
+            ""yearsOfService"": "">=5"",
+            ""performanceRating"": ""excellent""
+          },
+          ""results"": {
+            ""vacationDays"": 25,
+            ""bonus"": 10000
+          }
+        },
+        {
+          ""priority"": 2,
+          ""conditions"": {
+            ""yearsOfService"": "">=2"",
+            ""performanceRating"": ""excellent""
+          },
+          ""results"": {
+            ""vacationDays"": 20,
+            ""bonus"": 5000
+          }
+        },
+        {
+          ""priority"": 3,
+          ""conditions"": {
+            ""performanceRating"": ""good""
+          },
+          ""results"": {
+            ""vacationDays"": 10,
+            ""bonus"": 1000
+          }
+        }
+      ],
+      ""executionStrategy"": {
+        ""mode"": ""firstMatch"",
+        ""conflictResolution"": ""priority"",
+        ""stopOnError"": false
+      },
+      ""defaultResults"": {
+        ""vacationDays"": 5,
+        ""bonus"": 0
+      }
+    }
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\decisionTable\Sample-56.json","Sample-56","Decision table for product pricing","orders","orders","orders","orders","[
+  {
+    ""command"": ""decisionTable"",
+    ""path"": ""$.orders[*]"",
+    ""decisionTable"": {
+      ""inputs"": [
+        {
+          ""name"": ""quantity"",
+          ""path"": ""@.quantity"",
+          ""type"": ""number""
+        },
+        {
+          ""name"": ""customerType"",
+          ""path"": ""@.customerType"",
+          ""type"": ""string""
+        }
+      ],
+      ""outputs"": [
+        {
+          ""name"": ""unitPrice"",
+          ""path"": ""@.unitPrice""
+        },
+        {
+          ""name"": ""discountPercent"",
+          ""path"": ""@.discountPercent""
+        }
+      ],
+      ""rules"": [
+        {
+          ""priority"": 1,
+          ""conditions"": {
+            ""quantity"": "">50"",
+            ""customerType"": ""wholesale""
+          },
+          ""results"": {
+            ""unitPrice"": 8.0,
+            ""discountPercent"": 20
+          }
+        },
+        {
+          ""priority"": 2,
+          ""conditions"": {
+            ""customerType"": ""wholesale""
+          },
+          ""results"": {
+            ""unitPrice"": 9.0,
+            ""discountPercent"": 10
+          }
+        },
+        {
+          ""priority"": 3,
+          ""conditions"": {
+            ""quantity"": "">20""
+          },
+          ""results"": {
+            ""unitPrice"": 9.5,
+            ""discountPercent"": 5
+          }
+        }
+      ],
+      ""executionStrategy"": {
+        ""mode"": ""firstMatch"",
+        ""conflictResolution"": ""priority"",
+        ""stopOnError"": false
+      },
+      ""defaultResults"": {
+        ""unitPrice"": 10.0,
+        ""discountPercent"": 0
+      }
+    }
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\flatten\Sample-135.json","Sample-135","Flatten specific path only","company","c","c","company","[
+  {
+    ""path"": ""$.company.employee"",
+    ""delimiter"": ""."",
+    ""command"": ""flatten""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\flatten\Sample-136.json","Sample-136","Flatten array elements","items","i","i","items","[
+  {
+    ""path"": ""$.items[*]"",
+    ""delimiter"": ""_"",
+    ""command"": ""flatten""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\ifElse\Sample-153.json","Sample-153","IfElse based on value check","user","u","u","user","[
+  {
+    ""path"": ""$.user"",
+    ""condition"": ""@.age >= 18"",
+    ""ifTrue"": [
+      {
+        ""path"": ""$.user.status"",
+        ""value"": ""adult"",
+        ""command"": ""set""
+      }
+    ],
+    ""ifFalse"": [
+      {
+        ""path"": ""$.user.status"",
+        ""value"": ""minor"",
+        ""command"": ""set""
+      }
+    ],
+    ""command"": ""ifElse""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\ifElse\Sample-154.json","Sample-154","IfElse for discount calculation","order","o","o","order","[
+  {
+    ""path"": ""$.order"",
+    ""condition"": ""@.amount > 100"",
+    ""ifTrue"": [
+      {
+        ""path"": ""$.order.discount"",
+        ""value"": 10,
+        ""command"": ""set""
+      }
+    ],
+    ""ifFalse"": [
+      {
+        ""path"": ""$.order.discount"",
+        ""value"": 0,
+        ""command"": ""set""
+      }
+    ],
+    ""command"": ""ifElse""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\ifElse\Sample-155.json","Sample-155","IfElse for status assignment","account","a","a","account","[
+  {
+    ""path"": ""$.account"",
+    ""condition"": ""@.balance >= 1000"",
+    ""ifTrue"": [
+      {
+        ""path"": ""$.account.tier"",
+        ""value"": ""premium"",
+        ""command"": ""set""
+      }
+    ],
+    ""ifFalse"": [
+      {
+        ""path"": ""$.account.tier"",
+        ""value"": ""basic"",
+        ""command"": ""set""
+      }
+    ],
+    ""command"": ""ifElse""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\ifElse\Sample-156.json","Sample-156","IfElse with string condition","product","p","p","product","[
+  {
+    ""path"": ""$.product"",
+    ""condition"": ""@.type == 'physical'"",
+    ""ifTrue"": [
+      {
+        ""path"": ""$.product.shipping"",
+        ""value"": ""required"",
+        ""command"": ""set""
+      }
+    ],
+    ""ifFalse"": [
+      {
+        ""path"": ""$.product.shipping"",
+        ""value"": ""not required"",
+        ""command"": ""set""
+      }
+    ],
+    ""command"": ""ifElse""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\ifElse\Sample-157.json","Sample-157","IfElse for access control","user","u","u","user","[
+  {
+    ""path"": ""$.user"",
+    ""condition"": ""@.role == 'admin'"",
+    ""ifTrue"": [
+      {
+        ""path"": ""$.user.permissions"",
+        ""value"": [""read"", ""write"", ""delete""],
+        ""command"": ""set""
+      }
+    ],
+    ""ifFalse"": [
+      {
+        ""path"": ""$.user.permissions"",
+        ""value"": [""read""],
+        ""command"": ""set""
+      }
+    ],
+    ""command"": ""ifElse""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\move\Sample-11.json","Sample-11","move part of object to a new object","Sample, newResult","Sample","Sample, newResult","Sample, newResult","[
+  {
+    ""fromPath"": ""$.Sample.myobject.myProperty"",
+    ""toPath"": ""$.newResult"",
+    ""command"": ""move""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\move\Sample-13.json","Sample-13","Move part of object to an array","sample","sample","sample","sample","[
+  {
+    ""fromPath"": ""$.sample.myobject.myProperty"",
+    ""toPath"": ""$.sample.myArray"",
+    ""command"": ""move""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\move\Sample-14.json","Sample-14","Move items out an array into an existing array as single item.","sample","sample","sample","sample","[
+  {
+    ""fromPath"": ""$.sample.myobject.mySource"",
+    ""toPath"": ""$.sample.myArray"",
+    ""command"": ""move""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\move\Sample-15.json","Sample-15","Move items out an array into an existing array as separate items.","sample","sample","sample","sample","[
+  {
+    ""fromPath"": ""$.sample.myobject.mySource[*]"",
+    ""toPath"": ""$.sample.myArray"",
+    ""command"": ""move""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\move\Sample-19.json","Sample-19","Move items out an array into an existing array as separate items with a filter.","sample","sample","sample","sample","[
+  {
+    ""fromPath"": ""$.sample.myobject.mySource[?(@ <6 )]"",
+    ""toPath"": ""$.sample.myArray"",
+    ""command"": ""move""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\move\Sample-48.json","Sample-48","Move property between nested objects","data","data","data","data","[
+  {
+    ""fromPath"": ""$.data.temp.userId"",
+    ""toPath"": ""$.data.permanent.userId"",
+    ""command"": ""move""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\move\Sample-49.json","Sample-49","Move collection to new location","document","document","document","document","[
+  {
+    ""fromPath"": ""$.document.draft.items"",
+    ""toPath"": ""$.document.published.items"",
+    ""command"": ""move""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\move\Sample-50.json","Sample-50","Move filtered items between arrays","tasks","tasks","tasks","tasks","[
+  {
+    ""fromPath"": ""$.tasks.inbox[?(@.priority=='high')]"",
+    ""toPath"": ""$.tasks.urgent"",
+    ""command"": ""move""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\put\Sample-39.json","Sample-39","Put new property to object","item","item","item","item","[
+  {
+    ""path"": ""$.item.status"",
+    ""value"": ""active"",
+    ""command"": ""put""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\put\Sample-40.json","Sample-40","Put to update existing property","task","task","task","task","[
+  {
+    ""path"": ""$.task.status"",
+    ""value"": ""completed"",
+    ""command"": ""put""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\put\Sample-96.json","Sample-96","Put nested object structure","record","record","record","record","[
+  {
+    ""path"": ""$.record.metadata"",
+    ""value"": {
+      ""created"": ""2024-01-15"",
+      ""author"": ""system""
+    },
+    ""command"": ""put""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\put\Sample-97.json","Sample-97","Put array property","project","project","project","project","[
+  {
+    ""path"": ""$.project.tags"",
+    ""value"": [""important"", ""urgent"", ""review""],
+    ""command"": ""put""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\put\Sample-98.json","Sample-98","Put conditional status value","counter","counter","counter","counter","[
+  {
+    ""path"": ""$.counter.status"",
+    ""value"": ""under_limit"",
+    ""command"": ""put""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\remove\Sample-100.json","Sample-100","Remove null values","data","data","data","data","[
+  {
+    ""path"": ""$.data.b"",
+    ""command"": ""remove""
+  },
+  {
+    ""path"": ""$.data.d"",
+    ""command"": ""remove""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\remove\Sample-42.json","Sample-42","Remove property from object","user","user","user","user","[
+  {
+    ""path"": ""$.user.password"",
+    ""command"": ""remove""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\remove\Sample-44.json","Sample-44","Remove item from array by index","list","list","list","list","[
+  {
+    ""path"": ""$.list.items[1]"",
+    ""command"": ""remove""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\remove\Sample-99.json","Sample-99","Remove nested object","obj","obj","obj","obj","[
+  {
+    ""path"": ""$.obj.data.temp"",
+    ""command"": ""remove""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\resolve\Sample-138.json","Sample-138","Resolve references in object","productId, products","p","p","productId, products","[
+  {
+    ""path"": ""$.productId"",
+    ""refPath"": ""$.products"",
+    ""command"": ""resolve""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\resolve\Sample-139.json","Sample-139","Resolve multiple references","users","d","d","users","[
+  {
+    ""path"": ""$..ref://*"",
+    ""refPath"": ""$.users"",
+    ""command"": ""resolve""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\resolve\Sample-140.json","Sample-140","Resolve with external lookup","order, customers","o","o","order, customers","[
+  {
+    ""path"": ""$.order.customerId"",
+    ""refPath"": ""$.customers"",
+    ""command"": ""resolve""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\resolve\Sample-141.json","Sample-141","Resolve array of references","tags, tagStore","t","t","tags, tagStore","[
+  {
+    ""path"": ""$.tags[*]"",
+    ""refPath"": ""$.tagStore"",
+    ""command"": ""resolve""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\resolve\Sample-142.json","Sample-142","Resolve nested references","project, teams","p","p","project, teams","[
+  {
+    ""path"": ""$.project.teamId"",
+    ""refPath"": ""$.teams"",
+    ""command"": ""resolve""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\restore\Sample-145.json","Sample-145","Restore specific path only","data*","d","d","data*","[
+  {
+    ""path"": ""$.data*"",
+    ""delimiter"": ""."",
+    ""command"": ""restore""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\set\Sample-26.json","Sample-26","Use partial function to get only the desired properties","sample","sample","sample","sample","[
+  {
+    ""path"": ""$.sample.demo"",
+    ""value"": ""=partial(@.b,@.c.d)"",
+    ""command"": ""set""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\set\Sample-28.json","Sample-28","Use promote function on all items in an array","sample","sample","sample","sample","[
+  {
+    ""path"": ""$.sample.demo[*]"",
+    ""value"": ""=promote('newProperty')"",
+    ""command"": ""set""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\set\Sample-29.json","Sample-29","Use promote function to promote primitive input object ","sample","sample","sample","sample","[
+  {
+    ""path"": ""$.sample"",
+    ""value"": ""=promote('newProperty')"",
+    ""command"": ""set""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\set\Sample-31.json","Sample-31","Fetch function on array and transform objects","source","source","source","source","[
+  {
+    ""path"": ""$.source[*]"",
+    ""value"": {
+      ""naam"": ""=fetch(@.name)"",
+      ""leeftijd"": ""=fetch(@.age)"",
+      ""adres"" : {
+          ""straat-nummer"": ""=concat(@.address,' ',@.number)"",
+          ""plaats"": ""=fetch(@.city)""
+      }
+    },
+    ""command"": ""set""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\set\Sample-36.json","Sample-36","Set multiple properties in sequence","person","person","person","person","[
+  {
+    ""path"": ""$.person.name"",
+    ""value"": ""Jane Smith"",
+    ""command"": ""set""
+  },
+  {
+    ""path"": ""$.person.age"",
+    ""value"": 30,
+    ""command"": ""set""
+  },
+  {
+    ""path"": ""$.person.city"",
+    ""value"": ""New York"",
+    ""command"": ""set""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\set\Sample-38.json","Sample-38","Set entire nested object","location","location","location","location","[
+  {
+    ""path"": ""$.location.address"",
+    ""value"": {
+      ""street"": ""Main Avenue"",
+      ""number"": 456,
+      ""city"": ""Boston"",
+      ""zipCode"": ""02101""
+    },
+    ""command"": ""set""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\set\Sample-4.json","Sample-4","Set property value on existing object","sample","sample","sample","sample","[
+  {
+    ""path"": ""$.sample.myProperty"",
+    ""value"": ""new value"",
+    ""command"": ""set""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\set\Sample-7.json","Sample-7","Set a property value to an item in an array using a filter","sample","sample","sample","sample","[
+  {
+    ""path"": ""$.sample.myArray[?(@.myItem==2)].myItem"",
+    ""value"": ""two"",
+    ""command"": ""set""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\set\Sample-9.json","Sample-9","Set a property value to an array","sample","sample","sample","sample","[
+  {
+    ""path"": ""$.sample.myArray"",
+    ""value"": ""new"",
+    ""command"": ""set""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\toCsv\Sample-148.json","Sample-148","Convert JSON array to CSV new","users, csvData","users","users","users, csvData","[
+  {
+    ""path"": ""$.users"",
+    ""targetPath"": ""$.csvData"",
+    ""command"": ""toCsv""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\toCsv\Sample-149.json","Sample-149","Convert with custom delimiter","products, export","p","p","products, export","[
+  {
+    ""path"": ""$.products"",
+    ""targetPath"": ""$.export"",
+    ""delimiter"": "";"",
+    ""command"": ""toCsv""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\toCsv\Sample-150.json","Sample-150","Export with header option","orders, report","o","o","orders, report","[
+  {
+    ""path"": ""$.orders"",
+    ""targetPath"": ""$.report"",
+    ""includeHeader"": true,
+    ""command"": ""toCsv""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\toCsv\Sample-151.json","Sample-151","Convert selected fields only","employees, employeeList","e","e","employees, employeeList","[
+  {
+    ""path"": ""$.employees"",
+    ""targetPath"": ""$.employeeList"",
+    ""fields"": [""id"", ""firstName"", ""lastName""],
+    ""command"": ""toCsv""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\commands\toCsv\Sample-152.json","Sample-152","Export with quotes for special characters","contacts, csv","c","c","contacts, csv","[
+  {
+    ""path"": ""$.contacts"",
+    ""targetPath"": ""$.csv"",
+    ""quoteChar"": ""\"""",
+    ""command"": ""toCsv""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\concat\Sample-37.json","Sample-37","Set property using concat function","person","person","person","person","[
+  {
+    ""path"": ""$.person.fullName"",
+    ""value"": ""=concat(@.firstName,' ',@.lastName)"",
+    ""command"": ""set""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\concat\Sample-45.json","Sample-45","Copy and transform value","product, displayPrice","product","product, displayPrice","product, displayPrice","[
+  {
+    ""fromPath"": ""$.product.price"",
+    ""toPath"": ""$.displayPrice"",
+    ""command"": ""copy""
+  },
+  {
+    ""path"": ""$.displayPrice"",
+    ""value"": ""=concat('Price: ',@)"",
+    ""command"": ""set""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\concat\Sample-63.json","Sample-63","Concat for full address","address","address","address","address","[
+  {
+    ""path"": ""$.address.fullAddress"",
+    ""value"": ""=concat(@.street,', ',@.city,', ',@.state,' ',@.zip)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\concat\Sample-64.json","Sample-64","Concat numbers and strings for messages","result","result","result","result","[
+  {
+    ""path"": ""$.result.message"",
+    ""value"": ""=concat(@.userName,' scored ',@.score,' out of ',@.total)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\concat\Sample-65.json","Sample-65","Concat for building URLs","endpoint","endpoint","endpoint","endpoint","[
+  {
+    ""path"": ""$.endpoint.url"",
+    ""value"": ""=concat(@.protocol,'://',@.domain,@.path,'/',@.id)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\datetime\Sample-41.json","Sample-41","Put with datetime function","log","log","log","log","[
+  {
+    ""path"": ""$.log.timestamp"",
+    ""value"": ""=datetime()"",
+    ""command"": ""put""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\datetime\Sample-58.json","Sample-58","Add datetime to array items","logs","logs","logs","logs","[
+  {
+    ""path"": ""$.logs[*].timestamp"",
+    ""value"": ""=datetime()"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\datetime\Sample-59.json","Sample-59","Datetime for audit records","audit","audit","audit","audit","[
+  {
+    ""path"": ""$.audit.performedAt"",
+    ""value"": ""=datetime()"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.audit.dateOnly"",
+    ""value"": ""=datetime('yyyy-MM-dd')"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\fetch\Sample-104.json","Sample-104","Fetch multiple values to summary","data","data","data","data","[
+  {
+    ""path"": ""$.data.summary"",
+    ""value"": {
+      ""customerName"": ""=fetch(@.order.customer.name)"",
+      ""firstSku"": ""=fetch(@.order.items[0].sku)""
+    },
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\fetch\Sample-105.json","Sample-105","Fetch array elements by index","test","test","test","test","[
+  {
+    ""path"": ""$.test.highest"",
+    ""value"": ""=fetch(@.scores[0])"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.test.lowest"",
+    ""value"": ""=fetch(@.scores[3])"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.test.middle"",
+    ""value"": ""=fetch(@.scores[2])"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\fetch\Sample-66.json","Sample-66","Fetch nested values","data","data","data","data","[
+  {
+    ""path"": ""$.data.userName"",
+    ""value"": ""=fetch(@.user.profile.name)"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.data.userEmail"",
+    ""value"": ""=fetch(@.user.profile.email)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\fetch\Sample-67.json","Sample-67","Fetch from array items","orderItems","orderItems","orderItems","orderItems","[
+  {
+    ""path"": ""$.orderItems[*].productName"",
+    ""value"": ""=fetch(@.product.name)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\fetch\Sample-68.json","Sample-68","Fetch to restructure data","source","source","source","source","[
+  {
+    ""path"": ""$.source.newStructure"",
+    ""value"": {
+      ""first"": ""=fetch(@.oldStructure.data.value1)"",
+      ""second"": ""=fetch(@.oldStructure.data.value2)""
+    },
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\indirect\Sample-118.json","Sample-118","Indirect reference to dynamic path","result, dynamicField)","data","data","result, dynamicField)","[
+  {
+    ""path"": ""$.result"",
+    ""value"": ""=indirect($.dynamicField)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\indirect\Sample-119.json","Sample-119","Indirect with computed path from data","selectedPrice, pathRef)","data","data","selectedPrice, pathRef)","[
+  {
+    ""path"": ""$.selectedPrice"",
+    ""value"": ""=indirect($.pathRef)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\indirect\Sample-120.json","Sample-120","Indirect for configuration lookup","dbHost, setting)","data","data","dbHost, setting)","[
+  {
+    ""path"": ""$.dbHost"",
+    ""value"": ""=indirect($.setting)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\indirect\Sample-121.json","Sample-121","Indirect array element access","selectedColor, arrayPath)","data","data","selectedColor, arrayPath)","[
+  {
+    ""path"": ""$.selectedColor"",
+    ""value"": ""=indirect($.arrayPath)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\indirect\Sample-122.json","Sample-122","Indirect with nested object navigation","contactEmail, targetPath)","data","data","contactEmail, targetPath)","[
+  {
+    ""path"": ""$.contactEmail"",
+    ""value"": ""=indirect($.targetPath)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\math\Sample-106.json","Sample-106","Floor, sqrt, and power functions","calc","calc","calc","calc","[
+  {
+    ""path"": ""$.calc.floored"",
+    ""value"": ""=floor(@.value)"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.calc.squareRoot"",
+    ""value"": ""=sqrt(@.value)"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.calc.powered"",
+    ""value"": ""=power(@.base,@.exponent)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\math\Sample-107.json","Sample-107","Modulo, average, and sum functions","stats","stats","stats","stats","[
+  {
+    ""path"": ""$.stats.remainder"",
+    ""value"": ""=mod(@.dividend,@.divisor)"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.stats.average"",
+    ""value"": ""=average(@.values)"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.stats.sum"",
+    ""value"": ""=sum(@.values)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\math\Sample-81.json","Sample-81","Math operations for order calculation","order","order","order","order","[
+  {
+    ""path"": ""$.order.tax"",
+    ""value"": ""=multiply(@.price,@.taxRate)"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.order.subtotal"",
+    ""value"": ""=subtract(@.price,@.discount)"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.order.total"",
+    ""value"": ""=add(@.subtotal,@.tax)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\math\Sample-82.json","Sample-82","Min and Max calculations","weather","weather","weather","weather","[
+  {
+    ""path"": ""$.weather.minTemp"",
+    ""value"": ""=min(@.temperatures)"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.weather.maxTemp"",
+    ""value"": ""=max(@.temperatures)"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.weather.range"",
+    ""value"": ""=subtract(@.maxTemp,@.minTemp)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\math\Sample-83.json","Sample-83","Absolute value and rounding functions","data","data","data","data","[
+  {
+    ""path"": ""$.data.absoluteValue"",
+    ""value"": ""=abs(@.value)"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.data.roundedPrice"",
+    ""value"": ""=round(@.price)"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.data.ceilingPrice"",
+    ""value"": ""=ceil(@.price)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\math-ext\Sample-178.json","Sample-178","Median - Calculate median value","medianScore","m","m","medianScore","[
+  {
+    ""path"": ""$.medianScore"",
+    ""value"": ""=median(@.scores[*])"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\math-ext\Sample-179.json","Sample-179","Median - Array median","middle","m","m","middle","[
+  {
+    ""path"": ""$.middle"",
+    ""value"": ""=median(@.values[*])"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\math-ext\Sample-180.json","Sample-180","Calculate - Complex expression","total","t","t","total","[
+  {
+    ""path"": ""$.total"",
+    ""value"": ""=calculate(@.price * @.quantity * (1 + @.taxRate))"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\math-ext\Sample-181.json","Sample-181","Calculate - Formula evaluation","result","r","r","result","[
+  {
+    ""path"": ""$.result"",
+    ""value"": ""=calculate((@.base * @.rate) + @.bonus)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\math-ext\Sample-182.json","Sample-182","Sum - Total array values","totalAmount","t","t","totalAmount","[
+  {
+    ""path"": ""$.totalAmount"",
+    ""value"": ""=sum(@.amounts[*])"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\math-ext\Sample-183.json","Sample-183","Count - Count array elements","itemCount","i","i","itemCount","[
+  {
+    ""path"": ""$.itemCount"",
+    ""value"": ""=count(@.items[*])"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\math-ext\Sample-184.json","Sample-184","Subtract - Subtract two values","finalPrice","f","f","finalPrice","[
+  {
+    ""path"": ""$.finalPrice"",
+    ""value"": ""=subtract(@.total, @.discount)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\math-ext\Sample-185.json","Sample-185","Ceiling - Round up to integer","rounded","r","r","rounded","[
+  {
+    ""path"": ""$.rounded"",
+    ""value"": ""=ceiling(@.value)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\math-ext\Sample-186.json","Sample-186","Pow - Power calculation","result","r","r","result","[
+  {
+    ""path"": ""$.result"",
+    ""value"": ""=pow(@.base, @.exponent)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\newGuid\Sample-108.json","Sample-108","Generate GUIDs for database records","database","database","database","database","[
+  {
+    ""path"": ""$.database.users[*].id"",
+    ""value"": ""=newGuid()"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\newGuid\Sample-60.json","Sample-60","Generate unique IDs for array items","items","items","items","items","[
+  {
+    ""path"": ""$.items[*].id"",
+    ""value"": ""=newGuid()"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\newGuid\Sample-62.json","Sample-62","Add correlation ID to transaction","transaction","transaction","transaction","transaction","[
+  {
+    ""path"": ""$.transaction.correlationId"",
+    ""value"": ""=newGuid()"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\parse\Sample-110.json","Sample-110","Parse complex nested JSON","raw","raw","raw","raw","[
+  {
+    ""path"": ""$.raw.parsed"",
+    ""value"": ""=parse(@.data)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\parse\Sample-111.json","Sample-111","Parse array of JSON strings","strings","strings","strings","strings","[
+  {
+    ""path"": ""$.strings.parsed"",
+    ""value"": [],
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.strings.parsed[0]"",
+    ""value"": ""=parse(@.items[0])"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.strings.parsed[1]"",
+    ""value"": ""=parse(@.items[1])"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\parse\Sample-69.json","Sample-69","Parse JSON string to object","data","data","data","data","[
+  {
+    ""path"": ""$.data.parsedData"",
+    ""value"": ""=parse(@.jsonString)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\parse\Sample-70.json","Sample-70","Parse configuration from string","settings","settings","settings","settings","[
+  {
+    ""path"": ""$.settings.config"",
+    ""value"": ""=parse(@.configString)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\parse\Sample-71.json","Sample-71","Parse array from JSON string","data","data","data","data","[
+  {
+    ""path"": ""$.data.numbers"",
+    ""value"": ""=parse(@.arrayString)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\partial\Sample-112.json","Sample-112","Partial for API response filtering","fullData","fullData","fullData","fullData","[
+  {
+    ""path"": ""$.fullData.apiResponse"",
+    ""value"": ""=partial(@.user,@.id,@.name,@.email)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\partial\Sample-113.json","Sample-113","Partial for lightweight object copies","tasks","tasks","tasks","tasks","[
+  {
+    ""path"": ""$.tasks[*]"",
+    ""value"": ""=partial(@.id,@.title)"",
+    ""command"": ""set""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\partial\Sample-75.json","Sample-75","Partial to extract specific fields","data","data","data","data","[
+  {
+    ""path"": ""$.data.user"",
+    ""value"": ""=partial(@.id,@.name,@.email)"",
+    ""command"": ""set""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\partial\Sample-76.json","Sample-76","Partial for data sanitization","banking","banking","banking","banking","[
+  {
+    ""path"": ""$.banking.publicData"",
+    ""value"": ""=partial($.banking.account,@.accountNumber,@.balance)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\partial\Sample-77.json","Sample-77","Partial on array items","users","users","users","users","[
+  {
+    ""path"": ""$.users[*]"",
+    ""value"": ""=partial(@.id,@.name)"",
+    ""command"": ""set""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\promote\Sample-114.json","Sample-114","Promote error codes to objects","response","response","response","response","[
+  {
+    ""path"": ""$.response.errors[*]"",
+    ""value"": ""=promote('code')"",
+    ""command"": ""set""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\promote\Sample-115.json","Sample-115","Promote with metadata wrapping","data","data","data","data","[
+  {
+    ""path"": ""$.data.value"",
+    ""value"": ""=promote('data')"",
+    ""command"": ""set""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\promote\Sample-78.json","Sample-78","Promote strings to objects","fruits","fruits","fruits","fruits","[
+  {
+    ""path"": ""$.fruits[*]"",
+    ""value"": ""=promote('name')"",
+    ""command"": ""set""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\promote\Sample-79.json","Sample-79","Promote numbers to score objects","test","test","test","test","[
+  {
+    ""path"": ""$.test.scores[*]"",
+    ""value"": ""=promote('score')"",
+    ""command"": ""set""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\promote\Sample-80.json","Sample-80","Promote primitive to named property","sensor","sensor","sensor","sensor","[
+  {
+    ""path"": ""$.sensor.temperature"",
+    ""value"": ""=promote('value')"",
+    ""command"": ""set""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\scriptPath\Sample-163.json","Sample-163","ScriptPath - Track array item paths","customers","c","c","customers","[
+  {
+    ""path"": ""$.customers[*].idPath"",
+    ""value"": ""=scriptPath()"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\scriptPath\Sample-164.json","Sample-164","ScriptPath - Track nested object paths","order","o","o","order","[
+  {
+    ""path"": ""$.order.items[*].location"",
+    ""value"": ""=scriptPath()"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\scriptPath\Sample-165.json","Sample-165","ScriptPath - Build reference map","products","p","p","products","[
+  {
+    ""path"": ""$.products[*].ref"",
+    ""value"": ""=scriptPath()"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\scriptPath\Sample-166.json","Sample-166","ScriptPath - Conditional logic with path","data","d","d","data","[
+  {
+    ""path"": ""$.data[*].pathInfo"",
+    ""value"": ""=scriptPath()"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\scriptPath\Sample-167.json","Sample-167","ScriptPath - Audit trail with paths","records","r","r","records","[
+  {
+    ""path"": ""$.records[*].auditPath"",
+    ""value"": ""=scriptPath()"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\text\Sample-84.json","Sample-84","Substring and trim text functions","data","data","data","data","[
+  {
+    ""path"": ""$.data.trimmedText"",
+    ""value"": ""=trim(@.text)"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.data.extractedCode"",
+    ""value"": ""=substring(@.code,4,5)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\text\Sample-85.json","Sample-85","Text case conversion functions","user","user","user","user","[
+  {
+    ""path"": ""$.user.properName"",
+    ""value"": ""=propercase(@.name)"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.user.upperName"",
+    ""value"": ""=uppercase(@.name)"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.user.lowerEmail"",
+    ""value"": ""=lowercase(@.email)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\text\Sample-86.json","Sample-86","Replace and pad text functions","data","data","data","data","[
+  {
+    ""path"": ""$.data.replacedText"",
+    ""value"": ""=replace(@.text,'_',' ')"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.data.paddedId"",
+    ""value"": ""=padleft(@.id,5,'0')"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\text\Sample-87.json","Sample-87","Left and right string extraction","file","file","file","file","[
+  {
+    ""path"": ""$.file.extension"",
+    ""value"": ""=rightstring(@.filename,3)"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.file.basename"",
+    ""value"": ""=leftstring(@.filename,8)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\text\Sample-88.json","Sample-88","Text length and contains validation","credentials","credentials","credentials","credentials","[
+  {
+    ""path"": ""$.credentials.passwordLength"",
+    ""value"": ""=length(@.password)"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.credentials.isValidEmail"",
+    ""value"": ""=contains(@.email,'@')"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\text\Sample-89.json","Sample-89","Insert and delete text operations","data","data","data","data","[
+  {
+    ""path"": ""$.data.insertedText"",
+    ""value"": ""=insert(@.text,5,' ')"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.data.cleanCode"",
+    ""value"": ""=delete(@.code,'-')"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\toString\Sample-116.json","Sample-116","Convert object to JSON string","settings","settings","settings","settings","[
+  {
+    ""path"": ""$.settings.serialized"",
+    ""value"": ""=toString(@.config)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\toString\Sample-117.json","Sample-117","Convert array to string","post","post","post","post","[
+  {
+    ""path"": ""$.post.tagString"",
+    ""value"": ""=toString(@.tags)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\toString\Sample-72.json","Sample-72","Convert numbers to strings","data","data","data","data","[
+  {
+    ""path"": ""$.data.idString"",
+    ""value"": ""=toString(@.id)"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.data.versionString"",
+    ""value"": ""=toString(@.version)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\toString\Sample-73.json","Sample-73","ToString for boolean and number values","config","config","config","config","[
+  {
+    ""path"": ""$.config.status"",
+    ""value"": ""=toString(@.isEnabled)"",
+    ""command"": ""add""
+  },
+  {
+    ""path"": ""$.config.countText"",
+    ""value"": ""=toString(@.count)"",
+    ""command"": ""add""
+  }
+]"
+"C:\Repos\Private\Jlio-online\Client\wwwroot\samples\functions\toString\Sample-74.json","Sample-74","ToString with concat for formatting","weather","weather","weather","weather","[
+  {
+    ""path"": ""$.weather.summary"",
+    ""value"": ""=concat('Temperature: ',toString(@.temperature),'?F, Humidity: ',toString(@.humidity),'%')"",
+    ""command"": ""add""
+  }
+]"

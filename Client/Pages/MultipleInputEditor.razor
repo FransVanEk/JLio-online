@@ -42,6 +42,10 @@
                 <RadzenSplitButton Text="Load" Click=@(args => HandleJlioDocument(args)) style="width:100%;margin-bottom:3px;">
                     <ChildContent>
                         <RadzenSplitButtonItem Text="Delete" Value="delete" />
+                        @if (HostEnvironment.Environment == "Development")
+                        {
+                            <RadzenSplitButtonItem Text="Clear Sample Cache" Value="clearCache" />
+                        }
                     </ChildContent>
                 </RadzenSplitButton>
             }
@@ -267,7 +271,12 @@
 
 
         await GetJLioDocuments();
-        await samplesStore.GetSamples();
+        
+        // Only load samples if we need a specific sample, not all samples
+        if (!string.IsNullOrWhiteSpace(SampleName))
+        {
+            await samplesStore.GetSamples(); // Only load when needed for sample name lookup
+        }
 
         if (string.IsNullOrWhiteSpace(SampleName))
         {
@@ -566,6 +575,12 @@
                 documentSelection.Reset();
             }
         }
+        else if (item != null && item.Value == "clearCache")
+        {
+            samplesStore.ClearCache();
+            NotificationService.Notify(NotificationSeverity.Success, "Cache Cleared", "Sample cache has been cleared. Refresh the page to load fresh data.", 5000);
+            return;
+        }
         LoadJlioDocument(selectedJLioDocument);
     }
 
@@ -587,21 +602,58 @@
     }
 
 
-    void LoadSample()
+    async Task LoadSample()
     {
-        var loadedsample = samplesStore.Samples.FirstOrDefault(s => s.Title == HttpUtility.UrlDecode(SampleName));
-        if (loadedsample == null)
+        if (string.IsNullOrWhiteSpace(SampleName))
         {
             LoadJlioDocument("");
+            return;
         }
-        else
+
+        try
         {
-            sample = new Sample();
-            sample.Title = loadedsample.Title;
-            sample.Description = loadedsample.Description;
-            model = JsonConvert.DeserializeObject<MultilineEditorViewModel>(JsonConvert.SerializeObject(loadedsample.Model)); //to Remove reference
-            scriptEditor.Update(model?.ScriptText);
+            // First try to find the sample by title from metadata (more efficient)
+            var metadata = await samplesStore.GetSampleMetadataAsync();
+            var sampleMeta = metadata.FirstOrDefault(s => s.Title == HttpUtility.UrlDecode(SampleName));
+            
+            if (sampleMeta != null)
+            {
+                // Load the specific sample
+                var loadedSample = await samplesStore.GetSampleAsync(sampleMeta.Number);
+                if (loadedSample != null)
+                {
+                    sample = new Sample();
+                    sample.Title = loadedSample.Title;
+                    sample.Description = loadedSample.Description;
+                    model = JsonConvert.DeserializeObject<MultilineEditorViewModel>(JsonConvert.SerializeObject(loadedSample.Model)); //to Remove reference
+                    scriptEditor?.Update(model?.ScriptText);
+                    SetCommands();
+                    return;
+                }
+            }
+
+            // Fallback to old method if not found
+            await samplesStore.GetSamples();
+            var loadedsample = samplesStore.Samples.FirstOrDefault(s => s.Title == HttpUtility.UrlDecode(SampleName));
+            if (loadedsample == null)
+            {
+                LoadJlioDocument("");
+            }
+            else
+            {
+                sample = new Sample();
+                sample.Title = loadedsample.Title;
+                sample.Description = loadedsample.Description;
+                model = JsonConvert.DeserializeObject<MultilineEditorViewModel>(JsonConvert.SerializeObject(loadedsample.Model)); //to Remove reference
+                scriptEditor?.Update(model?.ScriptText);
+            }
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading sample: {ex.Message}");
+            LoadJlioDocument("");
+        }
+        
         SetCommands();
     }
 
@@ -623,4 +675,4 @@
 
 
 
-}
+}}

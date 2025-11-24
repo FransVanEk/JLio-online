@@ -6,17 +6,17 @@
              ],
     "model":  {
                   "name":  "Sample-183",
-                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.itemCount\",\r\n    \"value\": \"=count(@.items[*])\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+                  "scriptText":  "{\"path\":\"$.data.itemCount\",\"value\":\"=count(@.items[*])\",\"command\":\"add\"}",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"items\\\":[\\\"apple\\\",\\\"banana\\\",\\\"cherry\\\",\\\"date\\\"]}",
-                                           "name":  "i"
+                                           "jsonString":  "{\"items\":[\"apple\",\"banana\",\"cherry\",\"date\"]}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"items\\\":[\\\"apple\\\",\\\"banana\\\",\\\"cherry\\\",\\\"date\\\"],\\\"itemCount\\\":4}",
-                                            "name":  "i"
+                                            "jsonString":  "{\"items\":[\"apple\",\"banana\",\"cherry\",\"date\"],\"itemCount\":4}",
+                                            "name":  "data"
                                         }
                                     ]
               },

@@ -6,17 +6,17 @@
              ],
     "model":  {
                   "name":  "Sample-181",
-                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.result\",\r\n    \"value\": \"=calculate((@.base * @.rate) + @.bonus)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+                  "scriptText":  "{\"path\":\"$.data.result\",\"value\":\"=calculate((@.base * @.rate) + @.bonus)\",\"command\":\"add\"}",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"base\\\":50,\\\"rate\\\":1.5,\\\"bonus\\\":10}",
-                                           "name":  "r"
+                                           "jsonString":  "{\"base\":50,\"rate\":1.5,\"bonus\":10}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"base\\\":50,\\\"rate\\\":1.5,\\\"bonus\\\":10,\\\"result\\\":85}",
-                                            "name":  "r"
+                                            "jsonString":  "{\"base\":50,\"rate\":1.5,\"bonus\":10,\"result\":85}",
+                                            "name":  "data"
                                         }
                                     ]
               },

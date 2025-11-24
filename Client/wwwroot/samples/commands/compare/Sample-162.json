@@ -5,17 +5,17 @@
              ],
     "model":  {
                   "name":  "Sample-162",
-                  "scriptText":  "[\r\n  {\r\n    \"leftPath\": \"$.configOld\",\r\n    \"rightPath\": \"$.configNew\",\r\n    \"targetPath\": \"$.configDiff\",\r\n    \"command\": \"compare\"\r\n  }\r\n]",
+                  "scriptText":  "{\"leftPath\":\"$.data.configOld\",\"rightPath\":\"$.data.configNew\",\"targetPath\":\"$.data.configDiff\",\"command\":\"compare\"}",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"configOld\\\":{\\\"database\\\":{\\\"host\\\":\\\"localhost\\\",\\\"port\\\":5432},\\\"cache\\\":{\\\"enabled\\\":false}},\\\"configNew\\\":{\\\"database\\\":{\\\"host\\\":\\\"db.server.com\\\",\\\"port\\\":5432},\\\"cache\\\":{\\\"enabled\\\":true}}}",
-                                           "name":  "d"
+                                           "jsonString":  "{\"configOld\":{\"database\":{\"host\":\"localhost\",\"port\":5432},\"cache\":{\"enabled\":false}},\"configNew\":{\"database\":{\"host\":\"db.server.com\",\"port\":5432},\"cache\":{\"enabled\":true}}}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"configOld\\\":{\\\"database\\\":{\\\"host\\\":\\\"localhost\\\",\\\"port\\\":5432},\\\"cache\\\":{\\\"enabled\\\":false}},\\\"configNew\\\":{\\\"database\\\":{\\\"host\\\":\\\"db.server.com\\\",\\\"port\\\":5432},\\\"cache\\\":{\\\"enabled\\\":true}},\\\"configDiff\\\":{\\\"database.host\\\":{\\\"left\\\":\\\"localhost\\\",\\\"right\\\":\\\"db.server.com\\\"},\\\"cache.enabled\\\":{\\\"left\\\":false,\\\"right\\\":true}}}",
-                                            "name":  "d"
+                                            "jsonString":  "{\"configOld\":{\"database\":{\"host\":\"localhost\",\"port\":5432},\"cache\":{\"enabled\":false}},\"configNew\":{\"database\":{\"host\":\"db.server.com\",\"port\":5432},\"cache\":{\"enabled\":true}},\"configDiff\":{\"database.host\":{\"left\":\"localhost\",\"right\":\"db.server.com\"},\"cache.enabled\":{\"left\":false,\"right\":true}}}",
+                                            "name":  "data"
                                         }
                                     ]
               },

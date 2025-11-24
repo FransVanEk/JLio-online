@@ -6,17 +6,17 @@
              ],
     "model":  {
                   "name":  "Sample-184",
-                  "scriptText":  "[\r\n  {\r\n    \"path\": \"$.finalPrice\",\r\n    \"value\": \"=subtract(@.total, @.discount)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
+                  "scriptText":  "{\"path\":\"$.data.finalPrice\",\"value\":\"=subtract(@.total, @.discount)\",\"command\":\"add\"}",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"total\\\":500,\\\"discount\\\":75}",
-                                           "name":  "f"
+                                           "jsonString":  "{\"total\":500,\"discount\":75}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"total\\\":500,\\\"discount\\\":75,\\\"finalPrice\\\":425}",
-                                            "name":  "f"
+                                            "jsonString":  "{\"total\":500,\"discount\":75,\"finalPrice\":425}",
+                                            "name":  "data"
                                         }
                                     ]
               },

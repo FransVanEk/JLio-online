@@ -1,23 +1,23 @@
-{
-  "title": "Indirect with nested object navigation",
-  "tags": [
-    "indirect"
-  ],
-  "model": {
-    "name": "Sample-122",
-    "scriptText": "[\r\n  {\r\n    \"path\": \"$.contactEmail\",\r\n    \"value\": \"=indirect($.targetPath)\",\r\n    \"command\": \"add\"\r\n  }\r\n]",
-    "inputObjects": [
-      {
-        "jsonString": "{\r\n  \"targetPath\": \"order.customer.email\",\r\n  \"order\": {\r\n    \"id\": 123,\r\n    \"customer\": {\r\n      \"name\": \"Alice\",\r\n      \"email\": \"alice@example.com\"\r\n    }\r\n  }\r\n}",
-        "name": "data"
-      }
-    ],
-    "outputObjects": [
-      {
-        "jsonString": "{\r\n  \"targetPath\": \"order.customer.email\",\r\n  \"order\": {\r\n    \"id\": 123,\r\n    \"customer\": {\r\n      \"name\": \"Alice\",\r\n      \"email\": \"alice@example.com\"\r\n    }\r\n  },\r\n  \"contactEmail\": \"alice@example.com\"\r\n}",
-        "name": "data"
-      }
-    ]
-  },
-  "description": "This sample shows indirect with nested object navigation."
+﻿{
+    "title":  "Indirect with nested object navigation",
+    "tags":  [
+                 "indirect"
+             ],
+    "model":  {
+                  "name":  "Sample-122",
+                  "scriptText":  "{\"path\":\"$.data.contactEmail\",\"value\":\"=indirect($.data.targetPath)\",\"command\":\"add\"}",
+                  "inputObjects":  [
+                                       {
+                                           "jsonString":  "{\r\n  \"targetPath\": \"order.customer.email\",\r\n  \"order\": {\r\n    \"id\": 123,\r\n    \"customer\": {\r\n      \"name\": \"Alice\",\r\n      \"email\": \"alice@example.com\"\r\n    }\r\n  }\r\n}",
+                                           "name":  "data"
+                                       }
+                                   ],
+                  "outputObjects":  [
+                                        {
+                                            "jsonString":  "{\r\n  \"targetPath\": \"order.customer.email\",\r\n  \"order\": {\r\n    \"id\": 123,\r\n    \"customer\": {\r\n      \"name\": \"Alice\",\r\n      \"email\": \"alice@example.com\"\r\n    }\r\n  },\r\n  \"contactEmail\": \"alice@example.com\"\r\n}",
+                                            "name":  "data"
+                                        }
+                                    ]
+              },
+    "description":  "This sample shows indirect with nested object navigation."
 }

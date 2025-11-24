@@ -8,14 +8,14 @@
                   "scriptText":  "[\r\n  {\r\n    \"path\": \"$.company.employee\",\r\n    \"delimiter\": \".\",\r\n    \"command\": \"flatten\"\r\n  }\r\n]",
                   "inputObjects":  [
                                        {
-                                           "jsonString":  "{\\\"company\\\":{\\\"name\\\":\\\"Acme Corp\\\",\\\"employee\\\":{\\\"id\\\":123,\\\"details\\\":{\\\"role\\\":\\\"Developer\\\",\\\"level\\\":\\\"Senior\\\"}}}}",
-                                           "name":  "c"
+                                           "jsonString":  "{\"company\":{\"name\":\"Acme Corp\",\"employee\":{\"id\":123,\"details\":{\"role\":\"Developer\",\"level\":\"Senior\"}}}}",
+                                           "name":  "data"
                                        }
                                    ],
                   "outputObjects":  [
                                         {
-                                            "jsonString":  "{\\\"company\\\":{\\\"name\\\":\\\"Acme Corp\\\",\\\"employee.id\\\":123,\\\"employee.details.role\\\":\\\"Developer\\\",\\\"employee.details.level\\\":\\\"Senior\\\"}}",
-                                            "name":  "c"
+                                            "jsonString":  "{\"company\":{\"name\":\"Acme Corp\",\"employee.id\":123,\"employee.details.role\":\"Developer\",\"employee.details.level\":\"Senior\"}}",
+                                            "name":  "data"
                                         }
                                     ]
               },
